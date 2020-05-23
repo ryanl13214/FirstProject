@@ -14,7 +14,7 @@ import ImagePicker from 'react-native-image-picker';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import {Card} from 'react-native-shadow-cards';
 
 
 import   Cam   from './src/camera';
@@ -43,21 +43,63 @@ function HomeScreenstorage({ navigation }) {
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
-
-      <Text>Home Screen</Text>
-
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
+<Image source={require('./img.png')} style={{   height: '40%'}} />
 
 
 
 
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('camera')}
-      />
 
 
+
+
+
+
+   <View style={{flex: 1, flexDirection: 'row'}}>
+
+      <TouchableOpacity style={{margin:10, width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+
+             <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
+               <Text>Open up App.js  !</Text>
+         </TouchableOpacity>
+
+
+
+
+         <TouchableOpacity style={{margin:10,width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+
+                <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
+                  <Text>Open up App.js  !</Text>
+            </TouchableOpacity>
+
+
+
+    </View>
+
+
+
+
+
+       <View style={{flex: 1, flexDirection: 'row'}}>
+
+          <TouchableOpacity style={{margin:10, width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+
+                 <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
+                   <Text>Open up App.js  !</Text>
+             </TouchableOpacity>
+
+
+
+
+             <TouchableOpacity style={{margin:10,width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+
+                    <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
+                      <Text>Open up App.js  !</Text>
+                </TouchableOpacity>
+
+
+
+        </View>
 
 
 
@@ -66,6 +108,7 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
+
 
 
 function HomeScree({ navigation }) {
