@@ -26,13 +26,27 @@ import ImagePicker from 'react-native-image-picker';
 
   selectPhotoTapped() {
     const options = {
-      quality: 1.0,
-      maxWidth: 500,
-      maxHeight: 500,
+      quality: 0.8,
+      maxWidth: 400,
+      maxHeight:400,
       storageOptions: {
         skipBackup: true,
       },
     };
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
 
     ImagePicker.showImagePicker(options, response => {
     //  console.log('Response 38= ', response);
