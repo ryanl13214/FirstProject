@@ -20,7 +20,7 @@ import {Card} from 'react-native-shadow-cards';
 import   Cam   from './src/camera';
 import   History   from './src/historyPage';
 //import   Cam   from './src/camera';
-
+import   Tmp   from './src/tempPage';
 
 
 
@@ -57,19 +57,19 @@ function HomeScreen({ navigation }) {
 
    <View style={{flex: 1, flexDirection: 'row'}}>
 
-      <TouchableOpacity style={{margin:10, width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+      <TouchableOpacity style={{margin:10, width : '40%',  height: '80%' }} onPress={() => navigation.navigate('camera')}>
 
-             <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
-               <Text>Open up App.js  !</Text>
+             <Image source={require('./imgs/face.png')}    style={{   width: '100%',  height: '80%'}}/>
+               <Text style={{ padding:10, width : '100%',  fontSize: 18, textAlign: 'center',alignItems: 'center', backgroundColor: 'cornflowerblue'}}> Track your status</Text>
          </TouchableOpacity>
 
 
 
 
-         <TouchableOpacity style={{margin:10,width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+         <TouchableOpacity style={{margin:10,width : '40%',  height: '80%'}} onPress={() => navigation.navigate('camera')}>
 
-                <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
-                  <Text>Open up App.js  !</Text>
+                <Image source={require('./imgs/hist.png')}    style={{   width: '100%',  height: '80%'}}/>
+                  <Text style={{padding:10, width : '100%', fontSize: 18, textAlign: 'center', alignItems: 'center', backgroundColor: 'beige'}}>View history </Text>
             </TouchableOpacity>
 
 
@@ -82,19 +82,19 @@ function HomeScreen({ navigation }) {
 
        <View style={{flex: 1, flexDirection: 'row'}}>
 
-          <TouchableOpacity style={{margin:10, width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+          <TouchableOpacity style={{margin:10, width : '40%',  height: '80%' }} onPress={() => navigation.navigate('camera')}>
 
-                 <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
-                   <Text>Open up App.js  !</Text>
+                 <Image source={require('./imgs/about.jpg')}    style={{   width: '100%',  height: '80%'}}/>
+                   <Text style={{padding:10, width : '100%',  fontSize: 18,textAlign: 'center', alignItems: 'center', backgroundColor: 'lightblue'}}>about</Text>
              </TouchableOpacity>
 
 
 
 
-             <TouchableOpacity style={{margin:10,width : '40%',  height: '80%', backgroundColor: 'red'}} onPress={() => navigation.navigate('camera')}>
+             <TouchableOpacity style={{margin:10,width : '40%',  height: '80%'}} onPress={() => navigation.navigate('camera')}>
 
-                    <Image source={require('./img.png')}    style={{   width: '100%',  height: '80%'}}/>
-                      <Text>Open up App.js  !</Text>
+                    <Image source={require('./imgs/pill.png')}    style={{   width: '100%',  height: '80%'}}/>
+                      <Text style={{padding:10, width : '100%',  fontSize: 18,textAlign: 'center', alignItems: 'center', backgroundColor: 'slateblue'}}>meidcations </Text>
                 </TouchableOpacity>
 
 
@@ -148,7 +148,7 @@ export default class  App extends React.Component {
               <Stack.Screen name="camera" component={Cam} />
               <Stack.Screen name="history" component={History} />
               <Stack.Screen name="about" component={HomeScree} />
-              <Stack.Screen name="Home2" component={HomeScree} />
+              <Stack.Screen name="temp" component={Tmp} />
 
             </Stack.Navigator>
           </NavigationContainer>

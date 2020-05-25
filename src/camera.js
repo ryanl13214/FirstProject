@@ -37,7 +37,7 @@ import ImagePicker from 'react-native-image-picker';
 
 
 
- 
+
 
 
 
@@ -64,7 +64,7 @@ import ImagePicker from 'react-native-image-picker';
          let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
 
-this.props.navigation.navigate('history',{ newIMG: source });
+this.props.navigation.navigate('temp',{ newIMG: source });
 
 //navigation.navigate('Home');
 
