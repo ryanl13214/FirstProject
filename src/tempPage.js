@@ -16,10 +16,10 @@ export default class  Tmp extends React.Component {
 
 
 
-     console.log("temp",  this.props.route.params.newIMG);
-       var base64Icon = this.props.route.params.newIMG;
-       var newimgmap = this.getDataUsingGet(this.props.route.params.newIMG);
 
+       var base64Icon = this.props.route.params.newIMG;
+       var newimgmap = this.getDataUsingGet(this.props.route.params.newIMG.uri);
+  //   console.log(   this.props.route.params.newIMG);
 //var base64Icon = 'data:image/png;base64,{PLACE_YOUR_BASE64_DATA_HERE}';
   }
 
@@ -32,7 +32,7 @@ export default class  Tmp extends React.Component {
 
     let body = JSON.stringify({text: b64 })
 
-    fetch('http://2.220.109.253', {
+    fetch('http://2.223.172.19', {
       method: 'POST',
 
         headers: {
@@ -48,7 +48,8 @@ export default class  Tmp extends React.Component {
     }     ).then((response) =>  response.text())
       .then((responseData) => {
 
-
+   console.log(   responseData.length);
+      console.log(   responseData);
         var newstr = "";
         for( var i = 0; i < responseData.length; i++ )
             if( !(responseData[i] == '\n' || responseData[i] == '\r') )
