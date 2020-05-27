@@ -33,19 +33,6 @@ var sound1 = new Sound(require('./h.mp3'),
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   function stopSound() {
 
       sound1.pause(() => {
@@ -128,7 +115,7 @@ if(this.state.playpause== false){
                     <View style={{ alignItems: "center", marginTop: 24 }}>
                         <Text style={[styles.textLight, { fontSize: 12 }]}>PLAYLIST</Text>
                         <Text style={[styles.text, { fontSize: 15, fontWeight: "500", marginTop: 8 }]}>
-                            Subscribe to DesignIntoCode
+                          now playing title here
                         </Text>
                     </View>
 
@@ -137,12 +124,14 @@ if(this.state.playpause== false){
                     </View>
 
                     <View style={{ alignItems: "center", marginTop: 32 }}>
-                        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500" }]}>Exhale</Text>
-                        <Text style={[styles.text, { fontSize: 16, marginTop: 8 }]}>Jeremy Blake</Text>
+                        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500" }]}>audio by </Text>
+                        <Text style={[styles.text, { fontSize: 16, marginTop: 8 }]}>Jon doe</Text>
                     </View>
                 </View>
 
-                <View style={{ margin: 32 }}>
+                <View style={{ margin: 32
+
+
                     <Slider
                         minimumValue={0}
                         maximumValue={this.state.trackLength}
@@ -151,6 +140,10 @@ if(this.state.playpause== false){
                         minimumTrackTintColor="#93A8B3"
                         onValueChange={seconds => this.changeTime(seconds)}
                     ></Slider>
+
+
+
+
                     <View style={{ marginTop: -12, flexDirection: "row", justifyContent: "space-between" }}>
                         <Text style={[styles.textLight, styles.timeStamp]}>{this.state.timeElapsed}</Text>
                         <Text style={[styles.textLight, styles.timeStamp]}>{this.state.timeRemaining}</Text>
@@ -166,11 +159,10 @@ if(this.state.playpause== false){
 
                     <TouchableOpacity style={styles.playButtonContainer} onPress={() => {return this.callFun()  }} >
                         <View style={styles.coverContainer}>
-                        <Image source={ this.state.playpause === true ?
-            require('../imgs/play.png') :
-            require('../imgs/pause.png')}
-
-/>
+                        <Image style={styles.imgoverContainer} source={ this.state.playpause === true ?
+                            require('../imgs/play.png') :
+                            require('../imgs/pause.png')}
+                        />
                         </View>
                     </TouchableOpacity>
 
@@ -206,6 +198,13 @@ const styles = StyleSheet.create({
          shadowOffset: { height: 15 },
          shadowRadius: 8,
          shadowOpacity: 0.3
+     },
+    imgoverContainer: {
+         marginTop: 32,
+         width:  80,
+         height:  80,
+  marginLeft:"50%",
+  alignContent:"center"
      },
      cover: {
          width: 250,
