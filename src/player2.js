@@ -26,13 +26,44 @@ var sound1 = new Sound(require('./h.mp3'),
     });
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function stopSound() {
 
-      sound1.stop(() => {
+      sound1.pause(() => {
         console.log('Stop');
       });
 
   }
+
+
+
+    function resumeSound() {
+
+        sound1.play();
+
+    }
+
+
+
 
 
   function componentWillUnmount() {
@@ -40,7 +71,7 @@ var sound1 = new Sound(require('./h.mp3'),
 
 }
 
- 
+
 
   import play from '../imgs/play.png';
   import pause from '../imgs/pause.png';
@@ -54,7 +85,7 @@ export default class  Player extends React.Component {
     super(props);
     Sound.setCategory('Playback', true); // true = mixWithOthers
     this.state = {
-      playpause: true,
+      playpause: false,
       trackLength: 300,
       timeElapsed: "0:00",
       timeRemaining: "5:00"
@@ -72,12 +103,21 @@ export default class  Player extends React.Component {
 
 
 
-    callFun = () =>
-      {
+  callFun = () =>
+  {
+    this.setState({playpause: !this.state.playpause});
+    console.log(this.state.playpause);
+if(this.state.playpause== false){
 
-        alert("Image Clicked!!!");
+      return stopSound();
+}else{
 
-      }
+  return resumeSound();
+}
+
+
+
+}
 
 
 
@@ -124,11 +164,12 @@ export default class  Player extends React.Component {
 
 
 
-                    <TouchableOpacity style={styles.playButtonContainer} onPress={() => {return stopSound(); }} >
+                    <TouchableOpacity style={styles.playButtonContainer} onPress={() => {return this.callFun()  }} >
                         <View style={styles.coverContainer}>
                         <Image source={ this.state.playpause === true ?
             require('../imgs/play.png') :
             require('../imgs/pause.png')}
+
 />
                         </View>
                     </TouchableOpacity>
