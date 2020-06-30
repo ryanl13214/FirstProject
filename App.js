@@ -8,9 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Card} from 'react-native-shadow-cards';
 
 
-import   About   from './src/about';
+
+import   Food   from './src/food';
 import   Home   from './src/home';
-import   Player   from './src/player2';
 
 
 
@@ -23,13 +23,12 @@ export default class  App extends React.Component {
     return (
           <NavigationContainer>
             <Stack.Navigator  screenOptions={{
-    headerShown: false
-  }}>
-              <Stack.Screen name="Home" component={Player} />
-              <Stack.Screen name="player" component={Player} />
-              <Stack.Screen name="history" component={Home} />
-              <Stack.Screen name="about" component={Home} />
-              <Stack.Screen name="temp" component={Home} />
+              headerShown: false
+              }}>
+              <Stack.Screen name="Home" component={Home} />
+
+              <Stack.Screen name="food" component={Food} />
+ 
             </Stack.Navigator>
           </NavigationContainer>
     );
