@@ -1,7 +1,7 @@
 /** @format */
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
-
+import { Dimensions } from 'react-native';
 
 
 

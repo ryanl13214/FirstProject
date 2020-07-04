@@ -33,7 +33,7 @@ export default class  Food extends React.Component {
 
 
 
-              <View style={{  marginTop:"190%" }}>
+              <View style={{  marginTop:"100%" }}>
                   <Text  style={styles.text}>track your intake</Text>
                   <ScrollView horizontal={true}>
 
