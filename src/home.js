@@ -41,7 +41,7 @@ export default class  Food extends React.Component {
                           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
                       </TouchableOpacity>
 
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
+                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('storage')} >
                           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
                       </TouchableOpacity>
 

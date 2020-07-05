@@ -1,1 +1,4 @@
- 
+
+Data={
+  "foodList": [  {  key:'React Native',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8}]
+ }

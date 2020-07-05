@@ -3,7 +3,7 @@ import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
 
-
+import exampleJson from '../data/food data.json'
 
 
 export default class  Food extends React.Component {
@@ -22,7 +22,7 @@ export default class  Food extends React.Component {
                   <Text  style={styles.text}>Daily journies </Text>
             </View>
 
-
+ 
 
 
               <View style={styles.button}  onPress={() => this.props.navigation.navigate('food')}>

@@ -56,9 +56,11 @@ export default class  Food extends React.Component {
 
 
   <View style={{flex: 1, width: "80%",height: 40, flexDirection: 'row', marginLeft:"10%"}}>
-
-    <Image style={{ height:30, width:30 , flexDirection: 'column'  }}  onPress={() => this.props.navigation.navigate('foodlist')}  source={require( '../imgs/f.png')} />
-    <Image style={{ height:30, width:30 , flexDirection: 'column'  }}  onPress={() => this.props.navigation.navigate('foodlist')}  source={require( '../imgs/f.png')} />
+    <Text style={{ }}>Today </Text>
+    <View  style={{    flexDirection: 'row'  }} >
+    <Image style={{ height:60, width:60 , flexDirection: 'column',marginTop: "10%"  }}  onPress={() => this.props.navigation.navigate('foodlist')}  source={require( '../imgs/cal.png')} />
+  <Text style={{ }}>date </Text>
+    </View  >
   </View>
 
 
@@ -66,9 +68,7 @@ export default class  Food extends React.Component {
           <View style={{ flex: 1,marginTop: "20%" ,height: "70%"}}>
 
               <View  >
-                  <View style={{ marginLeft: "10%" }}>
-                      <Text style={styles.text}>Daily journies </Text>
-                  </View>
+
 
 
 
@@ -76,7 +76,7 @@ export default class  Food extends React.Component {
                       <View style={{ width: "100%",height: "100%", flexDirection: 'column'}}>
 
 
-                          <View style={{ width: "100%",height: 70 , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
+                          <View style={{ width: "100%",height: 60 , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
                               <Text style={{ fontSize: 30 , textAlign: 'center' ,color: "white" }}>breakfast</Text>
                           </View>
 
@@ -143,7 +143,7 @@ export default class  Food extends React.Component {
                   <View style={styles.button}   >
                       <View style={{ width: "100%",height: "100%", flexDirection: 'column'}}>
 
-                          <View style={{ width: "100%",height:  70 , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
+                          <View style={{ width: "100%",height:  60 , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
                               <Text style={{ fontSize: 30 , textAlign: 'center' ,color: "white" }}>lunch</Text>
                           </View>
 
@@ -192,7 +192,7 @@ export default class  Food extends React.Component {
                   <View style={styles.button}   >
                       <View style={{ width: "100%",height: "100%", flexDirection: 'column'}}>
 
-                          <View style={{ width: "100%",height:  70  , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
+                          <View style={{ width: "100%",height:  60  , justifyContent: 'center',alignItems: 'center', flexDirection: 'column', backgroundColor: "rgb(57, 192, 175)" , borderRadius:30,}}>
                               <Text style={{ fontSize: 30 , textAlign: 'center' ,color: "white" }}>Dinner</Text>
                           </View>
 
