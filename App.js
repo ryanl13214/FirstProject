@@ -14,6 +14,13 @@ import   Home   from './src/home';
 import   Storage   from './src/storageexample';
 
 
+import   Splash   from './src/splash';
+
+import   Login   from './src/login';
+
+
+
+
 const Stack = createStackNavigator();
 
 
@@ -25,6 +32,9 @@ function DefaultApp() {
       <Stack.Navigator  screenOptions={{
         headerShown: false
         }}>
+
+
+
         <Stack.Screen name="Home" component={Home} />
 
         <Stack.Screen name="food" component={Food} />
@@ -111,15 +121,50 @@ const Tab = createBottomTabNavigator();
 
 
 export default class  App extends React.Component {
+  constructor(props ) {
+    super(props);
+      this.state = { isLoading: true };
+  }
+
+  performTimeConsumingTask = async() => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      )
+    );
+  }
+
+
+  async componentDidMount() {
+    // Preload data from an external API
+    // Preload data using AsyncStorage
+    const data = await this.performTimeConsumingTask();
+
+    if (data !== null) {
+      this.setState({ isLoading: false });
+    }
+  }
+
+
+
 
   render() {
+    if (this.state.isLoading) {
+  return <Splash />;
+}
     return (
 
     <NavigationContainer>
 
       <Tab.Navigator>
-           <Tab.Screen name="Home" component={MyTabs} />
+           <Tab.Screen name="News" component={DefaultApp} />
+           <Tab.Screen name="Chat" component={Storage} />
+           <Tab.Screen name="Home" component={Storage} />
+           <Tab.Screen name="Account" component={DefaultApp} />
            <Tab.Screen name="Settings" component={Storage} />
+
+
          </Tab.Navigator>
 
 

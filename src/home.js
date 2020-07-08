@@ -8,6 +8,11 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export default class  Food extends React.Component {
 
+
+
+
+
+
   constructor(props ) {
     super(props);
   }
@@ -17,110 +22,61 @@ export default class  Food extends React.Component {
       <SafeAreaView style={styles.container}>
 
 
-
-      <LinearGradient colors={['white', '#bfe6ff', '#59bfff' ]} style={styles.linearGradient}>
-
-      </LinearGradient>
+            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%' }} source={require('../imgs/5.jpg')} />
 
 
+            <View style={{  marginTop:0, width:"100%",height:"17%",backgroundColor:"rgb(102,183,202)",alignItems: 'center',justifyContent: 'center',   }}>
+                <View style={{     backgroundColor:"white" , borderRadius:25,overflow:"hidden"}}>
+                  <Image style={{  width: 50, height: 50 }} source={require('../imgs/cal.png')} />
 
+                </View>
+                <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>Username</Text>
+            </View>
 
+            <View style={{ justifyContent: "center",alignItems:"center",   marginTop:0, width:"100%",height:"5%",backgroundColor:"rgb(25,89,127)"}}>
+              <Text  style={{color:"white",   fontSize: 25 }}>Dashboard</Text>
 
-          <ScrollView  >
-
-
-
-
-
-
-              <View style={{  marginTop:"100%" }}>
-                  <Text  style={styles.text}>track your intake</Text>
-                  <ScrollView horizontal={true}>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('storage')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/darkClouds.jpg')} />
-                      </TouchableOpacity>
-                  </ScrollView>
-              </View>
-
-
-              <View  >
-                  <Text  style={styles.text}>pcos symptoms</Text>
-                  <ScrollView horizontal={true}>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/darkClouds.jpg')} />
-                      </TouchableOpacity>
-
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                      </TouchableOpacity>
-
-
-                  </ScrollView>
-              </View>
-
-              <View  >
-                  <Text  style={styles.text}>feminine health</Text>
-                      <TouchableOpacity style={styles.buttonWide} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.buttonWide} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
-                      </TouchableOpacity>
-              </View>
+            </View>
 
 
 
-              <View  >
-                  <Text  style={styles.text}>take care of your mental health</Text>
-                  <ScrollView horizontal={true}>
+            <View style={{  marginTop:0, width:"100%",height:"78%",backgroundColor:"rgb(102,183,202)"  }}>
 
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
-                      </TouchableOpacity>
+                <View style={{  marginTop:"8%",marginLeft:"7%", width:"88%",height:"85%",backgroundColor:"rgb(25,89,127)" , borderRadius:30, overflow : "hidden",}}>
 
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
-                      </TouchableOpacity>
+                    <View style={{ marginLeft:"5%", marginTop:"5%",  width:"90%",height:"60%",backgroundColor:"white", borderTopRightRadius:30, borderTopLeftRadius:30 }}>
 
 
-
-                  </ScrollView>
-
-                  <ScrollView horizontal={true}>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sunset.jpg')} />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('food')} >
-                          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/brightDay.jpg')} />
-                      </TouchableOpacity>
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%" }}>
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/energy.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/ex.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/mentalhealth.png')} />
+                            </View>
 
 
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%" }}>
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/symptom.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/ovu.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/skin.png')} />
+                            </View>
 
-                  </ScrollView>
 
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%"  }}>
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/sleep.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/nut.png')} />
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/water.png')} />
+                            </View>
 
-              </View>
+                    </View>
+                    <View style={{  marginTop:"30%",  width:"100%",height:"15%",backgroundColor:"rgb(240,184,89)" , borderRadius:50}}>
+                        <View style={{ justifyContent: "center",alignItems:"center",marginLeft:"7%",  marginTop:-90,  width:150,height:150 ,backgroundColor:"rgb(240,184,89)" , borderRadius:75}}>
+                          <Image style={{   width:100,height:100 }} source={require('../imgs/drdaisy.png')} />
+                        </View>
+                    </View>
+
+                </View>
+
+            </View>
 
 
 
@@ -128,7 +84,9 @@ export default class  Food extends React.Component {
 
 
 
-          </ScrollView>
+
+
+
       </SafeAreaView>
 
 
@@ -154,9 +112,16 @@ const styles = StyleSheet.create({
 container: {
 flex: 1,
 alignItems: "flex-start",
-justifyContent: "center"
+justifyContent: "flex-start"
 },
-
+item: {
+  flex: 1,
+ height:100,
+  margin: 1
+},
+list: {
+  flex: 1
+},
 
 button: {
   flex: 1,
