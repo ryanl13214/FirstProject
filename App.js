@@ -17,8 +17,8 @@ import   Storage   from './src/storageexample';
 import   Splash   from './src/splash';
 
 import   Login   from './src/login';
-
-
+import   Energy   from './src/energy';
+import   Water   from './src/waterTracker';
 
 
 const Stack = createStackNavigator();
@@ -34,9 +34,9 @@ function DefaultApp() {
         }}>
 
 
-
         <Stack.Screen name="Home" component={Home} />
-
+        <Stack.Screen name="water" component={Water} />
+        <Stack.Screen name="energy" component={Energy} />
         <Stack.Screen name="food" component={Food} />
         <Stack.Screen name="foodlist" component={Foodlist} />
         <Stack.Screen name="storage" component={Storage} />
@@ -123,7 +123,7 @@ const Tab = createBottomTabNavigator();
 export default class  App extends React.Component {
   constructor(props ) {
     super(props);
-      this.state = { isLoading: true };
+      this.state = { isLoading: true ,loggedin:false};
   }
 
   performTimeConsumingTask = async() => {
@@ -146,16 +146,30 @@ export default class  App extends React.Component {
     }
   }
 
-
+  updateState = () => {
+      this.setState({
+          loggedin: true
+      });
+  }
 
 
   render() {
     if (this.state.isLoading) {
-  return <Splash />;
-}
+      return <Splash />;
+    }
+    if (!this.state.loggedin) {
+      return <Login
+updateState={this.updateState}
+
+       />;
+    }
+
+
+
     return (
 
     <NavigationContainer>
+
 
       <Tab.Navigator>
            <Tab.Screen name="News" component={DefaultApp} />

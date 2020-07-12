@@ -1,63 +1,95 @@
 /** @format */
 import React from 'react';
-import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import {  Animated, Image, Easing,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
 
 
 
 
-export default class  Food extends React.Component {
+export default class  Water extends React.Component {
 
   constructor(props ) {
     super(props);
+    this.RotateValueHolder = new Animated.Value(0);
+  }
+
+  componentDidMount() {
+    this.StartImageRotateFunction();
+  }
+
+  StartImageRotateFunction() {
+    this.RotateValueHolder.setValue(0);
+
+    Animated.timing(this.RotateValueHolder, {
+      toValue: 1,
+      duration: 3000,
+      easing: Easing.linear,
+        useNativeDriver: true
+    }).start(() => this.StartImageRotateFunction());
   }
   render() {
+    const RotateData = this.RotateValueHolder.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
+
+
     return (
 
-      <SafeAreaView style={styles.container}>
-
-      <View style={{  marginTop:"-20%" ,height:"70%"}}>
-
-            <View style={{  marginLeft:"10%" }} >
-                  <Text  style={styles.text}>Daily journies </Text>
-            </View>
+      <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
+      <Image style={{position:"absolute" ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/13.jpg')} />
+    <View  style={{position:"absolute" ,  width: '40%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
+    <Animated.Image
+            style={{
+              position:"absolute",
+              left:"11%",
+              top:"83%",
+              width: 200,
+              height: 200,
+              borderRadius:33,
+                 transform: [{ rotate: '-15deg' }],
+              transform: [{ rotate: RotateData }],
+            }}
+             source={require('../imgs/water1.jpg')}
+          />
 
 
-              <View style={styles.button}  onPress={() => this.props.navigation.navigate('food')}>
-                  <View style={{ width:"100%",height:"100%",  flexDirection: 'column',  backgroundColor:"red" }}  >
-                  <View style={{ width:"100%",height:"50%",  flexDirection: 'column',  backgroundColor:"green" }}  >
-                  </View>
-                  <Image style={{  width: '10%', height: '10%' ,  flexDirection: 'column'}} source={require('../imgs/sunset.jpg')} />
-                  </View>
-              </View>
+          <Animated.Image
+                  style={{
+                    position:"absolute",
+                    left:"10%",
+                    top:"83%",
+                    width: 200,
+                    height: 300,
+                    borderRadius:33,
+                   transform: [{ rotate: '45deg' }],
+                    transform: [{ rotate: RotateData }],
+                  }}
+                   source={require('../imgs/water2.jpg')}
+                />
+
+                <Animated.Image
+                        style={{
+                          position:"absolute",
+                          left:"8%",
+                          top:"83%",
+                          width: 300,
+                          height: 400,
+                          borderRadius:33,
+                          transform: [{ rotate: '15deg' }],
+                          transform: [{ rotate: RotateData }],
+                        }}
+                         source={require('../imgs/water3.jpg')}
+                      />
 
 
-              <View style={styles.button}  onPress={() => this.props.navigation.navigate('food')}>
-                  <View style={{ width:"100%",height:"100%",  flexDirection: 'column',  backgroundColor:"red" }}  >
-                  <View style={{ width:"100%",height:"50%",  flexDirection: 'column',  backgroundColor:"green" }}  >
-                  </View>
-                  <Image style={{  width: '10%', height: '10%' ,  flexDirection: 'column'}} source={require('../imgs/sunset.jpg')} />
-                  </View>
-              </View>
+      <Image style={{ width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/waterbody.png')} />
 
-
-              <View style={styles.button}  onPress={() => this.props.navigation.navigate('food')}>
-                  <View style={{ width:"100%",height:"100%",  flexDirection: 'column',  backgroundColor:"red" }}  >
-                  <View style={{ width:"100%",height:"50%",  flexDirection: 'column',  backgroundColor:"green" }}  >
-                  </View>
-                  <Image style={{  width: '10%', height: '10%' ,  flexDirection: 'column'}} source={require('../imgs/sunset.jpg')} />
-                  </View>
-              </View>
-
-
+  </View>
 
       </View>
-
-
-
-      </SafeAreaView>
 
 
 
@@ -67,52 +99,6 @@ export default class  Food extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 20,
-    width:180,
-    height:30,
-    marginLeft:9,
-    borderRadius:15,
-    textAlign: 'center',
-    backgroundColor:"skyblue",
-},
-container: {
-flex: 1,
-alignItems: "flex-start",
-justifyContent: "center"
-},
-
-
-button: {
-  flex: 1,
-  margin:10,
-  width:"80%",
-  marginLeft:"10%",
-  height:220,
-
-  flexDirection: 'row',
-  justifyContent: "center",
-  borderTopRightRadius:30,
-  borderTopLeftRadius:30,
-  borderBottomWidth:  10,
-  overflow: 'hidden'
-},
-
-
-buttonwide: {
-    flex: 1,
-    margin:10,
-      borderRadius:30,
-    width:300,
-    height:200,
-    backgroundColor:"red",
-     flexDirection: 'row',
-    justifyContent: "center",
-      overflow: 'hidden'
-  },
-
-
-
 
 
 
