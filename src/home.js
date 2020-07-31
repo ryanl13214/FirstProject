@@ -20,12 +20,14 @@ export default class  Food extends React.Component {
     return (
 
       <SafeAreaView style={styles.container}>
+            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '10%' }} source={require('../imgs/header.jpg')} />
 
 
-            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%' }} source={require('../imgs/5.jpg')} />
+
+            <View style={{  marginTop:0, width:"100%",height:"13%",backgroundColor:"rgb(102,183,202)",alignItems: 'center',justifyContent: 'center',   }}>
+            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%' }} source={require('../imgs/header.jpg')} />
 
 
-            <View style={{  marginTop:0, width:"100%",height:"17%",backgroundColor:"rgb(102,183,202)",alignItems: 'center',justifyContent: 'center',   }}>
                 <View style={{     backgroundColor:"white" , borderRadius:25,overflow:"hidden"}}>
                   <Image style={{  width: 50, height: 50 }} source={require('../imgs/cal.png')} />
 
@@ -40,64 +42,66 @@ export default class  Food extends React.Component {
 
 
 
-            <View style={{  marginTop:0, width:"100%",height:"78%",backgroundColor:"rgb(102,183,202)"  }}>
+            <View style={{  marginTop:0, width:"100%",height:"88%",backgroundColor:"rgb(102,183,202)"  }}>
 
-                <View style={{  marginTop:"8%",marginLeft:"7%", width:"88%",height:"85%",backgroundColor:"rgb(25,89,127)" , borderRadius:30, overflow : "hidden",}}>
+                <View style={{  marginTop:"8%",marginLeft:"7%", width:"88%",height:"83%",backgroundColor:"rgb(25,89,127)" , borderRadius:30, overflow : "hidden",}}>
 
-                    <View style={{ marginLeft:"5%", marginTop:"5%",  width:"90%",height:"60%",backgroundColor:"white", borderTopRightRadius:30, borderTopLeftRadius:30 }}>
-
-
-                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%" }}>
+                    <View style={{ marginLeft:"5%", marginTop:"5%",  width:"90%",height:"90%",backgroundColor:"white", borderTopRightRadius:30, borderTopLeftRadius:30 }}>
 
 
-
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
                             <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('energy')} >
-                      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/energy.png')}  />
-
+                                <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/energy.png')}  />
                             </TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
                                 <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/ex.png')} />
                                 <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/mentalhealth.png')} />
                             </View>
 
 
-                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%" }}>
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
                                 <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/symptom.png')} />
-                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/ovu.png')} />
+
+                                <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('ovu')} >
+                                      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/ovu.png')} />
+                                </TouchableOpacity>
+
                                 <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/skin.png')} />
                             </View>
 
 
-                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"25%"  }}>
-                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/sleep.png')} />
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
+                            <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('sleep')} >
+                                <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sleep.png')} />
+                            </TouchableOpacity>
+
+
                                 <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/nut.png')} />
-
-
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('water')} >
                                   <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/water.png')} />
-
                                 </TouchableOpacity>
-
-
-
-
                             </View>
 
+                            <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
+                                <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('bmi')} >
+                                   <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/bmi.jpg')}  />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
+                                    <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/med.jpg')}  />
+                                </TouchableOpacity>
+                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/mentalhealth.png')} />
+                            </View>
+
+
+
+
+
+
                     </View>
-                    <View style={{  marginTop:"30%",  width:"100%",height:"15%",backgroundColor:"rgb(240,184,89)" , borderRadius:50}}>
-                        <View style={{ justifyContent: "center",alignItems:"center",marginLeft:"7%",  marginTop:-90,  width:150,height:150 ,backgroundColor:"rgb(240,184,89)" , borderRadius:75}}>
-                          <Image style={{   width:100,height:100 }} source={require('../imgs/drdaisy.png')} />
-                        </View>
-                    </View>
+
+
+
+
+
 
                 </View>
 
