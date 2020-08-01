@@ -1,12 +1,12 @@
 /** @format */
 
 import React from 'react';
-import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View,   Button} from 'react-native';
+import { AsyncStorage  ,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View,   Button} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Card} from 'react-native-shadow-cards';
-
+import SyncStorage from 'sync-storage';
 
 import   Foodlist   from './src/foodlist';
 import   Food   from './src/food';
@@ -27,6 +27,10 @@ import   Medselector   from './src/meditationselector';
 import Meditation  from './src/meditation';
 import Ovu  from './src/ovulationTracker';
 import Sleep  from './src/sleep';
+import Register  from './src/register';
+
+
+
 
 
 const Stack = createStackNavigator();
@@ -196,9 +200,15 @@ const Tab = createBottomTabNavigator();
 export default class  App extends React.Component {
   constructor(props ) {
     super(props);
-      this.state = { isLoading: true ,loggedin:false};
+      this.state = { isLoading: true ,
+        loggedin:false,
+        registering:false
+      };
   }
-
+  async componentWillMount(): void {
+   const data = await SyncStorage.init();
+   console.log('AsyncStorage is ready!', data);
+  }
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
       setTimeout(
@@ -221,10 +231,16 @@ export default class  App extends React.Component {
 
   updateState = () => {
       this.setState({
-          loggedin: true
+          loggedin: true,
+          registering:false
       });
   }
-
+  updateState2 = () => {
+      this.setState({
+          registering: true,
+        loggedin: true,
+      });
+  }
 
 
 
@@ -236,13 +252,18 @@ export default class  App extends React.Component {
     if (this.state.isLoading) {
       return <Splash />;
     }
-    if (!this.state.loggedin) {
+    if ( this.state.loggedin == false && this.state.registering==false) {
       return <Login
-updateState={this.updateState}
-
+      updateState={this.updateState}
        />;
-    }
 
+    }
+    if (this.state.regisering==true) {
+      return <Register
+      updateState={this.updateState2}
+       />;
+
+    }
 
 
     return (
