@@ -17,7 +17,7 @@ export default class  Login extends React.Component {
   }
 
 
- 
+
 
   render() {
 
@@ -54,7 +54,7 @@ export default class  Login extends React.Component {
             </View>
 
 
-            <TouchableOpacity style={{ backgroundColor:"red" ,position:"absolute" ,top:"55%",left:"20%",height:50, width:50 , flexDirection: 'column' ,marginTop: "10%"}}  onPress={this.props.updateState2} >
+            <TouchableOpacity style={{   position:"absolute" ,top:"75%",left:"28%",height:"5%", width:"45%" , flexDirection: 'column' ,marginTop: "10%"}}  onPress={this.props.updateState2} >
 </TouchableOpacity>
 
       </View>

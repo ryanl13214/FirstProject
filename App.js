@@ -28,9 +28,10 @@ import Meditation  from './src/meditation';
 import Ovu  from './src/ovulationTracker';
 import Sleep  from './src/sleep';
 import Register  from './src/register';
+import Scan  from './src/acenescannerselector';
 
-
-
+import Jornal  from './src/journal';
+import Excer  from './src/excercise';
 
 
 const Stack = createStackNavigator();
@@ -50,6 +51,9 @@ function DefaultApp() {
 
 
 
+        <Stack.Screen name="Excer" component={Excer} />
+        <Stack.Screen name="jornal" component={Jornal} />
+        <Stack.Screen name="skin" component={Scan} />
         <Stack.Screen name="sleep" component={Sleep} />
         <Stack.Screen name="ovu" component={Ovu} />
         <Stack.Screen name="meditation" component={Meditation} />
@@ -314,7 +318,7 @@ export default class  App extends React.Component {
 
            <Tab.Screen
                name="Chat"
-               component={Storage}
+               component={DefaultApp}
                options={{
                  title: 'Chat',
                  tabBarIcon: ({size,focused,color}) => {
@@ -360,7 +364,7 @@ export default class  App extends React.Component {
 
                             <Tab.Screen
                                 name="Account"
-                                component={Storage}
+                                component={DefaultApp}
                                 options={{
                                   title: 'Account',
                                   tabBarIcon: ({size,focused,color}) => {
@@ -383,7 +387,7 @@ export default class  App extends React.Component {
 
                                            <Tab.Screen
                                                name="Settings"
-                                               component={Storage}
+                                               component={DefaultApp}
                                                options={{
                                                  title: 'Settings',
                                                  tabBarIcon: ({size,focused,color}) => {

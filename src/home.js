@@ -53,8 +53,11 @@ export default class  Food extends React.Component {
                             <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('energy')} >
                                 <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/energy.png')}  />
                             </TouchableOpacity>
-                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/ex.png')} />
 
+
+                                <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('Excer')} >
+                                    <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/ex.png')}  />
+                                </TouchableOpacity>
 
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('mental')} >
                                     <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/mentalhealth.png')}  />
@@ -68,8 +71,9 @@ export default class  Food extends React.Component {
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('ovu')} >
                                       <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/ovu.png')} />
                                 </TouchableOpacity>
-
-                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/skin.png')} />
+  <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('skin')} >
+                                <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/skin.png')} />
+            </TouchableOpacity>
                             </View>
 
 
@@ -92,7 +96,9 @@ export default class  Food extends React.Component {
                                 <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
                                     <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/med.jpg')}  />
                                 </TouchableOpacity>
-                                <Image style={{  width: '33%', height: '100%' }} source={require('../imgs/jornal.jpg')} />
+                                <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
+                                <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/jornal.jpg')} />
+                                </TouchableOpacity>
                             </View>
 
 
