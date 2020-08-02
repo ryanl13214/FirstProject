@@ -251,7 +251,12 @@ export default class  App extends React.Component {
       });
   }
 
-
+  updateState3 = () => {
+      this.setState({
+          registering: false,
+      loggedin: true,
+      });
+  }
 
 
 
@@ -270,7 +275,7 @@ export default class  App extends React.Component {
     }
     if (this.state.registering==true) {
       return <Register
-
+      updateState3={this.updateState3}
        />;
 
     }

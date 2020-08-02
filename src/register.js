@@ -2,11 +2,16 @@
 import React from 'react';
 import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import { Dimensions } from 'react-native';
-
- 
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
+import DatePicker from 'react-native-datepicker'
 const { height } = Dimensions.get('window');
 //Import basic react native components
 import MultiSelect from 'react-native-multiple-select';
+const wheelPickerData = ["1 day", '2 days', '3 days', '4 days', '5 days', '6 days','7 days','8 days','9 days','10 days','11 days','12 days','13 days','14 days','15 days','16 days','17 days',"18 days","19 days","20 days"];
+const wheelPickerData2 = ["1 week", '2 weeks', '3 weeks', '4 weeks', '5 weeks', '6 weeks','7 weeks','8 weeks','9 weeks','10 weeks','11 weeks','12 weeks','13 weeks','14 weeks','15 weeks','16 weeks','17 weeks',"18 weeks","19 weeks","20 weeks"];
+const now = new Date()
+
+import { WheelPicker } from '@delightfulstudio/react-native-wheel-picker-android';
 
 type Props = {}
 
@@ -22,6 +27,11 @@ type Props = {}
   { id: '9', name: 'Belgium' },
   { id: '10', name: 'Brazil' },
 ];
+const buttonTextStyle = {
+    color: '#reds'
+};
+
+
 
 export default class  Register extends React.Component {
   state = {
@@ -33,85 +43,209 @@ export default class  Register extends React.Component {
     this.setState({ selectedItems });
     //Set Selected Items
   };
+  onItemSelected = event => {
+      // do something
+  };
 
   constructor(props ) {
     super(props);
-  }
+
+ }
+
+
+
   render() {
       const { selectedItems } = this.state;
+
+     var test = function(a) {
+this.props.updateState3;
+    console.log("aaa");
+   };
     return (
 
       <View style={{ flex: 1 }}>
     <Image style={{position:"absolute" ,  width: '100%', height: height}} source={require('../imgs/det.jpg')} />
 
-    <TextInput
-      value={this.state.username}
-      onChangeText={username => this.setState({ username })}
-      placeholder={'email'}
-      style={{textAlign: 'center',position:"absolute"  ,top:"40%",left:"20%", backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
-    />
-    <TextInput
-      value={this.state.email}
-      onChangeText={password => this.setState({ password })}
-      placeholder={'password'}
-      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-    />
-
-
-    <TextInput
-      value={this.state.gppractice}
-      onChangeText={password => this.setState({ password })}
-      placeholder={'password'}
-      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-    />
-
-        <TextInput
-          value={this.state.gpname}
-          onChangeText={password => this.setState({ password })}
-          placeholder={'password'}
-          style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-        />
-
-    <TextInput
-      value={this.state.nursename}
-      onChangeText={password => this.setState({ password })}
-      placeholder={'password'}
-      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-    />
 
 
 
 
 
 
+    <View style={{position:"absolute" , flex: 1, height: height*0.75,width:"80%",top: height*0.2,left:"10%"}}>
+        <ProgressSteps
+
+        >
+            <ProgressStep label="Basic Information">
+                <View style={{ alignItems: 'center' }}>
+                <TextInput
+                  value={this.state.username}
+                  onChangeText={username => this.setState({ username })}
+                  placeholder={'email Address'}
+                  style={{textAlign: 'center',   backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
+                />
+                <TextInput
+                  value={this.state.email}
+                  onChangeText={password => this.setState({ password })}
+                  placeholder={'password'}
+                  style={{textAlign: 'center' , backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                />
+
+
+                <TextInput
+                  value={this.state.gppractice}
+                  onChangeText={password => this.setState({ password })}
+                  placeholder={'Full Name'}
+                  style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                />
 
 
 
-       <View style={{  position:"absolute", top:"90%" ,width:"70%",height:"10%"}}>
-         <MultiSelect
-           hideTags
-           items={items}
-           uniqueKey="id"
-           ref={component => {
-             this.multiSelect = component;
-           }}
-           onSelectedItemsChange={this.onSelectedItemsChange}
-           selectedItems={selectedItems}
-           selectText="current medication"
-           searchInputPlaceholderText="Search Items..."
-           onChangeInput={text => console.log(text)}
-           tagRemoveIconColor="#CCC"
-           tagBorderColor="#CCC"
-           tagTextColor="#CCC"
-           selectedItemTextColor="#CCC"
-           selectedItemIconColor="#CCC"
-           itemTextColor="#000"
-           displayKey="name"
-           searchInputStyle={{ color: '#CCC' }}
-           submitButtonColor="#48d22b"
-           submitButtonText="Submit"
-         />
-       </View>
+
+
+
+  <View style={{flexDirection: 'row', paddingTop:10 }}>
+
+<Text style={{  color:"grey", paddingTop:10 }}>Enter your DOB: </Text>
+  <DatePicker
+    style={{width: 200}}
+    date={this.state.date}
+    mode="date"
+    placeholder="select date"
+    format="YYYY-MM-DD"
+    minDate="1900-01-01"
+    maxDate="2016-06-01"
+    confirmBtnText="Confirm"
+    cancelBtnText="Cancel"
+    customStyles={{
+      dateIcon: {
+        position: 'absolute',
+        left: 0,
+        top: 4,
+        marginLeft: 0
+      },
+      dateInput: {
+        marginLeft: 36
+      }
+      // ... You can check the source to find the other keys.
+    }}
+    onDateChange={(date) => {this.setState({date: date})}}
+  />
+
+  </View>
+
+                </View>
+            </ProgressStep>
+            <ProgressStep label="Medications">
+            <View style={{ alignItems: 'center' }}>
+
+
+                <View style={{  width:"70%",height:"60%"}}>
+                  <MultiSelect
+                    hideTags
+                    items={items}
+                    uniqueKey="id"
+                    ref={component => {
+                      this.multiSelect = component;
+                    }}
+                    onSelectedItemsChange={this.onSelectedItemsChange}
+                    selectedItems={selectedItems}
+                    selectText="current medication"
+                    searchInputPlaceholderText="Search Items..."
+                    onChangeInput={text => console.log(text)}
+                    tagRemoveIconColor="#CCC"
+                    tagBorderColor="#CCC"
+                    tagTextColor="#CCC"
+                    selectedItemTextColor="#CCC"
+                    selectedItemIconColor="#CCC"
+                    itemTextColor="#000"
+                    displayKey="name"
+                    searchInputStyle={{ color: '#CCC' }}
+                    submitButtonColor="#48d22b"
+                    submitButtonText="Submit"
+                  />
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                                <TextInput
+                                  value={this.state.gpname}
+                                  onChangeText={password => this.setState({ password })}
+                                  placeholder={'GP practice'}
+                                  style={{textAlign: 'center', backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                                />
+
+                            <TextInput
+                              value={this.state.nursename}
+                              onChangeText={password => this.setState({ password })}
+                              placeholder={'GP Name'}
+                              style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                            />
+              </View>
+  </View>
+            </ProgressStep>
+            <ProgressStep label="Feminine Health">
+                <View style={{ alignItems: 'center' ,alignItems: 'center',justifyContent: 'center'}}>
+
+
+
+
+        <View style={{ width: '100%',alignItems: 'center',justifyContent: 'center'  }}>
+                <View  style={{ width: '100%',alignItems: 'center',justifyContent: 'center'  }}>
+                <Text>how long does your period usually last? </Text>
+                               <WheelPicker
+                                   onItemSelected={ this.onItemSelected }
+                                   isCurved
+                                   data={ wheelPickerData }
+                                   visibleItemCount={4}
+                                   style={ styles.wheelPicker }/>
+
+               </View>
+
+                <View style={{ width: '100%',alignItems: 'center',justifyContent: 'center'  }}>
+                <Text>how long typically passes between your cycles?</Text>
+                                               <WheelPicker
+                                                   onItemSelected={ this.onItemSelected }
+                                                   isCurved
+                                                   data={ wheelPickerData2 }
+                                                   visibleItemCount={4}
+                                                   style={ styles.wheelPicker }/>
+
+                </View>
+    </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </View>
+            </ProgressStep>
+
+            <ProgressStep label="Personal Goals"   onSubmit={this.props.updateState3}>
+                <View style={{ alignItems: 'center' }}>
+                    <Text>Personal goals section list goals here</Text>
+                </View>
+            </ProgressStep>
+
+        </ProgressSteps>
+
+    </View>
+
+
+
+
 
 
      </View>

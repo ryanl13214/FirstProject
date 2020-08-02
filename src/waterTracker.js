@@ -3,14 +3,55 @@ import React from 'react';
 import {  Animated, Image, Easing,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
 
-
+import { Dimensions } from 'react-native';
+const { height } = Dimensions.get('window');
+import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class  Water extends React.Component {
 
   constructor(props ) {
     super(props);
+
+        var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
+
+        var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
+        var minus1 = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[2];
+        var minus2 = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[2];
+        var minus3 = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[2];
+        var minus4 = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[2];
+        var minus5 = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[2];
+        var minus6 = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[2];
+        var minus7 = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[2];
+        var pluss1 = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[2];
+
+
+        var todaysday= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[0];
+        var minus1day = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[0];
+        var minus2day = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[0];
+        var minus3day = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[0];
+        var minus4day = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[0];
+        var minus5day = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[0];
+        var minus6day = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[0];
+        var minus7day = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[0];
+        var pluss1day = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[0];
     this.RotateValueHolder = new Animated.Value(0);
+    this.state = {
+      pluss1:pluss1,
+      todaysnumber: todaysnumber,
+      minus1: minus1,
+      minus2: minus2,
+      minus3: minus3,
+      minus4: minus4,
+      minus5: minus5,
+      minus6: minus6,
+      minus7: minus7,
+      thismonth:thismonth,
+name:"",
+distfromtop: 222,
+label:0
+    };
+
   }
 
   componentDidMount() {
@@ -22,16 +63,53 @@ export default class  Water extends React.Component {
 
     Animated.timing(this.RotateValueHolder, {
       toValue: 1,
-      duration: 3000,
+      duration: 30000,
       easing: Easing.linear,
         useNativeDriver: true
     }).start(() => this.StartImageRotateFunction());
   }
+
+
+
+
+
+          pluss = () =>
+          {
+            this.setState({
+              distfromtop: this.state.distfromtop -50,
+              label:this.state.label+100
+             });
+        console.log(this.state.distfromtop);
+
+
+        }
+
+               minus = () =>
+               {
+                 this.setState({
+                            distfromtop: this.state.distfromtop+50,
+                            label:this.state.label-100
+                  });
+             console.log(this.state.distfromtop);
+
+
+             }
+
+
+
+
   render() {
     const RotateData = this.RotateValueHolder.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg'],
     });
+
+
+
+
+
+
+
 
 
     return (
@@ -40,55 +118,71 @@ export default class  Water extends React.Component {
 
 
       <Image style={{position:"absolute" ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/13.jpg')} />
+
+      <Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+      <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
+          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+          </TouchableOpacity>
+          <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+          </LinearGradient>
+          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
+          </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity   style={{  position:"absolute",top:"25%",left:"55%",  width: 50, height: 50, flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.minus()  }} >
+       <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
+      </TouchableOpacity>
+
+      <TouchableOpacity   style={{  position:"absolute",top:"25%",left:"85%",  width: 50, height: 50, flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }} onPress={() => {return this.pluss()  }} >
+       <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
+      </TouchableOpacity>
+
+
+
     <View  style={{position:"absolute" ,  width: '40%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
-    <Animated.Image
-            style={{
-              position:"absolute",
-              left:"11%",
-              top:"83%",
-              width: 200,
-              height: 200,
-              borderRadius:33,
-                 transform: [{ rotate: '-15deg' }],
-              transform: [{ rotate: RotateData }],
-            }}
-             source={require('../imgs/water1.jpg')}
-          />
 
-
-          <Animated.Image
-                  style={{
-                    position:"absolute",
-                    left:"10%",
-                    top:"83%",
-                    width: 200,
-                    height: 300,
-                    borderRadius:33,
-                   transform: [{ rotate: '45deg' }],
-                    transform: [{ rotate: RotateData }],
-                  }}
-                   source={require('../imgs/water2.jpg')}
-                />
 
                 <Animated.Image
                         style={{
                           position:"absolute",
-                          left:"8%",
-                          top:"83%",
-                          width: 300,
-                          height: 400,
-                          borderRadius:33,
+                          left:"-250%",
+                          top:this.state.distfromtop,
+                          width: 1000,
+                          height: 1000,
+                          borderRadius:500,
                           transform: [{ rotate: '15deg' }],
                           transform: [{ rotate: RotateData }],
                         }}
-                         source={require('../imgs/water3.jpg')}
+                         source={require('../imgs/circ.png')}
                       />
 
 
       <Image style={{ width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/waterbody.png')} />
 
   </View>
-
+  <Text style={{color:"white",position:"absolute",top:"57%",left:"72%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
+  <Text style={{color:"white",position:"absolute",top:"80%",left:"72%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
       </View>
 
 
