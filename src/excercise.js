@@ -43,7 +43,30 @@ export default class  Excer extends React.Component {
        minus6: minus6,
        minus7: minus7,
        thismonth:thismonth,
+			 mins:0,
+			 cal:0
      };
+
+  }
+	onButtonPressweightpluss = () => {
+
+
+			this.setState({
+				mins: this.state.mins+5
+			});
+
+
+  }
+	onButtonPressweightmin = () => {
+		this.setState({
+			mins: this.state.mins-5
+		});
+
+  }
+	onButtonPressweightmin2 = () => {
+		this.setState({
+			cal: this.state.mins*50
+		});
 
   }
 
@@ -87,11 +110,19 @@ export default class  Excer extends React.Component {
 						    </TouchableOpacity>
 						</View>
 
+ <Text style={  {position:"absolute",top:"89%",left:"20%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.mins} min</Text>
+						<TouchableOpacity style={{width: 30, height: 30,position:"absolute",top:"86%",left:"38%"}} onPress={this.onButtonPressweightpluss} >
+								<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
+						</TouchableOpacity>
+						<TouchableOpacity style={{width: 30, height: 30,position:"absolute",top:"91%",left:"38%"}} onPress={this.onButtonPressweightmin} >
+								<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
+						</TouchableOpacity>
 
+						<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.onButtonPressweightmin2} >
 
-
-
-
+						</TouchableOpacity>
+ <Text style={  {position:"absolute",top:"25%",left:"75%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
+ <Text style={  {position:"absolute",top:"25%",left:"30%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
 
 
 

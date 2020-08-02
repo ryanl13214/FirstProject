@@ -56,7 +56,7 @@ export default class  Food extends React.Component {
 
 
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('Excer')} >
-                                    <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/ex.png')}  />
+                                    <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/exl.png')}  />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('mental')} >

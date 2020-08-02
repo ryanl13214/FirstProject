@@ -2,8 +2,7 @@
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet  ,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import ReactNativeAN from 'react-native-alarm-notification';
-const fireDate = ReactNativeAN.parseDate(new Date(Date.now() + 1000));
+
 import { Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
@@ -62,10 +61,7 @@ export default class  Sleep extends React.Component {
   add2 = () => {
 
 
-
-          //Schedule Future Alarm
-          ReactNativeAN.scheduleAlarm(alarmNotifData);
-
+ 
           //Delete Scheduled Alarm
         //  ReactNativeAN.deleteAlarm(alarm_id);
 

@@ -5,7 +5,7 @@ import { AsyncStorage  ,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpac
 import ImagePicker from 'react-native-image-picker';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {Card} from 'react-native-shadow-cards';
+
 import SyncStorage from 'sync-storage';
 
 import   Foodlist   from './src/foodlist';
@@ -319,6 +319,7 @@ export default class  App extends React.Component {
            <Tab.Screen
                name="Chat"
                component={DefaultApp}
+
                options={{
                  title: 'Chat',
                  tabBarIcon: ({size,focused,color}) => {

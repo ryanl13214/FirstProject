@@ -32,9 +32,9 @@ export default class  Bmi extends React.Component {
   constructor(props ) {
     super(props);
 		this.state = {
-      age: 3,
-			weight:10,
-			height:10,
+      age: 18,
+			weight:80,
+			height:120,
 			bmi:0,
 			bmitext:"healthy"
     };
@@ -59,7 +59,7 @@ export default class  Bmi extends React.Component {
   }
 
 	onButtonPressheightpluss = () => {
-		if(this.state.height<100){
+		if(this.state.height<300){
 			this.setState({
 				height: this.state.height+1
 
@@ -79,7 +79,7 @@ export default class  Bmi extends React.Component {
 
 
 	onButtonPressweightpluss = () => {
-		if(this.state.weight<100){
+		if(this.state.weight<200){
 
 			this.setState({
 				weight: this.state.weight+1
@@ -129,7 +129,7 @@ export default class  Bmi extends React.Component {
 
 
 
-<Text  style={{   fontSize: 18  ,position:"absolute",top:"39%",left:"41%"}}>{this.state.height} cm</Text>
+<Text  style={{   fontSize: 18  ,position:"absolute",top:"39%",left:"40%"}}>{this.state.height} cm</Text>
 <TouchableOpacity style={{width: 30, height: 30,position:"absolute",top:"37%",left:"55%"}} onPress={this.onButtonPressheightpluss} >
 		<Image style={{  width: 30, height: 30 }} source={require('../imgs/up.jpg')}  />
 </TouchableOpacity>
@@ -150,10 +150,10 @@ export default class  Bmi extends React.Component {
 
 
 
-<Text  style={{  color:"white", fontSize: 20, position:"absolute",top:"74%",left:"50%",width:"18%",   display: "flex",
-    justifyContent: "center",
+<Text  style={{  color:"white", fontSize: 20, position:"absolute",top:"74%",left:"2%",width:"100%",   display: "flex",
+    justifyContent: "center",textAlign:"center",
     alignItems: "center"}}>{this.state.bmi}</Text>
-<Text  style={{  color:"white", fontSize: 20, position:"absolute",top:"80%",left:"43%" ,width:"18%",   display: "flex",
+<Text  style={{   height: 30,color:"white", fontSize: 20, position:"absolute",top:"80%",left:"43%" ,width:"18%",   display: "flex",
     justifyContent: "center",
     alignItems: "center",}}>{this.state.bmitext}</Text>
 
