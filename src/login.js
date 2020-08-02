@@ -17,19 +17,7 @@ export default class  Login extends React.Component {
   }
 
 
-
-  onPressLearnMore(){
-    //For generating alert on buttton click
-    alert('Hello');
-  }
-
-  handleClick = () => {
-        this.props.updateState();
-    }
-
-    handleClick2 = () => {
-          this.props.updateState2();
-      }
+ 
 
   render() {
 
@@ -66,7 +54,7 @@ export default class  Login extends React.Component {
             </View>
 
 
-            <TouchableOpacity style={{ backgroundColor:"red" ,position:"absolute" ,top:"55%",left:"20%",height:50, width:50 , flexDirection: 'column' ,marginTop: "10%"}}  onPress={this.props.handleClick2} >
+            <TouchableOpacity style={{ backgroundColor:"red" ,position:"absolute" ,top:"55%",left:"20%",height:50, width:50 , flexDirection: 'column' ,marginTop: "10%"}}  onPress={this.props.updateState2} >
 </TouchableOpacity>
 
       </View>

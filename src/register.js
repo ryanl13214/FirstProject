@@ -1,11 +1,16 @@
 /** @format */
 import React from 'react';
-import {  Image,   Picker, PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import { Dimensions } from 'react-native';
 
+ 
+const { height } = Dimensions.get('window');
 //Import basic react native components
 import MultiSelect from 'react-native-multiple-select';
 
-this.items = [
+type Props = {}
+
+ const items = [
   { id: '1', name: 'America' },
   { id: '2', name: 'Argentina' },
   { id: '3', name: 'Armenia' },
@@ -37,7 +42,52 @@ export default class  Register extends React.Component {
     return (
 
       <View style={{ flex: 1 }}>
-       <View style={{ flex: 1, padding: 30 }}>
+    <Image style={{position:"absolute" ,  width: '100%', height: height}} source={require('../imgs/det.jpg')} />
+
+    <TextInput
+      value={this.state.username}
+      onChangeText={username => this.setState({ username })}
+      placeholder={'email'}
+      style={{textAlign: 'center',position:"absolute"  ,top:"40%",left:"20%", backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
+    />
+    <TextInput
+      value={this.state.email}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'password'}
+      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+    />
+
+
+    <TextInput
+      value={this.state.gppractice}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'password'}
+      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+    />
+
+        <TextInput
+          value={this.state.gpname}
+          onChangeText={password => this.setState({ password })}
+          placeholder={'password'}
+          style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+        />
+
+    <TextInput
+      value={this.state.nursename}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'password'}
+      style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+    />
+
+
+
+
+
+
+
+
+
+       <View style={{  position:"absolute", top:"90%" ,width:"70%",height:"10%"}}>
          <MultiSelect
            hideTags
            items={items}
@@ -47,7 +97,7 @@ export default class  Register extends React.Component {
            }}
            onSelectedItemsChange={this.onSelectedItemsChange}
            selectedItems={selectedItems}
-           selectText="Pick Items"
+           selectText="current medication"
            searchInputPlaceholderText="Search Items..."
            onChangeInput={text => console.log(text)}
            tagRemoveIconColor="#CCC"
@@ -62,6 +112,8 @@ export default class  Register extends React.Component {
            submitButtonText="Submit"
          />
        </View>
+
+
      </View>
 
 
@@ -70,10 +122,28 @@ export default class  Register extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
-
-
-
-
-
-});
+  activeDot: {
+    backgroundColor: 'grey'
+  },
+  inactiveDot: {
+    backgroundColor: '#ededed'
+  },
+  activeStep: {
+    backgroundColor: 'grey'
+  },
+  inactiveStep: {
+    backgroundColor: '#ededed'
+  },
+  activeStepTitle: {
+    fontWeight: 'bold'
+  },
+  inactiveStepTitle: {
+    fontWeight: 'normal'
+  },
+  activeStepNumber: {
+    color: 'white'
+  },
+  inactiveStepNumber: {
+    color: 'black'
+  }
+})

@@ -200,15 +200,24 @@ const Tab = createBottomTabNavigator();
 export default class  App extends React.Component {
   constructor(props ) {
     super(props);
-      this.state = { isLoading: true ,
+      this.state = {
+        isLoading: true ,
         loggedin:false,
         registering:false
       };
   }
+
+
+
   async componentWillMount(): void {
    const data = await SyncStorage.init();
    console.log('AsyncStorage is ready!', data);
   }
+
+
+
+
+
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
       setTimeout(
@@ -238,7 +247,7 @@ export default class  App extends React.Component {
   updateState2 = () => {
       this.setState({
           registering: true,
-        loggedin: true,
+
       });
   }
 
@@ -255,12 +264,13 @@ export default class  App extends React.Component {
     if ( this.state.loggedin == false && this.state.registering==false) {
       return <Login
       updateState={this.updateState}
+      updateState2={this.updateState2}
        />;
 
     }
-    if (this.state.regisering==true) {
+    if (this.state.registering==true) {
       return <Register
-      updateState={this.updateState2}
+
        />;
 
     }
