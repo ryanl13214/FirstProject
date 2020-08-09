@@ -5,31 +5,29 @@ import { AsyncStorage  ,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpac
 import ImagePicker from 'react-native-image-picker';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import fire from './config/fire';
 import SyncStorage from 'sync-storage';
+
+
+
+
 
 import   Foodlist   from './src/foodlist';
 import   Food   from './src/food';
 import   Home   from './src/home';
 import   Storage   from './src/storageexample';
-
-
 import   Splash   from './src/splash';
-
 import   Login   from './src/login';
 import   Energy   from './src/energy';
 import   Water   from './src/waterTracker';
-
 import   Mental   from './src/mental';
 import   Bmi   from './src/bmi';
 import   Medselector   from './src/meditationselector';
-
 import Meditation  from './src/meditation';
 import Ovu  from './src/ovulationTracker';
 import Sleep  from './src/sleep';
 import Register  from './src/register';
 import Scan  from './src/acenescannerselector';
-
 import Jornal  from './src/journal';
 import Excer  from './src/excercise';
 
@@ -95,62 +93,6 @@ function Settings() {
 
 
 
-function MyTabBar({ state, descriptors, navigation }) {
-  return (
-    <View style={{ flexDirection: 'row' }}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-const lab =options.title;
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityStates={isFocused ? ['selected'] : []}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{ flex: 1,height:60 }}
-          >
-
-          <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-            {lab}
-          </Text>
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-}
 
 function Account() {
   return (
@@ -205,17 +147,20 @@ export default class  App extends React.Component {
   constructor(props ) {
     super(props);
       this.state = {
+        user: null,
         isLoading: true ,
         loggedin:false,
         registering:false
       };
+
+    this.authListener = this.authListener.bind(this);
   }
 
 
 
   async componentWillMount(): void {
    const data = await SyncStorage.init();
-   console.log('AsyncStorage is ready!', data);
+  // console.log('AsyncStorage is ready!', data);
   }
 
 
@@ -232,7 +177,33 @@ export default class  App extends React.Component {
   }
 
 
+
+
+
+  authListener() {
+      fire.auth().onAuthStateChanged((user) => {
+        console.log(user);
+        if (user) {
+          this.setState({ user });
+          //localStorage.setItem('user', user.uid);/////////////////////////////////////
+        } else {
+          this.setState({ user: null });
+        ///  localStorage.removeItem('user');//////////////////////////////////////////
+        }
+      });
+    }
+
+
+
+
+
+
+
+
+
+
   async componentDidMount() {
+    this.authListener();
     // Preload data from an external API
     // Preload data using AsyncStorage
     const data = await this.performTimeConsumingTask();

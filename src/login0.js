@@ -1,55 +1,29 @@
 /** @format */
 import React from 'react';
-import { TextInput, Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+
+import { TextInput } from 'react-native';
 
 
-import fire from '../config/fire';
+
 export default class  Login extends React.Component {
-  constructor(props) {
 
-
-
-      fire.auth().signInWithEmailAndPassword("rlangridge132@hotmail.com","QwertyuiopLk").then((u)=>{
-        console.log("uname2 "+ u.user.uid);
-      }).catch((error) => {
-        //  console.log(error);
-        });
-
-
+  constructor(props ) {
     super(props);
-    this.login = this.login.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
     this.state = {
-      email: '',
-      password: ''
+      username: '',
+      password:'',
     };
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
 
-  login(e) {
-    e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-    }).catch((error) => {
-        console.log(error);
-      });
-  }
 
-  signup(e){
-    e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-    }).then((u)=>{console.log(u)})
-    .catch((error) => {
-        console.log("error :"+error);
-      })
-  }
+
   render() {
+
+
+
     return (
-
-
 
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
@@ -69,7 +43,7 @@ export default class  Login extends React.Component {
       />
 
 
-  <TextInput value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+
         <View style={ styles.container}>
 
         <TouchableOpacity style={{ height:50, width:"100%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}} onPress={this.props.updateState} >
@@ -88,16 +62,9 @@ export default class  Login extends React.Component {
 
 
 
-
-
     );
   }
 }
-
-
-
-
-
 
 const styles = StyleSheet.create({
 

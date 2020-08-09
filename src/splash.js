@@ -10,7 +10,7 @@ export default class  Splash extends React.Component {
 
   constructor(props ) {
     super(props);
-     
+
   }
   render() {
     return (
@@ -18,7 +18,7 @@ export default class  Splash extends React.Component {
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-      <Image style={{position:"absolute" ,  width: '100%', height: '100%' }} source={require('../imgs/0.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: '100%' ,resizeMode: 'stretch' }} source={require('../imgs/0.jpg')} />
 
 
 
