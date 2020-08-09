@@ -163,20 +163,20 @@ add = () => {
 
 
       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
-      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden'}}>
+      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
       <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
       <View style={{  flexDirection: 'row'   , width:"90%",height:"100%"  ,backgroundColor:"white"}}></View>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0}} source={require('../imgs/tttt.png')} />
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
       </View>
            </TouchableWithoutFeedback>
   <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"19%",color:"white" }}> {this.state.label} </Text>
 
 
            <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
-           <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"58%",overflow: 'hidden'}}>
-           <View style={{  flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
-           <View style={{  flexDirection: 'row'   , width:"90%",height:"100%"  ,backgroundColor:"white"}}></View>
-           <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0}} source={require('../imgs/heart.png')} />
+           <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
+           <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
+           <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
+           <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
            </View>
                 </TouchableWithoutFeedback>
                 <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>

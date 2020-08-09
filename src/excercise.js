@@ -44,7 +44,28 @@ export default class  Excer extends React.Component {
        minus7: minus7,
        thismonth:thismonth,
 			 mins:0,
-			 cal:0
+			 cal:0,
+			 highres:{
+				 boxWidth:150,
+				 boxHeight:100,
+				 alarm:40,
+				 text:55,
+				 buttonsleft:"-10",
+				 buttonstop:"-55"
+			 },
+			 lowres:{
+				 boxWidth:150,
+				 boxHeight:100,
+				 alarm:40,
+				 text:55,
+				 buttonsleft:"-10",
+				 buttonstop:"-55"
+			 }
+
+
+
+
+
      };
 
   }
@@ -80,49 +101,76 @@ export default class  Excer extends React.Component {
 
 
 						<Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-						<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
+						<View  style={{position:"absolute",  width: "75%",marginLeft:"10%" , flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
 						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus7}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus6}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus5}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus4}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus3}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus2}</Text>
 						    </TouchableOpacity>
 						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus1}</Text>
 						    </TouchableOpacity>
 						    <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.todaysnumber}</Text>
 						    </LinearGradient>
-						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-						    </TouchableOpacity>
+
 						</View>
 
  <Text style={  {position:"absolute",top:"89%",left:"20%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.mins} min</Text>
-						<TouchableOpacity style={{width: 30, height: 30,position:"absolute",top:"86%",left:"38%"}} onPress={this.onButtonPressweightpluss} >
-								<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
-						</TouchableOpacity>
-						<TouchableOpacity style={{width: 30, height: 30,position:"absolute",top:"91%",left:"38%"}} onPress={this.onButtonPressweightmin} >
-								<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
-						</TouchableOpacity>
+
 
 						<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.onButtonPressweightmin2} >
 
 						</TouchableOpacity>
- <Text style={  {position:"absolute",top:"25%",left:"75%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
- <Text style={  {position:"absolute",top:"25%",left:"30%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
+
+
+
+
+
+
+						<View style={{ borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width:150,height:100 ,top:"81%" ,left:"12%",overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
+								<View style={{borderRadius:18 ,    flexDirection: 'row'   ,  width:"88%",height:"30%"  ,backgroundColor:"rgb(21,107,156)",marginLeft:"6%",marginTop:"2%"}}>
+									 <Text style={{ fontSize: 15,color:"white", fontWeight: "100"   ,  width:"100%",  textAlign: 'center',borderRadius:40,borderWidth:0,borderColor:"white"}}>Time</Text>
+								</View>
+
+
+
+
+
+
+						  <View style={{ flexDirection: 'row'  ,  alignItems: 'center'   }}>
+		<View style={{ flexDirection: 'column'    ,height:"100%"  }}>
+	 	<Image style={{  width: 40, height: 40 ,resizeMode: 'stretch',marginLeft:5,marginTop:"-10%" }} source={require('../imgs/clock.png')}  />
+		</View>
+	  <Text style={{  width: 55,  fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center' ,marginLeft:"3%",marginTop:"-10%" }}>{this.state.mins} min</Text>
+											<View style={{ flexDirection: 'column' ,marginLeft:"10%"  }}>
+												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:"-10%",marginTop:"-55%"}} onPress={this.onButtonPressweightpluss} >
+														<Image style={{  width: 30, height: 30   }} source={require('../imgs/up2.png')}  />
+												</TouchableOpacity>
+												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:"-10%",marginTop:"-55%" }} onPress={this.onButtonPressweightmin} >
+														<Image style={{  width: 30, height: 30  }} source={require('../imgs/down2.png')}  />
+												</TouchableOpacity>
+								    </View>
+              </View>
+            </View>
+
+
+
+ <Text style={  {position:"absolute",top:"25%",left:"72%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
+ <Text style={  {position:"absolute",top:"25%",left:"25%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
 
 
 

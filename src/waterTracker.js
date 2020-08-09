@@ -160,7 +160,7 @@ label:0
 
 
 
-    <View  style={{position:"absolute" ,  width: '40%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
+    <View  style={{position:"absolute" ,  width: '45%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
 
 
                 <Animated.Image
