@@ -61,7 +61,7 @@ export default class  Sleep extends React.Component {
 
   add2 = () => {
 
- 
+
           //Stop Alarm
         //  ReactNativeAN.stopAlarmSound();
 
@@ -85,7 +85,7 @@ export default class  Sleep extends React.Component {
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-      <Image style={{position:"absolute" ,  width: '100%', height: height }} source={require('../imgs/14.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
 			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16%"  }}>
           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
@@ -125,10 +125,10 @@ export default class  Sleep extends React.Component {
 
 
 
-    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:"8%" ,top:"88%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add2  } >
+    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}} onPress={    this.add2  } >
 
 
-        <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 15,   height:"50%" }}>Username</Text>
+        <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>Edit Alarms</Text>
 
 
     </TouchableOpacity>

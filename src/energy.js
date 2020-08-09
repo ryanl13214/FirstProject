@@ -226,21 +226,21 @@ export default class  Energy extends React.Component {
         </View>
 
 
-        <View style={{position:"absolute", top:"41%",left:"12%"  ,  width:"43%", height:"10%",}}>
+        <View style={{position:"absolute", top:"41%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
               <TouchableOpacity  style={this.state.isBlinking   && styles.textGlowing}  onPress={this.makeblink}  >
-                  <Image style={{ height:"100%", width:"100%"   ,marginTop:5 }}   source={require( '../imgs/lowbat.jpg')} />
+                  <Image style={{ height:"97%", width:"97%"   }}   source={require( '../imgs/lowbat.jpg')} />
               </TouchableOpacity>
         </View>
 
-        <View style={{position:"absolute", top:"56%",left:"12%"  ,  width:"43%", height:"10%",}}>
+        <View style={{position:"absolute", top:"56%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
         <TouchableOpacity  style={this.state.isBlinking1   && styles.textGlowing}  onPress={this.makeblink1}  >
-            <Image style={{ height:"100%", width:"100%"   ,marginTop:5 }}   source={require( '../imgs/medbat.jpg')} />
+            <Image style={{ height:"97%", width:"97%"   }}   source={require( '../imgs/medbat.jpg')} />
         </TouchableOpacity>
         </View>
 
-        <View style={{position:"absolute", top:"71%",left:"12%"  ,  width:"43%", height:"10%",}}>
+        <View style={{position:"absolute", top:"71%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
         <TouchableOpacity  style={this.state.isBlinking2   && styles.textGlowing}  onPress={this.makeblink2}  >
-            <Image style={{ height:"100%", width:"100%"   ,marginTop:5 }}   source={require( '../imgs/highbat.jpg')} />
+            <Image style={{ height:"97%", width:"97%"     }}   source={require( '../imgs/highbat.jpg')} />
         </TouchableOpacity>
         </View>
 

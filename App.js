@@ -10,8 +10,12 @@ import SyncStorage from 'sync-storage';
 
 
 
-
-
+///////////////////////
+import   Cam   from './camerasection/camera';
+import   History   from './camerasection/historyPage';
+import   Tmp   from './camerasection/tempPage';
+import   Tmp2   from './camerasection/tempPage)';
+////////////////////
 import   Foodlist   from './src/foodlist';
 import   Food   from './src/food';
 import   Home   from './src/home';
@@ -48,10 +52,13 @@ function DefaultApp() {
         <Stack.Screen name="Home" component={Home} />
 
 
-
+        <Stack.Screen name="camera" component={Cam} />
+        <Stack.Screen name="history" component={History} />
+        <Stack.Screen name="temp" component={Tmp} />
+        <Stack.Screen name="temp2" component={Tmp2} />
         <Stack.Screen name="Excer" component={Excer} />
         <Stack.Screen name="jornal" component={Jornal} />
-        <Stack.Screen name="skin" component={Scan} />
+        <Stack.Screen name="skin" component={Cam} />
         <Stack.Screen name="sleep" component={Sleep} />
         <Stack.Screen name="ovu" component={Ovu} />
         <Stack.Screen name="meditation" component={Meditation} />
