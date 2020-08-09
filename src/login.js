@@ -59,17 +59,17 @@ export default class  Login extends React.Component {
         value={this.state.username}
         onChangeText={username => this.setState({ username })}
         placeholder={'email'}
-        style={{textAlign: 'center',position:"absolute"  ,top:"40%",left:"20%", backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
+        style={{textAlign: 'center',position:"absolute"  ,top:"40%",left:"20%", backgroundColor:"white",   width: '60%', height: 35 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
       />
       <TextInput
         value={this.state.password}
         onChangeText={password => this.setState({ password })}
         placeholder={'password'}
-        style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+        style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 35, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
       />
 
 
-  <TextInput value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+
         <View style={ styles.container}>
 
         <TouchableOpacity style={{ height:50, width:"100%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}} onPress={this.props.updateState} >

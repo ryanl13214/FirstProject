@@ -1,7 +1,7 @@
 /** @format */
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
-
+import SyncStorage from 'sync-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
 
@@ -14,7 +14,11 @@ export default class  Food extends React.Component {
 
 
   constructor(props ) {
+      const result = SyncStorage.get('name' );
     super(props);
+    this.state={
+username:result
+    }
   }
   render() {
     return (
@@ -32,7 +36,7 @@ export default class  Food extends React.Component {
                   <Image style={{  width: 50, height: 50 }} source={require('../imgs/cal.png')} />
 
                 </View>
-                <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>Username</Text>
+                <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>{this.state.username}</Text>
             </View>
 
             <View style={{ justifyContent: "center",alignItems:"center",   marginTop:0, width:"100%",height:"5%",backgroundColor:"rgb(25,89,127)"}}>

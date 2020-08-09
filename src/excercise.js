@@ -6,8 +6,38 @@ const { height } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class  Excer extends React.Component {
+
+state={
+
+	boxWidth:150,
+	boxHeight:100,
+	alarm:40,
+	text:55,
+	buttonsleft:"-10",
+	buttonstop:"-55"
+
+}
+
+
+
 	constructor(props, context) {
      super(props, context);
+	const	 highres={
+			 boxWidth:150,
+			 boxHeight:100,
+			 alarm:40,
+			 text:55,
+			 buttonsleft:"-10",
+			 buttonstop:"-55"
+		 }
+		const	 lowres={
+			 boxWidth:150,
+			 boxHeight:100,
+			 alarm:40,
+			 text:55,
+			 buttonsleft:"-10",
+			 buttonstop:"-55"
+		 }
 
 		 var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
 
@@ -45,22 +75,8 @@ export default class  Excer extends React.Component {
        thismonth:thismonth,
 			 mins:0,
 			 cal:0,
-			 highres:{
-				 boxWidth:150,
-				 boxHeight:100,
-				 alarm:40,
-				 text:55,
-				 buttonsleft:"-10",
-				 buttonstop:"-55"
-			 },
-			 lowres:{
-				 boxWidth:150,
-				 boxHeight:100,
-				 alarm:40,
-				 text:55,
-				 buttonsleft:"-10",
-				 buttonstop:"-55"
-			 }
+
+
 
 
 
@@ -91,7 +107,128 @@ export default class  Excer extends React.Component {
 
   }
 
+
+
+
+
+
+
+
+
  	render() {
+
+
+  var getboxWidth = function( ) {
+
+
+if(height>600){
+	return 150;
+
+}
+else{
+
+return 140;
+
+}
+
+
+
+
+	  }
+
+
+
+		var getboxHeight = function( ) {
+
+			if(height>600){
+				return 100;
+
+			}
+			else{
+
+			return 60;
+
+			}
+
+		}
+
+		var  getalarm = function( ) {
+
+			if(height>600){
+				return 40;
+
+			}
+			else{
+
+			return 30;
+
+			}
+
+		  }
+
+			var gettext = function( ) {
+
+				if(height>600){
+					return 50;
+
+				}
+				else{
+
+				return 20;
+
+				}
+
+			  }
+
+				var getbuttonsleft = function( ) {
+
+					if(height>600){
+						return "-10%";
+
+					}
+					else{
+
+					return "-10%";
+
+					}
+
+				  }
+
+	var getbuttonstop = function( ) {
+
+		if(height>600){
+			return "-55%";
+
+		}
+		else{
+
+		return "-55%";
+
+		}
+
+						}
+
+
+var getboxLeft = function( ) {
+
+	if(height>600){
+		return "12%";
+
+	}
+	else{
+
+	return "7%";
+
+	}
+
+	}
+
+
+
+
+
+
+
 
  		return (
 			<View style={{width: '100%', height: '100%' }}>
@@ -141,7 +278,7 @@ export default class  Excer extends React.Component {
 
 
 
-						<View style={{ borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width:150,height:100 ,top:"81%" ,left:"12%",overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
+						<View style={ { borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width: getboxWidth() , height: getboxHeight() ,top:"81%" ,left:getboxLeft() ,overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
 								<View style={{borderRadius:18 ,    flexDirection: 'row'   ,  width:"88%",height:"30%"  ,backgroundColor:"rgb(21,107,156)",marginLeft:"6%",marginTop:"2%"}}>
 									 <Text style={{ fontSize: 15,color:"white", fontWeight: "100"   ,  width:"100%",  textAlign: 'center',borderRadius:40,borderWidth:0,borderColor:"white"}}>Time</Text>
 								</View>
@@ -153,14 +290,14 @@ export default class  Excer extends React.Component {
 
 						  <View style={{ flexDirection: 'row'  ,  alignItems: 'center'   }}>
 		<View style={{ flexDirection: 'column'    ,height:"100%"  }}>
-	 	<Image style={{  width: 40, height: 40 ,resizeMode: 'stretch',marginLeft:5,marginTop:"-10%" }} source={require('../imgs/clock.png')}  />
+	 	<Image style={{  width:getalarm(), height: getalarm() ,resizeMode: 'stretch',marginLeft:5,marginTop:"-10%" }} source={require('../imgs/clock.png')}  />
 		</View>
 	  <Text style={{  width: 55,  fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center' ,marginLeft:"3%",marginTop:"-10%" }}>{this.state.mins} min</Text>
 											<View style={{ flexDirection: 'column' ,marginLeft:"10%"  }}>
-												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:"-10%",marginTop:"-55%"}} onPress={this.onButtonPressweightpluss} >
+												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:getbuttonsleft(),marginTop:"-55%"}} onPress={this.onButtonPressweightpluss} >
 														<Image style={{  width: 30, height: 30   }} source={require('../imgs/up2.png')}  />
 												</TouchableOpacity>
-												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:"-10%",marginTop:"-55%" }} onPress={this.onButtonPressweightmin} >
+												<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:getbuttonsleft(),marginTop:"-55%" }} onPress={this.onButtonPressweightmin} >
 														<Image style={{  width: 30, height: 30  }} source={require('../imgs/down2.png')}  />
 												</TouchableOpacity>
 								    </View>
