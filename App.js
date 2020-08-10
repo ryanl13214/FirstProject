@@ -14,7 +14,7 @@ import SyncStorage from 'sync-storage';
 import   Cam   from './camerasection/camera';
 import   History   from './camerasection/historyPage';
 import   Tmp   from './camerasection/tempPage';
-import   Tmp2   from './camerasection/tempPage)';
+import   Tmp2   from './camerasection/tempPage0';
 ////////////////////
 import   Foodlist   from './src/foodlist';
 import   Food   from './src/food';

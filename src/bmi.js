@@ -199,7 +199,7 @@ export default class  Bmi extends React.Component {
 			</TouchableOpacity>
 			</View>
 
-			 
+
 
 
 
@@ -274,7 +274,7 @@ export default class  Bmi extends React.Component {
 
 
 
-			<Image style={{  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/heart.jpg')} />
+			<Image style={{  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/heartbmi.jpg')} />
 
 			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}}>
 

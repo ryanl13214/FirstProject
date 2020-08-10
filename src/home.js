@@ -33,7 +33,7 @@ username:result
 
 
                 <View style={{     backgroundColor:"white" , borderRadius:25,overflow:"hidden"}}>
-                  <Image style={{  width: 50, height: 50 }} source={require('../imgs/cal.png')} />
+                  <Image style={{  width: 50, height: 50 }} source={require('../imgs/drdasyicon.jpg')} />
 
                 </View>
                 <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>{this.state.username}</Text>
@@ -95,13 +95,13 @@ username:result
 
                             <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
                                 <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('bmi')} >
-                                   <Image style={{  width: '93%', height: '100%' }} source={require('../imgs/bmi.jpg')}  />
+                                   <Image style={{  width: '92%', height: '100%',marginLeft:"3%" }} source={require('../imgs/bmi.jpg')}  />
                                 </TouchableOpacity>
                                 <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
-                                    <Image style={{  width: '93%', height: '100%' ,marginLeft:"2%"}} source={require('../imgs/med.jpg')}  />
+                                    <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/med.jpg')}  />
                                 </TouchableOpacity>
                                 <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
-                                <Image style={{  width: '93%', height: '100%' ,marginLeft:"2%"}} source={require('../imgs/jornal.jpg')} />
+                                <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/jornal.jpg')} />
                                 </TouchableOpacity>
                             </View>
 

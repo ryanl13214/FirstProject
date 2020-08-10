@@ -226,9 +226,9 @@ export default class  Energy extends React.Component {
         </View>
 
 
-        <View style={{position:"absolute", top:"41%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
+        <View style={{position:"absolute", top:"42%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
               <TouchableOpacity  style={this.state.isBlinking   && styles.textGlowing}  onPress={this.makeblink}  >
-                  <Image style={{ height:"97%", width:"97%"   }}   source={require( '../imgs/lowbat.jpg')} />
+                  <Image style={{ height:"99%", width:"97%"   }}   source={require( '../imgs/lowbat.jpg')} />
               </TouchableOpacity>
         </View>
 

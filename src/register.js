@@ -12,6 +12,7 @@ const wheelPickerData2 = ["1 week", '2 weeks', '3 weeks', '4 weeks', '5 weeks', 
 const now = new Date()
 import SyncStorage from 'sync-storage';
 
+import fire from '../config/fire';
 import { WheelPicker } from '@delightfulstudio/react-native-wheel-picker-android';
 
 type Props = {}
@@ -85,7 +86,18 @@ SyncStorage.set('docrotname' ,this.state.docrotname);
 SyncStorage.set('gpPractice' ,this.state.gpPractice);
 
 console.log(this.state.name);
-this.props.updateState3();
+
+
+  fire.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{
+  }).then((u)=>{this.props.updateState3()})
+  .catch((error) => {
+      console.log("error :"+error);
+    })
+
+
+
+
+
 
 
 
@@ -108,7 +120,7 @@ this.props.updateState3();
 
 
 
-    <View style={{position:"absolute" , flex: 1, height: height*0.80,width:"80%",top: height*0.2,left:"10%"}}>
+    <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
         <ProgressSteps   style={{width:"70%" }}>
             <ProgressStep label="Basic Information">
                 <View style={{ alignItems: 'center' }}>
