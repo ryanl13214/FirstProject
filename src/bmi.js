@@ -160,7 +160,9 @@ export default class  Bmi extends React.Component {
 			<SafeAreaView style={styles.container}>
 			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/empty3.jpg')} />
 
-
+			<TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+					<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+			</TouchableOpacity>
 
 
 

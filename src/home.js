@@ -44,7 +44,9 @@ username:result
 
             </View>
 
-
+            <TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+                <Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+            </TouchableOpacity>
 
             <View style={{  marginTop:0, width:"100%",height:"88%",backgroundColor:"rgb(102,183,202)"  }}>
 

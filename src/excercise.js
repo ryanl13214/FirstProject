@@ -231,7 +231,7 @@ export default class  Excer extends React.Component {
 
 
 		return (
-			<View style={{width: '100%', height: '100%' }}>
+			<View style={{width: '100%', height: '100%',backgroundColor:"rgb(245,175,175)" }}>
 			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/ex.jpg')} />
 
 
@@ -266,19 +266,19 @@ export default class  Excer extends React.Component {
 
 			</View>
 
-			<Text style={  {position:"absolute",top:"89%",left:"20%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.mins} min</Text>
-
 
 			<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.onButtonPressweightmin2} >
 
 			</TouchableOpacity>
 
 
+			<TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+					<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+			</TouchableOpacity>
 
 
 
-
-			<View style={ { borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width: getboxWidth() , height: getboxHeight() ,top:"81%" ,left:getboxLeft() ,overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
+			<View style={ { borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width: getboxWidth() , height: getboxHeight() ,top:"75%" ,left:getboxLeft() ,overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
 			<View style={{borderRadius:18 ,    flexDirection: 'row'   ,  width:"88%",height:"30%"  ,backgroundColor:"rgb(21,107,156)",marginLeft:"6%",marginTop:"2%"}}>
 			<Text style={{ fontSize: 15,color:"white", fontWeight: "100"   ,  width:"100%",  textAlign: 'center',borderRadius:40,borderWidth:0,borderColor:"white"}}>Time</Text>
 			</View>

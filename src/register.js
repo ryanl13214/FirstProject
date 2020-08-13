@@ -88,8 +88,8 @@ SyncStorage.set('gpPractice' ,this.state.gpPractice);
 console.log(this.state.name);
 
 
-  fire.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{
-  }).then((u)=>{this.props.updateState3()})
+  fire.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{this.props.updateState3()
+  })
   .catch((error) => {
       console.log("error :"+error);
     })

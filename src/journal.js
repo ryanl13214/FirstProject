@@ -50,9 +50,13 @@ export default class  Jornal extends React.Component {
  	render() {
 
  		return (
-			<View style={{width: '100%', height: '100%' }}>
+			<View style={{width: '100%', height: '100%',backgroundColor:"rgb(235,185,185)" }}>
 						<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/jurn.jpg')} />
 
+
+									<TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+											<Image style={{  width: 35, height: 35  }} source={require('../imgs/hamburger.png')}  />
+									</TouchableOpacity>
 
 
 

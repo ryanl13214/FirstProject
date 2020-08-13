@@ -161,6 +161,10 @@ export default class  Ovu extends React.Component {
       </TouchableOpacity>
       </View>
 
+      			<TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+      					<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+      			</TouchableOpacity>
+
 
       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
       <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
@@ -206,7 +210,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "flex-start",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor:"rgb(235,185,185)"
   },
 
 

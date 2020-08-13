@@ -62,7 +62,9 @@ export default class  Medselector extends React.Component {
 
       </View>
 
-
+      <TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+          <Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+      </TouchableOpacity>
 
 
       </View>

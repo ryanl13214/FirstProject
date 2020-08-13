@@ -66,9 +66,9 @@ class Cam extends React.Component {
 
   selectPhotoTapped() {
     const options = {
-      quality: 0.8,
-      maxWidth: 400,
-      maxHeight:400,
+      quality: 1,
+      maxWidth: 600,
+      maxHeight:1200,
       storageOptions: {
         skipBackup: true,
       },
@@ -107,9 +107,9 @@ class Cam extends React.Component {
 
   selectPhotohair() {
     const options = {
-      quality: 0.8,
-      maxWidth: 400,
-      maxHeight:400,
+      quality: 1,
+      maxWidth: 600,
+      maxHeight:1200,
       storageOptions: {
         skipBackup: true,
       },

@@ -158,7 +158,9 @@ export default class  Water extends React.Component {
       <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
       </TouchableOpacity>
 
-
+      <TouchableOpacity style={{position:"absolute",justifyContent: "center",alignItems:"center",top:5,left:5, width: 35, height: 35}} onPress={() =>  this.props.navigation.openDrawer()} >
+          <Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/hamburger.png')}  />
+      </TouchableOpacity>
 
       <View  style={{position:"absolute" ,  width: '45%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
 
