@@ -1,5 +1,5 @@
 /** @format */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import { AsyncStorage  ,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View,   Button} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
@@ -34,7 +34,7 @@ import Register  from './src/register';
 import Scan  from './src/acenescannerselector';
 import Jornal  from './src/journal';
 import Excer  from './src/excercise';
-
+import Symptommapper  from './src/symptomMapper';
 
 const Stack = createStackNavigator();
 
@@ -50,8 +50,7 @@ function DefaultApp() {
 
 
         <Stack.Screen name="Home" component={Home} />
-
-
+        <Stack.Screen name="symptom" component={Symptommapper} />
         <Stack.Screen name="camera" component={Cam} />
         <Stack.Screen name="history" component={History} />
         <Stack.Screen name="temp" component={Tmp} />
