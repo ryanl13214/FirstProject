@@ -11,7 +11,7 @@ import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-n
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const imgheight = height*0.69 ;
-const imgwidth = imgheight*0.47;
+const imgwidth = imgheight*0.27;
 
 // const symptoms=[("Irregular or no ovulation",0),("weight gain",0)];
 const symptoms=[  {  key:"Irregular or no ovulation",map:0},("weight gain",0),("acne or oily skin",1),("Thinning hair",0),("Hirsutism",1),("Infertility",0),("Obesity",0),("Low energy",0),("Low self-esteem",0),("Depression",0),("Anxiety",0),("Skin tags",1),("Acanthosis",0),("High Cholesterol",0),( "Type 2 Diabetes",0),("cardiovascular issues",0)];
@@ -132,9 +132,6 @@ const RECTANGLE_MAP = [
 
 
 
-
-
-
 function Item({ props,title}) {
     const gap = (Dimensions.get('window').width *0.35)-70;
   return (
@@ -172,6 +169,24 @@ function Item({ props,title}) {
 
 
 
+function Itemlist({props, title}) {
+
+  return (
+
+    <View   style={{backgroundColor:"red"}} >
+
+      <TouchableOpacity style={{height:20, marginTop:2 ,   flexDirection: 'row'   ,width:"80%"}} onPress={() =>   this.setState({isModalVisible:!this.state.isModalVisible})} >
+
+
+        <Text style={{fontSize: 15,width:"40%" , height:30 ,    marginLeft: "5%",  marginTop:1}}>{title}</Text>
+
+
+      </TouchableOpacity>
+
+    </View>
+
+  );
+}
 
 
 
@@ -191,7 +206,10 @@ export default class  Symptommapper extends React.Component {
     }
        this.navigatetoovu = this.navigatetoovu.bind(this);
         this.callFunc = this.callFunc.bind(this);
+
   }
+
+
 
 
   callFunc(){
@@ -205,7 +223,10 @@ export default class  Symptommapper extends React.Component {
     isVisible: false, //state of modal default false
     flatlistdata:[],
     modalcontent:"empty",
-    isModalVisible : false
+    isModalVisible : false,
+    listofselectedparts:[
+          {  key:'React Native',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8}
+          ]
   }
 
   navigatetoovu=(props,op)=>
@@ -236,53 +257,75 @@ export default class  Symptommapper extends React.Component {
       const Map = ({ navigation }) => {
       return (
         <View  style={{ width:"100%" , height:"100%",backgroundColor:"rgb(120,205,225)"     }}>
-        <View  style={{ flex: 1,   padding: 30,position:"absolute" ,top:"2%",left:"9%" ,width:"85%" , height:"90%",backgroundColor:"white" ,justifyContent: "center",alignItems:"center" ,borderTopRightRadius:25 ,borderTopLeftRadius:25 }}>
-          <Text style={[styles.text,{position:"absolute" ,top:"2%",left:"10%",width:"32%", height:"20%" }]}> select location on the body</Text>
+        <View  style={{ flex: 1,   padding: 30,position:"absolute" ,top:"2%",left:"9%" ,width:"85%" , height:"93%",backgroundColor:"white" ,justifyContent: "center",alignItems:"center" ,borderTopRightRadius:25 ,borderTopLeftRadius:25 }}>
 
 
 
+  <View  style={{  position:"absolute" ,top:"12%",left:"9%" ,width:"100%" , height:"100%" }}>
           {this.state.isModalVisible &&  <ImageMapper
-            style={{  }}
+            style={{  resizeMode: 'stretch' }}
             imgHeight={imgheight}
             imgWidth={imgwidth}
-            imgSource={require( '../imgs/back.png')}
+            imgSource={require( '../imgs/bodymap.jpg')}
             imgMap={RECTANGLE_MAP}
             onPress={(item, idx ) => mapperAreaClickHandler(item, idx )}
-            containerStyle={{   }}
+            containerStyle={{  resizeMode: 'stretch'  }}
             multiselect
           />
-
-
-
-
-
           }
 
-                    {!this.state.isModalVisible &&  <ImageMapper
-                      style={{  }}
-                      imgHeight={imgheight}
-                      imgWidth={imgwidth}
-                      imgSource={require( '../imgs/front.png')}
-                      imgMap={RECTANGLE_MAP}
-                      onPress={(item, idx ) => mapperAreaClickHandler(item, idx )}
-                      containerStyle={{   }}
-                      multiselect
-                    />
-
-
-
-
-
-                    }
+        {!this.state.isModalVisible &&  <ImageMapper
+            style={{  resizeMode: 'stretch' }}
+            imgHeight={imgheight}
+            imgWidth={imgwidth}
+            imgSource={require( '../imgs/bodymap.jpg')}
+            imgMap={RECTANGLE_MAP}
+            onPress={(item, idx ) => mapperAreaClickHandler(item, idx )}
+            containerStyle={{  resizeMode: 'stretch'  }}
+            multiselect
+          />
+      }
+      </View>
 
 
 
 
 
 
-          <TouchableOpacity style={{position:"absolute" ,top:"105%",left:"46%",width:"28%", height:"9%" }} onPress={this.callFunc} >
-            <Image style={{  width: '100%', height: '100%', resizeMode: 'stretch' }} source={require('../imgs/flip.png')} />
-          </TouchableOpacity>
+
+
+  <View  style={{  position:"absolute" ,top:"11%",left:"65%" ,width:"50%" , height:"30%" ,borderColor:"red",borderWidth:1 ,borderRadius:15 }}>
+    <View  style={{  width:"100%" , height:"20%" ,borderColor:"red",borderBottomWidth:1  }}>
+      <Text style={ { textAlign:"center",width:"100%"  } }> selected locations  </Text>
+    </View>
+
+
+    <FlatList
+          data={this.state.listofselectedparts}
+                keyExtractor={item => item.key.toString()}
+          renderItem={({ item }) => <Itemlist title={item.key} props={this.props}  />}
+          style={{ fontSize: 15    ,width:"95%" ,marginLeft:"5%"   }}
+        />
+
+
+
+      </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <Text style={[styles.text,{position:"absolute" ,top:"2%",left:"10%",width:"100%", height:"20%" }]}> select location on the body</Text>
+
+
 
 
 
@@ -722,18 +765,6 @@ export default class  Symptommapper extends React.Component {
     }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
