@@ -169,27 +169,6 @@ function Item({ props,title}) {
 
 
 
-function Itemlist({props, title}) {
-
-  return (
-
-    <View   style={{backgroundColor:"red"}} >
-
-      <TouchableOpacity style={{height:20, marginTop:2 ,   flexDirection: 'row'   ,width:"80%"}} onPress={() =>   this.setState({isModalVisible:!this.state.isModalVisible})} >
-
-
-        <Text style={{fontSize: 15,width:"40%" , height:30 ,    marginLeft: "5%",  marginTop:1}}>{title}</Text>
-
-
-      </TouchableOpacity>
-
-    </View>
-
-  );
-}
-
-
-
 
 
 
@@ -219,15 +198,27 @@ export default class  Symptommapper extends React.Component {
   }
 
 
+
+
+
+
+
+
   state = {
     isVisible: false, //state of modal default false
     flatlistdata:[],
     modalcontent:"empty",
     isModalVisible : false,
     listofselectedparts:[
-          {  key:'React Native',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8},    {  key:'React Nse',cal:0,fat:9,pro:8}
+
           ]
   }
+
+
+
+
+
+
 
   navigatetoovu=(props,op)=>
   {
@@ -253,6 +244,11 @@ export default class  Symptommapper extends React.Component {
       this.props.navigation.navigate('energy') ;
     }
   }
+
+
+
+
+
   render() {
       const Map = ({ navigation }) => {
       return (
@@ -302,8 +298,14 @@ export default class  Symptommapper extends React.Component {
 
     <FlatList
           data={this.state.listofselectedparts}
-                keyExtractor={item => item.key.toString()}
-          renderItem={({ item }) => <Itemlist title={item.key} props={this.props}  />}
+                keyExtractor={item => item.key }
+          renderItem={({ item }) =>
+          <View   style={{ }} >
+            <TouchableOpacity style={{height:20, marginTop:2 ,   flexDirection: 'row'   ,width:"80%"}} onPress={() =>   this.setState({isModalVisible:!this.state.isModalVisible})} >
+              <Text style={{fontSize: 12  , height:30 ,    marginLeft: "5%",  marginTop:1}}>{item.key }</Text>
+            </TouchableOpacity>
+          </View>
+        }
           style={{ fontSize: 15    ,width:"95%" ,marginLeft:"5%"   }}
         />
 
@@ -788,14 +790,24 @@ export default class  Symptommapper extends React.Component {
 
 
     let mapperAreaClickHandler =   (item, idx ) => {
-       console.log(item, idx);
-       Alert.alert(item.name,
-         'My Alert Msg',
-         [
-           { text: 'OK', onPress: () => console.log('OK Pressed') }
-         ],
-         { cancelable: false }
-       );
+       console.log(item.name.toString()  );
+       console.log("l ",this.state.listofselectedparts[0] );
+
+
+var b =  [];
+
+ for(var i=0;i<this.state.listofselectedparts.length ;i++){
+ b.push(this.state.listofselectedparts[i]);
+
+
+ }
+ b.push({key:item.name.toString() });
+  console.log("b ",b );
+
+
+    //   console.log(a  );
+         this.setState({ listofselectedparts:b              });
+
     };
   //<Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/6.jpg')} />
 
