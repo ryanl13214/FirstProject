@@ -209,9 +209,13 @@ export default class  Symptommapper extends React.Component {
     flatlistdata:[],
     modalcontent:"empty",
     isModalVisible : false,
-    listofselectedparts:[
-
-          ]
+    listofselectedparts:[],
+    lefthandselected:false,
+    righthandselected:false,
+    headselected:false,
+    stomachselected:false,
+    leftfootselected:false,
+    rightfootselected:false,
   }
 
 
@@ -258,29 +262,74 @@ export default class  Symptommapper extends React.Component {
 
 
   <View  style={{  position:"absolute" ,top:"12%",left:"9%" ,width:"100%" , height:"100%" }}>
-          {this.state.isModalVisible &&  <ImageMapper
-            style={{  resizeMode: 'stretch' }}
-            imgHeight={imgheight}
-            imgWidth={imgwidth}
-            imgSource={require( '../imgs/bodymap.jpg')}
-            imgMap={RECTANGLE_MAP}
-            onPress={(item, idx ) => mapperAreaClickHandler(item, idx )}
-            containerStyle={{  resizeMode: 'stretch'  }}
-            multiselect
-          />
-          }
+  <View  style={{  width:imgwidth , height:imgheight ,backgroundColor:"rgb(241,155,154)"}}>
 
-        {!this.state.isModalVisible &&  <ImageMapper
+
+
+
+  {  this.state.lefthandselected &&
+    <View  style={{position:"absolute" ,top:"50%",left:"0%",   width:imgwidth*0.15 , height:imgheight*0.1 ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+  {   this.state.righthandselected &&//righthand
+    <View  style={{position:"absolute" ,top:"50%",left:"85%",   width:imgwidth*0.15 , height:imgheight*0.1 ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+
+  { this.state.headselected &&//head
+    <View  style={{position:"absolute" ,top:"0%",left:"30%",   width:imgwidth*0.4 , height:imgheight*0.2 ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+  { this.state.stomachselected &&//head
+    <View  style={{position:"absolute" ,top:"40%",left:"20%",   width:imgwidth*0.6 , height:imgheight*0.083 ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+  {  this.state.leftfootselected &&//head
+    <View  style={{position:"absolute" ,top:"93%",left:"20%",   width:imgwidth*0.25 , height:imgheight*0.07  ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+  {  this.state.rightfootselected &&//head
+    <View  style={{position:"absolute" ,top:"93%",left:"50%",   width:imgwidth*0.26 , height:imgheight*0.07 ,backgroundColor:"rgb(241,0,255)"}}>
+
+    </View>
+  }
+
+          {!this.state.isModalVisible &&  <ImageMapper
             style={{  resizeMode: 'stretch' }}
             imgHeight={imgheight}
             imgWidth={imgwidth}
-            imgSource={require( '../imgs/bodymap.jpg')}
+            imgSource={require( '../imgs/blank.png')}
             imgMap={RECTANGLE_MAP}
             onPress={(item, idx ) => mapperAreaClickHandler(item, idx )}
             containerStyle={{  resizeMode: 'stretch'  }}
             multiselect
-          />
-      }
+          />}
+
+
+
+
+      </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </View>
 
 
@@ -792,21 +841,64 @@ export default class  Symptommapper extends React.Component {
     let mapperAreaClickHandler =   (item, idx ) => {
        console.log(item.name.toString()  );
        console.log("l ",this.state.listofselectedparts[0] );
+       var selectedexample = item.name.toString()
+       var bo=true
+       var b =  [];
+
+       for(var i=0;i<this.state.listofselectedparts.length ;i++){
+          if(this.state.listofselectedparts[i].key != item.name.toString()){
+               b.push(this.state.listofselectedparts[i]);
+         }
+      }
+
+       for(var i=0;i<this.state.listofselectedparts.length ;i++){
+         if(this.state.listofselectedparts[i].key == item.name.toString()){
+           bo=false;
+         }
+       }
+
+       if(bo){
+         b.push({key:item.name.toString() });
+       }
+       this.setState({ listofselectedparts:b});
 
 
-var b =  [];
+         if(item.name.toString() =="Left Hand"){
+             this.setState({ lefthandselected:!this.state.lefthandselected});
+         }
 
- for(var i=0;i<this.state.listofselectedparts.length ;i++){
- b.push(this.state.listofselectedparts[i]);
+         if(item.name.toString() =="Left Foot"){
+             this.setState({ leftfootselected:!this.state.leftfootselected});
+         }
+
+         if(item.name.toString() =="Right Foot"){
+             this.setState({ rightfootselected:!this.state.rightfootselected});
+         }
+         if(item.name.toString() =="Right Hand"){
+           this.setState({ righthandselected:!this.state.righthandselected});
+         }
+
+         if(item.name.toString() =="Stomach"){
+           this.setState({ stomachselected:!this.state.stomachselected});
+         }
+
+         if(item.name.toString() =="Head"){
+           console.log("headoff");
+           this.setState({ headselected:!this.state.headselected});
+         }
 
 
- }
- b.push({key:item.name.toString() });
-  console.log("b ",b );
 
 
-    //   console.log(a  );
-         this.setState({ listofselectedparts:b              });
+
+
+
+
+
+
+
+
+
 
     };
   //<Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/6.jpg')} />
