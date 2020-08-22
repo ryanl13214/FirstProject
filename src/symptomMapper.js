@@ -39,8 +39,8 @@ const RECTANGLE_MAP = [
     shape: 'rectangle',
     x2: getx2(49),//x end
     y2: gety2(100), // y end
-    x1: getx2( 35),// x start
-    y1: gety2(95), // y start
+    x1: getx2( 25),// x start
+    y1: gety2(90), // y start
 
     fill: 'blue',
   },
@@ -48,10 +48,10 @@ const RECTANGLE_MAP = [
     id: '1',
     name: 'Right Foot',
     shape: 'rectangle',
-    x2: getx2(66),//x end
+    x2: getx2(75),//x end
     y2: gety2(100), // y end
     x1: getx2( 51),// x start
-    y1: gety2(95), // y start
+    y1: gety2(90), // y start
 
     fill: 'blue',
   },
@@ -81,10 +81,10 @@ const RECTANGLE_MAP = [
     id: '4',
     name: 'Stomach',
     shape: 'rectangle',
-    x2: getx2(68),//x end
-    y2: gety2(45), // y end
-    x1: getx2( 34),// x start
-    y1: gety2(30), // y start
+    x2: getx2(75),//x end
+    y2: gety2(50), // y end
+    x1: getx2( 25),// x start
+    y1: gety2(40), // y start
 
     fill: 'blue',
   },
@@ -92,10 +92,10 @@ const RECTANGLE_MAP = [
     id: '5',
     name: 'Left Hand',
     shape: 'rectangle',
-    x2: getx2(12),//x end
-    y2: gety2(57), // y end
+    x2: getx2(14),//x end
+    y2: gety2(60), // y end
     x1: getx2( 1),// x start
-    y1: gety2(48), // y start
+    y1: gety2(51), // y start
 
     fill: 'blue',
   },
@@ -103,10 +103,10 @@ const RECTANGLE_MAP = [
     id: '6',
     name: 'Right Hand',
     shape: 'rectangle',
-    x2: getx2(99),//x end
-    y2: gety2(57), // y end
-    x1: getx2( 88),// x start
-    y1: gety2(48), // y start
+    x2: getx2(100),//x end
+    y2: gety2(60), // y end
+    x1: getx2( 85),// x start
+    y1: gety2(51), // y start
 
     fill: 'blue',
   },
@@ -115,9 +115,9 @@ const RECTANGLE_MAP = [
     id: '8',
     name: 'Head',
     shape: 'rectangle',
-    x2: getx2(60),//x end
-    y2: gety2(14), // y end
-    x1: getx2( 40),// x start
+    x2: getx2(70),//x end
+    y2: gety2(19), // y end
+    x1: getx2( 30),// x start
     y1: gety2(0), // y start
 
     fill: 'blue',
@@ -723,14 +723,14 @@ export default class  Symptommapper extends React.Component {
       return (
         <View style={{position:"absolute" ,bottom:"20%",left:" 10%",   width: '100%', height: '70%' }} >
           <Text style={{width:"100%",textAlign:"center",fontSize:18}}>{this.state.modalcontent}</Text>
-          <Text style={{width:"100%",textAlign:"center"}}>PCOS can cause women to have irrecular ovulation. This can cause women with PCOS to have menstrual cycles up to 90 days long. </Text>
-          <Text style={{width:"100%",textAlign:"center",fontSize:18}}>Treatment:</Text>
-          <Text style={{width:"100%",textAlign:"center"}}>A healthy lifestyle includes eating a balanced and nutritious diet, maintaining a healthy weight, being as active as possible </Text>
-          <Text style={{width:"100%",textAlign:"center"}}>  This app contains a section dedicted to helping track irregular ovulations  </Text>
+          <Text style={{width:"100%",textAlign:"center"}}> Skin tags are very common among Women with PCOS.  </Text>
+          <Text style={{width:"100%",textAlign:"center",fontSize:18}}>Tracking</Text>
+          <Text style={{width:"100%",textAlign:"center"}}> Skin tags tend to grow in the skin folds, where the skin rubs against itself, such as on the neck, armpits or groin. We have provided a system to track where your finding skin tags on your body</Text>
+
 
           <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
             <TouchableOpacity style={{ width:180, height:  120}}  onPress = {() =>  this.navigatetoovu() } >
-              <Image style={{  width:180, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/ovutransparent.png')}  />
+                <Text style={{width:"100%",textAlign:"center",fontSize:18}}>Go to Tracker</Text>
             </TouchableOpacity>
           </View>
 
@@ -742,16 +742,16 @@ export default class  Symptommapper extends React.Component {
       return (
         <View style={{position:"absolute" ,bottom:"20%",left:" 10%",   width: '100%', height: '70%' }} >
           <Text style={{width:"100%",textAlign:"center",fontSize:18}}>{this.state.modalcontent}</Text>
-          <Text style={{width:"100%",textAlign:"center"}}>PCOS can cause women to have irrecular ovulation. This can cause women with PCOS to have menstrual cycles up to 90 days long. </Text>
+          <Text style={{width:"100%",textAlign:"center"}}>Acanthosis nigricans is a skin disorder characterised by darkening ( hyperpigmentation) and thickening ( hyperkeratosis) of the skin. </Text>
           <Text style={{width:"100%",textAlign:"center",fontSize:18}}>Treatment:</Text>
-          <Text style={{width:"100%",textAlign:"center"}}>A healthy lifestyle includes eating a balanced and nutritious diet, maintaining a healthy weight, being as active as possible </Text>
-          <Text style={{width:"100%",textAlign:"center"}}>  This app contains a section dedicted to helping track irregular ovulations  </Text>
+          <Text style={{width:"100%",textAlign:"center"}}>A healthy lifestyle includes eating a balanced and nutritious diet, maintaining a healthy weight, being as active as possible, this condition also has over the counter medications that you may try.</Text>
 
-          <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
-            <TouchableOpacity style={{ width:180, height:  120}}  onPress = {() =>  this.navigatetoovu() } >
-              <Image style={{  width:180, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/ovutransparent.png')}  />
-            </TouchableOpacity>
-          </View>
+
+                    <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
+                      <TouchableOpacity style={{ width:180, height:  120}}  onPress = {() =>  this.navigatetoovu() } >
+                          <Text style={{width:"100%",textAlign:"center",fontSize:18}}>Go to Tracker</Text>
+                      </TouchableOpacity>
+                    </View>
 
         </View>
 
