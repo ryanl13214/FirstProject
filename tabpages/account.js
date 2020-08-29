@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { TextInput, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
 
 
-export default class ChatBot extends Component {
+export default class Account extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
