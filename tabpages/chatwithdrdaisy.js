@@ -88,20 +88,18 @@ export default class ChatBot extends Component {
 
 
 
-
-				<View style={{flexDirection:"row"}}>
-
-						<TextInput
-						style={{ height: 40,width:"60%", borderWidth: 1,  position:"absolute" ,bottom:80,left:"10%" }}
-						autoCorrect={false}
-						value={this.state.chatMessage}
-						onSubmitEditing={() => this.submitChatMessage()}
-						onChangeText={chatMessage => {
-							this.setState({ chatMessage });
-						}}
-						/>
-						<Text style={{ position:"absolute" ,bottom:89,right:"10%" ,   fontSize:18  }}    >SEND</Text>
-				</View>
+		
+		<View style={styles.container}>
+		<TextInput
+		style={{ height: 40,width:"100%", borderWidth: 1,  position:"absolute" ,bottom:80,left:"0%" }}
+		autoCorrect={false}
+		value={this.state.chatMessage}
+		onSubmitEditing={() => this.submitChatMessage()}
+		onChangeText={chatMessage => {
+			this.setState({ chatMessage });
+		}}
+		/>
+		</View>
 		</View>
 	);
 }
@@ -110,6 +108,6 @@ export default class ChatBot extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "rgb(230,230,230)"
+		backgroundColor: "#F5FCCF"
 	}
 });

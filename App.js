@@ -10,9 +10,6 @@ import SyncStorage from 'sync-storage';
 
 /////////////////////////////////////
 import   ChatBot   from './tabpages/chatwithdrdaisy';
-import   Account   from './tabpages/account';
-import   Graphing   from './tabpages/graph';
-import   Social   from './tabpages/social';
 ///////////////////////
 import   Cam   from './camerasection/camera';
 import   History   from './camerasection/historyPage';
@@ -103,14 +100,14 @@ function Settings() {
 
 
 
-function Accountstack() {
+function Account() {
   return (
 
 
       <Stack.Navigator  screenOptions={{
         headerShown: false
         }}>
-        <Stack.Screen name="Home" component={Account} />
+        <Stack.Screen name="Home" component={Home} />
 
         <Stack.Screen name="food" component={Food} />
         <Stack.Screen name="foodlist" component={Foodlist} />
@@ -267,14 +264,14 @@ export default class  App extends React.Component {
 
     return (
 
-    <NavigationContainer >
+    <NavigationContainer>
 
 
-       <Tab.Navigator  initialRouteName="Home">
+       <Tab.Navigator>
 
          <Tab.Screen
              name="graphs"
-             component={Graphing}
+             component={DefaultApp}
              options={{
                title: 'graphs',
                tabBarIcon: ({size,focused,color}) => {
@@ -294,7 +291,7 @@ export default class  App extends React.Component {
              }}
            />
 
-
+           
 
            <Tab.Screen
            name="Chat"
@@ -343,14 +340,11 @@ export default class  App extends React.Component {
            />
 
 
-
-
-
            <Tab.Screen
-           name="Settings"
-           component={Social}
+           name="Account"
+           component={DefaultApp}
            options={{
-             title: 'sic',
+             title: 'Account',
              tabBarIcon: ({size,focused,color}) => {
                return (
                  <Image
@@ -370,10 +364,10 @@ export default class  App extends React.Component {
 
 
            <Tab.Screen
-           name="Account"
-           component={Accountstack}
+           name="Settings"
+           component={DefaultApp}
            options={{
-             title: 'Account',
+             title: 'Settings',
              tabBarIcon: ({size,focused,color}) => {
                return (
                  <Image
@@ -387,18 +381,11 @@ export default class  App extends React.Component {
 
 
                  }}
-
                  />
                );
              },
            }}
            />
-
-
-
-
-
-
 
 
 

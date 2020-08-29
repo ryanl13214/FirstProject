@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, DeviceEventEmitter,StyleSheet, ScrollView,Image,TouchableOpacity} from 'react-native';
+import { View, Text, Button, TextInput, DeviceEventEmitter,StyleSheet ,Image,TouchableOpacity} from 'react-native';
 import { Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
@@ -50,7 +50,7 @@ export default class  Jornal extends React.Component {
  	render() {
 
  		return (
-			<View style={{width: '100%', height:height }}>
+			<View style={{width: '100%', height: '100%' }}>
 						<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/jurn.jpg')} />
 
 
@@ -86,40 +86,6 @@ export default class  Jornal extends React.Component {
 						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
 						    </TouchableOpacity>
 						</View>
-
-
-
-
-
-
-	<View  style={{position:"absolute",  width: "30%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"31%",left:"25%"  }}>
-		<Text style={{ fontSize: 30,  fontWeight: "500"}}>{this.state.todaysnumber}</Text>
-<View  style={{   width: "70%" ,justifyContent: "center",alignItems:"center"  }}>
-		<Text>{this.state.thismonth}</Text>
-		<Text>2020</Text>
-	</View>
-			</View>
-			<View  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",  width: "70%", top:"40%",left:"15%"  }}>
-
-			</View>
-
-			<ScrollView vertical={true}  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",height:"40%",  width: "70%", top:"40%",left:"15%" ,textAlign:'flex-start' }}>
-
-			<TextInput
-			multiline
-				value={this.state.name}
-				onChangeText={name => this.setState({ name })}
-				placeholder={'Enter your text here'}
-				style={{   alignContent: "flex-start",   width: '100%'  }}
-			/>
-
-
-
-			</ScrollView>
-
-
-
-
 
 
 
