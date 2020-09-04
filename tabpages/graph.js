@@ -1,6 +1,13 @@
 
 import React, { Component } from "react";
 import { TextInput, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
+import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native';
+
+
+
+
+
+
 
 
 export default class Graphing extends Component {
@@ -17,11 +24,13 @@ export default class Graphing extends Component {
 
 
 		return (
-			<View style={{backgroundColor:"red",height:100,width:100}}>
+			<View style={{width:"100%",height:"100%" }}>
 
 
 
-		</View>
+
+	 </View>
+
 	);
 }
 }

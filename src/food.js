@@ -14,7 +14,57 @@ export default class  Food extends React.Component {
 
   constructor(props ) {
     super(props);
+    this.state={
+      lunchKcal:0,
+      breakfastKcal:0,
+      dinnerKcal:0,
+      snackKcal:0,
+      total:0
+    }
   }
+
+  updateKcal = (a) => {
+
+
+console.log(a+"f");
+    if(a=="breakfast")
+    {
+  		this.setState({
+  			breakfastKcal: this.state.breakfastKcal+50,
+        total:this.state.total+50
+      });
+    }
+    if(a=="lunch")
+    {
+  		this.setState({
+  			lunchKcal: this.state.lunchKcal+50,
+        total:this.state.total+50
+  		});
+    }
+    if(a=="dinner")
+    {
+  		this.setState({
+  			dinnerKcal:this.state.dinnerKcal+50,
+        total:this.state.total+50
+  		});
+    }
+    if(a=="snacks")
+    {
+  		this.setState({
+  			snackKcal:this.state.snackKcal+50,
+        total:this.state.total+50
+  		});
+    }
+
+
+
+
+
+
+	}
+
+
+
   render() {
     const widthcirc = (Dimensions.get('window').width *0.7);
     return (
@@ -29,9 +79,9 @@ export default class  Food extends React.Component {
 
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.1 , color:"blue"}}>date</Text>
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.07, color:"grey"}}>Calories consumed</Text>
-              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.12, color:"darkorange"}}>100 kcal</Text>
+              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.12, color:"darkorange"}}>{this.state.total} kcal</Text>
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.08, color:"grey"}}>Calories left</Text>
-              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.11, color:"green"}}>100 kcal</Text>
+              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.11, color:"green"}}>{2000-this.state.total} kcal</Text>
             </View>
           </View>
       </View>
@@ -50,29 +100,37 @@ export default class  Food extends React.Component {
 
 
       <View  style={{flexDirection:"row",  width: "90%", height:30,backgroundColor:"lightgrey" ,textAlign:"center",marginLeft:"5%" ,marginTop:"3%" ,borderRadius: 7000 }} >
-        <Image style={{ justifyContent: "center",alignItems:"center",  height: 25,width:25,marginTop:2,marginLeft:5 }} source={require('../imgs/altpluss.png')} />
+        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}  onPress={()=>this.updateKcal("breakfast")}  >
+          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
+        </TouchableOpacity>
         <Text style={{  width: "50%",textAlign:"center",fontSize:20}}>Breakfast</Text>
-        <Text style={{  width: "40%",textAlign:"center",marginTop:1,fontSize:15}}>1400cla</Text>
+        <Text style={{  width: "40%",textAlign:"center",marginTop:1,fontSize:15}}> {this.state.breakfastKcal}Kcal</Text>
       </View>
 
 
 
       <View  style={{flexDirection:"row",  width: "90%", height:30,backgroundColor:"lightgrey" ,textAlign:"center",marginLeft:"5%" ,marginTop:"5%",borderRadius: 7000 }} >
-        <Image style={{ justifyContent: "center",alignItems:"center",  height: 25,width:25,marginTop:2,marginLeft:5 }} source={require('../imgs/altpluss.png')} />
+        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}   onPress={()=>this.updateKcal("lunch")}>
+          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
+        </TouchableOpacity>
         <Text style={{  width: "50%",textAlign:"center",fontSize:20}}>Lunch</Text>
-        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}>1400cal</Text>
+        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}> {this.state.lunchKcal}Kcal</Text>
       </View>
 
       <View  style={{flexDirection:"row",  width: "90%", height:30,backgroundColor:"lightgrey" ,textAlign:"center",marginLeft:"5%" ,marginTop:"5%",borderRadius: 7000 }} >
-        <Image style={{ justifyContent: "center",alignItems:"center",  height: 25,width:25,marginTop:2,marginLeft:5 }} source={require('../imgs/altpluss.png')} />
+        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}   onPress={()=>this.updateKcal("dinner")}>
+          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
+        </TouchableOpacity>
         <Text style={{  width: "50%",textAlign:"center",fontSize:20}}>Dinner</Text>
-        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}>1400cal</Text>
+        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}> {this.state.dinnerKcal}Kcal</Text>
       </View>
 
       <View  style={{flexDirection:"row",  width: "90%", height:30,backgroundColor:"lightgrey" ,textAlign:"center",marginLeft:"5%" ,marginTop:"5%",borderRadius: 7000 }} >
-        <Image style={{ justifyContent: "center",alignItems:"center",  height: 25,width:25,marginTop:2,marginLeft:5 }} source={require('../imgs/altpluss.png')} />
+        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}   onPress={()=>this.updateKcal("snacks")}>
+          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
+        </TouchableOpacity>
         <Text style={{  width: "50%",textAlign:"center",fontSize:20}}>Snacks</Text>
-        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}>1400cal</Text>
+        <Text style={{  width: "40%",textAlign:"center",marginTop:2,fontSize:15}}> {this.state.snackKcal}Kcal</Text>
       </View>
 
 

@@ -322,7 +322,7 @@ export default class  App extends React.Component {
            <Tab.Screen
 
            name="Home"
-           component={Home}
+           component={DefaultApp}
            options={{
              title: '',
              tabBarIcon: ({size,focused,color}) => {

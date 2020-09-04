@@ -48,7 +48,7 @@ export default class  Water extends React.Component {
       minus7: minus7,
       thismonth:thismonth,
       name:"",
-      distfromtop: 222,
+      distfromtop: 470,
       label:0
     };
 
@@ -76,24 +76,43 @@ export default class  Water extends React.Component {
   pluss = () =>
   {
     this.setState({
-      distfromtop: this.state.distfromtop -50,
+
       label:this.state.label+100
     });
-    console.log(this.state.distfromtop);
-
-
-  }
-
-  minus = () =>
-  {
+    if(this.state.distfromtop>0){
     this.setState({
-      distfromtop: this.state.distfromtop+50,
-      label:this.state.label-100
+      distfromtop: this.state.distfromtop -25,
+ 
     });
-    console.log(this.state.distfromtop);
 
 
+    if(this.state.distfromtop<0){
+      this.setState({
+        distfromtop: 0,
+
+      });
+    }
+}
+
+}
+
+
+minus = () =>
+{
+    if(this.state.label>0){
+  this.setState({
+    distfromtop: this.state.distfromtop+25,
+    label:this.state.label-100
+  });
+
+  if(this.state.distfromtop>700){
+    this.setState({
+      distfromtop: 700,
+
+    });
   }
+}
+}
 
 
 
@@ -181,8 +200,8 @@ export default class  Water extends React.Component {
       <Image style={{ width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/waterbody.png')} />
 
       </View>
-      <Text style={{color:"white",position:"absolute",top:"57%",left:"72%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
-      <Text style={{color:"white",position:"absolute",top:"80%",left:"72%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
+      <Text style={{color:"white",position:"absolute",top:"56%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
+      <Text style={{color:"white",position:"absolute",top:"80%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
       </View>
 
 

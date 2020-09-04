@@ -269,6 +269,40 @@ export default class  Excer extends React.Component {
 			<Text style={  {position:"absolute",top:"89%",left:"20%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.mins} min</Text>
 
 
+
+
+
+
+			<View style={{position:"absolute",borderRadius:18 ,     width:"96%",height:"37%"  ,backgroundColor:"rgb(240,126,126)" ,top:"43%",left:"2%"}}>
+
+			<View style={{   flexDirection:"row",    width:"96%",height:"40%"  ,backgroundColor:"rgb(240,126,126)", marginLeft:"2%",marginTop:"5%"}}>
+					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
+							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exrun.jpg')} />
+					</TouchableOpacity>
+					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
+							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exwalk.jpg')} />
+					</TouchableOpacity>
+					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
+							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exbike.jpg')} />
+					</TouchableOpacity>
+			</View>
+
+			<View style={{   flexDirection:"row",    width:"96%",height:"40%"  ,backgroundColor:"rgb(240,126,126)", marginLeft:"2%",marginTop:"5%"}}>
+					<View style={{width:"16%",height:1}}></View>
+					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
+							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exswim.jpg')} />
+					</TouchableOpacity>
+
+					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
+							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exweights.jpg')} />
+					</TouchableOpacity>
+			</View>
+
+
+
+			</View>
+
+
 			<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.onButtonPressweightmin2} >
 
 			</TouchableOpacity>
@@ -307,7 +341,7 @@ export default class  Excer extends React.Component {
 
 
 			<Text style={  {position:"absolute",top:"25%",left:"72%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
-			<Text style={  {position:"absolute",top:"25%",left:"25%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
+			<Text style={  {position:"absolute",top:"25%",left:"25%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>0  </Text>
 
 
 
