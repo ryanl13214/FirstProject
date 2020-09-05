@@ -54,9 +54,52 @@ export default class Graphing extends Component {
 			        </Separator>
 			      </CollapseHeader>
 			      <CollapseBody  style={{width:"100%"}}>
-			        <ListItem style={{width:"100%"}}>
-		          	<Text>energy tracker</Text>
-							</ListItem>
+
+						<ListItem style={{width:"100%"}}>
+							<Collapse>
+								<CollapseHeader>
+									<Separator bordered>
+									<Text>lifestyle</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
+											<LineChart
+											data={{
+												labels: [
+													'January',
+													'February',
+													'March',
+													'April',
+													'May',
+													'June',
+												],
+												datasets: [
+													{
+														data: [20, 45, 28, 80, 99, 43],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width - 16}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 2,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
 
 							<ListItem style={{width:"100%"}}>
 		          	<Text>journal</Text>

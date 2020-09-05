@@ -4,10 +4,22 @@ import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,TouchableWit
 import { Dimensions } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
-
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
+
+
+
+
+
 
 export default class  Ovu extends React.Component {
 
@@ -50,7 +62,8 @@ export default class  Ovu extends React.Component {
       width: "0%",
       heart:"0%",
       label:"none",
-      sex:"none"
+      sex:"none",
+      data:[0.4, 0.6, 0.8]
     };
     this.items = [
       'Goa',
@@ -181,6 +194,35 @@ export default class  Ovu extends React.Component {
       </TouchableWithoutFeedback>
       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
 
+
+      <ProgressChart
+        data={{
+          labels: ["ovulation" ], // optional
+          data: [0.1 ]
+        }}
+        width={316}
+        height={316}
+        strokeWidth={16}
+        radius={150}
+        chartConfig={{
+          backgroundGradientFrom: "#1E2923",
+          backgroundGradientFromOpacity: 1,
+          backgroundGradientTo: "#08130D",
+          backgroundGradientToOpacity: 1,
+          color: (opacity = 0) => `rgba(0, 255, 0, ${opacity})`,
+          strokeWidth: 0, // optional, default 3
+          barPercentage: 0,
+          useShadowColorFromDataset: false // optional
+        }}
+        hideLegend={true}
+        style={{
+
+
+          position:"absolute",
+          top:"20%",
+          left:"20%"
+        }}
+      />
 
 
 
