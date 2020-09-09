@@ -42,51 +42,52 @@ export default class Graphing extends Component {
 
 		return (
 
-			<ScrollView style={{width:"100%",height:height }} vertical={true}>
+			<ScrollView style={{width:"100%",height:height,backgroundColor:"rgb(115,198,216)" }} vertical={true}>
 
-			<Image style={{ width:"80%", height: height*0.4,marginLeft:"10%"  }} source={require('../imgs/avataricon.png')}  />
-
-
-			    <Collapse>
-			      <CollapseHeader>
+			<Image style={{ width:"80%", height: height*0.4,marginLeft:"10%"  }} source={require('../imgs/graphicon.jpg')}  />
+      <View style={{ width:"35%", height: height*0.1,position:"absolute",top:"7%",left:"50%",  backgroundColor:"white", textAlign:"center",borderRadius:44,alignItems: 'center',justifyContent: 'center'}}>
+<Text style={{ width:"84%",marginLeft:"10%" }}  >Hi, here you can view your progress and historical data</Text>
+</View>
+			    <Collapse   style={{width:"80%",marginLeft:"10%"}}>
+			      <CollapseHeader >
 			        <Separator bordered>
-			          <Text>mental health</Text>
+			          <Text   style={{width:"80%",marginLeft:"10%"}}>mental health</Text>
 			        </Separator>
 			      </CollapseHeader>
-			      <CollapseBody  style={{width:"100%"}}>
+			      <CollapseBody  style={{width:"80%",marginLeft:"10%"}}>
 
 						<ListItem style={{width:"100%"}}>
-							<Collapse>
-								<CollapseHeader>
-									<Separator bordered>
-									<Text>lifestyle</Text>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>journal</Text>
 									</Separator>
 								</CollapseHeader>
 								<CollapseBody>
+
 											<LineChart
+
 											data={{
 												labels: [
-													'January',
-													'February',
-													'March',
-													'April',
-													'May',
-													'June',
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
 												],
 												datasets: [
 													{
-														data: [20, 45, 28, 80, 99, 43],
+														data: [1, 2, 3, 4 ],
 														strokeWidth: 2,
 													},
 												],
 											}}
-											width={Dimensions.get('window').width - 16}
+											width={Dimensions.get('window').width *0.8}
 											height={220}
 											chartConfig={{
 												backgroundColor: '#1cc910',
 												backgroundGradientFrom: '#eff3ff',
 												backgroundGradientTo: '#efefef',
-												decimalPlaces: 2,
+												decimalPlaces: 0,
 												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
 												style: {
 													borderRadius: 16,
@@ -95,83 +96,438 @@ export default class Graphing extends Component {
 											style={{
 												marginVertical: 8,
 												borderRadius: 16,
+                         marginLeft:"-20%"
 											}}
 											/>
 									</CollapseBody>
 							</Collapse>
 						</ListItem>
 
-							<ListItem style={{width:"100%"}}>
-		          	<Text>journal</Text>
-							</ListItem>
+            <ListItem style={{width:"100%"}}>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>mood tracker</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
 
-							<ListItem style={{width:"100%"}}>
-		          	<Text>mood tracker</Text>
-							</ListItem>
+											<LineChart
 
-							<ListItem last style={{width:"100%"}}>
-		          	<Text>meditation</Text>
-							</ListItem>
+											data={{
+												labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+												],
+												datasets: [
+													{
+														data: [1, 2, 3, 4],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width *0.8}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 0,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+                         marginLeft:"-20%"
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
+
+
+            <ListItem style={{width:"100%"}}>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>meditation</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
+
+											<LineChart
+
+											data={{
+												labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+												],
+												datasets: [
+													{
+														data: [1, 2, 3, 4],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width *0.8}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 0,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+                         marginLeft:"-20%"
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
+
 
 
 			      </CollapseBody>
-			    </Collapse>
+			    </Collapse >
 
 
-			    <Collapse>
+			    <Collapse    style={{width:"80%",marginLeft:"10%"}}>
 			      <CollapseHeader>
 			        <Separator bordered>
 			          <Text>food and water intake</Text>
 			        </Separator>
 			      </CollapseHeader>
-			      <CollapseBody>
-			        <ListItem >
-			          <Text>food tracker</Text>
-			        </ListItem>
-			        <ListItem last>
-			          <Text>water tracker</Text>
-			        </ListItem>
+			      <CollapseBody  style={{width:"80%",marginLeft:"10%"}}>
+
+            <ListItem style={{width:"100%"}}>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>Food Tracker</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
+
+											<LineChart
+
+											data={{
+												labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+												],
+												datasets: [
+													{
+														data: [1, 2, 3, 4 ],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width *0.8}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 0,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+                         marginLeft:"-20%"
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
+
+
+            <ListItem style={{width:"100%"}}>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>water tracker</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
+
+											<LineChart
+
+											data={{
+												labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+												],
+												datasets: [
+													{
+														data: [1, 2, 3, 4 ],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width *0.8}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 0,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+                         marginLeft:"-20%"
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
+
+
+
 
 			      </CollapseBody>
 			    </Collapse>
 
 
 
-					<Collapse>
+					<Collapse    style={{width:"80%",marginLeft:"10%"}}>
 						<CollapseHeader>
 							<Separator bordered>
 								<Text>lifestyle</Text>
 							</Separator>
 						</CollapseHeader>
-						<CollapseBody>
+					 <CollapseBody  style={{width:"80%",marginLeft:"10%"}}>
 
-							<ListItem >
-								<Text>sleep tracker</Text>
-							</ListItem>
+            <ListItem style={{width:"100%"}}>
+							<Collapse  style={{width:"100%"}}>
+								<CollapseHeader  style={{width:"100%"}}>
+									<Separator  style={{width:"100%"}} bordered>
+									<Text  style={{width:"100%"}}>sleep tracker</Text>
+									</Separator>
+								</CollapseHeader>
+								<CollapseBody>
 
-							<ListItem >
-								<Text>Bmi tracker</Text>
-							</ListItem>
+											<LineChart
 
-							<ListItem >
-								<Text>Exercise tracker</Text>
-							</ListItem>
+											data={{
+												labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+												],
+												datasets: [
+													{
+														data: [1, 2, 3, 4 ],
+														strokeWidth: 2,
+													},
+												],
+											}}
+											width={Dimensions.get('window').width *0.8}
+											height={220}
+											chartConfig={{
+												backgroundColor: '#1cc910',
+												backgroundGradientFrom: '#eff3ff',
+												backgroundGradientTo: '#efefef',
+												decimalPlaces: 0,
+												color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+												style: {
+													borderRadius: 16,
+												},
+											}}
+											style={{
+												marginVertical: 8,
+												borderRadius: 16,
+                         marginLeft:"-20%"
+											}}
+											/>
+									</CollapseBody>
+							</Collapse>
+						</ListItem>
 
-							<ListItem last>
-								<Text>ovulation tracker</Text>
-							</ListItem>
+            <ListItem style={{width:"100%"}}>
+              <Collapse  style={{width:"100%"}}>
+                <CollapseHeader  style={{width:"100%"}}>
+                  <Separator  style={{width:"100%"}} bordered>
+                  <Text  style={{width:"100%"}}>Bmi tracker</Text>
+                  </Separator>
+                </CollapseHeader>
+                <CollapseBody>
+
+                      <LineChart
+
+                      data={{
+                        labels: [
+                          '2/9/20',
+                          '4/9/20',
+                          '6/9/20',
+                          '8/9/20',
+                        ],
+                        datasets: [
+                          {
+                            data: [1, 2, 3, 4 ],
+                            strokeWidth: 2,
+                          },
+                        ],
+                      }}
+                      width={Dimensions.get('window').width *0.8}
+                      height={220}
+                      chartConfig={{
+                        backgroundColor: '#1cc910',
+                        backgroundGradientFrom: '#eff3ff',
+                        backgroundGradientTo: '#efefef',
+                        decimalPlaces: 0,
+                        color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                        style: {
+                          borderRadius: 16,
+                        },
+                      }}
+                      style={{
+                        marginVertical: 8,
+                        borderRadius: 16,
+                         marginLeft:"-20%"
+                      }}
+                      />
+                  </CollapseBody>
+              </Collapse>
+            </ListItem>
+
+
+
+              <ListItem style={{width:"100%"}}>
+                <Collapse  style={{width:"100%"}}>
+                  <CollapseHeader  style={{width:"100%"}}>
+                    <Separator  style={{width:"100%"}} bordered>
+                    <Text  style={{width:"100%"}}>Exercise tracker</Text>
+                    </Separator>
+                  </CollapseHeader>
+                  <CollapseBody>
+
+                        <LineChart
+
+                        data={{
+                          labels: [
+                            '2/9/20',
+                            '4/9/20',
+                            '6/9/20',
+                            '8/9/20',
+                          ],
+                          datasets: [
+                            {
+                              data: [1, 2, 3, 4 ],
+                              strokeWidth: 2,
+                            },
+                          ],
+                        }}
+                        width={Dimensions.get('window').width *0.8}
+                        height={220}
+                        chartConfig={{
+                          backgroundColor: '#1cc910',
+                          backgroundGradientFrom: '#eff3ff',
+                          backgroundGradientTo: '#efefef',
+                          decimalPlaces: 0,
+                          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                          style: {
+                            borderRadius: 16,
+                          },
+                        }}
+                        style={{
+                          marginVertical: 8,
+                          borderRadius: 16,
+                           marginLeft:"-20%"
+                        }}
+                        />
+                    </CollapseBody>
+                </Collapse>
+              </ListItem>
+
+
+
+
+              <ListItem style={{width:"100%"}}>
+                <Collapse  style={{width:"100%"}}>
+                  <CollapseHeader  style={{width:"100%"}}>
+                    <Separator  style={{width:"100%"}} bordered>
+                    <Text  style={{width:"100%"}}>ovulation tracker</Text>
+                    </Separator>
+                  </CollapseHeader>
+                  <CollapseBody>
+
+                        <LineChart
+
+                        data={{
+                          labels: [
+                            '2/9/20',
+                            '4/9/20',
+                            '6/9/20',
+                            '8/9/20',
+                          ],
+                          datasets: [
+                            {
+                              data: [1, 2, 3, 4 ],
+                              strokeWidth: 2,
+                            },
+                          ],
+                        }}
+                        width={Dimensions.get('window').width *0.8}
+                        height={220}
+                        chartConfig={{
+                          backgroundColor: '#1cc910',
+                          backgroundGradientFrom: '#eff3ff',
+                          backgroundGradientTo: '#efefef',
+                          decimalPlaces: 0,
+                          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                          style: {
+                            borderRadius: 16,
+                          },
+                        }}
+                        style={{
+                          marginVertical: 8,
+                          borderRadius: 16,
+                           marginLeft:"-20%"
+                        }}
+                        />
+                    </CollapseBody>
+                </Collapse>
+              </ListItem>
+
 
 						</CollapseBody>
 					</Collapse>
 
 
-					<Collapse>
+					<Collapse    style={{width:"80%",marginLeft:"10%"}}>
 						<CollapseHeader>
 							<Separator bordered>
 								<Text>visual trackers</Text>
 							</Separator>
 						</CollapseHeader>
-						<CollapseBody>
+					 <CollapseBody  style={{width:"80%",marginLeft:"10%"}}>
 
 							<ListItem >
 								<Text>acne tracker</Text>
@@ -189,37 +545,45 @@ export default class Graphing extends Component {
 					</Collapse>
 
 
+    <View style={{ width:"80%",marginLeft:"0%",marginTop:28  , textAlign:"center",borderRadius:44,alignItems: 'center',justifyContent: 'center'}}>
+      <Text style={{ width:"84%" }}  >the following graph is made by extracting data from your current trneds to give an overall lifestyle score from 1 to 5.</Text>
+    </View>
+
+
+
+
+
+
 					<LineChart
 					  data={{
 					    labels: [
-					      'January',
-					      'February',
-					      'March',
-					      'April',
-					      'May',
-					      'June',
+					      '2/9/20',
+					      '4/9/20',
+					      '6/9/20',
+					      '8/9/20',
 					    ],
 					    datasets: [
 					      {
-					        data: [20, 45, 28, 80, 99, 43],
+					        data: [1, 2, 3, 5],
 					        strokeWidth: 2,
 					      },
 					    ],
 					  }}
-					  width={Dimensions.get('window').width - 16}
+					  width={Dimensions.get('window').width *0.9}
 					  height={220}
 					  chartConfig={{
 					    backgroundColor: '#1cc910',
 					    backgroundGradientFrom: '#eff3ff',
 					    backgroundGradientTo: '#efefef',
-					    decimalPlaces: 2,
+					    decimalPlaces: 0,
 					    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
 					    style: {
 					      borderRadius: 16,
 					    },
 					  }}
 					  style={{
-					    marginVertical: 8,
+              marginLeft:"5%",
+					    marginVertical: 22,
 					    borderRadius: 16,
 					  }}
 					/>

@@ -4,17 +4,56 @@ import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,TouchableWit
 import { Dimensions } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart
-} from 'react-native-chart-kit';
-
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
+
+import ProgressCircle from 'react-native-progress-circle'
+import {  Circle, Text as SvgText, TextPath, TSpan, G, Svg } from 'react-native-svg';
+
+
+
+
+
+
+function Circletext({ title,props,textbody,rotation }) {
+
+
+    return (
+      <View  style={{    position:"absolute" ,   top:"21%" ,left:"-4%"  }} >
+
+        <Svg position="absolute" height={width*0.9} width={width*0.9}
+          viewBox="0 0 320 320">
+          <G id="circle">
+            <Circle
+              r={(width*0.4)/2}
+              x={width*0.5}
+              y={width*0.5}
+              fill="none"
+              stroke="rgba(44,0,0,0)"
+              strokeWidth={0}
+              transform=  {rotation}
+            />
+          </G>
+          <SvgText fill="#000" fontSize="15">
+            <TextPath href="#circle">
+              <TSpan dx="0" dy={-20}>
+              {textbody}
+              </TSpan>
+            </TextPath>
+          </SvgText>
+        </Svg>
+      </View>
+    )
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -39,7 +78,7 @@ export default class  Ovu extends React.Component {
     var pluss1 = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[2];
 
 
-    var todaysday= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[0];
+    var todaysday = new Date(new Date().setDate(new Date().getDate(  ))).toString().split(' ')[0];
     var minus1day = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[0];
     var minus2day = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[0];
     var minus3day = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[0];
@@ -63,7 +102,13 @@ export default class  Ovu extends React.Component {
       heart:"0%",
       label:"none",
       sex:"none",
-      data:[0.4, 0.6, 0.8]
+      data:[0.4, 0.6, 0.8],
+      totalRotation:"0deg",
+      redrotation:"-100deg",
+      greenrotation:"50deg",
+      redlabel:"rotate(-170)",
+      greenlabel:"rotate( -40)",
+      resettingcontentrotation:"-50deg"// negative of the green rotrion pluss the negaitive of the total rotation
     };
     this.items = [
       'Goa',
@@ -195,35 +240,60 @@ export default class  Ovu extends React.Component {
       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
 
 
-      <ProgressChart
-        data={{
-          labels: ["ovulation" ], // optional
-          data: [0.1 ]
-        }}
-        width={316}
-        height={316}
-        strokeWidth={16}
-        radius={150}
-        chartConfig={{
-          backgroundGradientFrom: "#1E2923",
-          backgroundGradientFromOpacity: 1,
-          backgroundGradientTo: "#08130D",
-          backgroundGradientToOpacity: 1,
-          color: (opacity = 0) => `rgba(0, 255, 0, ${opacity})`,
-          strokeWidth: 0, // optional, default 3
-          barPercentage: 0,
-          useShadowColorFromDataset: false // optional
-        }}
-        hideLegend={true}
-        style={{
+      <View style={{
+      position:"absolute" ,
+      top:"30%" ,
+      left:"13%",
+      transform: [{rotateZ: this.state.redrotation}],
+      }}>
+      <ProgressCircle
+      percent={30}
+      radius={(width*0.35)+16}
+      borderWidth={8}
+      color="rgba(244,0,0,255)"
+      shadowColor="rgba(244,186,186,255)"
+      bgColor="rgba(244,1,186,255)"
+      >
+      </ProgressCircle>
+      </View>
 
 
-          position:"absolute",
-          top:"20%",
-          left:"20%"
-        }}
-      />
 
+      <View style={{
+      position:"absolute" ,
+      top:"30%" ,
+      left:"13%",
+       marginTop:8,
+       marginLeft:8,
+      transform: [{rotateZ: this.state.greenrotation}]
+      }}>
+        <ProgressCircle
+        percent={20}
+        radius={(width*0.35)+8}
+        borderWidth={8}
+        color="rgba(10,245,10,255)"
+        shadowColor="rgba(244,186,186,255)"
+        bgColor="rgba(244,186,186,255)"
+        >
+
+        <View style={{
+         transform: [{rotateZ: this.state.resettingcontentrotation}],
+         justifyContent:"flex-start"
+        }}>
+        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}>  </Text>
+        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
+        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
+        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
+
+      </View>
+
+        </ProgressCircle    >
+      </View>
+      <Image style={{   position:"absolute" ,   top:"32%" ,left:(width/2)-10,    width:20, height:12 }} source={require('../imgs/uparrow.png')} />
+      <Text  style={{  position:"absolute" ,   top:"39%"  , width:"100%", color:"white" ,textAlign: 'center',}}> 07 sep 2017</Text>
+
+      <Circletext textbody="Fertile period" rotation={this.state.greenlabel}/>
+      <Circletext textbody="Bleeding period" rotation={this.state.redlabel}/>
 
 
       </SafeAreaView>
