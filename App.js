@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import fire from './config/fire';
 import SyncStorage from 'sync-storage';
-
+/////////////////////////////////////
+import   Test   from './storage/home';
 /////////////////////////////////////
 import   Chat   from './tabpages/Chat';
 import   Account   from './tabpages/account';
@@ -348,7 +349,7 @@ export default class  App extends React.Component {
 
            <Tab.Screen
            name="Settings"
-           component={Social}
+           component={Account}
            options={{
              title: 'Social',
              tabBarIcon: ({size,focused,color}) => {

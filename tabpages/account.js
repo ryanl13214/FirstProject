@@ -1,65 +1,20 @@
 
 import React, { Component } from "react";
-import { TextInput, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
+import { TextInput,TouchableOpacity, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
 
 
 export default class Account extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			chatMessage: "",
-			chatMessages: [{key:"rb",col:"r",ico:true},{key:"chatMessagesrb",col:"r",ico:true},{key:"cchatMessageschatMessageschatMessageschatMessage atMessageschatMessageshatMessagesb",col:"b",ico:true}]
-		};
+
 	}
 
-	componentDidMount() {
-
-		//      this.setState({ chatMessages: [...this.state.chatMessages, {key:"rb"}] });
-		//this.props.navigation.setParams({tabBar:{visible:false}})
-	}
 
 	submitChatMessage() {
 
 		// this.setState({ chatMessage: "aaa" });
 	}
-	getcolour(a) {
-		if(a=="b"){ return "rgb(243,243,243)";}
-		if(a=="r"){ return "rgb(14,168,205)";}
 
-		return "green";
-	}
-	gettextcolour(a) {
-		if(a=="b"){ return "rgb(11,11,11)";}
-		if(a=="r"){ return "rgb(248,248,248)";}
-
-		return "green";
-	}
-	getwidth(a) {
-		console.log(a );
-		console.log(a.length);
-		return  (a.length*9) +30;
-
-
-
-	}
-
-	getflex(a) {
-
-		if(a=="r"){ return 'flex-end';}
-		if(a=="b"){ return 'flex-start';}
-
-
-	}
-	hideimg(a,i) {
-		if(i==1){
-			if(a=="r"){ return 40;}
-			if(a=="b"){ return 0;}
-		}
-		if(i==0){
-			if(a=="r"){ return 0;}
-			if(a=="b"){ return 40;}
-		}
-	}
 
 
 
@@ -67,42 +22,37 @@ export default class Account extends Component {
 
 
 		return (
-			<View style={styles.container}>
+		<View style={styles.container}>
+		<View style={{width:"94%",marginLeft:"3%"}}>
+			<View style={{width:"100%",height:"27%",borderBottomWidth:1,borderColor:"grey" }}>
+				<Text style={{ position:"absolute",bottom:15,left:35,fontSize:40, color:"white" }}>Settings</Text>
+		  </View>
+			<TouchableOpacity style={{width:"100%",height:"10%" ,borderBottomWidth:1,borderColor:"grey",flexDirection:"row" }}>
+				<Text style={{  position:"absolute",bottom:15,left:35, color:"white",fontSize:20 }}>account</Text>
+				<Image style={{position:"absolute" ,bottom:15,right:35, width: 40, height:40,resizeMode: 'stretch' }} source={require('../imgs/9.jpg')} />
 
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%",borderBottomWidth:1,borderColor:"grey"  }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20   }}>Goals</Text>
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%" ,borderBottomWidth:1,borderColor:"grey" }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20   }}>Help</Text>
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%" ,borderBottomWidth:1,borderColor:"grey" }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20   }}>about</Text>
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%",borderBottomWidth:1,borderColor:"grey"  }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20   }}>Feedback</Text>
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%" ,borderBottomWidth:1,borderColor:"grey" }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20  }}>Privacy Policy</Text>
+		  </TouchableOpacity>
+			<TouchableOpacity style={{width:"100%",height:"10%" ,borderBottomWidth:0,borderColor:"grey" }}>
+				<Text style={{ position:"absolute",bottom:15,left:35, color:"white",fontSize:20  }}>Rate and review</Text>
+		  </TouchableOpacity>
 
-
-			<FlatList
-			data={this.state.chatMessages}
-			keyExtractor={item => item.key }
-			renderItem={({ item }) =>
-
-			<View  style={{ flexDirection:"row",alignSelf: this.getflex(item.col ) }} >
-			<Image style={{ margin:4, width:this.hideimg(item.col,0 ), height:  40,borderRadius:20  }} source={require('../imgs/drdaisychaticon.jpg')}  />
-
-			<Text style={{maxWidth:"60%",alignSelf: this.getflex(item.col ),color:this.gettextcolour(item.col ),fontSize:18  ,textAlign:"center",width:this.getwidth(item.key ),margin:4,  backgroundColor:this.getcolour(item.col),borderRadius:25 , padding:8 }}    >{item.key}</Text>
-			<Image style={{ margin:4, width:this.hideimg(item.col,1 ), height:  40,borderRadius:20  }} source={require('../imgs/avataricon.png')}  />
-			</View>
-		}
-		style={{    }}
-		/>
-
-
-
-
-				<View style={{flexDirection:"row"}}>
-
-						<TextInput
-						style={{ height: 40,width:"60%", borderWidth: 1,  position:"absolute" ,bottom:80,left:"10%" }}
-						autoCorrect={false}
-						value={this.state.chatMessage}
-						onSubmitEditing={() => this.submitChatMessage()}
-						onChangeText={chatMessage => {
-							this.setState({ chatMessage });
-						}}
-						/>
-						<Text style={{ position:"absolute" ,bottom:89,right:"10%" ,   fontSize:18  }}    >SEND</Text>
-				</View>
-		</View>
+	  </View>
+	  </View>
 	);
 }
 }
@@ -110,6 +60,6 @@ export default class Account extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "rgb(230,230,230)"
+		backgroundColor: "rgb(0,77,95)"
 	}
 });
