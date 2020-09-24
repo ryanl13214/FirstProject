@@ -46,7 +46,7 @@ export default class  Food extends React.Component {
       <Text style={{ }}>Today </Text>
       <View  style={{    flexDirection: 'row'  }} >
       <Image style={{ height:60, width:60 , flexDirection: 'column',marginTop: "10%"  }}  onPress={() => this.props.navigation.navigate('foodlist')}  source={require( '../imgs/cal.png')} />
-      <Text style={{ }}>date </Text>
+      <Text style={{ }}>15/9/20 </Text>
       </View  >
       </View>
 
@@ -106,7 +106,7 @@ export default class  Food extends React.Component {
       </View>
       </View>
 
-      
+
 
 
 
@@ -217,7 +217,7 @@ export default class  Food extends React.Component {
 
 
       <View style={{flex: 1, width: "80%",height: seven, flexDirection: 'column',backgroundColor:"cream"  ,marginLeft:"10%",marginTop:"20%", borderRadius: 15}}>
-      <Text style={{ fontSize: 25 }} >date 12 1 1 </Text>
+      <Text style={{ fontSize: 25 }} >date </Text>
       <View style={{ width: "100%",height: "33%"  , alignItems: 'center',   textAlign: 'center', flexDirection: 'column' ,  borderColor:  'black', borderWidth:  1, borderTopRightRadius: 15,  borderTopLeftRadius: 15,}}>
 
       <Text style={{ fontSize: 25,marginTop:"12%"}} >Calories: 1888/300</Text>

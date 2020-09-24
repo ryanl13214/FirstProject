@@ -77,7 +77,7 @@ console.log(a+"f");
             <View  style={{ justifyContent: "center",alignItems:"center", width: '98%',backgroundColor:"white", height: '98%',marginLeft:"1%",marginTop:"1%" ,borderRadius:widthcirc/2 }} >
 
 
-              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.1 , color:"blue"}}>date</Text>
+              <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.1 , color:"blue"}}>15/9/20</Text>
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.07, color:"grey"}}>Calories consumed</Text>
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.12, color:"darkorange"}}>{this.state.total} kcal</Text>
               <Text style={{  width: "100%",textAlign:"center",fontSize:widthcirc*0.08, color:"grey"}}>Calories left</Text>

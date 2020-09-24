@@ -121,29 +121,32 @@ console.log(this.state.name);
 
 
     <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
-        <ProgressSteps   style={{width:"70%" }}>
-            <ProgressStep label="Basic Information">
+
                 <View style={{ alignItems: 'center' }}>
 
                 <TextInput
                   value={this.state.username}
                   onChangeText={username => this.setState({ username })}
                   placeholder={'email Address'}
-                  style={{textAlign: 'center',   backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
+                  style={{textAlign: 'center',   backgroundColor:"rgb(245,245,245)",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
                 />
                 <TextInput
                   value={this.state.email}
                   onChangeText={password => this.setState({ password })}
                   placeholder={'password'}
-                  style={{textAlign: 'center' , backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                  style={{textAlign: 'center' , backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
                 />
-
-
+                <TextInput
+                  value={this.state.email}
+                  onChangeText={password => this.setState({ password })}
+                  placeholder={'Confirm password'}
+                  style={{textAlign: 'center' , backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
+                />
                 <TextInput
                   value={this.state.name}
                   onChangeText={name => this.setState({ name })}
                   placeholder={'Whats your name?'}
-                  style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
+                  style={{textAlign: 'center',  backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', marginTop:5}}
                 />
 
 
@@ -182,62 +185,6 @@ console.log(this.state.name);
   </View>
 
                 </View>
-            </ProgressStep >
-            <ProgressStep label="Medications">
-            <View style={{ alignItems: 'center' }}>
-
-
-                <View style={{  width:"70%",height:"60%"}}>
-                  <MultiSelect
-                    hideTags
-                    items={items}
-                    uniqueKey="id"
-                    ref={component => {
-                      this.multiSelect = component;
-                    }}
-                    onSelectedItemsChange={this.onSelectedItemsChange}
-                    selectedItems={this.state.selectedItems}
-                    selectText="current medication"
-                    searchInputPlaceholderText="Search Items..."
-
-                    tagRemoveIconColor="#CCC"
-                    tagBorderColor="#CCC"
-                    tagTextColor="#CCC"
-                    selectedItemTextColor="#CCC"
-                    selectedItemIconColor="#CCC"
-                    itemTextColor="#000"
-                    displayKey="name"
-                    searchInputStyle={{ color: '#CCC' }}
-                    submitButtonColor="#48d22b"
-                    submitButtonText="Submit"
-                  />
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                                <TextInput
-                                  value={this.state.gpname}
-                                  onChangeText={gpPractice => this.setState({ gpPractice })}
-                                  placeholder={'GP practice'}
-                                  style={{textAlign: 'center', backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                                />
-
-                            <TextInput
-                              value={this.state.nursename}
-                              onChangeText={docrotname => this.setState({ docrotname })}
-                              placeholder={'GP Name'}
-                              style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                            />
-              </View>
-  </View>
-            </ProgressStep>
-
-
-            <ProgressStep label="Personal Goals"   onSubmit={this.submitandsave}>
-                <View style={{ width: '80%',alignItems: 'center' }}>
-                    <Text>Personal goals section list goals here</Text>
-                </View>
-            </ProgressStep>
-
-        </ProgressSteps>
 
     </View>
 

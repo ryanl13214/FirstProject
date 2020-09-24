@@ -9,38 +9,21 @@ export default class  Login extends React.Component {
 
 
 
-
     super(props);
-    this.login = this.login.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
+
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      uname:'',
+      passworddupe:''
     };
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
 
-  login(e) {
-    e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-    }).then((u)=>{this.props.updateState2()})
-    .catch((error) => {
-        console.log(error);
-      });
-  }
 
-  signup(e){
-    e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-    }).then((u)=>{console.log(u)})
-    .catch((error) => {
-        console.log("error :"+error);
-      })
-  }
+
+
+
   render() {
 
 
@@ -48,16 +31,8 @@ export default class  Login extends React.Component {
     var add2 = () => {
 
 
-        fire.auth().signInWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{
-        //    console.log("uname2 "+ u.user.uid);
+       //check loging then 
 this.props.updateState()
-              console.log("uname2 "+ u.user.uid);
-        })
-        .catch((error) => {
-            console.log(this.state.username);
-            console.log(this.state.password);
-            console.log(error);
-          });
 
     }
 

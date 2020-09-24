@@ -7,6 +7,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import fire from './config/fire';
 import SyncStorage from 'sync-storage';
+
+
+
+
+
+/////////////////////////////////////
+import   Drdaisy   from './src/Drdaisy';
+import   DrdaisyThreePageIntro   from './src/DrdaisyThreePageIntro';
 /////////////////////////////////////
 import   Test   from './storage/home';
 /////////////////////////////////////
@@ -40,19 +48,15 @@ import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
 import   Symptommapper  from './src/symptomMapper';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
-
 
 function DefaultApp() {
   return (
-
-
       <Stack.Navigator  screenOptions={{
         headerShown: false
         }}>
-
-
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="symptom" component={Symptommapper} />
         <Stack.Screen name="camera" component={Cam} />
@@ -74,72 +78,6 @@ function DefaultApp() {
         <Stack.Screen name="foodlist" component={Foodlist} />
         <Stack.Screen name="storage" component={Storage} />
       </Stack.Navigator>
-
-
-
-
-  );
-}
-
-function Settings() {
-  return (
-
-
-      <Stack.Navigator  screenOptions={{
-        headerShown: false
-        }}>
-        <Stack.Screen name="Home" component={Home} />
-
-        <Stack.Screen name="food" component={Food} />
-        <Stack.Screen name="foodlist" component={Foodlist} />
-        <Stack.Screen name="storage" component={Storage} />
-      </Stack.Navigator>
-
-
-
-
-  );
-}
-
-
-
-
-function Accountstack() {
-  return (
-
-
-      <Stack.Navigator  screenOptions={{
-        headerShown: false
-        }}>
-        <Stack.Screen name="Home" component={Account} />
-
-        <Stack.Screen name="food" component={Food} />
-        <Stack.Screen name="foodlist" component={Foodlist} />
-        <Stack.Screen name="storage" component={Storage} />
-      </Stack.Navigator>
-
-
-
-
-  );
-}
-function News() {
-  return (
-
-
-      <Stack.Navigator  screenOptions={{
-        headerShown: false
-        }}>
-        <Stack.Screen name="Home" component={Home} />
-
-        <Stack.Screen name="food" component={Food} />
-        <Stack.Screen name="foodlist" component={Foodlist} />
-        <Stack.Screen name="storage" component={Storage} />
-      </Stack.Navigator>
-
-
-
-
   );
 }
 
@@ -148,9 +86,9 @@ function News() {
 
 
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Tab = createBottomTabNavigator();
+
+
 
 
 export default class  App extends React.Component {
@@ -158,19 +96,19 @@ export default class  App extends React.Component {
     super(props);
       this.state = {
         user: null,
-        isLoading: true ,
+        SpashScreenTimer: true ,
         loggedin:false,
-        registering:false
+        registering:false,
+        stage:""
       };
 
-    this.authListener = this.authListener.bind(this);
   }
 
 
 
   async componentWillMount(): void {
-   const data = await SyncStorage.init();
-  // console.log('AsyncStorage is ready!', data);
+    const data = await SyncStorage.init();
+    console.log('AsyncStorage is ready!', data);
   }
 
 
@@ -190,21 +128,6 @@ export default class  App extends React.Component {
 
 
 
-  authListener() {
-      fire.auth().onAuthStateChanged((user) => {
-        console.log(user);
-        if (user) {
-          this.setState({ user });
-          //localStorage.setItem('user', user.uid);/////////////////////////////////////
-        } else {
-          this.setState({ user: null });
-        ///  localStorage.removeItem('user');//////////////////////////////////////////
-        }
-      });
-    }
-
-
-
 
 
 
@@ -213,14 +136,23 @@ export default class  App extends React.Component {
 
 
   async componentDidMount() {
-    this.authListener();
+
     // Preload data from an external API
     // Preload data using AsyncStorage
     const data = await this.performTimeConsumingTask();
 
     if (data !== null) {
-      this.setState({ isLoading: false });
+      this.setState({ SpashScreenTimer: false });
     }
+
+    if(1==1){
+      this.setState({ stage:"threepagedrdaisyintro" })
+
+    }
+
+
+
+
   }
 
   updateState = () => {
@@ -244,25 +176,42 @@ export default class  App extends React.Component {
   }
 
 
+  confirmThreePage = () => {
+      this.setState({
+          stage: "drdaisyintro",
 
+      });
+  }
 
 
   render() {
-    if (this.state.isLoading) {
+    if (this.state.SpashScreenTimer)
+    {
       return <Splash />;
     }
-    if ( this.state.loggedin == false && this.state.registering==false) {
+    if (this.state.stage == "drdaisyintro")
+    {
+    //  return <Drdaisy />;
+    }
+    if (this.state.stage == "threepagedrdaisyintro")
+    {
+      return <DrdaisyThreePageIntro
+        confirmThreePage={this.confirmThreePage}
+        />;
+    }
+    if ( this.state.loggedin == false && this.state.registering==false)
+    {
       return <Login
       updateState={this.updateState}
       updateState2={this.updateState2}
        />;
-
     }
-    if (this.state.registering==true) {
+
+    if (this.state.registering==true)
+    {
       return <Register
       updateState3={this.updateState3}
        />;
-
     }
 
 
@@ -372,7 +321,7 @@ export default class  App extends React.Component {
 
            <Tab.Screen
            name="Account"
-           component={Accountstack}
+           component={Account}
            options={{
              title: 'Account',
              tabBarIcon: ({size,focused,color}) => {

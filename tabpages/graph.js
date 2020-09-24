@@ -45,7 +45,7 @@ export default class Graphing extends Component {
 			<ScrollView style={{width:"100%",height:height,backgroundColor:"rgb(115,198,216)" }} vertical={true}>
 
 			<Image style={{ width:"80%", height: height*0.4,marginLeft:"10%"  }} source={require('../imgs/graphicon.jpg')}  />
-      <View style={{ width:"35%", height: height*0.1,position:"absolute",top:"7%",left:"50%",  backgroundColor:"white", textAlign:"center",borderRadius:44,alignItems: 'center',justifyContent: 'center'}}>
+      <View style={{ width:"35%", height: height*0.1,position:"absolute",top:height*0.07,left:"50%",  backgroundColor:"white", textAlign:"center",borderRadius:44,alignItems: 'center',justifyContent: 'center'}}>
 <Text style={{ width:"84%",marginLeft:"10%" }}  >Hi, here you can view your progress and historical data</Text>
 </View>
 			    <Collapse   style={{width:"80%",marginLeft:"10%"}}>
