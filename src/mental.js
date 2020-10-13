@@ -331,51 +331,51 @@ this.handleupdate(a);
 
 
       <TouchableOpacity   style={{top:settop(-5,"am")  ,position:"absolute",left:"16%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity    style={{top:settop(-5,"pm") ,position:"absolute",left:"22%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
 
       <TouchableOpacity    style={{top:settop(-4,"pm")  ,position:"absolute",left:"28%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity   style={{top:settop(-4,"pm") ,position:"absolute",left:"34%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
 
 
       <TouchableOpacity    style={{top:settop(-3,"am")  ,position:"absolute",left:"40%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity    style={{top:settop(-3,"pm")  ,position:"absolute",left:"46%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
 
       <TouchableOpacity  style={{top:settop(-2,"am") ,position:"absolute",left:"51%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity    style={{top:settop(-2,"pm")  ,position:"absolute",left:"58%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
 
 
       <TouchableOpacity style={{top:settop(-1,"am")  ,position:"absolute",left:"62%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity    style={{top:settop(-1,"pm") ,position:"absolute",left:"68%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
       <TouchableOpacity    style={{top:this.state.amMarker  ,position:"absolute",left:"73%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
       <TouchableOpacity    style={{top:this.state.pmMarker  ,position:"absolute",left:"78%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/water1.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
+      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
       </TouchableOpacity>
 
 

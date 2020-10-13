@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 
-export default class  Test extends React.Component {
+export default class  Home extends React.Component {
 
   constructor(props ) {
     super(props);

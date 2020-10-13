@@ -565,7 +565,7 @@ export default class  Symptommapper extends React.Component {
 
           <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
             <TouchableOpacity style={{ width:180, height:  120}}  onPress = {() =>  this.navigatetoovu("skin") } >
-              <Image style={{  width:170, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/skin.png')}  />
+              <Image style={{  width:170, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/Icons/watericon.png')}  />
             </TouchableOpacity>
           </View>
 
@@ -787,7 +787,7 @@ export default class  Symptommapper extends React.Component {
 
           <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
             <TouchableOpacity style={{ width:180, height:  120}}  onPress = {() =>  this.navigatetoovu() } >
-              <Image style={{  width:180, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/nut.png')}  />
+              <Image style={{  width:180, height: 120  ,  resizeMode: 'stretch' }} source={require('../imgs/Icons/watericon.png')}  />
             </TouchableOpacity>
           </View>
 

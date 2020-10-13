@@ -1,120 +1,187 @@
 /** @format */
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
-import SyncStorage from 'sync-storage';
+
 import LinearGradient from 'react-native-linear-gradient';
+import { Dimensions } from 'react-native';
+
+const { width,height } = Dimensions.get('window');
 
 
 
-export default class  Food extends React.Component {
-
-
-
-
-
+export default class  Home extends React.Component {
 
   constructor(props ) {
-    const result = SyncStorage.get('name' );
     super(props);
-    this.state={
-      username:result
+    //  console.log(height);
+    this.state = {
+      username:"Jane Doe",
+      timegreenting:"Afternoon"
     }
+    var currenthour = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[4].split(':')[0];
+    if(currenthour <12 ){
+      this.setState({timegreenting: "morning"});
+    }if(currenthour >12 &&  currenthour <18){
+      this.setState({timegreenting: "afternoon"});
+    }
+
+
   }
+
+
+
   render() {
     return (
 
       <SafeAreaView style={styles.container}>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '10%' }} source={require('../imgs/header.jpg')} />
 
 
 
-      <View style={{  marginTop:0, width:"100%",height:"13%",backgroundColor:"rgb(102,183,202)",alignItems: 'center',justifyContent: 'center',   }}>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%' }} source={require('../imgs/header.jpg')} />
+      <LinearGradient colors={['white', '#bfe6ff', '#59bfff' ]} style={styles.linearGradient}>
+
+      </LinearGradient>
+
+      <LinearGradient colors={['rgb(240,240,240)', 'rgb(240,240,240)', 'rgb(240,240,240)' ]} style={styles.linearGradient}>
+
+      </LinearGradient>
+      <LinearGradient colors={['rgb(240,240,240)', 'rgb(240,240,240)', 'rgb(240,240,240)' ]} style={styles.linearGradient}>
+
+      </LinearGradient>
 
 
-      <View style={{     backgroundColor:"white" , borderRadius:25,overflow:"hidden"}}>
-      <Image style={{  width: 50, height: 50 }} source={require('../imgs/drdasyicon.jpg')} />
+      <ScrollView  >
 
+
+
+      <View style={{ marginLeft:"4%", marginTop:"10%",flexDirection:"row" }} >
+      <TouchableOpacity style={{width:55,height:55}} onPress={() => this.props.navigation.navigate('food')} >
+      <Image style={{  width: '100%', height: '100%', borderRadius:27 }} source={require('../imgs/Icons/placeholdericonhomepage.png')} />
+      </TouchableOpacity>
+      <View style={{   }} >
+      <Text  style={{ fontSize:20,color:"grey",marginLeft:5}}>Good {this.state.timegreenting}</Text>
+      <Text  style={{  marginLeft:7}}>{this.state.username}</Text>
       </View>
-      <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>{this.state.username}</Text>
-      </View>
-
-      <View style={{ justifyContent: "center",alignItems:"center",   marginTop:0, width:"100%",height:"5%",backgroundColor:"rgb(25,89,127)"}}>
-      <Text  style={{color:"white",   fontSize: 25 }}>Dashboard</Text>
-
-      </View>
-
-
-
-      <View style={{  marginTop:0, width:"100%",height:"88%",backgroundColor:"rgb(102,183,202)"  }}>
-
-      <View style={{  marginTop:"8%",marginLeft:"7%", width:"88%",height:"83%",backgroundColor:"rgb(25,89,127)" , borderRadius:30, overflow : "hidden",}}>
-
-      <View style={{ marginLeft:"5%", marginTop:"5%",  width:"90%",height:"90%",backgroundColor:"white", borderTopRightRadius:30, borderTopLeftRadius:30 }}>
-
-
-      <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('energy')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/energy.png')}  />
-      </TouchableOpacity>
-
-
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('Excer')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/exl.png')}  />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('mental')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/mentalhealth.png')}  />
-      </TouchableOpacity>
-      </View>
-
-
-      <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('symptom')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/symptom.png')} />
-      </TouchableOpacity>
-
-
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('ovu')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/ovu.png')} />
-      </TouchableOpacity>
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('skin')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/skin.png')} />
-      </TouchableOpacity>
-      </View>
-
-
-      <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('sleep')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/sleep.png')} />
-      </TouchableOpacity>
-
-
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('food')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/nut.png')} />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('water')} >
-      <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/water.png')} />
-      </TouchableOpacity>
-      </View>
-
-      <View style={{  flexDirection: 'row'   , marginLeft:"5%", marginTop:"5%",  width:"90%",height:"18%" }}>
-      <TouchableOpacity style={{width: '33%', height: '100%'}} onPress={() =>  this.props.navigation.navigate('bmi')} >
-      <Image style={{  width: '92%', height: '100%',marginLeft:"3%" }} source={require('../imgs/bmi.jpg')}  />
-      </TouchableOpacity>
-      <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
-      <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/med.jpg')}  />
-      </TouchableOpacity>
-      <TouchableOpacity style={{  width: '33%', height: '100%'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
-      <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/jornal.jpg')} />
-      </TouchableOpacity>
       </View>
 
 
 
+      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"10%",flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12}}  onPress={() =>  this.props.navigation.navigate('goals')}>
 
 
+          <View style={{  marginLeft:"5%",  width: '65%' }} >
+              <Text  style={{fontSize:12,color:"grey"}}>your Daily challeneges</Text>
+              <Text  style={{fontSize:20,color:"black"}}>Discover a healthier you</Text>
+              <Text  style={{position:"absolute",bottom:10,fontSize:20,color:"blue"}}>Get started></Text>
+          </View>
+
+          <Image style={{  width: '30%', height: '100%', borderRadius:27 }} source={require('../imgs/targetgif.gif')} />
+      </TouchableOpacity>
+
+      <Text  style={{fontSize:20,color:"black", marginTop:"10%", marginLeft:"10%"}}>How can i help you today?</Text>
+
+      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"6%" ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   ,backgroundColor:"rgb(115,198,214)",width: width*0.9,  borderRadius:15,  borderBottomRightRadius:5 , height: height*0.10}} onPress={() => this.props.navigation.navigate('Chat')}>
+
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black"}}>Start a conversation with Dr Daisy</Text>
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:15,color:"white"}}>e.g. How does PCOS cause weight gain?</Text>
+
+
+      </TouchableOpacity>
+
+      <View style={{  marginTop:"10%" }}>
+        <Text  style={styles.text}>track your general health</Text>
+        <ScrollView  style={{ flexDirection:"row"}}  horizontal={true}>
+          <View>
+            <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}}  onPress={() =>  this.props.navigation.navigate('water')} >
+              <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/watericon.png')} />
+            </TouchableOpacity>
+            <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
+          </View>
+
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}}  onPress={() =>  this.props.navigation.navigate('Excer')} >
+            <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/exicon.png')}  />
+          </TouchableOpacity>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Work out</Text>
+        </View>
+
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}}  onPress={() =>  this.props.navigation.navigate('food')} >
+            <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/nutrituionicon.png')} />
+          </TouchableOpacity>
+
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Eat right</Text>
+        </View>
+
+        </ScrollView>
+      </View>
+      <View>
+      <Text  style={styles.text}>pcos symptoms</Text>
+      <ScrollView horizontal={true}>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('ovu')} >
+          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/ovulationicon.png')} />
+          </TouchableOpacity>
+
+          <LinearGradient colors={['rgb(115,198,214)',   'rgb(115,198,214)' ]}   style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
+            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>♀️ health</Text>
+          </LinearGradient>
+
+
+        </View>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('bmi')} >
+          <Image style={{  width: '92%', height: '100%',marginLeft:"3%" }} source={require('../imgs/Icons/bmiicon.png')}  />
+          </TouchableOpacity>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Track BMI</Text>
+        </View>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('energy')} >
+          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/batteryicon.png')}  />
+          </TouchableOpacity>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Energize</Text>
+        </View>
+      </ScrollView>
+      </View>
+      <View>
+      <Text  style={styles.text}>Take care of your mental health</Text>
+      <ScrollView horizontal={true}>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('mental')} >
+          <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/moodicon.png')}  />
+          </TouchableOpacity>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Mood tracker</Text>
+        </View>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('medselect')} >
+          <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/Icons/medicon.png')}  />
+          </TouchableOpacity>
+          <LinearGradient colors={['rgb(1,240,240)', 'rgb(240,240,1)', 'rgb(240,1,240)' ]}   style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
+            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>Relax</Text>
+          </LinearGradient>
+        </View>
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('jornal')} >
+          <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/Icons/jornalicon.png')} />
+          </TouchableOpacity>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Journal  today</Text>
+        </View>
+      </ScrollView>
+      </View>
+
+
+      <View  >
+      <Text  style={styles.text}>Skin care</Text>
+      <TouchableOpacity style={styles.buttonWide}      onPress={() =>  this.props.navigation.navigate('skin')} >
+
+      <Image style={{  width: '70%', height: '100%',resizeMode:"stretch" }} source={require('../imgs/Icons/skinicon.png')} />
+
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.buttonWide}      onPress={() =>  this.props.navigation.navigate('skin')} >
+
+      <Image style={{  width: '70%', height: '100%',resizeMode:"stretch" }} source={require('../imgs/Icons/skinicon.png')} />
+
+      </TouchableOpacity>
 
       </View>
 
@@ -122,20 +189,30 @@ export default class  Food extends React.Component {
 
 
 
-
-      </View>
-
-      </View>
-
-
-
+            <TouchableOpacity style={{ marginLeft:"5%",flexDirection:"row", marginTop:"6%",shadowColor: "#000",  shadowOffset: {  	width: 0, 	height: 4,  },   shadowOpacity: 0.32, shadowRadius: 5.46,  elevation: 9,  marginBottom:"16%"  ,backgroundColor:"rgb(200,200,200)",width: width*0.9,  borderRadius:15 , height: height*0.10}} onPress={() => this.props.navigation.navigate('trophy')}>
+              <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black",width:"60%"}}>Trophy cabinet</Text>
+                <Image style={{    width: width*0.20, height: width*0.30,resizeMode: 'stretch' }} source={require('../imgs/silvermedal.png')} />
+                <Image style={{    width: width*0.20, height: width*0.30,resizeMode: 'stretch' }} source={require('../imgs/goldmedal.png')} />
+            </TouchableOpacity>
 
 
+      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"6%",shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 4,
+},
+shadowOpacity: 0.32,
+shadowRadius: 5.46,
+elevation: 9  ,
+ marginBottom:"16%"  ,backgroundColor:"rgb(200,200,200)",width: width*0.9,  borderRadius:15 , height: height*0.10}} onPress={() => this.props.navigation.navigate('graphs')}>
+
+      <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black"}}>View the History of your symptoms with the graph page</Text>
+
+      </TouchableOpacity>
 
 
 
-
-
+      </ScrollView>
       </SafeAreaView>
 
 
@@ -151,26 +228,19 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    width:180,
+    marginTop:19,
     height:30,
     marginLeft:9,
     borderRadius:15,
     textAlign: 'center',
-    backgroundColor:"skyblue",
+
   },
   container: {
     flex: 1,
     alignItems: "flex-start",
-    justifyContent: "flex-start"
+    justifyContent: "center"
   },
-  item: {
-    flex: 1,
-    height:100,
-    margin: 1
-  },
-  list: {
-    flex: 1
-  },
+
 
   button: {
     flex: 1,
@@ -188,11 +258,11 @@ const styles = StyleSheet.create({
   buttonWide: {
     flex: 1,
     margin:10,
-    marginLeft:"5%",
+    marginLeft:"0%",
     borderRadius:30,
-    width:"90%",
-    height:100,
-    backgroundColor:"red",
+    width:"100%",
+    height:width*0.4,
+
     flexDirection: 'row',
     justifyContent: "center",
     overflow: 'hidden'

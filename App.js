@@ -28,6 +28,9 @@ import   History   from './camerasection/historyPage';
 import   Tmp   from './camerasection/tempPage';
 import   Tmp2   from './camerasection/tempPage0';
 ////////////////////
+import   Challenges   from './src/challenge';
+import   ChallengeSelect   from './src/challengeSelecter';
+import   Trophy   from './src/trophy';
 import   Foodlist   from './src/foodlist';
 import   Food   from './src/food';
 import   Home   from './src/home';
@@ -58,6 +61,9 @@ function DefaultApp() {
         headerShown: false
         }}>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="goals" component={Challenges}/>
+        <Stack.Screen name="ChallengeSelect" component={ChallengeSelect}/>
+        <Stack.Screen name="trophy" component={Trophy}/>
         <Stack.Screen name="symptom" component={Symptommapper} />
         <Stack.Screen name="camera" component={Cam} />
         <Stack.Screen name="history" component={History} />

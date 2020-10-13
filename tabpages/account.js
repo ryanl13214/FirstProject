@@ -307,7 +307,7 @@ style={{backgroundColor: "rgb(0,77,95)"}}
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "rgb(0,77,95)"
+		backgroundColor: "rgb(145,145,145)"
 	},
 	scrollContainer:{
 		flex: 1,
