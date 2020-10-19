@@ -72,6 +72,14 @@ console.log(a+"f");
      <View  style={{  width: '100%', height: '100%' }} >
         <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/nutbackground.jpg')} />
 
+
+
+        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}   onPress={() =>  this.props.navigation.navigate('foodlist')} >
+          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
+        </TouchableOpacity>
+
+
+
         <View  style={{ position:"absolute",top:"25%",left:"25%", width: widthcirc, height: widthcirc,backgroundColor:"white",borderRadius:widthcirc/2 }} >
           <View  style={{  width: '96%',backgroundColor:"grey", height: '96%',marginLeft:"2%",marginTop:"2%" ,borderRadius:widthcirc/2 }} >
             <View  style={{ justifyContent: "center",alignItems:"center", width: '98%',backgroundColor:"white", height: '98%',marginLeft:"1%",marginTop:"1%" ,borderRadius:widthcirc/2 }} >
@@ -92,7 +100,7 @@ console.log(a+"f");
 
       <View  style={{ position:"absolute",top:"66%",left:"23%", width: widthcirc*0.95, height: "30%",backgroundColor:"white" ,borderRadius: 7 ,overflow:"hidden" }} >
         <View  style={{ justifyContent: "center",alignItems:"center", width: "100%", height: "15%",backgroundColor:"lightblue" ,textAlign:"center" }} >
-        <Text style={{  width: "100%",textAlign:"center"}}>Text</Text>
+        <Text style={{  width: "100%",textAlign:"center"}}>Add Calories</Text>
       </View>
 
 

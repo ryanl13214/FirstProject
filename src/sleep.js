@@ -77,11 +77,6 @@ export default class  Sleep extends React.Component {
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-              <Button style={{flex: 1, justifyContent:'center'}}
-                onPress={this._onPressButton2}
-                title="RN calls alarm"
-              >
-  </Button>
 
       <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
 			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
@@ -115,8 +110,7 @@ export default class  Sleep extends React.Component {
           </TouchableOpacity>
       </View>
 
-  <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>set alarms</Text>
-
+ 
 
 
 
