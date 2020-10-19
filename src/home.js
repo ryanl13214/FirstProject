@@ -112,6 +112,13 @@ export default class  Home extends React.Component {
           <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Eat right</Text>
         </View>
 
+        <View>
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}}  onPress={() =>  this.props.navigation.navigate('sleep')} >
+            <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/sleepicon.png')} />
+          </TouchableOpacity>
+
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Sleep right</Text>
+        </View>
         </ScrollView>
       </View>
       <View>

@@ -2,23 +2,15 @@
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet  ,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
-
 import { Dimensions } from 'react-native';
-
 const { height } = Dimensions.get('window');
-const alarmNotifData = {
-	alarm_id: "12345",
-	title: "My Notification Title",
-	message: "My Notification Message",
-	channel: "my_channel_id",
-	small_icon: "ic_launcher",
 
-	// You can add any additional data that is important for the notification
-	// It will be added to the PendingIntent along with the rest of the bundle.
-	// e.g.
-  	data: { foo: "bar" },
-};
+
+import { NativeModules } from 'react-native'
+const {ToastExample} = NativeModules;
+const {AlarmExamples} = NativeModules;
+
+
 export default class  Sleep extends React.Component {
 
   constructor(props ) {
@@ -62,28 +54,34 @@ export default class  Sleep extends React.Component {
   add2 = () => {
 
 
-          //Stop Alarm
-        //  ReactNativeAN.stopAlarmSound();
 
-        //  //Send Local Notification Now
-    //      ReactNativeAN.sendNotification(alarmNotifData);
-
-          //Get All Scheduled Alarms
-      //    const alarms = await ReactNativeAN.getScheduledAlarms();
-
-          //Clear Notification(s) From Notification Center/Tray
-    //      ReactNativeAN.removeFiredNotification(alarm_id);
-    //      ReactNativeAN.removeAllFiredNotifications();
       }
 
 
 
+          _onPressButton2() {
+            // ToastModule.showText(`This is Android's Toast`,
+            //                       ToastModule.LENGTH_SHORT)
+            //Show constants
+        AlarmExamples.setAlarm('Awesome', AlarmExamples.SHORT);
+
+          }
+
 
   render() {
+
+
+
     return (
 
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
+
+              <Button style={{flex: 1, justifyContent:'center'}}
+                onPress={this._onPressButton2}
+                title="RN calls alarm"
+              >
+  </Button>
 
       <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
 			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
@@ -125,7 +123,7 @@ export default class  Sleep extends React.Component {
 
 
 
-    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}} onPress={    this.add2  } >
+    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}} onPress={ this._onPressButton2} >
 
 
         <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>Edit Alarms</Text>

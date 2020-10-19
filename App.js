@@ -45,6 +45,7 @@ import   Medselector   from './src/meditationselector';
 import   Meditation  from './src/meditation';
 import   Ovu  from './src/ovulationTracker';
 import   Sleep  from './src/sleep';
+import   SetAlarm  from './src/setalarm';
 import   Register  from './src/register';
 import   Scan  from './src/acenescannerselector';
 import   Jornal  from './src/journal';
@@ -71,6 +72,7 @@ function DefaultApp() {
         <Stack.Screen name="temp2" component={Tmp2} />
         <Stack.Screen name="Excer" component={Excer} />
         <Stack.Screen name="jornal" component={Jornal} />
+        <Stack.Screen name="alarm" component={SetAlarm} />
         <Stack.Screen name="skin" component={Cam} />
         <Stack.Screen name="sleep" component={Sleep} />
         <Stack.Screen name="ovu" component={Ovu} />
