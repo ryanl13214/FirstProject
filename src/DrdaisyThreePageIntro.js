@@ -75,21 +75,21 @@ export default class  DrdaisyThreePageIntro extends React.Component {
 
    <Text style={{position:"absolute" ,top:"70%" ,left:(Dimensions.get('window').width*0), textAlign: 'center',fontSize: 15,width:"27%" ,marginLeft:"2%",color:"black"}}>Hi I am Dr daisy i will help you manage the symptoms of PCOS in your daily life</Text>
       <Image style={{position:"absolute" ,left:-20,  width: '40%', height: '80%',resizeMode: 'stretch'  }} source={require('../imgs/standalonedaisy.png')} />
-        <TouchableOpacity style={{position:"absolute"  ,top:"70%",  height:50, width:"30%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}   onPress={this.MoveScreen} >
-          <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white"}}>Next </Text>
+        <TouchableOpacity style={{position:"absolute", left:"25%" ,top:"70%",  height:50, width:"8%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}   onPress={this.MoveScreen} >
+          <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white",borderRadius:15,borderColor:"white",borderWidth:1}}>Next </Text>
         </TouchableOpacity>
 
 
-   <Text style={{position:"absolute",top:"70%" ,left:(Dimensions.get('window').width*1), textAlign: 'center',fontSize: 15,width:"27%" ,marginLeft:"2%"  ,color:"black"}}>Hi I am Dr daisy i will help you manage the symptoms of PCOS in your daily life Hi I am Dr daisy i will help you manage the symptoms of PCOS in your daily life</Text>
+   <Text style={{position:"absolute",top:"70%" ,left:(Dimensions.get('window').width*1), textAlign: 'center',fontSize: 15,width:"27%" ,marginLeft:"2%"  ,color:"black"}}>Our goal for this app was to help everyone suffering from PCOS with their journey in life. We aim to help each user life their best life. </Text>
         <Image style={{position:"absolute" ,left:((Dimensions.get('window').width-20)*1)+50,  width: '20%', height: '35%',marginTop: "5%",resizeMode: 'stretch'  }} source={require('../imgs/hotair.png')} />
-          <TouchableOpacity style={{position:"absolute" ,left:"33%" ,top:"70%",  height:50, width:"30%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}   onPress={this.MoveScreenLast} >
-            <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white"}}>Next </Text>
+          <TouchableOpacity style={{position:"absolute" ,left:"58%" ,top:"70%",  height:50, width:"8%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}   onPress={this.MoveScreenLast} >
+            <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white",borderRadius:15,borderColor:"white",borderWidth:1}}>Next </Text>
           </TouchableOpacity>
 
      <Text style={{position:"absolute" ,top:"70%" ,left:(Dimensions.get('window').width*2), textAlign: 'center',fontSize: 15,width:"27%" ,marginLeft:"2%",color:"black"}}>We will help you hit your targets everyday to continue improving.</Text>
          <Image style={{position:"absolute" ,left:(Dimensions.get('window').width*2)-10, top:"10%", width: '30%', height: '40%',resizeMode: 'stretch'  }} source={require('../imgs/animation_640_kfgshtey.gif')} />
-             <TouchableOpacity style={{position:"absolute" ,left:"66%",top:"70%", height:50, width:"30%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}   onPress={this.continue} >
-                 <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white"}}>Get Started </Text>
+             <TouchableOpacity style={{position:"absolute" ,left:"75%",top:"70%", height:45, width:"18%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%" }}   onPress={this.continue} >
+                 <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white",borderRadius:15,borderColor:"white",borderWidth:1}}>Lets get Started </Text>
              </TouchableOpacity>
 
       </Animated.View>
