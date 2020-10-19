@@ -45,15 +45,15 @@ public class AlarmModule extends ReactContextBaseJavaModule {
 
 
     @ReactMethod
-    public void setAlarm(String message, int duration) {
+    public void setAlarm(int hour, int min) {
       Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-      i.putExtra(AlarmClock.EXTRA_HOUR, 0);
-      i.putExtra(AlarmClock.EXTRA_MINUTES, 57);
-      i.putExtra(AlarmClock.EXTRA_MESSAGE, "This is my custom message.");
-      i.putExtra(AlarmClock.EXTRA_SKIP_UI, false);
+      i.putExtra(AlarmClock.EXTRA_HOUR, hour);
+      i.putExtra(AlarmClock.EXTRA_MINUTES, min);
+    //  i.putExtra(AlarmClock.EXTRA_MESSAGE, "This is my custom message.");
+      i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       this.reactContext.startActivity(i);
-  Toast.makeText(getReactApplicationContext(), "intent set", duration).show();
+//  Toast.makeText(getReactApplicationContext(), "intent set", duration).show();
 
 
     }

@@ -74,9 +74,7 @@ console.log(a+"f");
 
 
 
-        <TouchableOpacity    style={{  height: 25,width:25,marginTop:2,marginLeft:5 }}   onPress={() =>  this.props.navigation.navigate('foodlist')} >
-          <Image style={{   height: 25,width:25 }} source={require('../imgs/altpluss.png')} />
-        </TouchableOpacity>
+
 
 
 
@@ -97,8 +95,17 @@ console.log(a+"f");
 
        <Image style={{position:"absolute",top:"33%",left:"3%", justifyContent: "center", width: widthcirc*0.28, height: "25%",alignItems:"center",  resizeMode: 'stretch',borderRadius: 7}} source={require('../imgs/labels.png')} />
 
+<View  style={{ position:"absolute",top:"66%",left:"5%" ,height: 95,width:75,backgroundColor:"white" ,borderRadius: 7   }} >
+       <TouchableOpacity    style={{    }}   onPress={() =>  this.props.navigation.navigate('foodlist')} >
+        <Text style={{   textAlign:"center",fontSize:50 }}>🍽️</Text>
+       </TouchableOpacity>
+         <Text style={{  width: "100%",textAlign:"center"}}>Add Meals</Text>
+ </View>
 
-      <View  style={{ position:"absolute",top:"66%",left:"23%", width: widthcirc*0.95, height: "30%",backgroundColor:"white" ,borderRadius: 7 ,overflow:"hidden" }} >
+
+
+
+      <View  style={{ position:"absolute",top:"66%",left:"28%", width: widthcirc*0.95, height: "30%",backgroundColor:"white" ,borderRadius: 7 ,overflow:"hidden" }} >
         <View  style={{ justifyContent: "center",alignItems:"center", width: "100%", height: "15%",backgroundColor:"lightblue" ,textAlign:"center" }} >
         <Text style={{  width: "100%",textAlign:"center"}}>Add Calories</Text>
       </View>
@@ -114,6 +121,7 @@ console.log(a+"f");
         <Text style={{  width: "50%",textAlign:"center",fontSize:20}}>Breakfast</Text>
         <Text style={{  width: "40%",textAlign:"center",marginTop:1,fontSize:15}}> {this.state.breakfastKcal}Kcal</Text>
       </View>
+
 
 
 

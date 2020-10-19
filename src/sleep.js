@@ -10,6 +10,7 @@ import { NativeModules } from 'react-native'
 const {ToastExample} = NativeModules;
 const {AlarmExamples} = NativeModules;
 
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default class  Sleep extends React.Component {
 
@@ -46,7 +47,12 @@ export default class  Sleep extends React.Component {
       minus4: minus4,
       minus5: minus5,
       minus6: minus6,
-      minus7: minus7,      pluss1:pluss1,
+      minus7: minus7,
+
+      datepickervisibility:false,
+
+
+         pluss1:pluss1,
       thismonth:thismonth}
   }
 
@@ -70,7 +76,30 @@ export default class  Sleep extends React.Component {
 
   render() {
 
+    const showDatePicker = () => {
+      setDatePickerVisibility(true);
+    };
 
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+      console.log("A date has been picked: ", date );//date is returning 1 hour early
+      this.setState({datepickervisibility:!this.state.datepickervisibility})
+
+//2020-10-19T09:10:28.477Z
+var hour=String(String(String(date).split(":")).split(" ")[4]).split(",")[0] ;// i know
+var minutes= String(date).split(":")[1] ;
+
+      //bool repeating or not
+      // days
+      //time
+      //hours
+      //minutes
+          AlarmExamples.setAlarm(Number(hour),Number(minutes));
+      //hideDatePicker();
+    };
 
     return (
 
@@ -110,14 +139,14 @@ export default class  Sleep extends React.Component {
           </TouchableOpacity>
       </View>
 
- 
 
 
 
 
 
 
-    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}} onPress={ this._onPressButton2} >
+
+    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}}  onPress={()=>this.setState({datepickervisibility:true})} >
 
 
         <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>Edit Alarms</Text>
@@ -126,6 +155,12 @@ export default class  Sleep extends React.Component {
     </TouchableOpacity>
 
 
+    <DateTimePickerModal
+      isVisible={this.state.datepickervisibility}
+      mode="time"
+      onConfirm={handleConfirm}
+      onCancel={hideDatePicker}
+    />
 
 
 
