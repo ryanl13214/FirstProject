@@ -2,7 +2,7 @@
 import React from 'react';
 import { TextInput, Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
-
+const { height } = Dimensions.get('window');
 import fire from '../config/fire';
 export default class  Login extends React.Component {
   constructor(props) {
@@ -15,7 +15,8 @@ export default class  Login extends React.Component {
       email: '',
       password: '',
       uname:'',
-      passworddupe:''
+      passworddupe:'',
+      passwordplaceholder:""
     };
   }
 
@@ -31,11 +32,17 @@ export default class  Login extends React.Component {
     var add2 = () => {
 
 
-       //check loging then
-this.props.updateState()
+      //check loging then
+      this.props.updateState()
 
     }
 
+    var updatepassword = (pass) => {
+
+      this.setState({ password:pass });
+
+      this.setState({ passwordplaceholder:this.state.passwordplaceholder+"*" });
+    }
     return (
 
 
@@ -43,19 +50,19 @@ this.props.updateState()
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-      <Image style={{position:"absolute" ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/1.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch'  }} source={require('../imgs/1.jpg')} />
 
           <Image style={{  position:"absolute" , width: 150, height: 180 ,top:30 ,right:20}} source={require('../imgs/hotair.png')} />
 
       <TextInput
         value={this.state.username}
-        onChangeText={username => this.setState({ username })}
+        onChangeText={username => this.setState( username)}
         placeholder={'email'}
         style={{textAlign: 'center',position:"absolute"  ,top:"40%",left:"20%", backgroundColor:"white",   width: '60%', height: 35 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
       />
       <TextInput
-        value={this.state.password}
-        onChangeText={password => this.setState({ password })}
+        value={this.state.passwordplaceholder}
+        onChangeText={password => updatepassword({ password })}
         placeholder={'password'}
         style={{textAlign: 'center',position:"absolute" ,top:"55%",left:"20%", backgroundColor:"white",  width: '60%', height: 35, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
       />

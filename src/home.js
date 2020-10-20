@@ -184,11 +184,7 @@ export default class  Home extends React.Component {
 
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.buttonWide}      onPress={() =>  this.props.navigation.navigate('skin')} >
-
-      <Image style={{  width: '70%', height: '100%',resizeMode:"stretch" }} source={require('../imgs/Icons/skinicon.png')} />
-
-      </TouchableOpacity>
+ 
 
       </View>
 
