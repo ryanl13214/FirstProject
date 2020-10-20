@@ -12,12 +12,11 @@ const wheelPickerData2 = ["1 week", '2 weeks', '3 weeks', '4 weeks', '5 weeks', 
 const now = new Date()
 import SyncStorage from 'sync-storage';
 
-import fire from '../config/fire';
 import { WheelPicker } from '@delightfulstudio/react-native-wheel-picker-android';
 
 type Props = {}
 
- const items = [
+const items = [
   { id: '1', name: 'America' },
   { id: '2', name: 'Argentina' },
   { id: '3', name: 'Armenia' },
@@ -30,7 +29,7 @@ type Props = {}
   { id: '10', name: 'Brazil' },
 ];
 const buttonTextStyle = {
-    color: '#reds'
+  color: '#reds'
 };
 
 
@@ -54,13 +53,13 @@ export default class  Register extends React.Component {
     //Set Selected Items
   };
   onItemSelected = event => {
-      // do something
+    // do something
   };
 
   constructor(props ) {
     super(props);
 
- }
+  }
 
 
 
@@ -75,24 +74,17 @@ export default class  Register extends React.Component {
 
 
 
- submitandsave = event => {
+  submitandsave = event => {
 
 
-SyncStorage.set('medications' ,this.state.selectedItems);
-SyncStorage.set('name' ,this.state.name);
-SyncStorage.set('username' ,this.state.username);
-SyncStorage.set('dateofbiirth' ,this.state.dateofbiirth);
-SyncStorage.set('docrotname' ,this.state.docrotname);
-SyncStorage.set('gpPractice' ,this.state.gpPractice);
+    SyncStorage.set('medications' ,this.state.selectedItems);
+    SyncStorage.set('name' ,this.state.name);
+    SyncStorage.set('username' ,this.state.username);
+    SyncStorage.set('dateofbiirth' ,this.state.dateofbiirth);
+    SyncStorage.set('docrotname' ,this.state.docrotname);
+    SyncStorage.set('gpPractice' ,this.state.gpPractice);
 
-console.log(this.state.name);
-
-
-  fire.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{
-  }).then((u)=>{this.props.updateState3()})
-  .catch((error) => {
-      console.log("error :"+error);
-    })
+    console.log(this.state.name);
 
 
 
@@ -102,7 +94,9 @@ console.log(this.state.name);
 
 
 
- };
+
+
+  };
 
 
   render() {
@@ -112,88 +106,95 @@ console.log(this.state.name);
     return (
 
       <View style={{ flex: 1 }}>
-    <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/det.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/registerbackground.jpg')} />
+
+
+
+
+
+      <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
+
+      <View style={{ alignItems: 'center',backgroundColor:"white",height:"80%",borderRadius:50 }}>
+
+      <Text style={{  color:"grey",position:"absolute", top:"5%", width:"100%",textAlign:"center", fontSize:20}}>details </Text>
+
+      <TextInput
+      value={this.state.username}
+      onChangeText={username => this.setState({ username })}
+      placeholder={'email Address'}
+      style={{textAlign: 'center',      width: '60%', height: 40 , borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"19%" }}
+      />
+      <TextInput
+      value={this.state.email}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'password'}
+      style={{textAlign: 'center' ,   width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
+      />
+      <TextInput
+      value={this.state.email}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'Confirm password'}
+      style={{textAlign: 'center' ,    width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
+      />
+      <TextInput
+      value={this.state.name}
+      onChangeText={name => this.setState({ name })}
+      placeholder={'Whats your name?'}
+      style={{textAlign: 'center',    width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center', marginTop:"4%"}}
+      />
 
 
 
 
 
 
+      <View style={{flexDirection: 'row', paddingTop:10, marginTop:"4%" }}>
 
-    <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
+      <Text style={{  color:"grey", paddingTop:10 }}>DOB:</Text>
+      <DatePicker
+      style={{width:    '60%'}}
+      date={this.state.date}
+      mode="date"
+      placeholder="select date"
+      format="YYYY-MM-DD"
+      minDate="1900-01-01"
+      maxDate="2016-06-01"
+      confirmBtnText="Confirm"
+      cancelBtnText="Cancel"
+      customStyles={{
+        dateIcon: {
+          position: 'absolute',
+          left: 0,
+          top: 4,
+          marginLeft: 0
+        },
+        dateInput: {
+          marginLeft: 36
+        }
+        // ... You can check the source to find the other keys.
+      }}
+      onDateChange={(date) => {this.setState({date: date})}}
+      />
 
-                <View style={{ alignItems: 'center' }}>
+      </View>
 
-                <TextInput
-                  value={this.state.username}
-                  onChangeText={username => this.setState({ username })}
-                  placeholder={'email Address'}
-                  style={{textAlign: 'center',   backgroundColor:"rgb(245,245,245)",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
-                />
-                <TextInput
-                  value={this.state.email}
-                  onChangeText={password => this.setState({ password })}
-                  placeholder={'password'}
-                  style={{textAlign: 'center' , backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
-                />
-                <TextInput
-                  value={this.state.email}
-                  onChangeText={password => this.setState({ password })}
-                  placeholder={'Confirm password'}
-                  style={{textAlign: 'center' , backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center',marginTop:5 }}
-                />
-                <TextInput
-                  value={this.state.name}
-                  onChangeText={name => this.setState({ name })}
-                  placeholder={'Whats your name?'}
-                  style={{textAlign: 'center',  backgroundColor:"rgb(245,245,245)",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', marginTop:5}}
-                />
+      </View>
+
+      </View>
 
 
-
-
-
-
-  <View style={{flexDirection: 'row', paddingTop:10 }}>
-
-<Text style={{  color:"grey", paddingTop:10 }}>Enter DOB: </Text>
-  <DatePicker
-    style={{width:    '60%'}}
-    date={this.state.date}
-    mode="date"
-    placeholder="select date"
-    format="YYYY-MM-DD"
-    minDate="1900-01-01"
-    maxDate="2016-06-01"
-    confirmBtnText="Confirm"
-    cancelBtnText="Cancel"
-    customStyles={{
-      dateIcon: {
-        position: 'absolute',
-        left: 0,
-        top: 4,
-        marginLeft: 0
-      },
-      dateInput: {
-        marginLeft: 36
-      }
-      // ... You can check the source to find the other keys.
-    }}
-    onDateChange={(date) => {this.setState({date: date})}}
-  />
-
-  </View>
-
-                </View>
-
-    </View>
+      <Text style={{  color:"white",position:"absolute", top:height*0.15, width:"100%",textAlign:"center", fontSize:30}}>Register </Text>
+      <Button
+      style={{ position:"absolute", top:height*0.85, width:"40%",textAlign:"center" ,height:50}}
+        onPress={{ }}
+        title="Set Alarm"
+        color="#7fff00"
+      />
 
 
 
 
-
-
-     </View>
+      </View>
 
 
     );

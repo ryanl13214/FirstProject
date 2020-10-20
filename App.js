@@ -52,6 +52,12 @@ import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
 import   Symptommapper  from './src/symptomMapper';
 
+
+
+
+
+
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -110,6 +116,8 @@ export default class  App extends React.Component {
         stage:""
       };
 
+
+
   }
 
 
@@ -152,13 +160,13 @@ export default class  App extends React.Component {
     if (data !== null) {
       this.setState({ SpashScreenTimer: false });
     }
-
-    if(1==1){
+var a = SyncStorage.getItem("threepagedrdaisyintro");
+console.log("a "+JSON.stringify(a));
+    if(a != false){
       this.setState({ stage:"threepagedrdaisyintro" })
+      SyncStorage.set('threepagedrdaisyintro',false);
 
     }
-
-
 
 
   }
@@ -193,6 +201,7 @@ export default class  App extends React.Component {
 
 
   render() {
+    console.disableYellowBox = true;
     if (this.state.SpashScreenTimer)
     {
       return <Splash />;

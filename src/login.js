@@ -31,7 +31,7 @@ export default class  Login extends React.Component {
     var add2 = () => {
 
 
-       //check loging then 
+       //check loging then
 this.props.updateState()
 
     }

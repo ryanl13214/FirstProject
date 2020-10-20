@@ -190,10 +190,7 @@ this.handleupdate(a);
 
 
 
-
-
-    const data_url = (a) => AsyncStorage.getItem(a);
-
+ 
 
 
 
