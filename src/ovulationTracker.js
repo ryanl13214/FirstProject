@@ -295,11 +295,34 @@ export default class  Ovu extends React.Component {
                     visible = {this.state.isVisible}
                     onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
 
-                    <View style = {{width:"70%",height:  "50%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
+                    <View style = {{width:"70%",height:  "40%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
 
        <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
 
-       <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
+
+       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
+       <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
+       <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
+       <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
+       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
+       </View>
+       </TouchableWithoutFeedback>
+       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"14%",color:"black" }}> Log how heavy your flow is today. Log a sexual interaction. </Text>
+
+
+       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
+       <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
+       <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
+       <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
+       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
+       </View>
+       </TouchableWithoutFeedback>
+       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"63%",color:"black" }}> Log a sexual interaction.</Text>
+
+
+
+
+       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
 
 
                        <TouchableOpacity style={{position:"absolute" ,bottom:"2%",left:" 10%", width:50,height:  35}} onPress = {() => {this.setState({ isVisible:!this.state.isVisible})}} >
@@ -338,22 +361,22 @@ export default class  Ovu extends React.Component {
 
       }}
       markedDates={{
-        '2020-11-02': {selected: true , startingDay: true, color: 'red'},
-        '2020-11-03': { selected: true , color: 'red'},
-        '2020-11-04': {selected: true ,  color: 'red'},
-        '2020-11-05': {selected: true ,   color: 'red'},
-        '2020-11-06': {  selected: true , color: 'red'},
-        '2020-11-07': {  selected: true , color: 'red'},
-        '2020-11-08': {  selected: true , color: 'red'},
-        '2020-11-09': {  selected: true , color: 'red'},
-        '2020-11-10': {selected: true , endingDay: true, color: 'red'},
-        '2020-11-18': {selected: true , startingDay: true, color: 'green'},
-        '2020-11-19': {selected: true , color: 'green' },
-        '2020-11-20': {selected: true, color: 'green'},
-        '2020-11-21': {selected: true , color: 'green' },
-        '2020-11-22': {selected: true, color: 'blue'},
-        '2020-11-23': {selected: true , color: 'green' },
-        '2020-11-24': {selected: true, endingDay: true, color: 'green' },
+        '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
+        '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
+        '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
+        '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
+        '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
+        '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
+        '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
+        '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
+        '2020-11-10': {selected: true , endingDay: true, color: 'rgb(255, 231 , 106)'},
+        '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
+        '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
+        '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
+        '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
+        '2020-11-22': {selected: true, color: 'lightblue'},
+        '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
+        '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
 
 
 
