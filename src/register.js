@@ -4,6 +4,7 @@ import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableO
 import { Dimensions } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import DatePicker from 'react-native-datepicker'
+ 
 const { height } = Dimensions.get('window');
 //Import basic react native components
 import MultiSelect from 'react-native-multiple-select';

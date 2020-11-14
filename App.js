@@ -162,7 +162,8 @@ export default class  App extends React.Component {
     }
 var a = SyncStorage.getItem("threepagedrdaisyintro");
 console.log("a "+JSON.stringify(a));
-    if(a != false){
+if(1==1){
+  //  if(a != false){
       this.setState({ stage:"threepagedrdaisyintro" })
       SyncStorage.set('threepagedrdaisyintro',false);
 

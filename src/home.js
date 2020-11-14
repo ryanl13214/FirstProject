@@ -121,42 +121,42 @@ export default class  Home extends React.Component {
         </View>
         </ScrollView>
       </View>
-      <View>
       <Text  style={styles.text}>pcos symptoms</Text>
-      <ScrollView horizontal={true}>
-        <View>
-          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('ovu')} >
+
+      <View style={{flexDirection:"row"}}>
+
+        <View  >
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:5,marginTop:15}} onPress={() =>  this.props.navigation.navigate('ovu')} >
           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/ovulationicon.png')} />
           </TouchableOpacity>
-
-          <LinearGradient colors={['rgb(115,198,214)',   'rgb(115,198,214)' ]}   style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
+          <LinearGradient colors={['rgb(115,198,214)',   'rgb(115,198,214)' ]}   style={{width:width*0.3,marginLeft:5,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
             <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>♀️ health</Text>
           </LinearGradient>
-
-
         </View>
         <View>
-          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('bmi')} >
-          <Image style={{  width: '92%', height: '100%',marginLeft:"3%" }} source={require('../imgs/Icons/bmiicon.png')}  />
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:17,marginTop:15}} onPress={() =>  this.props.navigation.navigate('bmi')} >
+          <Image style={{  width: '92%', height: '100%' }} source={require('../imgs/Icons/bmiicon.png')}  />
           </TouchableOpacity>
-          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Track BMI</Text>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:10,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Track BMI</Text>
         </View>
         <View>
-          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('energy')} >
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:12,marginTop:15}} onPress={() =>  this.props.navigation.navigate('energy')} >
           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/batteryicon.png')}  />
           </TouchableOpacity>
-          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Energize</Text>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:5,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Energize</Text>
         </View>
-      </ScrollView>
       </View>
+
+
+
       <View>
       <Text  style={styles.text}>Take care of your mental health</Text>
-      <ScrollView horizontal={true}>
+        <View style={{flexDirection:"row"}}>
         <View>
-          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('mental')} >
+          <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:5,marginTop:15}} onPress={() =>  this.props.navigation.navigate('mental')} >
           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/moodicon.png')}  />
           </TouchableOpacity>
-          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Mood tracker</Text>
+          <Text  style={{width:width*0.3,marginLeft:5,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Mood tracker</Text>
         </View>
         <View>
           <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('medselect')} >
@@ -172,7 +172,7 @@ export default class  Home extends React.Component {
           </TouchableOpacity>
           <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Journal  today</Text>
         </View>
-      </ScrollView>
+      </View>
       </View>
 
 
@@ -184,7 +184,7 @@ export default class  Home extends React.Component {
 
       </TouchableOpacity>
 
- 
+
 
       </View>
 

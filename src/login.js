@@ -1,6 +1,7 @@
 /** @format */
 import React from 'react';
 import { TextInput, Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import { Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
 import fire from '../config/fire';

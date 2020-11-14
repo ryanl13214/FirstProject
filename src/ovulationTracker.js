@@ -1,299 +1,375 @@
 /** @format */
 import React from 'react';
-import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,TouchableWithoutFeedback ,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import {  Modal, Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,TouchableWithoutFeedback ,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import { Dimensions } from 'react-native';
-
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import LinearGradient from 'react-native-linear-gradient';
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
-
-import ProgressCircle from 'react-native-progress-circle'
-import {  Circle, Text as SvgText, TextPath, TSpan, G, Svg } from 'react-native-svg';
-
-
-
-
-
-
-function Circletext({ title,props,textbody,rotation }) {
-
-
-    return (
-      <View  style={{    position:"absolute" ,   top:"21%" ,left:"-4%"  }} >
-
-        <Svg position="absolute" height={width*0.9} width={width*0.9}
-          viewBox="0 0 320 320">
-          <G id="circle">
-            <Circle
-              r={(width*0.4)/2}
-              x={width*0.5}
-              y={width*0.5}
-              fill="none"
-              stroke="rgba(44,0,0,0)"
-              strokeWidth={0}
-              transform=  {rotation}
-            />
-          </G>
-          <SvgText fill="#000" fontSize="15">
-            <TextPath href="#circle">
-              <TSpan dx="0" dy={-20}>
-              {textbody}
-              </TSpan>
-            </TextPath>
-          </SvgText>
-        </Svg>
-      </View>
-    )
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+import Moment from 'moment';
+import DatePicker from 'react-native-datepicker'
 
 export default class  Ovu extends React.Component {
 
+  //red rgb(245,125,100)
+  //yellow rgb(255, 231 , 106)
+  //grey rgb(204,197,187 )
+  //green rgb(165,199.139 )
+  //blue rgb(112,204,203)
+
+
+
   constructor(props ) {
     super(props);
+        this.callFunc = this.callFunc.bind(this);
+    var names=[];
+    var numberofbubbles=28;
+    var fertileday=18;
+    var lengthOfBleeding=8;
+    var gapRedToGreen=5;
+    var fertileLength=10;
+    var gapGreenToRed=5;
 
-    var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
+    for(var i=1 ; i <=  numberofbubbles ; i++)
+    {
+      if(i ==  fertileday)
+      {
+        names.push([i,false,"rgb(112,204,203)",34]);
+      }
+      else if(i< lengthOfBleeding)
+      {
+        if(i<lengthOfBleeding/2){
+          names.push([i,false,"rgb(255, 231 , 106)",25+i]);
+        }
+        else if(i>=lengthOfBleeding/2){
+          names.push([i,false,"rgb(245,125,100)",25 +(lengthOfBleeding/1.8)-i]);
+        }
 
-    var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
-    var minus1 = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[2];
-    var minus2 = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[2];
-    var minus3 = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[2];
-    var minus4 = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[2];
-    var minus5 = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[2];
-    var minus6 = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[2];
-    var minus7 = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[2];
-    var pluss1 = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[2];
+      }
+      else if(i< lengthOfBleeding+ gapRedToGreen)
+      {
+        names.push([i,false,"rgb(204,197,187 )",20]);
+      }
+      else if(i< lengthOfBleeding+ gapRedToGreen+ fertileLength)
+      {
+        if( i<= fertileday){
+          names.push([i,false,"rgb(165,199,139 )",25+((i-gapRedToGreen-lengthOfBleeding))*2]);
+        }
+        else  if(i >= fertileday){
+          names.push([i,false,"rgb(165,199,139 )",25 +((fertileLength/2)-(i-fertileday))*2]);
+        }
+        //    names.push([i,false,"green",30]);
+      }
+      else
+      {
+        names.push([i,false,"rgb(204,197,187 )",20]);
+      }
+    }
+
+    //var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
+    //   var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
+    var startday ="2020-11-02";
+
+    var calenderData = [['2020-11-23',{ selected: true, selectedColor: "red"}],['2020-11-24',{ selected: true, selectedColor: "red"}]];
+
+    //var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate()  ;
+    // building the calender data
+    for(var i=1 ; i <=  numberofbubbles ; i++)
+    {
+      if(i ==  4)
+      {
+        var date = Moment(startday).add(i, 'day').format('YYYY-MM-DD');
+        var obj = { selected: true, selectedColor: "red"};
+        //  calenderData.push(date,obj);
+        var date = Moment(startday).add(3, 'day').format('YYYY-MM-DD');
+        //    calenderData.push(date,{ selected: true, selectedColor: "red"});
+        //      calenderData.push('2020-11-23',{ selected: true, selectedColor: "red"});
+
+      }
 
 
-    var todaysday = new Date(new Date().setDate(new Date().getDate(  ))).toString().split(' ')[0];
-    var minus1day = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[0];
-    var minus2day = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[0];
-    var minus3day = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[0];
-    var minus4day = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[0];
-    var minus5day = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[0];
-    var minus6day = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[0];
-    var minus7day = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[0];
-    var pluss1day = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[0];
+  //    console.log("json "+JSON.stringify(calenderData[0]));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     this.state = {
-      todaysnumber: todaysnumber,
-      minus1: minus1,
-      minus2: minus2,
-      minus3: minus3,
-      minus4: minus4,
-      minus5: minus5,
-      minus6: minus6,
-      minus7: minus7,      pluss1:pluss1,
-      thismonth:thismonth,
-      width: "0%",
-      heart:"0%",
-      label:"none",
-      sex:"none",
-      data:[0.4, 0.6, 0.8],
-      totalRotation:"0deg",
-      redrotation:"-100deg",
-      greenrotation:"50deg",
-      redlabel:"rotate(-170)",
-      greenlabel:"rotate( -40)",
-      resettingcontentrotation:"-50deg"// negative of the green rotrion pluss the negaitive of the total rotation
+      numberofbubbles:numberofbubbles,
+      lengthOfBleeding:lengthOfBleeding,
+      fertileLength:fertileLength,
+      gapRedToGreen:gapRedToGreen,
+      gapGreenToRed:gapGreenToRed,
+      fertileday:fertileday,
+      info:names,
+      cycleposition:7,
+      calenderData:calenderData,
+      desiredscreen:"circ",
+      hasData:false,
+      isVisible:false
     };
-    this.items = [
-      'Goa',
-      'Gujrat',
-      'Madhya Pradesh',
-      'Assam',
-      'Gujrat',
-      'Karnataka',
-      'Jharkhand',
-      'Himachal Pradesh',
-      'Manipur',
-      'Meghalaya',
-      'Mizoram',
-      'Uttarakhand',
-      'West Bengal',
-      'Tamil Nadu ',
-      'Punjab',
-      'Rajasthan',
-      'Bihar',
-      'Andhra Pradesh',
-      'Arunachal Pradesh',
-    ];
-  }
-  add = () => {
 
 
-    if( this.state.width=="31%"){
-      this.setState({
-        width:"63%",
-        label:"med"
-      });
-    }
-    if( this.state.width=="63%"){
-      this.setState({
-        width:"100%",
-        label:"high"
-      });
-    }
-    if( this.state.width=="100%"){
-      this.setState({
-        width:"0%",
-        label:"none"
-      });
-    }
-    if( this.state.width=="0%"){
-      this.setState({
-        width:"31%",
-        label:"low"
-      });
-    }
+
+
+
 
 
   }
-  add2 = () => {
 
 
-    if( this.state.heart=="0%"){
-      this.setState({
-        heart:"100%",
-        sex:"logged"
-      });
-    }
-    if( this.state.heart=="100%"){
-      this.setState({
-        heart:"0%",
-        sex:"none"
-      });
-    }
+
+  callFunc(){
+
+       this.setState({isVisible:!this.state.isVisible});
 
   }
+
+
+  getxsmall(i,offset){
+    var r =(width/2)+offset;
+    var gap = 360/28;
+
+    var  x = (width-30)/2  + r * Math.cos((i* gap) *  Math.PI / 180) ;
+  //  console.log("debugging date format- "+ new Date().getDate());
+
+
+    return x;
+
+  }
+  getysmall(i,offset)
+  {
+    var r =(width/2)+offset;
+    var gap = 360/28;
+
+    var  y = height/2 + r * Math.sin((i* gap) * Math.PI / 180);
+    return y;
+  }
+
+
+  getBorder(i){
+    if(i == this.state.cycleposition){ return 2;}else{return 0;}
+
+  }
+
+  getx(i){
+    var r =(width-60)/2;
+    var gap = 360/28;
+
+    var  x = (width-30)/2  + r * Math.cos((i* gap) *  Math.PI / 180) ;
+
+    return x;
+
+  }
+  gety(i){
+    var r =(width-60)/2;
+    var gap = 360/28;
+
+    var  y = height/2 + r * Math.sin((i* gap) * Math.PI / 180);
+    return y;
+  }
+
+  controlheights(inputName, desiredheight){
+    if(this.state.hasData == false && (inputName =="circ"|| inputName =="cal") )
+    {
+     return 5000;
+    }
+    if(  this.state.desiredscreen === inputName || (this.state.hasData == false && inputName =="data"))
+    {
+
+        return desiredheight;
+
+    }
+    else
+    {
+      return 5000;
+    }
+    //return  desiredheight;
+  }
+
+
+  swapScreens(){
+
+
+    if( this.state.desiredscreen == "circ"){
+      this.setState({desiredscreen:"cal"});
+
+    }
+
+    if( this.state.desiredscreen == "cal"){
+      this.setState({desiredscreen:"circ"});
+
+    }
+
+
+  }
+
+
+
+
+
+
 
   render() {
+    const vacation = {key:'vacation', color: 'red' };
+    const massage = {key:'massage', color: 'blue' };
+    const workout = {key:'workout', color: 'green'};
+
     return (
 
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={{width:"100%",height:"100%"}}>
 
 
       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/7.jpg')} />
+      <Text style={{ }}>{this.state.desiredscreen}</Text>
 
-      <Text style={[styles.textDark, {position:"absolute",top:"11%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-      <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"18%"  }}>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
-      </TouchableOpacity>
-      <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-      </LinearGradient>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-      </TouchableOpacity>
-      </View>
-
-
-      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
-      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-      <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
-      <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
-      </View>
-      </TouchableWithoutFeedback>
-      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"193%" ,left:"19%",color:"white" }}> {this.state.label} </Text>
-
-
-      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
-      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"13%" ,top:"83%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-      <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
-      <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
-      </View>
-      </TouchableWithoutFeedback>
-      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
-
-
-      <View style={{
-      position:"absolute" ,
-      top:"30%" ,
-      left:"13%",
-      transform: [{rotateZ: this.state.redrotation}],
-      }}>
-      <ProgressCircle
-      percent={30}
-      radius={(width*0.35)+16}
-      borderWidth={8}
-      color="rgba(244,0,0,255)"
-      shadowColor="rgba(244,186,186,255)"
-      bgColor="rgba(244,1,186,255)"
-      >
-      </ProgressCircle>
-      </View>
+      <View style={{  position:"absolute",top: this.controlheights("data",height * 0.4),left:width*0.25 ,width:width*0.8,height:height}}>
+      <Text style={{width:"60%",textAlign:"center",color:"white",fontSize:30 }}>NO DATA</Text>
+      <Text style={{width:"80%",textAlign:"center",marginLeft:"-10%",color:"white",fontSize:17 }}>Please enter the date of your last period.</Text>
+      <DatePicker
+      style={{width:    '60%' }}
+      date={this.state.date}
+      mode="date"
+      placeholder="select date"
+      format="YYYY-MM-DD"
+      minDate="1900-01-01"
+      maxDate="2025-06-01"
+      confirmBtnText="Confirm"
+      cancelBtnText="Cancel"
+      customStyles={{
+        dateIcon: {
+          position: 'absolute',
+          left: 0,
+          top: 4,
+          marginLeft: 0
+        },
+        dateInput: {
+          marginLeft: 36, backgroundColor:"white"
+        }
+        // ... You can check the source to find the other keys.
+      }}
+      onDateChange={(date) => {this.setState({date: date,hasData:true})}}
+      />
 
 
 
-      <View style={{
-      position:"absolute" ,
-      top:"30%" ,
-      left:"13%",
-       marginTop:8,
-       marginLeft:8,
-      transform: [{rotateZ: this.state.greenrotation}]
-      }}>
-        <ProgressCircle
-        percent={20}
-        radius={(width*0.35)+8}
-        borderWidth={8}
-        color="rgba(10,245,10,255)"
-        shadowColor="rgba(244,186,186,255)"
-        bgColor="rgba(244,186,186,255)"
-        >
 
-        <View style={{
-         transform: [{rotateZ: this.state.resettingcontentrotation}],
-         justifyContent:"flex-start"
-        }}>
-        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}>  </Text>
-        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
-        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
-        <Text  style={{   width:"32%",height:"13%",color:"white" , height:50}}> {this.state.sex} </Text>
+
+
 
       </View>
 
-        </ProgressCircle    >
-      </View>
-      <Image style={{   position:"absolute" ,   top:"32%" ,left:(width/2)-10,    width:20, height:12 }} source={require('../imgs/uparrow.png')} />
-      <Text  style={{  position:"absolute" ,   top:"39%"  , width:"100%", color:"white" ,textAlign: 'center',}}> 07 sep 2017</Text>
 
-      <Circletext textbody="Fertile period" rotation={this.state.greenlabel}/>
-      <Circletext textbody="Bleeding period" rotation={this.state.redlabel}/>
+      <View style={{  position:"absolute",top: this.controlheights("circ",0) ,width:width,height:height}}>
+
+
+
+      {this.state.info.map(details  => (
+        <View style={{ width:details[3]+1,height:details[3]+1,backgroundColor:details[2],position:"absolute",top:this.gety(details[0]),left:this.getx(details[0]),borderRadius:111111,borderColor:"white",borderWidth:this.getBorder(details[0])}}>
+        <Image style={{ width:details[3],height:details[3] }} source={require('../imgs/smallerButton.png')} />
+
+        </View>
+      ))}
+
+
+
+
+
+      <TouchableOpacity style={{ width:80,height:80,backgroundColor:"lightgrey",position:"absolute",top:(height-40)/2,left:(width-70)/2,borderRadius:111111}}  onPress={() => this.callFunc()}>
+      <Image style={{ width: '100%', height:'100%' }} source={require('../imgs/buttonoverlay.png')} />
+      <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
+      <Image style={{position:"absolute",top:this.getysmall(this.state.fertileday,-50),left:this.getxsmall(this.state.fertileday, 50) , width: 15, height:15 }} source={require('../imgs/buttonoverlay.png')} />
+      </TouchableOpacity>
+
+
+                <Modal animationType = {"slide"} transparent = {true}
+                    visible = {this.state.isVisible}
+                    onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
+
+                    <View style = {{width:"70%",height:  "50%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
+
+       <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
+
+       <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
+
+
+                       <TouchableOpacity style={{position:"absolute" ,bottom:"2%",left:" 10%", width:50,height:  35}} onPress = {() => {this.setState({ isVisible:!this.state.isVisible})}} >
+                       <Text style={{width:"100%",textAlign:"center"}}>Close</Text>
+                       </TouchableOpacity>
+
+                      </View>
+
+
+                </Modal>
+
+
+
+
+
+
+
+
+      <Text style={{position:"absolute",top:this.getysmall(this.state.fertileday,-80),left:this.getxsmall(this.state.fertileday,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"green",justifyContent: "center",alignItems:"center"}}>Peak Fertility</Text>
+      <Text style={{position:"absolute",top:this.getysmall(this.state.lengthOfBleeding-2,-80),left:this.getxsmall(this.state.lengthOfBleeding-2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"red",justifyContent: "center",alignItems:"center"}}>period</Text>
+      <Text style={{position:"absolute",top:this.getysmall(2,-80),left:this.getxsmall(2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"yellow",justifyContent: "center",alignItems:"center"}}>PMS</Text>
+  </View>
+
+
+      <TouchableOpacity style={{ width:40,height:45,backgroundColor:"white",position:"absolute",top: height*0.25  ,left: width*0.05,borderRadius:5  }} onPress={() => this.swapScreens()}>
+      <Image style={{ width: '100%', height:'100%' }} source={require('../imgs/cal.png')} />
+      </TouchableOpacity>
+
+      <View style={{  position:"absolute",top:50,width:"100%",height:"100%"}}>
+
+
+      <Calendar
+      style={{
+        position:"absolute",top:this.controlheights("cal", height*0.25) ,left:width*0.1 ,width:width*0.8,height:height*0.55,borderRadius:5
+
+
+      }}
+      markedDates={{
+        '2020-11-02': {selected: true , startingDay: true, color: 'red'},
+        '2020-11-03': { selected: true , color: 'red'},
+        '2020-11-04': {selected: true ,  color: 'red'},
+        '2020-11-05': {selected: true ,   color: 'red'},
+        '2020-11-06': {  selected: true , color: 'red'},
+        '2020-11-07': {  selected: true , color: 'red'},
+        '2020-11-08': {  selected: true , color: 'red'},
+        '2020-11-09': {  selected: true , color: 'red'},
+        '2020-11-10': {selected: true , endingDay: true, color: 'red'},
+        '2020-11-18': {selected: true , startingDay: true, color: 'green'},
+        '2020-11-19': {selected: true , color: 'green' },
+        '2020-11-20': {selected: true, color: 'green'},
+        '2020-11-21': {selected: true , color: 'green' },
+        '2020-11-22': {selected: true, color: 'blue'},
+        '2020-11-23': {selected: true , color: 'green' },
+        '2020-11-24': {selected: true, endingDay: true, color: 'green' },
+
+
+
+      }}
+      markingType={'period'}
+      />
+
+
+
+
+      </View>
+
+
+
+
+
 
 
       </SafeAreaView>
@@ -303,50 +379,8 @@ export default class  Ovu extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1, position: 'absolute', width: '100%', height: '100%', justifyContent: 'center'
-  },
-  text: {
-    fontSize: 20,
-    width:180,
-    height:30,
-    marginLeft:9,
-    borderRadius:15,
-    textAlign: 'center',
-    backgroundColor:"skyblue",
-  },
-  container: {
-    flex: 1,
-    alignItems: "flex-start",
-    justifyContent: "center"
-  },
 
 
-  button: {
-    flex: 1,
-    margin:10,
-    width:180,
-    height:220,
-    backgroundColor:"red",
-    flexDirection: 'row',
-    justifyContent: "center",
-    borderRadius:30,
-    overflow: 'hidden'
-  },
-
-
-  buttonWide: {
-    flex: 1,
-    margin:10,
-    marginLeft:"5%",
-    borderRadius:30,
-    width:"90%",
-    height:100,
-    backgroundColor:"red",
-    flexDirection: 'row',
-    justifyContent: "center",
-    overflow: 'hidden'
-  },
 
 
 
