@@ -93,7 +93,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 
     super(props);
     this.state = {
-      todaysGoals:   SyncStorage.get('todaysGoals'),
+      todaysGoals:    [  {  key:'React Nativfe',type:"walk",date:""},    {  key:'Rfeact Native',type:"water",date:""},    {  key:'Rfgeact Native',type:"journal",date:""}],//SyncStorage.get('todaysGoals'),
       historyGoals: [  {  key:'React Nativfe',type:"excersize",date:""},    {  key:'Rfeact Native',type:"excersize",date:""},    {  key:'Rfgeact Native',type:"excersize",date:""}],
 
 
@@ -177,23 +177,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 
 
 
-    <View   style={{ flexDirection:"row"}}>
 
-        <Text style={{ fontSize: 20,marginTop:15 ,  height:30  ,marginLeft:15,  color:"white"}}>History: </Text>
-
-          <Image style={{ marginLeft:"50%", width:50, height:50,resizeMode:"stretch" }} source={require('../imgs/cal.png')} />
-
-    </View>
-
-
-
-
-      <FlatList
-        data={this.state.historyGoals}
-        keyExtractor={item => item.key.toString()}
-        renderItem={({ item }) => <Item title={item.type} props={this.props} />}
-        style={{ fontSize: 15      ,width:"95%"  }}
-      />
 
 
 

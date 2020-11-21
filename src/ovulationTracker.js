@@ -8,6 +8,7 @@ const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
 import Moment from 'moment';
 import DatePicker from 'react-native-datepicker'
+import SyncStorage from 'sync-storage';
 
 export default class  Ovu extends React.Component {
 
@@ -17,11 +18,44 @@ export default class  Ovu extends React.Component {
   //green rgb(165,199.139 )
   //blue rgb(112,204,203)
 
+  formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
 
+      if (month.length < 2)
+          month = '0' + month;
+      if (day.length < 2)
+          day = '0' + day;
+
+      return [year, month, day].join('-');
+  }
+
+    formatDatevaraible(date,i) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + (d.getDate()+i),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
 
   constructor(props ) {
     super(props);
-        this.callFunc = this.callFunc.bind(this);
+
+    var dateoflast=   SyncStorage.get('dateOfLastPeriodBegining');
+    var tempbool=false;
+    if(dateoflast != undefined){
+      tempbool=true;
+    }
+
+    this.callFunc = this.callFunc.bind(this);
     var names=[];
     var numberofbubbles=28;
     var fertileday=18;
@@ -34,62 +68,65 @@ export default class  Ovu extends React.Component {
     {
       if(i ==  fertileday)
       {
-        names.push([i,false,"rgb(112,204,203)",34]);
+        names.push([i,false,"rgb(112,204,203)",34,this.formatDatevaraible(dateoflast,i)]);
       }
       else if(i< lengthOfBleeding)
       {
         if(i<lengthOfBleeding/2){
-          names.push([i,false,"rgb(255, 231 , 106)",25+i]);
+          names.push([i,false,"rgb(255, 231 , 106)",25+i,this.formatDatevaraible(dateoflast,i)]);
         }
         else if(i>=lengthOfBleeding/2){
-          names.push([i,false,"rgb(245,125,100)",25 +(lengthOfBleeding/1.8)-i]);
+          names.push([i,false,"rgb(245,125,100)",25 +(lengthOfBleeding/1.8)-i,this.formatDatevaraible(dateoflast,i)]);
         }
 
       }
       else if(i< lengthOfBleeding+ gapRedToGreen)
       {
-        names.push([i,false,"rgb(204,197,187 )",20]);
+        names.push([i,false,"rgb(204,197,187 )",20,this.formatDatevaraible(dateoflast,i)]);
       }
       else if(i< lengthOfBleeding+ gapRedToGreen+ fertileLength)
       {
         if( i<= fertileday){
-          names.push([i,false,"rgb(165,199,139 )",25+((i-gapRedToGreen-lengthOfBleeding))*2]);
+          names.push([i,false,"rgb(165,199,139 )",25+((i-gapRedToGreen-lengthOfBleeding))*2,this.formatDatevaraible(dateoflast,i)]);
         }
         else  if(i >= fertileday){
-          names.push([i,false,"rgb(165,199,139 )",25 +((fertileLength/2)-(i-fertileday))*2]);
+          names.push([i,false,"rgb(165,199,139 )",25 +((fertileLength/2)-(i-fertileday))*2,this.formatDatevaraible(dateoflast,i)]);
         }
         //    names.push([i,false,"green",30]);
       }
       else
       {
-        names.push([i,false,"rgb(204,197,187 )",20]);
+        names.push([i,false,"rgb(204,197,187 )",20,this.formatDatevaraible(dateoflast,i)]);
       }
     }
 
     //var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
     //   var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
-    var startday ="2020-11-02";
+    var startday =dateoflast;
+    var calenderData = {
+      '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
+      '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
+      '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
+      '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
+      '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
+      '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
+      '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
+      '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
+      '2020-11-10': {selected: true , endingDay: true, color: 'rgb(245,125,100)'},
+      '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
+      '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
+      '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
+      '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
+      '2020-11-22': {selected: true, color: 'lightblue'},
+      '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
+      '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
 
-    var calenderData = [['2020-11-23',{ selected: true, selectedColor: "red"}],['2020-11-24',{ selected: true, selectedColor: "red"}]];
+    };
+console.log(calenderData);
+  //  var calenderData = {'2020-11-23',{ selected: true, selectedColor: "red"} , '2020-11-24',{ selected: true, selectedColor: "red"}};
 
     //var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate()  ;
     // building the calender data
-    for(var i=1 ; i <=  numberofbubbles ; i++)
-    {
-      if(i ==  4)
-      {
-        var date = Moment(startday).add(i, 'day').format('YYYY-MM-DD');
-        var obj = { selected: true, selectedColor: "red"};
-        //  calenderData.push(date,obj);
-        var date = Moment(startday).add(3, 'day').format('YYYY-MM-DD');
-        //    calenderData.push(date,{ selected: true, selectedColor: "red"});
-        //      calenderData.push('2020-11-23',{ selected: true, selectedColor: "red"});
-
-      }
-
-
-  //    console.log("json "+JSON.stringify(calenderData[0]));
-    }
 
 
 
@@ -97,6 +134,11 @@ export default class  Ovu extends React.Component {
 
 
 
+
+
+
+
+    //  SyncStorage.set('dateOfLastPeriodBegining' ,date);
 
 
 
@@ -114,8 +156,13 @@ export default class  Ovu extends React.Component {
       cycleposition:7,
       calenderData:calenderData,
       desiredscreen:"circ",
-      hasData:false,
-      isVisible:false
+      hasData:tempbool,
+      isVisible:false,
+      width: "0%",
+      heart:"0%",
+      label:"none",
+      sex:"none",
+      startingDay:dateoflast
     };
 
 
@@ -130,7 +177,7 @@ export default class  Ovu extends React.Component {
 
   callFunc(){
 
-       this.setState({isVisible:!this.state.isVisible});
+    this.setState({isVisible:!this.state.isVisible});
 
   }
 
@@ -140,7 +187,7 @@ export default class  Ovu extends React.Component {
     var gap = 360/28;
 
     var  x = (width-30)/2  + r * Math.cos((i* gap) *  Math.PI / 180) ;
-  //  console.log("debugging date format- "+ new Date().getDate());
+    //  console.log("debugging date format- "+ new Date().getDate());
 
 
     return x;
@@ -181,12 +228,12 @@ export default class  Ovu extends React.Component {
   controlheights(inputName, desiredheight){
     if(this.state.hasData == false && (inputName =="circ"|| inputName =="cal") )
     {
-     return 5000;
+      return 5000;
     }
     if(  this.state.desiredscreen === inputName || (this.state.hasData == false && inputName =="data"))
     {
 
-        return desiredheight;
+      return desiredheight;
 
     }
     else
@@ -216,14 +263,95 @@ export default class  Ovu extends React.Component {
 
 
 
+  add = () => {
 
+
+    if( this.state.width=="31%"){
+      this.setState({
+        width:"63%",
+        label:"med"
+      });
+    }
+    if( this.state.width=="63%"){
+      this.setState({
+        width:"100%",
+        label:"high"
+      });
+    }
+    if( this.state.width=="100%"){
+      this.setState({
+        width:"0%",
+        label:"none"
+      });
+    }
+    if( this.state.width=="0%"){
+      this.setState({
+        width:"31%",
+        label:"low"
+      });
+    }
+
+
+  }
+  add2 = () => {
+
+
+    if( this.state.heart=="0%"){
+      this.setState({
+        heart:"100%",
+        sex:"logged"
+      });
+    }
+    if( this.state.heart=="100%"){
+      this.setState({
+        heart:"0%",
+        sex:"none"
+      });
+    }
+
+  }
+  updatedate(date){
+
+    console.log(date);
+
+    this.setState({date: date,hasData:true});
+
+    SyncStorage.set('dateOfLastPeriodBegining' ,date);
+
+  }
 
 
   render() {
     const vacation = {key:'vacation', color: 'red' };
     const massage = {key:'massage', color: 'blue' };
     const workout = {key:'workout', color: 'green'};
+const calenderDatac = {};
 
+for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
+{
+
+  if(i< this.state.lengthOfBleeding)
+  {
+    if(i<=this.state.lengthOfBleeding/2){
+      calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'yellow'};
+
+    }
+    else if(i>=this.state.lengthOfBleeding/2){
+      calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'red'};
+    }
+  }
+
+
+
+
+
+
+}
+
+
+
+
+;
     return (
 
       <SafeAreaView style={{width:"100%",height:"100%"}}>
@@ -257,7 +385,8 @@ export default class  Ovu extends React.Component {
         }
         // ... You can check the source to find the other keys.
       }}
-      onDateChange={(date) => {this.setState({date: date,hasData:true})}}
+      //    onDateChange={(date) => {this.setState({date: date,hasData:true})}}
+      onDateChange={(date) => this.updatedate(date)}
       />
 
 
@@ -291,48 +420,48 @@ export default class  Ovu extends React.Component {
       </TouchableOpacity>
 
 
-                <Modal animationType = {"slide"} transparent = {true}
-                    visible = {this.state.isVisible}
-                    onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
+      <Modal animationType = {"slide"} transparent = {true}
+      visible = {this.state.isVisible}
+      onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
 
-                    <View style = {{width:"70%",height:  "40%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
+      <View style = {{width:"70%",height:  "40%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
 
-       <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
-
-
-       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
-       <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-       <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
-       <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
-       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
-       </View>
-       </TouchableWithoutFeedback>
-       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"14%",color:"black" }}> Log how heavy your flow is today. Log a sexual interaction. </Text>
+      <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
 
 
-       <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
-       <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-       <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
-       <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
-       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
-       </View>
-       </TouchableWithoutFeedback>
-       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"63%",color:"black" }}> Log a sexual interaction.</Text>
+      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
+      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
+      <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
+      <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
+      </View>
+      </TouchableWithoutFeedback>
+      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"14%",color:"black" }}> Log how heavy your flow is today. Log a sexual interaction. </Text>
+
+
+      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
+      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
+      <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
+      <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
+      </View>
+      </TouchableWithoutFeedback>
+      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"63%",color:"black" }}> Log a sexual interaction.</Text>
 
 
 
 
-       <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
+      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
 
 
-                       <TouchableOpacity style={{position:"absolute" ,bottom:"2%",left:" 10%", width:50,height:  35}} onPress = {() => {this.setState({ isVisible:!this.state.isVisible})}} >
-                       <Text style={{width:"100%",textAlign:"center"}}>Close</Text>
-                       </TouchableOpacity>
+      <TouchableOpacity style={{position:"absolute" ,bottom:"2%",left:" 10%", width:50,height:  35}} onPress = {() => {this.setState({ isVisible:!this.state.isVisible})}} >
+      <Text style={{width:"100%",textAlign:"center"}}>Close</Text>
+      </TouchableOpacity>
 
-                      </View>
+      </View>
 
 
-                </Modal>
+      </Modal>
 
 
 
@@ -344,7 +473,7 @@ export default class  Ovu extends React.Component {
       <Text style={{position:"absolute",top:this.getysmall(this.state.fertileday,-80),left:this.getxsmall(this.state.fertileday,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"green",justifyContent: "center",alignItems:"center"}}>Peak Fertility</Text>
       <Text style={{position:"absolute",top:this.getysmall(this.state.lengthOfBleeding-2,-80),left:this.getxsmall(this.state.lengthOfBleeding-2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"red",justifyContent: "center",alignItems:"center"}}>period</Text>
       <Text style={{position:"absolute",top:this.getysmall(2,-80),left:this.getxsmall(2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"yellow",justifyContent: "center",alignItems:"center"}}>PMS</Text>
-  </View>
+      </View>
 
 
       <TouchableOpacity style={{ width:40,height:45,backgroundColor:"white",position:"absolute",top: height*0.25  ,left: width*0.05,borderRadius:5  }} onPress={() => this.swapScreens()}>
@@ -361,26 +490,26 @@ export default class  Ovu extends React.Component {
 
       }}
       markedDates={{
-        '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
-        '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
-        '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
-        '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
-        '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
-        '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
-        '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
-        '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
-        '2020-11-10': {selected: true , endingDay: true, color: 'rgb(255, 231 , 106)'},
-        '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
-        '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
-        '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
-        '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
-        '2020-11-22': {selected: true, color: 'lightblue'},
-        '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
-        '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
+  '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
+  '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
+  '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
+  '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
+  '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
+  '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
+  '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
+  '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
+  '2020-11-10': {selected: true , endingDay: true, color: 'rgb(245,125,100)'},
+  '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
+  '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
+  '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
+  '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
+  '2020-11-22': {selected: true, color: 'lightblue'},
+  '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
+  '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
 
 
 
-      }}
+}}
       markingType={'period'}
       />
 

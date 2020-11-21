@@ -207,22 +207,12 @@ if(1==1){
     {
       return <Splash />;
     }
-    if (this.state.stage == "drdaisyintro")
-    {
-    //  return <Drdaisy />;
-    }
+ 
     if (this.state.stage == "threepagedrdaisyintro")
     {
       return <DrdaisyThreePageIntro
         confirmThreePage={this.confirmThreePage}
         />;
-    }
-    if ( this.state.loggedin == false && this.state.registering==false)
-    {
-      return <Login
-      updateState={this.updateState}
-      updateState2={this.updateState2}
-       />;
     }
 
     if (this.state.registering==true)
