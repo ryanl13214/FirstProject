@@ -351,14 +351,19 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
 
-;
+
     return (
 
       <SafeAreaView style={{width:"100%",height:"100%"}}>
-
-
+ 
       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/7.jpg')} />
-      <Text style={{ }}>{this.state.desiredscreen}</Text>
+
+
+      <Image style={{ position:"absolute",justifyContent: "center",alignItems:"center",  width: width*0.94 , height: height*0.1,resizeMode: 'stretch',top:0 }} source={require('../imgs/buttonoverlay.png')} />
+
+
+
+
 
       <View style={{  position:"absolute",top: this.controlheights("data",height * 0.4),left:width*0.25 ,width:width*0.8,height:height}}>
       <Text style={{width:"60%",textAlign:"center",color:"white",fontSize:30 }}>NO DATA</Text>
@@ -489,27 +494,7 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
       }}
-      markedDates={{
-  '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
-  '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
-  '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
-  '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
-  '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
-  '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
-  '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
-  '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
-  '2020-11-10': {selected: true , endingDay: true, color: 'rgb(245,125,100)'},
-  '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
-  '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
-  '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
-  '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
-  '2020-11-22': {selected: true, color: 'lightblue'},
-  '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
-  '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
-
-
-
-}}
+      markedDates={calenderDatac}
       markingType={'period'}
       />
 
