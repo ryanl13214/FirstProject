@@ -3,7 +3,7 @@ import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity, FlatList,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
 
-import { Dimensions } from 'react-native'
+import { Dimensions } from 'react-native';
 import {
   LineChart,
   BarChart,

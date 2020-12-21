@@ -1,5 +1,5 @@
 
-const messages = [
+var messages = [
   {
     _id: 1,
     text: 'Welcome to chatting with Dr Daisy',
@@ -25,17 +25,7 @@ const messages = [
       name: 'Dr Daisy',
       avatar: require('../imgs/drdaisychaticon.jpg'),
     },
-  },   
-  {
-    _id: 7,
-    text: `Hello this is an example`,
-    createdAt: new Date(Date.UTC(2016, 5, 13, 17, 20, 0)),
-    user: {
-      _id: 1,
-      name: 'Dr Daisy',
-      avatar: require('../imgs/drdaisychaticon.jpg'),
-    },
-  },
+  }
 ];
 
 export default messages;

@@ -7,6 +7,14 @@ import { Dimensions } from 'react-native';
 const { height } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
 
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit'
 
 export default class  Water extends React.Component {
 
@@ -49,8 +57,10 @@ export default class  Water extends React.Component {
       thismonth:thismonth,
       name:"",
       distfromtop: 470,
-      label:0
-    };
+      label:0,
+backgroundImage:'../imgs/13.jpg',
+distanceLeft:"0%"
+          };
 
   }
 
@@ -72,6 +82,26 @@ export default class  Water extends React.Component {
 
 
 
+getHour=()=>{
+
+
+var todaysnumber= new Date( new Date().getDate() ).toString() ;
+
+
+
+
+console.log(todaysnumber);
+
+}
+
+
+
+
+
+
+
+
+
 
   pluss = () =>
   {
@@ -82,7 +112,7 @@ export default class  Water extends React.Component {
     if(this.state.distfromtop>0){
     this.setState({
       distfromtop: this.state.distfromtop -25,
- 
+
     });
 
 
@@ -94,8 +124,29 @@ export default class  Water extends React.Component {
     }
 }
 
+
+//this.getHour();
+
+
 }
 
+
+
+  changetograph = () =>
+  {
+
+    this.setState({
+      distanceLeft: "110%"
+    });
+}
+
+changetotracker = () =>
+{
+  this.setState({
+    distanceLeft: "0%"
+  });
+
+}
 
 minus = () =>
 {
@@ -114,7 +165,16 @@ minus = () =>
 }
 }
 
+getLeft(i)
+{
+if(i == 0 ){return this.state.distanceLeft;}
+if(i == 1 ){return this.state.distanceLeft;}
 
+
+
+
+
+}
 
 
   render() {
@@ -130,44 +190,53 @@ minus = () =>
 
 
 
-
     return (
 
-      <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
+      <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start",overflow:"hidden"}} >
 
+      <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/waterTrackerBackgroundForGraph.jpg')} />
 
-      <Image style={{position:"absolute" ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/13.jpg')} />
+      <Image style={{position:"absolute" ,left:this.getLeft(1),  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/13.jpg')} />
 
-      <Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+      <Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 18, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+
+      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
       </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
       </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
       </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
       </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
       </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
       </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph()  }} >
       <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
       </TouchableOpacity>
-      <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-      </LinearGradient>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
+
+
+      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
+          <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36  }}  >
+          <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+          </LinearGradient>
       </TouchableOpacity>
       </View>
+
+
+
+      <View  style={{position:"absolute" ,  width: '100%', height: '100%' ,left:this.getLeft(1),top:"0%" }} >
+
+
+
 
       <TouchableOpacity   style={{  position:"absolute",top:"25%",left:"55%",  width: 50, height: 50, flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.minus()  }} >
       <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
@@ -202,11 +271,70 @@ minus = () =>
       </View>
       <Text style={{color:"white",position:"absolute",top:"56%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
       <Text style={{color:"white",position:"absolute",top:"80%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
+
+
+
+</View>
+
+
+
+
+
+<LineChart
+
+data={{
+  labels: [
+    '1',
+    '2',
+    '3',
+    '4',
+    '1',
+    '2',
+    '3',
+    '4',
+    '1',
+    '2',
+    '3',
+    '4',
+    '1',
+    '2',
+    '3',
+    '4',
+
+  ],
+  datasets: [
+    {
+      data: [1, 2, 3, 4,4,4,4,4,4,4,5,6,7,8,9,0 ],
+      strokeWidth: 2,
+    },
+  ],
+}}
+width={Dimensions.get('window').width *0.8}
+height={220}
+chartConfig={{
+  backgroundColor: '#1cc910',
+  backgroundGradientFrom: '#eff3ff',
+  backgroundGradientTo: '#efefef',
+  decimalPlaces: 0,
+  color: (opacity = 1) => `rgba(0, 0, 199, ${opacity})`,
+  style: {
+    borderRadius: 16,
+  },
+}}
+style={{
+  marginVertical: 8,
+  borderRadius: 16,
+   marginLeft:"-20%"
+}}
+/>
+
+
+
+
+
+
+
       </View>
-
-
-
-
     );
   }
 }

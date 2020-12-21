@@ -44,6 +44,8 @@ export const renderSend = (props) => (
     }}
   >
 	<Text style={{  width: 44,marginTop:-3,  color: "rgb(255,255,255)",textAlign:"center"   }}>Send</Text>
+ 
+
 
   </Send>
 );

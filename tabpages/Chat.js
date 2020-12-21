@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+
 import { GiftedChat } from 'react-native-gifted-chat';
 import initialMessages from './messages';
 import { renderInputToolbar, renderActions, renderComposer, renderSend } from './InputToolbar';
@@ -12,6 +13,31 @@ import {
   renderCustomView,
 } from './MessageContainer';
 
+
+const getNewDrDaisyMessage = (newMessages) =>{
+console.log("a");
+var message =   {
+    _id: 2,
+    text: 'Hello i am Dr Daisy',
+    createdAt: new Date(Date.UTC(2016, 5, 12, 17, 20, 0)),
+    user: {
+      _id: 2,
+      name: 'Dr Daisy',
+      avatar: require('../imgs/drdaisychaticon.jpg'),
+    },
+  };
+
+
+
+  return message;
+}
+
+
+
+
+
+
+
 const Chats = () => {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
@@ -20,11 +46,22 @@ const Chats = () => {
     setMessages(initialMessages.reverse());
   }, []);
 
+
+
+
+
   const onSend = (newMessages = []) => {
     setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages));
+    var newmessage =  getNewDrDaisyMessage(newMessages);
+
+
+    setMessages((prevMessages) => GiftedChat.append(prevMessages,newmessage));
+
   };
 
   return (
+
+
     <GiftedChat
       messages={messages}
       text={text}
@@ -64,7 +101,11 @@ const Chats = () => {
         },
       ]}
     />
+
   );
+
+
+
 };
 
 export default Chats;
