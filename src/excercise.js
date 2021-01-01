@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, DeviceEventEmitter,StyleSheet ,Image,TouchableOpacity} from 'react-native';
 import { Dimensions } from 'react-native';
-
+import SyncStorage from 'sync-storage';
 const { height } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -38,6 +38,10 @@ export default class  Excer extends React.Component {
 			buttonsleft:"-10",
 			buttonstop:"-55"
 		}
+  var cal =  SyncStorage.get('caltracker');
+
+if(cal == undefined){cal = 0 ;}
+
 
 		var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
 
@@ -74,7 +78,8 @@ export default class  Excer extends React.Component {
 			minus7: minus7,
 			thismonth:thismonth,
 			mins:0,
-			cal:0,
+			cal:cal,
+
 
 
 
@@ -100,11 +105,11 @@ export default class  Excer extends React.Component {
 		});
 
 	}
-	onButtonPressweightmin2 = () => {
+	submit = () => {
 		this.setState({
-			cal: this.state.mins*50
+			cal: this.state.cal +this.state.mins*50
 		});
-
+    SyncStorage.set('caltracker',this.state.cal);
 	}
 
 
@@ -237,7 +242,7 @@ export default class  Excer extends React.Component {
 
 
 
-			<Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+			<Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 18, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
 			<View  style={{position:"absolute",  width: "75%",marginLeft:"10%" , flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
 			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus7}</Text>
@@ -303,7 +308,7 @@ export default class  Excer extends React.Component {
 			</View>
 
 
-			<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.onButtonPressweightmin2} >
+			<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.submit} >
 
 			</TouchableOpacity>
 

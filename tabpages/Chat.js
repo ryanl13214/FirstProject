@@ -18,8 +18,8 @@ const getNewDrDaisyMessage = (newMessages) =>{
 console.log("a");
 var message =   {
     _id: 2,
-    text: 'Hello i am Dr Daisy',
-    createdAt: new Date(Date.UTC(2016, 5, 12, 17, 20, 0)),
+    text: 'Server not connected',
+    createdAt: new Date(Date.UTC(2020, 5, 12, 17, 20, 0)),
     user: {
       _id: 2,
       name: 'Dr Daisy',

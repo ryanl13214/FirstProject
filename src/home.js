@@ -15,7 +15,7 @@ export default class  Home extends React.Component {
     super(props);
     //  console.log(height);
     this.state = {
-      username:"Jane Doe",
+      username:"Guest",
       timegreenting:"Afternoon"
     }
     var currenthour = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[4].split(':')[0];
@@ -23,6 +23,8 @@ export default class  Home extends React.Component {
       this.setState({timegreenting: "morning"});
     }if(currenthour >12 &&  currenthour <18){
       this.setState({timegreenting: "afternoon"});
+    }else{
+        this.setState({timegreenting: "evening"});
     }
 
 
@@ -54,7 +56,7 @@ export default class  Home extends React.Component {
 
 
       <View style={{ marginLeft:"4%", marginTop:"10%",flexDirection:"row" }} >
-      <TouchableOpacity style={{width:55,height:55}} onPress={() => this.props.navigation.navigate('food')} >
+      <TouchableOpacity style={{width:55,height:55}} >
       <Image style={{  width: '100%', height: '100%', borderRadius:27 }} source={require('../imgs/Icons/placeholdericonhomepage.png')} />
       </TouchableOpacity>
       <View style={{   }} >
@@ -69,26 +71,26 @@ export default class  Home extends React.Component {
 
 
           <View style={{  marginLeft:"5%",  width: '65%' }} >
-              <Text  style={{fontSize:12,color:"grey"}}>your Daily challeneges</Text>
-              <Text  style={{fontSize:20,color:"black"}}>Discover a healthier you</Text>
-              <Text  style={{position:"absolute",bottom:10,fontSize:20,color:"blue"}}>Get started></Text>
+              <Text  style={{fontSize:12,color:"grey"}}>Your Daily Challenges</Text>
+              <Text  style={{fontSize:20,color:"black"}}>Discover a Healthier You</Text>
+              <Text  style={{position:"absolute",bottom:10,fontSize:20,color:"blue"}}>Get Started></Text>
           </View>
 
           <Image style={{  width: '30%', height: '100%', borderRadius:27 }} source={require('../imgs/targetgif.gif')} />
       </TouchableOpacity>
 
-      <Text  style={{fontSize:20,color:"black", marginTop:"10%", marginLeft:"10%"}}>How can i help you today?</Text>
+      <Text  style={{fontSize:20,color:"black", marginTop:"10%", marginLeft:"10%"}}>How Can I Help You Today?</Text>
 
       <TouchableOpacity style={{ marginLeft:"5%", marginTop:"6%" ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   ,backgroundColor:"rgb(115,198,214)",width: width*0.9,  borderRadius:15,  borderBottomRightRadius:5 , height: height*0.10}} onPress={() => this.props.navigation.navigate('Chat')}>
 
-          <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black"}}>Start a conversation with Dr Daisy</Text>
-          <Text  style={{marginTop:10,marginLeft:10,fontSize:15,color:"white"}}>e.g. How does PCOS cause weight gain?</Text>
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black"}}>Start A Conversation With Dr Daisy</Text>
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:15,color:"white"}}>e.g. How Does PCOS Cause Weight Gain?</Text>
 
 
       </TouchableOpacity>
 
       <View style={{  marginTop:"10%" }}>
-        <Text  style={styles.text}>track your general health</Text>
+        <Text  style={styles.text}>Track Your General Health</Text>
         <ScrollView  style={{ flexDirection:"row"}}  horizontal={true}>
           <View>
             <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}}  onPress={() =>  this.props.navigation.navigate('water')} >
@@ -180,7 +182,7 @@ export default class  Home extends React.Component {
       <Text  style={styles.text}>Skin care</Text>
       <TouchableOpacity style={styles.buttonWide}      onPress={() =>  this.props.navigation.navigate('skin')} >
 
-      <Image style={{  width: '70%', height: '100%',resizeMode:"stretch" }} source={require('../imgs/Icons/skinicon.png')} />
+      <Image style={{  width: '65%', height: '100%',marginLeft:"2%"  }} source={require('../imgs/Icons/skinicon.png')} />
 
       </TouchableOpacity>
 

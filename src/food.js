@@ -78,7 +78,7 @@ console.log(a+"f");
 
 
 
-        <View  style={{ position:"absolute",top:"25%",left:"25%", width: widthcirc, height: widthcirc,backgroundColor:"white",borderRadius:widthcirc/2 }} >
+        <View  style={{ position:"absolute",top:"20%",left:"25%", width: widthcirc, height: widthcirc,backgroundColor:"white",borderRadius:widthcirc/2 }} >
           <View  style={{  width: '96%',backgroundColor:"grey", height: '96%',marginLeft:"2%",marginTop:"2%" ,borderRadius:widthcirc/2 }} >
             <View  style={{ justifyContent: "center",alignItems:"center", width: '98%',backgroundColor:"white", height: '98%',marginLeft:"1%",marginTop:"1%" ,borderRadius:widthcirc/2 }} >
 
@@ -93,7 +93,7 @@ console.log(a+"f");
       </View>
 
 
-       <Image style={{position:"absolute",top:"33%",left:"3%", justifyContent: "center", width: widthcirc*0.28, height: "25%",alignItems:"center",  resizeMode: 'stretch',borderRadius: 7}} source={require('../imgs/labels.png')} />
+       <Image style={{position:"absolute",top:"25%",left:"3%", justifyContent: "center", width: widthcirc*0.28, height: "25%",alignItems:"center",  resizeMode: 'stretch',borderRadius: 7}} source={require('../imgs/labels.png')} />
 
 <View  style={{ position:"absolute",top:"66%",left:"5%" ,height: 95,width:75,backgroundColor:"white" ,borderRadius: 7   }} >
        <TouchableOpacity    style={{    }}   onPress={() =>  this.props.navigation.navigate('foodlist')} >
