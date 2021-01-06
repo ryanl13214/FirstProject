@@ -13,10 +13,20 @@ export default class  Home extends React.Component {
 
   constructor(props ) {
     super(props);
+var textSize;
+if(height< 801){
+textSize=16;
+}else{
+textSize=20;
+}
+
+
+
     //  console.log(height);
     this.state = {
       username:"Guest",
-      timegreenting:"Afternoon"
+      timegreenting:"Afternoon",
+      textScale:textSize
     }
     var currenthour = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[4].split(':')[0];
     if(currenthour <12 ){
@@ -67,12 +77,12 @@ export default class  Home extends React.Component {
 
 
 
-      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"10%",flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12}}  onPress={() =>  this.props.navigation.navigate('goals')}>
+      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"10%",flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:100}}  onPress={() =>  this.props.navigation.navigate('goals')}>
 
 
           <View style={{  marginLeft:"5%",  width: '65%' }} >
               <Text  style={{fontSize:12,color:"grey"}}>Your Daily Challenges</Text>
-              <Text  style={{fontSize:20,color:"black"}}>Discover a Healthier You</Text>
+              <Text  style={{fontSize:this.state.textScale,color:"black"}}>Discover a Healthier You</Text>
               <Text  style={{position:"absolute",bottom:10,fontSize:20,color:"blue"}}>Get Started></Text>
           </View>
 
@@ -81,10 +91,10 @@ export default class  Home extends React.Component {
 
       <Text  style={{fontSize:20,color:"black", marginTop:"10%", marginLeft:"10%"}}>How Can I Help You Today?</Text>
 
-      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"6%" ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   ,backgroundColor:"rgb(115,198,214)",width: width*0.9,  borderRadius:15,  borderBottomRightRadius:5 , height: height*0.10}} onPress={() => this.props.navigation.navigate('Chat')}>
+      <TouchableOpacity style={{ marginLeft:"5%", marginTop:"6%" ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   ,backgroundColor:"rgb(115,198,214)",width: width*0.9,  borderRadius:15,  borderBottomRightRadius:5 , height: height*0.10 ,minHeight:95}} onPress={() => this.props.navigation.navigate('Chat')}>
 
-          <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black"}}>Start A Conversation With Dr Daisy</Text>
-          <Text  style={{marginTop:10,marginLeft:10,fontSize:15,color:"white"}}>e.g. How Does PCOS Cause Weight Gain?</Text>
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:this.state.textScale,color:"black"}}>Start A Conversation With Dr Daisy</Text>
+          <Text  style={{marginTop:10,marginLeft:10,fontSize:15,color:"white",position:"absolute",bottom:10}}>e.g. How Does PCOS Cause Weight Gain?</Text>
 
 
       </TouchableOpacity>
@@ -123,7 +133,7 @@ export default class  Home extends React.Component {
         </View>
         </ScrollView>
       </View>
-      <Text  style={styles.text}>pcos symptoms</Text>
+      <Text  style={styles.text}>PCOS symptoms</Text>
 
       <View style={{flexDirection:"row"}}>
 
@@ -132,7 +142,7 @@ export default class  Home extends React.Component {
           <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/ovulationicon.png')} />
           </TouchableOpacity>
           <LinearGradient colors={['rgb(115,198,214)',   'rgb(115,198,214)' ]}   style={{width:width*0.3,marginLeft:5,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
-            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>♀️ health</Text>
+            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>Ovulation</Text>
           </LinearGradient>
         </View>
         <View>

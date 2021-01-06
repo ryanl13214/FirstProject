@@ -21,10 +21,11 @@ import
     Dimensions
 }
 from 'react-native';
-const
-{
-    height
-} = Dimensions.get('window');
+const { width,height } = Dimensions.get('window');
+
+
+
+
 import LinearGradient from 'react-native-linear-gradient';
 import
 {
@@ -42,6 +43,13 @@ export default class Water extends React.Component
         constructor(props)
         {
             super(props);
+            var textSize;
+            if(height< 801){
+            textSize=16;
+            }else{
+            textSize=20;
+            }
+
             var a =       SyncStorage.get('waterTrackerToday');
             console.log(a);
             var b =  SyncStorage.get('waterTrackerTodayDistanceFromTop');
@@ -91,7 +99,8 @@ export default class Water extends React.Component
                 label: a,
                 backgroundImage: '../imgs/13.jpg',
                 distanceLeft: "0%",
-                dayMinus:0
+                dayMinus:0,
+                textScale:textSize
             };
         }
 
@@ -243,32 +252,32 @@ export default class Water extends React.Component
               <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
 
               <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
               </TouchableOpacity>
               <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-6)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
               </TouchableOpacity>
               <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-5)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
               </TouchableOpacity>
               <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-4)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
               </TouchableOpacity>
               <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-3)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
               </TouchableOpacity>
               <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-2)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
               </TouchableOpacity>
               <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-1)  }} >
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
               </TouchableOpacity>
 
 
               <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
-                  <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36  }}  >
-                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-                  </LinearGradient>
+
+                  <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center' , marginTop: 3,width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+
               </TouchableOpacity>
               </View>
 
@@ -310,8 +319,8 @@ export default class Water extends React.Component
               <Image style={{ width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/waterbody.png')} />
 
               </View>
-              <Text style={{color:"white",position:"absolute",top:"56%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
-              <Text style={{color:"white",position:"absolute",top:"80%",left:"70%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
+              <Text style={{color:"white",position:"absolute",top:"56%",left:"70%", fontSize: 21, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
+              <Text style={{color:"white",position:"absolute",top:"80%",left:"70%", fontSize: 21, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
 
 
 
@@ -368,7 +377,7 @@ export default class Water extends React.Component
         />
 
 
-        <Text style={{color:"white",position:"absolute",top:"25%",      left:this.getLeft(3), fontSize: 35, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"25%",  height: 46}}>Daily Graph</Text>
+        <Text style={{color:"white",position:"absolute",top:"25%",      left:this.getLeft(3), fontSize: 30, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"25%",  height: 46}}>Daily Graph</Text>
 
 
         <Text style={{color:"white",position:"absolute",top:"85%",      left:this.getLeft(3), fontSize: 18, fontWeight: "50"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"3%",  height: 96}}>It is best to keep water intake consistent over the day. this will lead to better overall health and a more focused mind.</Text>

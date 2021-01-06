@@ -23,7 +23,7 @@ function Item({ title,props}) {
 if(title =="excersize"){
   return (
     <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"red",marginLeft:"10%" ,marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
-      <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"red",   height:30    }}>Burn those calories! </Text>
+      <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"rgb(185,15,8)",   height:30    }}>Burn those calories! </Text>
       <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>you need to get 60 minutes of excersize everyday   </Text>
       <View style={{ width:"100%",flexDirection:"row"}}>
         <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row", flexDirection:"row" }}>
@@ -36,8 +36,8 @@ if(title =="excersize"){
 }
 if(title =="walk"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"red",marginLeft:"10%" ,marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
-      <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"red",   height:30    }}>Burn those calories! </Text>
+    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(185,15,8)",marginLeft:"10%" ,marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
+      <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"rgb(185,15,8)",   height:30    }}>Burn those calories! </Text>
       <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>you need to get 60 minutes of excersize everyday   </Text>
       <View style={{ width:"100%",flexDirection:"row"}}>
         <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row", flexDirection:"row" }}>
@@ -50,8 +50,8 @@ if(title =="walk"){
 }
 if(title =="water"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"orange",marginLeft:"10%" ,marginTop:15 ,backgroundColor:"rgb(245,245,245)"  }}>
-      <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30 ,borderBottomWidth:2,borderColor:"orange"   }}> Get hydrated! </Text>
+    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(212,184,16)",marginLeft:"10%" ,marginTop:15 ,backgroundColor:"rgb(245,245,245)"  }}>
+      <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30 ,borderBottomWidth:2,borderColor:"rgb(212,184,16)"   }}> Get hydrated! </Text>
       <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>your body needs 2,000ml of water or 8 glasses.  </Text>
       <View style={{ width:"100%",flexDirection:"row"}}>
         <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row",borderRadius:5,borderWidth:1,borderColor:"black",flexDirection:"row" }}>
@@ -68,8 +68,8 @@ if(title =="water"){
 }
 if(title =="journal"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"green",marginLeft:"10%",marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
-      <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30,borderBottomWidth:2,borderColor:"green"   }}>Write that Down!</Text>
+    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(34,153,38)",marginLeft:"10%",marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
+      <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30,borderBottomWidth:2,borderColor:"rgb(34,153,38)"   }}>Write that Down!</Text>
       <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>write 250 words in your journal throughout the day  </Text>
       <Text style={{ width:"100%",textAlign:"center", fontSize: 25,   height:30   ,marginLeft:3   ,marginTop:7,  color:"grey"}}>250/250</Text>
     </View>
