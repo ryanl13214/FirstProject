@@ -17,32 +17,24 @@ import SyncStorage from 'sync-storage';
 
 
 function Item({ title,props}) {
-
-
-
-if(title =="excersize"){
+if(title =="gap"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"red",marginLeft:"10%" ,marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
-      <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"rgb(185,15,8)",   height:30    }}>Burn those calories! </Text>
-      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>you need to get 60 minutes of excersize everyday   </Text>
-      <View style={{ width:"100%",flexDirection:"row"}}>
-        <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row", flexDirection:"row" }}>
-          <Text style={{ fontSize: 25,   height:35  ,marginLeft:15,  color:"grey"}}>🔥🔥🔥🔥🔥🔥</Text>
-          <Text style={{ fontSize: 15,   height:30   ,marginLeft:3   ,marginTop:7,  color:"grey"}}>60/60</Text>
-        </View>
-      </View>
-    </View>
-  );
+  <View style={{ width:"80%", height:100  }}>
+
+  </View>
+);
+
 }
+
 if(title =="walk"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(185,15,8)",marginLeft:"10%" ,marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
+    <View style={{ width:"80%", height:height*0.17,minHeight:120,borderRadius:15,borderWidth:2,borderColor:"rgb(185,15,8)",marginLeft:"10%" ,marginTop:30  ,backgroundColor:"rgb(245,245,245)"  }}>
       <Text style={{  width:"100%",textAlign:"center",fontSize: 15,borderBottomWidth:2,borderColor:"rgb(185,15,8)",   height:30    }}>Burn those calories! </Text>
-      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>you need to get 60 minutes of excersize everyday   </Text>
+      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>You need to get 60 minutes of exercise everyday   </Text>
       <View style={{ width:"100%",flexDirection:"row"}}>
         <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row", flexDirection:"row" }}>
-          <Text style={{ fontSize: 25,   height:35  ,marginLeft:15,  color:"grey"}}>🔥🔥🔥🔥🔥🔥</Text>
-          <Text style={{ fontSize: 15,   height:30   ,marginLeft:3   ,marginTop:7,  color:"grey"}}>60/60</Text>
+          <Text style={{ fontSize: 25,   height:35  ,marginLeft:15,  color:"grey"}}>🔥🔥🔥🔥🔥</Text>
+          <Text style={{ fontSize: 15,   height:30   ,marginLeft:3   ,marginTop:7,  color:"grey"}}>0/60</Text>
         </View>
       </View>
     </View>
@@ -50,10 +42,10 @@ if(title =="walk"){
 }
 if(title =="water"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(212,184,16)",marginLeft:"10%" ,marginTop:15 ,backgroundColor:"rgb(245,245,245)"  }}>
+    <View style={{ width:"80%", height:height*0.17,minHeight:120,borderRadius:15,borderWidth:2,borderColor:"rgb(212,184,16)",marginLeft:"10%" ,marginTop:30 ,backgroundColor:"rgb(245,245,245)"  }}>
       <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30 ,borderBottomWidth:2,borderColor:"rgb(212,184,16)"   }}> Get hydrated! </Text>
-      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>your body needs 2,000ml of water or 8 glasses.  </Text>
-      <View style={{ width:"100%",flexDirection:"row"}}>
+      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>Your body needs 2,000 ml of water or 8 glasses.  </Text>
+      <View style={{ width:"90%",flexDirection:"row"}}>
         <View style={{ width:"80%",marginLeft:"5%",height:21 ,flexDirection:"row",borderRadius:5,borderWidth:1,borderColor:"black",flexDirection:"row" }}>
           <View style={{ width:"50%",height:19 ,flexDirection:"row",borderLeftRadius:5 ,backgroundColor:"rgb(115,198,214)"}}>
             <Text style={{width:"100%",textAlign:"center", fontSize: 14,   height:30  ,  color:"black"}}>1000ml</Text>
@@ -68,9 +60,9 @@ if(title =="water"){
 }
 if(title =="journal"){
   return (
-    <View style={{ width:"80%", height:height*0.17,borderRadius:15,borderWidth:2,borderColor:"rgb(34,153,38)",marginLeft:"10%",marginTop:15  ,backgroundColor:"rgb(245,245,245)"  }}>
+    <View style={{ width:"80%", height:height*0.17,minHeight:120,borderRadius:15,borderWidth:2,borderColor:"rgb(34,153,38)",marginLeft:"10%",marginTop:30  ,backgroundColor:"rgb(245,245,245)"  }}>
       <Text style={{  width:"100%",textAlign:"center",fontSize: 15 , height:30,borderBottomWidth:2,borderColor:"rgb(34,153,38)"   }}>Write that Down!</Text>
-      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>write 250 words in your journal throughout the day  </Text>
+      <Text style={{ fontSize: 15 , height:40 ,marginLeft:3 ,marginRight:1  ,marginBottom: 5 }}>Write 250 words in your journal throughout the day  </Text>
       <Text style={{ width:"100%",textAlign:"center", fontSize: 25,   height:30   ,marginLeft:3   ,marginTop:7,  color:"grey"}}>250/250</Text>
     </View>
   );
@@ -93,7 +85,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 
     super(props);
     this.state = {
-      todaysGoals:    [  {  key:'React Nativfe',type:"walk",date:""},    {  key:'Rfeact Native',type:"water",date:""},    {  key:'Rfgeact Native',type:"journal",date:""}],//SyncStorage.get('todaysGoals'),
+      todaysGoals:    [  {  key:'React Nativfe',type:"walk",date:""},    {  key:'Rfeact Native',type:"water",date:""},    {  key:'Rfgeact Native',type:"journal",date:""},    {  key:'Rfgeact Nafftive',type:"gap",date:""}],//SyncStorage.get('todaysGoals'),
       historyGoals: [  {  key:'React Nativfe',type:"excersize",date:""},    {  key:'Rfeact Native',type:"excersize",date:""},    {  key:'Rfgeact Native',type:"excersize",date:""}],
 
 
@@ -148,7 +140,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 
   render() {
     return (
-<View  style={{ width:width, height:height*1.2 ,backgroundColor:"rgb(115,198,214)" }}>
+<View  style={{ width:width, height:height*1 ,backgroundColor:"rgb(115,198,214)" }}>
 
   <Image style={{positon:"absolute",top:0,  width:"100%", height:50,resizeMode:"stretch" }} source={require('../imgs/header.jpg')} />
 
@@ -171,7 +163,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
       data={this.state.todaysGoals}
       keyExtractor={item => item.key.toString()}
       renderItem={({ item }) => <Item title={item.type} props={this.props} />}
-      style={{ fontSize: 15    ,width:"95%" ,marginLeft:3 ,marginRight:1,height:height*0.6 }}
+      style={{ fontSize: 15    ,width:"95%" ,marginLeft:3 ,marginTop:-30 ,marginRight:1,height:height*1  }}
     />
 
 

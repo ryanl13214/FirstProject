@@ -53,10 +53,7 @@ const Chats = () => {
   const onSend = (newMessages = []) => {
     setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages));
     var newmessage =  getNewDrDaisyMessage(newMessages);
-
-
     setMessages((prevMessages) => GiftedChat.append(prevMessages,newmessage));
-
   };
 
   return (

@@ -75,7 +75,9 @@ textSize=20;
       </View>
       </View>
 
-
+      <TouchableOpacity style={{position:"absolute",Alignitems:"center",justifyContent:"center",textAlign:"center",width:75,height:45,top:height * 0.07 , right:15,backgroundColor:"rgb(210,210,210)",borderRadius:8}}    >
+    <Text  style={{color:"white",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>LOG IN</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={{ marginLeft:"5%", marginTop:"10%",flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:100}}  onPress={() =>  this.props.navigation.navigate('goals')}>
 
@@ -129,10 +131,18 @@ textSize=20;
             <Image style={{  width: '100%', height: '100%' }} source={require('../imgs/Icons/sleepicon.png')} />
           </TouchableOpacity>
 
-          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Sleep right</Text>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Sleep Right</Text>
         </View>
+
+
+        <View  style={{width:width*0.08}} >
+
+            </View>
+
         </ScrollView>
       </View>
+
+
       <Text  style={styles.text}>PCOS symptoms</Text>
 
       <View style={{flexDirection:"row"}}>
@@ -174,15 +184,15 @@ textSize=20;
           <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('medselect')} >
           <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/Icons/medicon.png')}  />
           </TouchableOpacity>
-          <LinearGradient colors={['rgb(1,240,240)', 'rgb(240,240,1)', 'rgb(240,1,240)' ]}   style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
-            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>Relax</Text>
-          </LinearGradient>
+          <View     style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>
+            <Text  style={{  fontSize:18, textAlign:"center",color:"black"}}>Meditate</Text>
+          </View>
         </View>
         <View>
           <TouchableOpacity style={{width:width*0.3, height:  width*0.2,marginLeft:15,marginTop:15}} onPress={() =>  this.props.navigation.navigate('jornal')} >
           <Image style={{  width: '92%', height: '100%' ,marginLeft:"3%"}} source={require('../imgs/Icons/jornalicon.png')} />
           </TouchableOpacity>
-          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Journal  today</Text>
+          <Text  style={{width:width*0.3,marginLeft:15,borderRadius:15,backgroundColor:"rgb(115,198,214)",height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Journal</Text>
         </View>
       </View>
       </View>
@@ -204,7 +214,7 @@ textSize=20;
 
 
 
-            <TouchableOpacity style={{ marginLeft:"5%",flexDirection:"row", marginTop:"6%",shadowColor: "#000",  shadowOffset: {  	width: 0, 	height: 4,  },   shadowOpacity: 0.32, shadowRadius: 5.46,  elevation: 9,  marginBottom:"16%"  ,backgroundColor:"rgb(200,200,200)",width: width*0.9,  borderRadius:15 , height: height*0.10}} onPress={() => this.props.navigation.navigate('trophy')}>
+            <TouchableOpacity style={{ marginLeft:"5%",flexDirection:"row", marginTop:"6%",minHeight:80 ,shadowColor: "#000",  shadowOffset: {  	width: 0, 	height: 4,  },   shadowOpacity: 0.32, shadowRadius: 5.46,  elevation: 9,  marginBottom:"16%"  ,backgroundColor:"rgb(200,200,200)",width: width*0.9,  borderRadius:15 , height: height*0.10}} onPress={() => this.props.navigation.navigate('trophy')}>
               <Text  style={{marginTop:10,marginLeft:10,fontSize:18,color:"black",width:"60%"}}>Trophy cabinet</Text>
                 <Image style={{    width: width*0.20, height: width*0.30,resizeMode: 'stretch' }} source={require('../imgs/silvermedal.png')} />
                 <Image style={{    width: width*0.20, height: width*0.30,resizeMode: 'stretch' }} source={require('../imgs/goldmedal.png')} />
@@ -216,6 +226,7 @@ shadowOffset: {
 	width: 0,
 	height: 4,
 },
+minHeight:80,
 shadowOpacity: 0.32,
 shadowRadius: 5.46,
 elevation: 9  ,

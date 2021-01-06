@@ -50,17 +50,17 @@ export default class Water extends React.Component
             textSize=20;
             }
 
-            var a =       SyncStorage.get('waterTrackerToday');
+            var a =      parseInt( SyncStorage.get('waterTrackerToday'));
             console.log(a);
-            var b =  SyncStorage.get('waterTrackerTodayDistanceFromTop');
+            var b =   parseInt( SyncStorage.get('waterTrackerTodayDistanceFromTop'));
             if(b == undefined)
             {
                b = 470;
             }
             var day =  SyncStorage.get('waterdaytracker');
             if(day != new Date(new Date().setDate(new Date().getDate())).toString() || day == undefined){
-          //  a =0;
-            //b = 470;
+        a =0;
+            b = 470;
 
             }
             var thismonth = new Date(new Date().setDate(new Date().getDate() - 1)).toString().split(' ')[1];
