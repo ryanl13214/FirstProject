@@ -19,6 +19,7 @@ import   DrdaisyThreePageIntro   from './src/DrdaisyThreePageIntro';
 import   Test   from './storage/home';
 /////////////////////////////////////
 import   Chat   from './tabpages/Chat';
+import   ChatV2   from './tabpages/chat2';
 import   Account   from './tabpages/account';
 import   Graphing   from './tabpages/graph';
 import   Social   from './tabpages/social';
@@ -91,6 +92,7 @@ function DefaultApp() {
         <Stack.Screen name="food" component={Food} />
         <Stack.Screen name="foodlist" component={Foodlist} />
         <Stack.Screen name="storage" component={Storage} />
+        <Stack.Screen name="chat" component={ChatV2}  options={{ help: '' }} />
       </Stack.Navigator>
   );
 }
@@ -285,7 +287,7 @@ if(1==1){
 
            <Tab.Screen
            name="Chat"
-           component={Chat}
+           component={ChatV2}
 
            options={{
              title: 'Chat',
