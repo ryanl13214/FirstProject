@@ -27,7 +27,10 @@ medal:"bronze"
     return (
     <View style={{  width: width, height: height   }}>
       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: width, height: height-70,resizeMode: 'stretch' }} source={require('../imgs/17.jpg')} />
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
+			</TouchableOpacity>
 
       <View style={{width:width*0.60 ,justifyContent: "center",alignItems:"center", height:  width*0.70,marginLeft:width*0.2 ,marginTop:width*0.4 ,backgroundColor:"rgb(245,245,245)",borderRadius:width*0.05}} >
       <Image style={{ position:"absolute",  width: "100%", height:"100%",resizeMode: 'stretch',borderRadius:width*0.05 }} source={require('../imgs/whitesparklebackground.jpg')} />

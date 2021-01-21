@@ -109,6 +109,13 @@ var minutes= String(date).split(":")[1] ;
 
       <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
 			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
+
+			</TouchableOpacity>
+
+
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16%"  }}>
           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
               <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>

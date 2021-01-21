@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { TextInput, StyleSheet, Text, View, ScrollView, FlatList, Image, TouchableOpacity } from "react-native";
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
-import YoutubePlayer from "react-native-yt-player";
+import { WebView } from 'react-native-webview';
+
+
+
 const TopBar = ({ play, fullScreen }) => (
   <View
     style={{
@@ -15,16 +18,7 @@ const TopBar = ({ play, fullScreen }) => (
   </View>
 );
 var data = [
-{
-    id: 'systeminitmessagge',
-    conents: 'Hi I am Dr Daisy',
-    user: "system",
-    floats: "flex-start",
-    systemImage: 50,
-    userImage: 0,
-    videowidth:0,
-    videoUrl:""
-}];
+ ];
 const getNewDrDaisyMessage = (newMessages) =>
 {
     console.log("a");
@@ -55,8 +49,15 @@ marginLeft: 15,
     <View style={{flexDirection: 'row'  ,  justifyContent: floats }}>
 
       <Image style={{borderColor: '#ffffff',  borderWidth:systemImage*0.04, width:systemImage, height:50 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+      <View style={{ width:150*videowidth , height:150*videowidth}}>
+      <WebView
+        allowsFullscreenVideo
+        allowsInlineMediaPlayback
+        mediaPlaybackRequiresUserAction
+        source={{ uri: videoUrl }}
 
-
+      />
+    </View>
           <View style={{
             borderColor: '#ffffff',
             borderWidth:2-videowidth,
@@ -82,7 +83,6 @@ export default class ChatV2 extends Component
     {
         super(props);
 
-
         this.state = {
             inputText: ""
         };
@@ -94,9 +94,9 @@ export default class ChatV2 extends Component
     checkHelp = (help) =>
     {
 
-if(help.help == "water" && data.length ==1){
+if(help.help == "water" && data.length ==0 ){
 
-data=[
+data.push(
   {
       id: 'systeminitmessagge',
       conents: 'Let me help you Understand the Water Tracker',
@@ -106,7 +106,8 @@ data=[
       userImage: 0,
       videowidth:0,
       videoUrl:""
-  },
+  });
+  data.push(
   {
       id: 'systeminitmessagge',
       conents: '',
@@ -115,9 +116,25 @@ data=[
       systemImage: 50,
       userImage: 0,
       videowidth:2,
-      videoUrl:"https://www.youtube.com/watch?v=mhDJNfV7hjk"
+      videoUrl:"https://youtu.be/bYCB_OYvqko"
   }
-];
+);
+
+
+}else if(help.help == "" && data.length ==0 ){
+
+
+
+data =[{
+      id: 'systeminitmessagge',
+      conents: 'Hi I am Dr Daisy',
+      user: "system",
+      floats: "flex-start",
+      systemImage: 50,
+      userImage: 0,
+      videowidth:0,
+      videoUrl:""
+  }];
 
 
 }
@@ -143,14 +160,38 @@ data=[
         }
         this.setState({ inputText: "" });
     }
+
+    submitSET = (a) =>
+    {
+
+            data.push(
+            {
+                id: 'usermessage' + a,
+                conents:a,
+                user: "user",
+                floats: "flex-end",
+                systemImage: 0,
+                userImage: 50,
+                videowidth:0,
+                videoUrl:""
+            });
+  this.setState({ inputText: "" });
+
+    }
+
+
+
     render()
     {
-try{
-       var { helpa } = this.props.route.params;
-        this.checkHelp(this.props.route.params);
-}catch(e){
-     var  helpa  = "";
-}
+      try{
+             console.log("water",this.props.route.params);
+              this.checkHelp(this.props.route.params);
+      }catch(e){
+           console.log("std");
+           var  helpa  = {help:""};
+             this.checkHelp(helpa);
+      }
+
         const renderItem = ({ item, conents, user, systemImage, userImage, floats, heightTextbox, widthTextbox,videowidth,videoUrl }) => (
             <Item   conents={item.conents} user={item.user} systemImage={item.systemImage} userImage={item.userImage} floats ={item.floats}  heightTextbox ={getheight(item)} widthTextbox={getwidth(item)}      videowidth={item.videowidth}   videoUrl={item.videoUrl}                 />
         );
@@ -161,13 +202,17 @@ try{
             if(a.videowidth ==0){
             return ((a.conents.length / textSpacing) * 24.5)+40;
           }
-          else   if(a.conents.length == 0)
+          if(a.videowidth ==2){
+          return height *0.3;
+        }
+
+
+           if(a.conents.length == 0)
             {
                 return 0;
-            }else
-          {
+            }
             return 200;
-          }
+
         }
         var getwidth = (a) =>
         {
@@ -179,7 +224,7 @@ try{
             }else
             if(a.conents.length > textSpacing * 2)
             {
-                return "70%";
+                return "72%";
             }
             else
             {
@@ -195,7 +240,7 @@ try{
             < View style={{width:width,height:"100%",backgroundColor:"rgb(115,198,216)" }} >
 
 
-      < View style={{width:width,height:"90%",backgroundColor:"rgb(115,198,216)" }} >
+      < View style={{width:width,height:"75%",backgroundColor:"rgb(115,198,216)" }} >
 
 
       <FlatList
@@ -209,6 +254,18 @@ try{
 
 	  </ View>
 
+
+    <TouchableOpacity style={{width:250   ,  borderColor: '#ffffff',borderRadius:6,
+      borderWidth:2 ,  position:"absolute" ,right:10,bottom:"20%" }}   onPress={() =>  this.submitSET("What can i do with this app?")}>
+    <Text style={{  marginLeft:15,  fontSize: 18,color:"white"     }}>What can i do with this app?</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={{width:155   ,  borderColor: '#ffffff',borderRadius:6,
+      borderWidth:2 ,  position:"absolute" ,right:10,bottom:"14%" }}   onPress={() =>  this.submitSET("What is PCOS?")}>
+    <Text style={{  marginLeft:15,  fontSize: 18,color:"white"     }}>What is PCOS?</Text>
+    </TouchableOpacity>
+
+
           < View style={{width:width,height:"12%",minHeight:60,backgroundColor:"rgb(100,193,211)",   position:"absolute",bottom:0,flexDirection:"row"}} >
           <TextInput style = {{width:width-95,height:"50%",minHeight:50 , fontSize: 18,backgroundColor:"rgb(230,230,230)",borderRadius:22 ,marginTop:4 ,marginLeft:5}}
               underlineColorAndroid = "transparent"
@@ -217,9 +274,19 @@ try{
               autoCapitalize = "none"
               onChangeText = {this.updateMessages}/>
 
+
+
+
+
+
+
               <TouchableOpacity style={{width:85,height:"50%"   ,  position:"absolute" ,right:10,bottom:"30%" }}   onPress={() =>  this.submit()}>
               <Text style={{  marginLeft:15,  fontSize: 20,color:"white"     }}>SEND</Text>
               </TouchableOpacity>
+
+
+
+
 
  </ View>
 

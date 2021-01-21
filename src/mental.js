@@ -225,7 +225,10 @@ this.handleupdate(a);
 
       <SafeAreaView style={styles.container}>
       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/9.jpg')} />
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
+			</TouchableOpacity>
 
 
 

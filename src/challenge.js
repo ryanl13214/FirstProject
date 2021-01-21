@@ -143,7 +143,10 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 <View  style={{ width:width, height:height*1 ,backgroundColor:"rgb(115,198,214)" }}>
 
   <Image style={{positon:"absolute",top:0,  width:"100%", height:50,resizeMode:"stretch" }} source={require('../imgs/header.jpg')} />
+  <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
+  </TouchableOpacity>
   <View style={{ width:"100%", height:50  ,marginTop:3 ,flexDirection:"row" ,marginTop:-50 }}>
 
       <Text style={{ width:width-55,fontSize: 20,textAlign:"center" , height:40,marginTop:5  ,marginLeft:4 , color:"white"}}>Achieve your goals </Text>

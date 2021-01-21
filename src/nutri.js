@@ -49,7 +49,10 @@ export default class  Food extends React.Component {
       <Text style={{ }}>15/9/20 </Text>
       </View  >
       </View>
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
+			</TouchableOpacity>
 
 
       <View style={{ flex: 1,marginTop: "20%" ,height: "70%"}}>
