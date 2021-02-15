@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { View, Text, Button, TextInput, DeviceEventEmitter,StyleSheet ,Image,TouchableOpacity} from 'react-native';
 import { Dimensions } from 'react-native';
 import SyncStorage from 'sync-storage';
-const { height } = Dimensions.get('window');
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class  Excer extends React.Component {
@@ -43,7 +47,7 @@ export default class  Excer extends React.Component {
 if(cal == undefined){cal = 0 ;}
 
 
-		var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
+		var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ');
 
 		var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
 		var minus1 = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[2];
@@ -79,13 +83,8 @@ if(cal == undefined){cal = 0 ;}
 			thismonth:thismonth,
 			mins:0,
 			cal:cal,
-
-
-
-
-
-
-
+steps:0,
+multiplyer:50
 
 		};
 
@@ -107,14 +106,19 @@ if(cal == undefined){cal = 0 ;}
 	}
 	submit = () => {
 		this.setState({
-			cal: this.state.cal +this.state.mins*50
+			cal: this.state.cal +this.state.mins*this.state.multiplyer
 		});
     SyncStorage.set('caltracker',this.state.cal);
 	}
 
 
 
+	updateMultiplyer = (i) => {
+		this.setState({
+			multiplyer: i
+		});
 
+	}
 
 
 
@@ -123,110 +127,14 @@ if(cal == undefined){cal = 0 ;}
 	render() {
 
 
-		var getboxWidth = function( ) {
-
-
-			if(height>600){
-				return 150;
-
-			}
-			else{
-
-				return 140;
-
-			}
 
 
 
 
-		}
 
 
 
-		var getboxHeight = function( ) {
 
-			if(height>600){
-				return 100;
-
-			}
-			else{
-
-				return 60;
-
-			}
-
-		}
-
-		var  getalarm = function( ) {
-
-			if(height>600){
-				return 40;
-
-			}
-			else{
-
-				return 30;
-
-			}
-
-		}
-
-		var gettext = function( ) {
-
-			if(height>600){
-				return 50;
-
-			}
-			else{
-
-				return 20;
-
-			}
-
-		}
-
-		var getbuttonsleft = function( ) {
-
-			if(height>600){
-				return "-10%";
-
-			}
-			else{
-
-				return "-10%";
-
-			}
-
-		}
-
-		var getbuttonstop = function( ) {
-
-			if(height>600){
-				return "-55%";
-
-			}
-			else{
-
-				return "-55%";
-
-			}
-
-		}
-
-
-		var getboxLeft = function( ) {
-
-			if(height>600){
-				return "12%";
-
-			}
-			else{
-
-				return "7%";
-
-			}
-
-		}
 
 
 
@@ -236,90 +144,65 @@ if(cal == undefined){cal = 0 ;}
 
 
 		return (
-			<View style={{width: '100%', height: '100%' }}>
-			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/ex.jpg')} />
+			<View style={{width: '100%', height:height}}>
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/exbackground.png')} />
+
+			<View style={{ flexDirection:"row" , marginTop:"45%"}} >
+
+			  <View style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.42,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.09  ,minHeight:80}}  >
+			      <Image style={{ marginLeft:"4%",width: height*0.09 *0.8 ,   height:height*0.09 *0.8 ,marginTop:height*0.09 *0.2,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/steps.png')} />
+
+
+				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
+					  <Text  style={{fontSize:this.state.textScale,color:"black"  }}>{this.state.steps}</Text>
+			      <Text  style={{fontSize:this.state.textScale,color:"black"  }}>Steps</Text>
+			    </View>
+
+
+			  </View>
+
+				<View style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.42,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.09  ,minHeight:80}}  >
+			      <Image style={{ marginLeft:"4%",width: height*0.09 *0.8 ,   height:height*0.09 *0.8 ,marginTop:height*0.09 *0.2,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/steps-burn.png')} />
+
+
+				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
+					  <Text  style={{fontSize:this.state.textScale,color:"black"  }}>{this.state.cal}</Text>
+			      <Text  style={{fontSize:this.state.textScale,color:"black"  }}>  caloires</Text>
+			    </View>
+
+
+			  </View>
+
+			</View>
 
 
 
 
-			<Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 18, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
 			<View  style={{position:"absolute",  width: "75%",marginLeft:"10%" , flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus7}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus6}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus5}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus4}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus3}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus2}</Text>
-			</TouchableOpacity>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus1}</Text>
-			</TouchableOpacity>
-			<View style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.todaysnumber}</Text>
-			</View>
-
-			</View>
-
-			<Text style={  {position:"absolute",top:"89%",left:"20%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.mins} min</Text>
-
-
-
-
-
-
-			<View style={{position:"absolute",borderRadius:18 ,     width:"96%",height:"37%"  ,backgroundColor:"rgb(240,126,126)" ,top:"43%",left:"2%"}}>
-
-			<View style={{   flexDirection:"row",    width:"96%",height:"40%"  ,backgroundColor:"rgb(240,126,126)", marginLeft:"2%",marginTop:"5%"}}>
-					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
-							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exrun.jpg')} />
-					</TouchableOpacity>
-					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
-							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exwalk.jpg')} />
-					</TouchableOpacity>
-					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
-							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exbike.jpg')} />
-					</TouchableOpacity>
-			</View>
-
-			<View style={{   flexDirection:"row",    width:"96%",height:"40%"  ,backgroundColor:"rgb(240,126,126)", marginLeft:"2%",marginTop:"5%"}}>
-					<View style={{width:"16%",height:1}}></View>
-					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
-							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exswim.jpg')} />
-					</TouchableOpacity>
-
-					<TouchableOpacity style={{  width: "33%", backgroundColor:"rgb(240,126,126)", height: "100%"}}>
-							<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:"100%",resizeMode: 'stretch' }} source={require('../imgs/exweights.jpg')} />
-					</TouchableOpacity>
-			</View>
-
-
-
-			</View>
-
-
-			<TouchableOpacity style={{ position:"absolute",top:"83%",left:"55%",width: "40%", height: "10%"}} onPress={this.submit} >
-
-			</TouchableOpacity>
-
-
-
-
-
-
-			<View style={ { borderRadius:18 ,position:"absolute", flexDirection: 'column'   ,  width: getboxWidth() , height: getboxHeight() ,top:"81%" ,left:getboxLeft() ,overflow: 'hidden',backgroundColor:"rgb(21,107,156)"}}>
-			<View style={{borderRadius:18 ,    flexDirection: 'row'   ,  width:"88%",height:"30%"  ,backgroundColor:"rgb(21,107,156)",marginLeft:"6%",marginTop:"2%"}}>
-			<Text style={{ fontSize: 15,color:"white", fontWeight: "100"   ,  width:"100%",  textAlign: 'center',borderRadius:40,borderWidth:0,borderColor:"white"}}>Time</Text>
+				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus7}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus6}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus5}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus4}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus3}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus2}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus1}</Text>
+				</TouchableOpacity>
+				<View style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.todaysnumber}</Text>
+				</View>
 			</View>
 
 
@@ -327,26 +210,24 @@ if(cal == undefined){cal = 0 ;}
 
 
 
-			<View style={{ flexDirection: 'row'  ,  alignItems: 'center'   }}>
-			<View style={{ flexDirection: 'column'    ,height:"100%"  }}>
-			<Image style={{  width:getalarm(), height: getalarm() ,resizeMode: 'stretch',marginLeft:5,marginTop:"-10%" }} source={require('../imgs/clock.png')}  />
-			</View>
-			<Text style={{  width: 55,  fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center' ,marginLeft:"3%",marginTop:"-10%" }}>{this.state.mins} min</Text>
-			<View style={{ flexDirection: 'column' ,marginLeft:"10%"  }}>
-			<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:getbuttonsleft(),marginTop:"-55%"}} onPress={this.onButtonPressweightpluss} >
-			<Image style={{  width: 30, height: 30   }} source={require('../imgs/up2.png')}  />
-			</TouchableOpacity>
-			<TouchableOpacity style={{width: 30, height: 30 ,marginLeft:getbuttonsleft(),marginTop:"-55%" }} onPress={this.onButtonPressweightmin} >
-			<Image style={{  width: 30, height: 30  }} source={require('../imgs/down2.png')}  />
-			</TouchableOpacity>
-			</View>
-			</View>
+			<View style={{ marginLeft:"5%", flexDirection:"row" ,marginTop:height*0.05,backgroundColor:"white",width: width*0.90,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.35 ,minHeight:80}}  >
+
+
+
+
+
 			</View>
 
 
 
-			<Text style={  {position:"absolute",top:"25%",left:"72%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>{this.state.cal}  </Text>
-			<Text style={  {position:"absolute",top:"25%",left:"25%", fontSize: 15, fontWeight: "500"  ,color:"white",  textAlign: 'center', marginTop: 3,   height: 36} }>0  </Text>
+
+
+
+
+
+
+
+
 
 
 
