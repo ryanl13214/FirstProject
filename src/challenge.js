@@ -142,7 +142,9 @@ var possiblegoals=["excersize","walk","water","journal","track"];
     return (
 <View  style={{ width:width, height:height*1 ,backgroundColor:"rgb(115,198,214)" }}>
 
-  <Image style={{positon:"absolute",top:0,  width:"100%", height:50,resizeMode:"stretch" }} source={require('../imgs/header.jpg')} />
+  <Image style={{positon:"absolute",top:0,  width:"100%", height:"100%",resizeMode:"stretch" }} source={require('../imgs/NEWIMAGES/page-8/8.png')} />
+{/*
+
   <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
 <Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
@@ -174,7 +176,7 @@ var possiblegoals=["excersize","walk","water","journal","track"];
 
 
 
-
+*/}
 
 
 

@@ -158,21 +158,22 @@ export default class  Bmi extends React.Component {
 		return (
 
 			<SafeAreaView style={styles.container}>
-			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/empty3.jpg')} />
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/NEWIMAGES/BMI/7.png')} />
 
 
+{/* title*/}
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-2%",left:"0%",width:"100%",height:"15%"}}>
 
-			<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
-<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
+			<Text  style={{ color:"white", fontSize: 25}}>Bmi Tracker</Text>
 
+			</View>
+			{/* bascl nutton*/}
+			<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+			  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
 			</TouchableOpacity>
 
 
-
-
-
-			<Text style={[styles.textDark, {position:"absolute",top:"11%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"18%"  }}>
+			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"20%"  }}>
 			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
 			</TouchableOpacity>
@@ -197,9 +198,7 @@ export default class  Bmi extends React.Component {
 			<LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
 			</LinearGradient>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-			</TouchableOpacity>
+
 			</View>
 
 
@@ -213,7 +212,7 @@ export default class  Bmi extends React.Component {
 
 
 
-			<View style={{ borderRadius:15,flexDirection:"row",alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"39%",left:"5%",width:"90%",height:"12%",backgroundColor:"rgb(236,106,106)"}}>
+			<View style={{ borderRadius:15,flexDirection:"row",alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"35%",left:"5%",width:"90%",height:"12%",backgroundColor:"rgb(236,106,106)"}}>
 			<View style={{borderRadius:15, flexDirection:"row",height:"85%" ,width:"28%", margin:"2%",backgroundColor:"white"}}>
 			<View style={{ flexDirection:"column", height:"21%" ,width:"60%", margin:"2%", marginLeft:"5%", textAlign: 'center' }}>
 			<Text  style={{  color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' }}>Age</Text>
@@ -277,19 +276,26 @@ export default class  Bmi extends React.Component {
 
 
 
-			<Image style={{  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/heartbmi.jpg')} />
+			<Image style={{  position:"absolute",top:"54%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/NEWIMAGES/BMI/heart.png')} />
 
-			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}}>
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"54%",left:"0%",width:"100%",height:"25%"}}>
 
-			<Text  style={{ color:"white", fontSize: 20}}>{this.state.bmi}</Text>
-			<Text  style={{   height: 30,color:"white", fontSize: 20}}>{this.state.bmitext}</Text>
+			<Text  style={{ color:"red", fontSize: 20}}>{this.state.bmi}</Text>
+			<Text  style={{   height: 30,color:"red", fontSize: 20}}>{this.state.bmitext}</Text>
 
 
 
 			</View>
 
+{/* bmi desc */}
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"78%",left:"0%",width:"100%" }}>
+
+			<Text  style={{ color:"rgb(138,0,28)", textAlign: 'center', fontSize: 18}}>The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy. While generally useful it is possible to live a healthy active life with a abnormal BMI.</Text>
 
 
+
+
+			</View>
 
 
 

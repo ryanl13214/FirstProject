@@ -240,7 +240,7 @@ export default class Home extends React.Component
 
 
 
-
+{ /*
 
 <View style={{  marginTop:"20%"}} >
   <TouchableOpacity style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}}  onPress={() =>  this.props.navigation.navigate('skin')} >
@@ -260,7 +260,7 @@ export default class Home extends React.Component
     </View>
   </TouchableOpacity>
 </View>
-
+*/}
 
 <View style={{  marginTop:"20%"}} >
   <TouchableOpacity style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}}  onPress={() =>  this.props.navigation.navigate('graphs')} >

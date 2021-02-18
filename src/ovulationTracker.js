@@ -45,7 +45,19 @@ export default class  Ovu extends React.Component {
 
         return [year, month, day].join('-');
     }
+    formatDatevaraibleday(date,i) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + (d.getDate()+i),
+            year = d.getFullYear();
 
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return   day  ;
+    }
   constructor(props ) {
     super(props);
 
@@ -68,7 +80,7 @@ export default class  Ovu extends React.Component {
     {
       if(i ==  fertileday)
       {
-        names.push([i,false,"rgb(112,204,203)",34,this.formatDatevaraible(dateoflast,i)]);
+        names.push([i,false,"rgb(112,114,283)",34,this.formatDatevaraible(dateoflast,i)]);
       }
       else if(i< lengthOfBleeding)
       {
@@ -103,6 +115,8 @@ export default class  Ovu extends React.Component {
     //var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
     //   var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
     var startday =dateoflast;
+      var calenderData=names;
+    /*
     var calenderData = {
       '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
       '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
@@ -123,6 +137,7 @@ export default class  Ovu extends React.Component {
 
     };
 console.log(calenderData);
+*/
   //  var calenderData = {'2020-11-23',{ selected: true, selectedColor: "red"} , '2020-11-24',{ selected: true, selectedColor: "red"}};
 
     //var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate()  ;
@@ -130,7 +145,7 @@ console.log(calenderData);
 
 
 
-
+console.log(calenderData);
 
 
 
@@ -347,16 +362,50 @@ const calenderDatac = {};
 for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 {
 
-  if(i< this.state.lengthOfBleeding)
-  {
-    if(i<=this.state.lengthOfBleeding/2){
-      calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'yellow'};
+
+
+    if(i ==  this.state.fertileday)
+    {
+    //  names.push([i,false,"rgb(112,204,203)",34,this.formatDatevaraible(dateoflast,i)]);
+          calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'rgb(112,204,203)'};
+    }
+    else if(i< this.state.lengthOfBleeding)
+    {
+      if(i<this.state.lengthOfBleeding/2){
+  //      names.push([i,false,"rgb(255, 231 , 106)",25+i,this.formatDatevaraible(dateoflast,i)]);
+            calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'rgb(245,125,100)'};
+      }
+      else if(i>=this.state.lengthOfBleeding/2){
+      //  names.push([i,false,"rgb(245,125,100)",25 +(this.state.lengthOfBleeding/1.8)-i,this.formatDatevaraible(dateoflast,i)]);
+          calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'rgb(245,125,100)'};
+      }
 
     }
-    else if(i>=this.state.lengthOfBleeding/2){
-      calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'red'};
+    else if(i< this.state.lengthOfBleeding+ this.state.gapRedToGreen)
+    {
+    //  names.push([i,false,"rgb(204,197,187 )",20,this.formatDatevaraible(dateoflast,i)]);
+        calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'lightgrey'};
     }
-  }
+    else if(i< this.state.lengthOfBleeding+ this.state.gapRedToGreen+ this.state.fertileLength)
+    {
+      if( i<= this.state.fertileday){
+        //names.push([i,false,"rgb(165,199,139 )",25+((i-gapRedToGreen-lengthOfBleeding))*2,this.formatDatevaraible(dateoflast,i)]);
+          calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'rgb(165,199,139)'};
+      }
+      else  if(i >= this.state.fertileday){
+    //    names.push([i,false,"rgb(165,199,139 )",25 +((fertileLength/2)-(i-fertileday))*2,this.formatDatevaraible(dateoflast,i)]);
+          calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'rgb(165,199,139)'};
+      }
+      //    names.push([i,false,"green",30]);
+    }
+    else
+    {
+    //  names.push([i,false,"rgb(204,197,187 )",20,this.formatDatevaraible(dateoflast,i)]);
+        calenderDatac[this.formatDatevaraible(this.state.startingDay,i)] = {selected: true ,  color: 'lightgrey'};
+    }
+
+
+
 
 
 
@@ -373,19 +422,38 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
       <SafeAreaView style={{width:"100%",height:"100%"}}>
 
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/7.jpg')} />
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/NEWIMAGES/page-7/7.png')} />
 
 
 
-      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
-<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
-
-			</TouchableOpacity>
+ 
 
 
+      <View style={{ position:"absolute",top: height*0.13 , left:  width*0.47,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
 
+      <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
+<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(165,199,139 )" }}  ></View>
+  <Text style={{width:"60%",textAlign:"center" ,fontSize:15 }}>Fertile</Text>
+   </View>
+   <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
+<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(245,125,100)" }}  ></View>
+<Text style={{width:"60%",textAlign:"center" ,fontSize:15,marginLeft:4   }}>bleeding days</Text>
+</View>
 
+     </View>
 
+     <View style={{ position:"absolute",top: height*0.13 , left:  width*0.04,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
+
+     <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
+<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(255, 231 , 106)" }}  ></View>
+ <Text style={{width:"60%",textAlign:"center" ,fontSize:15 }}>PMS</Text>
+  </View>
+  <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
+<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(112,114,283)" }}  ></View>
+<Text style={{width:"60%",textAlign:"center" ,fontSize:15,marginLeft:4   }}>peak Fertility</Text>
+</View>
+
+    </View>
 
 
 
@@ -414,7 +482,7 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
         }
         // ... You can check the source to find the other keys.
       }}
-      //    onDateChange={(date) => {this.setState({date: date,hasData:true})}}
+    //    onDateChange={(date) => {this.setState({date: date,hasData:true})}}
       onDateChange={(date) => this.updatedate(date)}
       />
 
@@ -434,7 +502,10 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
       {this.state.info.map(details  => (
         <View style={{ width:details[3]+1,height:details[3]+1,backgroundColor:details[2],position:"absolute",top:this.gety(details[0]),left:this.getx(details[0]),borderRadius:111111,borderColor:"white",borderWidth:this.getBorder(details[0])}}>
         <Image style={{ width:details[3],height:details[3] }} source={require('../imgs/smallerButton.png')} />
+        <View style={{position:"absolute",   width: '100%', height:'100%',textAlign:"center",justifyContent: "center",alignItems:"center"}}>
 
+    <Text style={{ width: '100%', height:'100%',textAlign:"center" ,  fontSize:15, color:"black",justifyContent: "center",alignItems:"center"}}>{this.formatDatevaraibleday(this.state.startingDay,details[0])}</Text>
+  </View>
         </View>
       ))}
 
@@ -528,12 +599,12 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
       </View>
 
 
-
+{/*
       <TouchableOpacity style={{position:"absolute", width: width*0.80 , height: height*0.115 * this.state.heightOfGraph,top: height*0.12  ,left:(width)*0.1,overflow:"hidden" ,borderRadius:5}}  onPress={() => this.switchGraphDisplay()}>
 
 <Image style={{ justifyContent: "center",alignItems:"center",  width: "100%", height: "200%"  ,resizeMode: 'stretch',maxHeight:height*0.23  }} source={require('../imgs/expandedgraph.png')} />
 </TouchableOpacity>
-
+*/}
 
 
 

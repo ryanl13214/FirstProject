@@ -240,7 +240,9 @@ data =[{
             < View style={{width:width,height:"100%",backgroundColor:"rgb(115,198,216)" }} >
 
 
-      < View style={{width:width,height:"75%",backgroundColor:"rgb(115,198,216)" }} >
+                          <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/chatback.png')} />
+
+      < View style={{width:width,height:"75%",marginTop:"20%"  }} >
 
 
       <FlatList
@@ -266,7 +268,7 @@ data =[{
     </TouchableOpacity>
 
 
-          < View style={{width:width,height:"12%",minHeight:60,backgroundColor:"rgb(100,193,211)",   position:"absolute",bottom:0,flexDirection:"row"}} >
+          < View style={{width:width,height:"12%",minHeight:60,   position:"absolute",bottom:0,flexDirection:"row"}} >
           <TextInput style = {{width:width-95,height:"50%",minHeight:50 , fontSize: 18,backgroundColor:"rgb(230,230,230)",borderRadius:22 ,marginTop:4 ,marginLeft:5}}
               underlineColorAndroid = "transparent"
               placeholder = "Message"

@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Dimensions } from 'react-native';
 const { height } = Dimensions.get('window');
 
-
+import SyncStorage from 'sync-storage';
 import { NativeModules } from 'react-native'
 const {ToastExample} = NativeModules;
 const {AlarmExamples} = NativeModules;
@@ -48,14 +48,16 @@ export default class  Sleep extends React.Component {
       minus5: minus5,
       minus6: minus6,
       minus7: minus7,
-
+    waketime:SyncStorage.get('waketime'  ),
       datepickervisibility:false,
-
+alarmtime: SyncStorage.get('alarmtime'  ),
 
          pluss1:pluss1,
-      thismonth:thismonth}
+      thismonth:thismonth
+    }
+    if(SyncStorage.get('waketime'  ) ==  undefined  ){this.state.waketime="not set";   }
+if(SyncStorage.get('alarmtime'  ) ==  undefined  ){this.state.alarmtime="not set";   }
   }
-
 
   add2 = () => {
 
@@ -97,6 +99,20 @@ var minutes= String(date).split(":")[1] ;
       //time
       //hours
       //minutes
+    //    this.setState({alarmtime:( Number(hour),Number(minutes))});
+
+          var time = Number(hour)-8;
+          console.log(time);
+          if (time<0){
+            time = 24 + time;
+
+          }
+          time = time.toString()+":00";
+
+          this.setState({waketime: time  });
+          SyncStorage.set(   'waketime', time );
+          this.setState({alarmtime: time  });
+          SyncStorage.set(   'alarmtime',  Number(hour).toString()+":00" );
           AlarmExamples.setAlarm(Number(hour),Number(minutes));
       //hideDatePicker();
     };
@@ -107,14 +123,21 @@ var minutes= String(date).split(":")[1] ;
 
 
 
-      <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
-			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+      <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/NEWIMAGES/page-5/5.png')} />
+{/* center label*/}
+<View style={{   width: '100%', height:height-100 , justifyContent: "center",textAlign:"center",alignItems:"center"}} >
+  <Text  style={{fontSize:height*0.03  ,color:"white"    }}>Alarm time-{this.state.waketime} </Text>
+  <Text  style={{fontSize:height*0.03  ,color:"white"    }}>When to sleep-{this.state.waketime} </Text>
+</View  >
 
+{/* top left*/}
       <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
-<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
 			</TouchableOpacity>
+{/* top right*/}
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
 
+</TouchableOpacity>
 
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16%"  }}>
           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
@@ -153,7 +176,7 @@ var minutes= String(date).split(":")[1] ;
 
 
 
-    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}}  onPress={()=>this.setState({datepickervisibility:true})} >
+    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,borderColor:"rgb(237,175,90)",borderWidth:1}}  onPress={()=>this.setState({datepickervisibility:true})} >
 
 
         <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>Edit Alarms</Text>

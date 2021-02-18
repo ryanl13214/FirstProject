@@ -245,48 +245,53 @@ export default class Water extends React.Component
               <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start",overflow:"hidden"}} >
 
 
-              <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/waterTrackerBackgroundForGraph.jpg')} />
+              <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/page-3/waterback.png')} />
 
-              <Image style={{position:"absolute" ,left:this.getLeft(1),  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/13.jpg')} />
+              <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/page-3/waterback.png')} />
 
+              {/* title*/}
+              			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-2%",left:"0%",width:"100%",height:"15%"}}>
 
-              <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
-  <Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
+              			<Text  style={{ color:"white", fontSize: 25}}>Water Tracker</Text>
 
-              </TouchableOpacity>
+              			</View>
 
-
-              <Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 18, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-              <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
-
-              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-6)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-5)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-4)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-3)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-2)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-1)  }} >
-              <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
-              </TouchableOpacity>
+{/* bascl nutton*/}
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+</TouchableOpacity>
 
 
-              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
+             <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"18%"  }}>
 
-                  <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center' , marginTop: 3,width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+                <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-6)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-5)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-4)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-3)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-2)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-1)  }} >
+                <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+                </TouchableOpacity>
 
-              </TouchableOpacity>
+
+                <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
+
+                    <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center' , marginTop: 3,width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+
+                </TouchableOpacity>
               </View>
 
 
@@ -296,17 +301,95 @@ export default class Water extends React.Component
 
 
 
-              <TouchableOpacity   style={{  position:"absolute",top:"25%",left:"55%",  width: 50, height: 50, flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.minus()  }} >
-              <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
+
+ {/* right top */}
+           <View style={{ position:"absolute",top: height*0.30 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+
+
+           <Image style={{   width:  "50%", height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
+
+
+<View   style={{   width:  "50%"  ,alignItems: 'center'}}>
+
+
+
+              <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:10   }} onPress={() => {return this.pluss()  }} >
+                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/page-3/plus.png')} />
+              </TouchableOpacity>
+              <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:15  }}onPress={() => {return this.minus()  }} >
+                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/page-3/minus.png')} />
               </TouchableOpacity>
 
-              <TouchableOpacity   style={{  position:"absolute",top:"25%",left:"85%",  width: 50, height: 50, flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }} onPress={() => {return this.pluss()  }} >
-              <Image style={{ justifyContent: "center",alignItems:"center",  width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
-              </TouchableOpacity>
+ </View>
+
+      	  </View>
 
 
 
-              <View  style={{position:"absolute" ,  width: '45%', height: '75%',left:"4%",top:"23%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
+
+
+
+{/*right middle  */}
+          <View style={{ position:"absolute",top: height*0.50 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+              <View   style={{   width:  "100%" ,height:"40%"   }}>
+                <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>Total water drank</Text>{/*to do add cap for large svcrreen  */}
+                <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>Your toal today is:</Text>
+              </View>
+
+               <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>
+                 <View   style={{   width:  "40%" ,height:"100%" ,alignItems: 'center' }}>
+                     <Image style={{    width:  50, height:  60,resizeMode: 'stretch' ,marginTop:10}} source={require('../imgs/NEWIMAGES/page-3/drop.png')} />
+                </View>
+                <View   style={{   width:  "60%" ,height:"100%" ,alignItems: 'flex-end' }}>
+
+                <Text style={{fontSize: height*0.033 , fontWeight: "500"  ,  textAlign: 'center', marginTop:height*0.033,  height: 36 , marginRight: height*0.023 }}>{this.state.label}</Text>
+                <Text style={{fontSize: height*0.0183, fontWeight: "500"  ,  textAlign: 'center',   marginTop: -5, height: 36, marginRight: height*0.023}}>  ml</Text>
+               </View>
+              </View>
+         </View>
+
+
+{/*bottom right*/}
+<View style={{ position:"absolute",top: height*0.70 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+<View   style={{   width:  "100%" ,height:"40%"   }}>
+  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>Water Goal</Text>{/*to do add cap for large svcrreen  */}
+  <Text  style={{fontSize:height*0.0173 ,color:"black" ,marginLeft:3   }}>Your water goal today is:</Text>
+</View>
+
+ <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>
+   <View   style={{   width:  "40%" ,height:"100%" ,alignItems: 'center' }}>
+       <Image style={{    width:  50, height:  60,resizeMode: 'stretch' ,marginTop:10}} source={require('../imgs/NEWIMAGES/page-3/bottle.png')} />
+  </View>
+  <View   style={{   width:  "60%" ,height:"100%" ,alignItems: 'flex-end' }}>
+  <Text style={{fontSize: height*0.033 , fontWeight: "500"  ,  textAlign: 'center', marginTop:height*0.033,  height: 36 , marginRight: height*0.023 }}>2000</Text>
+  <Text style={{fontSize: height*0.0183, fontWeight: "500"  ,  textAlign: 'center',   marginTop: -5, height: 36, marginRight: height*0.023}}>  ml</Text>
+ </View>
+</View>
+</View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <View  style={{position:"absolute" ,  width: '45%', height: '65%',left:"4%",top:"33%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
 
 
               <Animated.Image
@@ -327,6 +410,9 @@ export default class Water extends React.Component
               <Image style={{ width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/waterbody.png')} />
 
               </View>
+
+
+
               <Text style={{color:"white",position:"absolute",top:"56%",left:"70%", fontSize: 21, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>{this.state.label} ml</Text>
               <Text style={{color:"white",position:"absolute",top:"80%",left:"70%", fontSize: 21, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,  height: 36}}>2000 ml</Text>
 

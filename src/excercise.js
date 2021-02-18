@@ -210,10 +210,51 @@ multiplyer:50
 
 
 
-			<View style={{ marginLeft:"5%", flexDirection:"row" ,marginTop:height*0.05,backgroundColor:"white",width: width*0.90,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.35 ,minHeight:80}}  >
+			<View style={{ marginLeft:"5%",  marginTop:height*0.05,backgroundColor:"white",width: width*0.90,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.28 ,minHeight:80}}  >
+
+
+        <View style={{flexDirection:"row"  }}  >
 
 
 
+
+          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+           <View >
+              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/run.png')} />
+            </View>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> run</Text>
+          </View>
+
+
+
+          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+           <View >
+              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/walk.png')} />
+            </View>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> walk</Text>
+          </View>
+
+
+          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+           <View >
+              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/cycle.png')} />
+            </View>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> cycle</Text>
+          </View>
+
+          </View>
+
+
+        <View style={{marginTop:"5%", flexDirection:"row"  }}  >
+          <View style={{marginTop:"5%",  marginLeft:"3%",justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+            <Image style={{   height: "86%"  ,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/swim.png')} />
+              <Text  style={{fontSize:this.state.textScale,color:"black"  }}> Swim</Text>
+          </View>
+          <View style={{marginTop:"5%",  marginLeft:"5%" ,justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"   , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+            <Image style={{   height: "86%"  ,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/gym.png')} />
+              <Text  style={{fontSize:this.state.textScale,color:"black"  }}> Gym</Text>
+          </View>
+        </View>
 
 
 			</View>
@@ -225,6 +266,45 @@ multiplyer:50
 
 
 
+<View style={{ flexDirection:"row" , marginTop:"5%"}} >
+
+<View style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.42,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.09  ,minHeight:80}}  >
+
+<View style={{ marginLeft:"4%",    height:"100%"   }} >
+  <Text  style={{fontSize:this.state.textScale,color:"black"  }}>Time</Text>
+  <Image style={{ marginLeft:"4%",width: height*0.09 *0.5 ,   height:height*0.09 *0.5 ,marginTop:height*0.09 *0.2,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/time.png')} />
+</View>
+
+<View style={{ marginLeft:"4%",    height:"100%"  ,justifyContent: 'flex-end',alignItems: 'flex-end' ,marginBottom:3}} >
+  <Text  style={{fontSize:this.state.textScale,color:"black"  ,marginBottom:3 }}>{this.state.mins}</Text>
+  <Text  style={{fontSize:this.state.textScale,color:"black"   ,marginBottom:3}}>Minutes</Text>
+</View>
+
+  <View style={{ marginLeft:18,    height:"100%" ,justifyContent: 'flex-end',alignItems: 'flex-end' }} >
+    <TouchableOpacity style={{width:width*0.08, height:  width*0.08   }}  onPress={this.onButtonPressweightpluss}  >
+      <Image style={{ height: '80%',  width:'80%'  ,  resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/page-2/up.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity style={{width:width*0.08, height:  width*0.08  }}  onPress={this.onButtonPressweightmin}  >
+      <Image style={{ height: '80%',  width:'80%'  ,   resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/page-2/down.png')} />
+    </TouchableOpacity>
+  </View>
+
+</View>
+
+
+
+
+  <TouchableOpacity style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.42,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.09  ,minHeight:80}}  onPress={this.submit}  >
+    <Image style={{ marginLeft:"4%",width: height*0.09 *0.7 ,   height:height*0.09 *0.7 ,marginTop:height*0.09 *0.3,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/add-exercise.png')} />
+    <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
+
+      <Text  style={{fontSize:this.state.textScale,color:"black"  }}>  add excersize</Text>
+    </View>
+  </TouchableOpacity>
+
+
+
+</View>
 
 
 
