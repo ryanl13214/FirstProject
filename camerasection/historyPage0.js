@@ -25,7 +25,7 @@ import {
 
 
 
-export default class  History extends React.Component {
+export default class  History0 extends React.Component {
 
   constructor(props ) {
     super(props);
@@ -37,7 +37,7 @@ export default class  History extends React.Component {
      console.log("histoyy",  this.props.route.params.newIMG);
        var base64Icon = this.props.route.params.newIMG;
 
- 
+
 
 
 

@@ -18,27 +18,22 @@ export default class  Food extends React.Component {
 
     this.state={
       currentFocus:"Calories",
-
       todaysKcal:SyncStorage.get('todaysKcal' + month + year + day ),
       todaysFat:SyncStorage.get('todaysFat' + month + year + day ),
       todaysCarbs:SyncStorage.get('todaysCarbs' + month + year + day ),
       todaysProtein:SyncStorage.get('todaysProtein' + month + year + day ),
-
       breakfastKcal:SyncStorage.get('breakfastKcal' + month + year + day ),
       breakfastFat:SyncStorage.get('breakfastFat' + month + year + day ),
       breakfastCarbs:SyncStorage.get('breakfastCarbs' + month + year + day ),
       breakfastProtein:SyncStorage.get('breakfastProtein' + month + year + day ),
-
       lunchKcal:SyncStorage.get('lunchKcal' + month + year + day ),
       lunchFat:SyncStorage.get('lunchFat' + month + year + day ),
       lunchCarbs:SyncStorage.get('lunchCarbs' + month + year + day ),
       lunchProtein:SyncStorage.get('lunchProtein' + month + year + day ),
-
       dinnerKcal:SyncStorage.get('dinnerKcal' + month + year + day ),
       dinnerFat:SyncStorage.get('dinnerFat' + month + year + day ),
       dinnerCarbs:SyncStorage.get('dinnerCarbs' + month + year + day ),
       dinnerProtein:SyncStorage.get('dinnerProtein' + month + year + day ),
-
       snacksKcal:SyncStorage.get('snacksKcal' + month + year + day ),
       snacksFat:SyncStorage.get('snacksFat' + month + year + day ),
       snacksCarbs:SyncStorage.get('snacksCarbs' + month + year + day ),
@@ -618,7 +613,10 @@ getUnits = () =>
 
 
 
-
+{/* bascl nutton*/}
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+</TouchableOpacity>
 
 
 

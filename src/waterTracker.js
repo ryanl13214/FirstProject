@@ -306,10 +306,10 @@ export default class Water extends React.Component
            <View style={{ position:"absolute",top: height*0.30 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 
 
-           <Image style={{   width:  "50%", height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
+           <Image style={{     height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
 
 
-<View   style={{   width:  "50%"  ,alignItems: 'center'}}>
+<View   style={{  position:"absolute",  right:   0 ,  width:  "50%"  ,alignItems: 'center'}}>
 
 
 
@@ -332,8 +332,8 @@ export default class Water extends React.Component
 {/*right middle  */}
           <View style={{ position:"absolute",top: height*0.50 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
               <View   style={{   width:  "100%" ,height:"40%"   }}>
-                <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>Total water drank</Text>{/*to do add cap for large svcrreen  */}
-                <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>Your toal today is:</Text>
+                <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}> Total water drank</Text>{/*to do add cap for large svcrreen  */}
+                <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>  Your toal today is:</Text>
               </View>
 
                <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>
@@ -352,8 +352,8 @@ export default class Water extends React.Component
 {/*bottom right*/}
 <View style={{ position:"absolute",top: height*0.70 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 <View   style={{   width:  "100%" ,height:"40%"   }}>
-  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>Water Goal</Text>{/*to do add cap for large svcrreen  */}
-  <Text  style={{fontSize:height*0.0173 ,color:"black" ,marginLeft:3   }}>Your water goal today is:</Text>
+  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>  Water Goal</Text>{/*to do add cap for large svcrreen  */}
+  <Text  style={{fontSize:height*0.0173 ,color:"black" ,marginLeft:3   }}>  Your water goal today is:</Text>
 </View>
 
  <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>

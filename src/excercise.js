@@ -106,7 +106,8 @@ multiplyer:50
 	}
 	submit = () => {
 		this.setState({
-			cal: this.state.cal +this.state.mins*this.state.multiplyer
+      steps: (this.state.cal +(this.state.mins*this.state.multiplyer)) *0.04,
+			cal: this.state.cal +(this.state.mins*this.state.multiplyer)
 		});
     SyncStorage.set('caltracker',this.state.cal);
 	}
@@ -155,7 +156,7 @@ multiplyer:50
 
 				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
 					  <Text  style={{fontSize:this.state.textScale,color:"black"  }}>{this.state.steps}</Text>
-			      <Text  style={{fontSize:this.state.textScale,color:"black"  }}>Steps</Text>
+			      <Text  style={{fontSize:height*0.009 *1.6,color:"black"  }}>Step equivalent</Text>
 			    </View>
 
 
@@ -167,7 +168,7 @@ multiplyer:50
 
 				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
 					  <Text  style={{fontSize:this.state.textScale,color:"black"  }}>{this.state.cal}</Text>
-			      <Text  style={{fontSize:this.state.textScale,color:"black"  }}>  caloires</Text>
+			      <Text  style={{fontSize:height*0.009 *1.6,color:"black"  }}>  caloires</Text>
 			    </View>
 
 
@@ -218,42 +219,42 @@ multiplyer:50
 
 
 
-          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+          <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(11.5)  }>
            <View >
               <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/run.png')} />
             </View>
             <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> run</Text>
-          </View>
+          </TouchableOpacity>
 
 
 
-          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+          <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(4.5)  }>
            <View >
               <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/walk.png')} />
             </View>
             <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> walk</Text>
-          </View>
+          </TouchableOpacity>
 
 
-          <View style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+          <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(9)  }>
            <View >
               <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/cycle.png')} />
             </View>
             <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> cycle</Text>
-          </View>
+          </TouchableOpacity>
 
           </View>
 
 
         <View style={{marginTop:"5%", flexDirection:"row"  }}  >
-          <View style={{marginTop:"5%",  marginLeft:"3%",justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+          <TouchableOpacity style={{marginTop:"5%",  marginLeft:"3%",justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(9)  }>
             <Image style={{   height: "86%"  ,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/swim.png')} />
               <Text  style={{fontSize:this.state.textScale,color:"black"  }}> Swim</Text>
-          </View>
-          <View style={{marginTop:"5%",  marginLeft:"5%" ,justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"   , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  >
+          </TouchableOpacity>
+          <TouchableOpacity style={{marginTop:"5%",  marginLeft:"5%" ,justifyContent: 'center',alignItems: 'center', flexDirection:"row" ,backgroundColor:"white"   , height: height*0.09  ,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(7)  }>
             <Image style={{   height: "86%"  ,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/page-2/gym.png')} />
               <Text  style={{fontSize:this.state.textScale,color:"black"  }}> Gym</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
 

@@ -27,7 +27,7 @@ const
 } = Dimensions.get('window');
 
 
-export default class  History extends React.Component {
+export default class  History1 extends React.Component {
 
   constructor(props ) {
     super(props);
@@ -63,10 +63,9 @@ export default class  History extends React.Component {
 
       <View style={{  alignItems: 'center', justifyContent: 'flex-start' }}>
   {
-       <Image style={{width: "100%",  height: "60%", resizeMode:"contain" }} source={ this.props.route.params.newIMG}/>
-// <View style={{width: "100%",  height: "60%",backgroundColor:"blue" }}></View>
+    //      <Image style={{width: "100%",  height: "60%", resizeMode:"contain" }} source={ this.props.route.params.newIMG}/>
   }
-
+   <View style={{width: "100%",  height: "60%",backgroundColor:"blue" }}></View>
    {/* bascl nutton*/}
    <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
      <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />

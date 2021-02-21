@@ -12,9 +12,13 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import { Dimensions } from 'react-native';
 
-const { height } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
 
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 
 
 class Cam extends React.Component {
@@ -49,7 +53,11 @@ class Cam extends React.Component {
         var minus7day = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[0];
         var pluss1day = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[0];
 
-    this.selectPhotoTapped = this.selectPhotoTapped.bind(this);
+    this.selectPhotoacne = this.selectPhotoacne.bind(this);
+    this.selectPhotohair = this.selectPhotohair.bind(this);
+    this.selectPhotoalopicia = this.selectPhotoalopicia.bind(this);
+
+
     this.state = {
       pluss1:pluss1,
       todaysnumber: todaysnumber,
@@ -64,7 +72,7 @@ class Cam extends React.Component {
     };
   }
 
-  selectPhotoTapped() {
+  selectPhotoacne() {
     const options = {
       quality: 0.8,
       maxWidth: 400,
@@ -131,7 +139,7 @@ class Cam extends React.Component {
         let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
 
-        this.props.navigation.navigate('temp2',{ newIMG: source });
+        this.props.navigation.navigate('temp1',{ newIMG: source });
 
         //navigation.navigate('Home');
 
@@ -145,80 +153,112 @@ class Cam extends React.Component {
   }
 
 
+    selectPhotoalopicia() {
+      const options = {
+        quality: 0.8,
+        maxWidth: 400,
+        maxHeight:400,
+        storageOptions: {
+          skipBackup: true,
+        },
+      };
+
+      ImagePicker.showImagePicker(options, response => {
+        //  console.log('Response 38= ', response);
+
+        if (response.didCancel) {
+          console.log('User cancelled photo picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          //  let source = {uri: response.uri};
+
+          // You can also display the image using data:
+          let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+
+          this.props.navigation.navigate('temp1',{ newIMG: source });
+
+          //navigation.navigate('Home');
+
+
+
+          this.setState({
+            avatarSource: source,
+          });
+        }
+      });
+    }
+
 
   render() {
     return (
       <View style={styles.container}>
 
 
+            <Image style={{position:"absolute"  ,  width: '100%', height: '100%'  ,resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/chatback.png')} />
 
-      <Image style={{position:"absolute" ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/skintrack.jpg')} />
+    {/* bascl nutton*/}
+    <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+      <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+    </TouchableOpacity>
 
-      <Text style={[styles.textDark, {position:"absolute",top:"4%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-      <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
-          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
-          </TouchableOpacity>
-          <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-          </LinearGradient>
-          <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-              <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-          </TouchableOpacity>
-      </View>
+
+
+    {/* title*/}
+          <View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-3%",left:"0%",width:"100%",height:"15%"}}>
+
+          <Text  style={{ color:"white", fontSize: 25}}>Visual Tracker</Text>
+
+          </View>
+
+
+    {/* acne tracker tracker*/}
+            <View style={{  marginTop:"25%"}} >
+              <TouchableOpacity style={{   flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}} onPress={this.selectPhotoacne.bind(this)}>
+                <Image style={{ marginLeft:"4%",width: height*0.12 *0.8 ,   height:height*0.12 *0.8 ,marginTop:height*0.12 *0.2,    resizeMode:"contain"  ,borderRadius:999 }} source={require('../imgs/NEWIMAGES/camera/acne.jpg')} />
+                <View style={{ marginLeft:"4%",width:"70%" ,   height:"100%" ,justifyContent: 'center',alignItems: 'center' }} >
+     <Text  style={{fontSize:24,color:"black"  }}>Acne Tracker</Text>
+                  <Text  style={{fontSize:height*0.018,color:"black"  }}>Uses an algorithm to track what percentage of your skin is covered by acne. You can use this to check the effectiveness of any treatments you may be taking over time.</Text>
+
+                </View>
+              </TouchableOpacity>
+            </View>
 
 
 
 
+            {/* hiruritism tracker tracker*/}
+    <View style={{  marginTop:"17%"}} >
+        <TouchableOpacity style={{   flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}} onPress={this.selectPhotoalopicia.bind(this)}>
+        <Image style={{ marginLeft:"4%",width: height*0.12 *0.8 ,   height:height*0.12 *0.8 ,marginTop:height*0.12 *0.2,    resizeMode:"contain"  ,borderRadius:999 }} source={require('../imgs/NEWIMAGES/camera/hir.jpg')} />
+        <View style={{ marginLeft:"4%",width:"70%" ,   height:"100%" ,justifyContent: 'center',alignItems: 'center' }} >
+        <Text  style={{fontSize:24,color:"black"  }}>Hirsutism Tracker</Text>
+        <Text  style={{fontSize:height*0.018,color:"black"  }}>Uses an algorithm to track growth of male patern hair on a face. this can help ensure any measures you have taken to remove unwanted hair have worked.</Text>
 
-
-
-
-
-
-
-
-
-
-      <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
-      <View
-      style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-      {this.state.avatarSource === null ? (
-        <Text> </Text>
-      ) : (
-        <Image style={styles.avatar} source={this.state.avatarSource} />
-      )}
-      </View>
+        </View>
       </TouchableOpacity>
+    </View>
 
-      <TouchableOpacity onPress={this.selectPhotohair.bind(this)}>
-      <View
-      style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-      {this.state.avatarSource === null ? (
-        <Text> </Text>
-      ) : (
-        <Image style={styles.avatar} source={this.state.avatarSource} />
-      )}
-      </View>
+
+
+
+
+{/* alopicia tracker*/}
+      <View style={{  marginTop:"17%"}} >
+        <TouchableOpacity style={{   flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}} onPress={this.selectPhotoalopicia.bind(this)}>
+        <Image style={{ marginLeft:"4%",width: height*0.12 *0.8 ,   height:height*0.12 *0.8 ,marginTop:height*0.12 *0.2,    resizeMode:"contain"  ,borderRadius:999 }} source={require('../imgs/NEWIMAGES/camera/alo.jpg')} />
+        <View style={{ marginLeft:"4%",width:"70%" ,   height:"100%" ,justifyContent: 'center',alignItems: 'center' }} >
+          <Text  style={{fontSize:24,color:"black"  }}>Alopecia Tracker</Text>
+          <Text  style={{fontSize:height*0.018,color:"black"  }}>Uses an algorithm to track what percentage of your skin is covered by acne. You can use this to check the effectiveness of any treatments you may be taking over time.</Text>
+        </View>
       </TouchableOpacity>
+    </View>
+
+
+
 
       </View>
     );

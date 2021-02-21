@@ -32,7 +32,7 @@ export default class  Tmp2 extends React.Component {
 
     let body = JSON.stringify({text: b64 })
 
-    fetch('http://178.128.165.173/hir', {
+    fetch('http://143.198.13.168:80/hir', {
       method: 'POST',
 
         headers: {
@@ -57,7 +57,7 @@ export default class  Tmp2 extends React.Component {
 
         let source = { "uri":  newstr };
 
- this.props.navigation.navigate('history',{ newIMG: source });
+ this.props.navigation.navigate('history0',{ newIMG: source });
 
             })
       .catch((err) => { console.log(err); });
