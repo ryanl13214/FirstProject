@@ -8,7 +8,16 @@ const
     height
 } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
-
+import
+{
+    LineChart,
+    BarChart,
+    PieChart,
+    ProgressChart,
+    ContributionGraph,
+    StackedBarChart
+}
+from 'react-native-chart-kit';
 export default class  Excer extends React.Component {
 
 	state={
@@ -84,8 +93,9 @@ if(cal == undefined){cal = 0 ;}
 			mins:0,
 			cal:cal,
 steps:0,
-multiplyer:50
-
+multiplyer:50,
+distanceLeft: "0%",
+dayMinus:0
 		};
 
 	}
@@ -112,7 +122,61 @@ multiplyer:50
     SyncStorage.set('caltracker',this.state.cal);
 	}
 
+  getLeft(i)
+  {
+      if (i == 0)
+      {
+          return this.state.distanceLeft;
+      }
+      if (i == 1)
+      {
+          return this.state.distanceLeft;
+      }
+      if (i == 3 && this.state.distanceLeft == "110%")
+      {
+          return "0%";
+      }
+      else if (i == 3 && this.state.distanceLeft == "0%")
+      {
+          return "110%";
+      }
+  }
 
+  getGraphData = () =>
+  {
+    var month = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus  )).toString().split(' ')[1];
+    var year = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus    )).toString().split(' ')[3];
+    var day = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus    )).toString().split(' ')[2];
+    var tmparray= [];
+    for(var i =0; i<= 23 ; i+=2)
+    {
+      var tmp=  SyncStorage.get('waterTracker' + month + year + day + i);
+      if(tmp == undefined)
+      {
+        tmp=0;
+      }
+      tmparray.push(tmp);
+    }
+      return tmparray;
+  }
+
+  changetograph = (i) =>
+  {
+
+
+
+      this.setState({
+          distanceLeft: "110%",
+          dayMinus:i
+      });
+  }
+  changetotracker = () =>
+  {
+    console.log("a");
+      this.setState({
+          distanceLeft: "0%",  dayMinus:0
+      });
+  }
 
 	updateMultiplyer = (i) => {
 		this.setState({
@@ -147,7 +211,7 @@ multiplyer:50
 		return (
 			<View style={{width: '100%', height:height}}>
 			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/exbackground.png')} />
-
+      <View  style={{position:"absolute" ,  width: '100%', height: '100%' ,left:this.getLeft(1),top:"0%",overflow:"hidden" }} >
 			<View style={{ flexDirection:"row" , marginTop:"45%"}} >
 
 			  <View style={{ marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white",width: width*0.42,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.09  ,minHeight:80}}  >
@@ -174,36 +238,6 @@ multiplyer:50
 
 			  </View>
 
-			</View>
-
-
-
-
-			<View  style={{position:"absolute",  width: "75%",marginLeft:"10%" , flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
-				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus7}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus6}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus5}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus4}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus3}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus2}</Text>
-				</TouchableOpacity>
-				<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.minus1}</Text>
-				</TouchableOpacity>
-				<View style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-					<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 30, height: 36}]}>{this.state.todaysnumber}</Text>
-				</View>
 			</View>
 
 
@@ -306,10 +340,137 @@ multiplyer:50
 
 
 </View>
+ </View>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <LineChart
+
+         data={{
+           labels: [
+             '0',
+             '2',
+             '4',
+             '6',
+             '8',
+             '10',
+             '12',
+             '14',
+             '16',
+             '18',
+             '20',
+             '22',
+           ],
+           datasets: [
+             {
+               data: this.getGraphData(),
+               strokeWidth: 2,
+             },
+           ],
+         }}
+         width={Dimensions.get('window').width *0.9}
+         height={Dimensions.get('window').height *0.4}
+         chartConfig={{
+           backgroundColor: '#1cc910',
+           backgroundGradientFrom: '#eff3ff',
+           backgroundGradientTo: '#efefef',
+           decimalPlaces: 0,
+           color: (opacity = 1) => `rgba(103, 0, 46, ${opacity})`,
+           style: {
+             borderRadius: 6,
+           },
+         }}
+         style={{
+           position:"absolute",
+           top:"35%",
+           left:this.getLeft(3),
+           marginVertical: 8,
+           borderRadius: 16,
+            marginLeft:"5%",
+            borderWidth:1,
+            borderColor:"rgb(103, 0, 46)"
+         }}
+         />
+
+
+         <Text style={{color:"rgb(103, 0, 46)",position:"absolute",top:"25%",      left:this.getLeft(3), fontSize: 30, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"25%",  height: 46}}>Daily Graph</Text>
+
+
+         <Text style={{color:"rgb(103, 0, 46)",position:"absolute",top:"80%",      left:this.getLeft(3), fontSize: 16, fontWeight: "50"  ,  textAlign: 'center', marginTop: 3,      height: 96}}>We recomend 30 minutes of high activity each day. this can be as simple as a jog or it could be a decicated workout.</Text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"13%"  }}>
+
+   <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-6)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-5)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-4)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-3)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-2)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+   </TouchableOpacity>
+   <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-1)  }} >
+   <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+   </TouchableOpacity>
+
+
+   <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
+
+       <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center' , marginTop: 3,width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+
+   </TouchableOpacity>
+ </View>
+
+ {/* bascl nutton*/}
+ <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+   <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+ </TouchableOpacity>
 
 
 			</View>

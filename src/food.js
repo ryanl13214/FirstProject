@@ -5,6 +5,16 @@ import{ Dimensions}from 'react-native';
 const { width,height } = Dimensions.get('window');
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import SyncStorage from 'sync-storage';
+import
+{
+    LineChart,
+    BarChart,
+    PieChart,
+    ProgressChart,
+    ContributionGraph,
+    StackedBarChart
+}
+from 'react-native-chart-kit';
 export default class  Food extends React.Component {
 
   constructor(props ) {
@@ -15,8 +25,35 @@ export default class  Food extends React.Component {
     var year = new Date(new Date().setDate(new Date().getDate()     )).toString().split(' ')[3];
     var day = new Date(new Date().setDate(new Date().getDate()    )).toString().split(' ')[2];
 
-
+    var thismonth = new Date(new Date().setDate(new Date().getDate() - 1)).toString().split(' ')[1];
+    var todaysnumber = new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
+    var minus1 = new Date(new Date().setDate(new Date().getDate() - 1)).toString().split(' ')[2];
+    var minus2 = new Date(new Date().setDate(new Date().getDate() - 2)).toString().split(' ')[2];
+    var minus3 = new Date(new Date().setDate(new Date().getDate() - 3)).toString().split(' ')[2];
+    var minus4 = new Date(new Date().setDate(new Date().getDate() - 4)).toString().split(' ')[2];
+    var minus5 = new Date(new Date().setDate(new Date().getDate() - 5)).toString().split(' ')[2];
+    var minus6 = new Date(new Date().setDate(new Date().getDate() - 6)).toString().split(' ')[2];
+    var minus7 = new Date(new Date().setDate(new Date().getDate() - 7)).toString().split(' ')[2];
+    var pluss1 = new Date(new Date().setDate(new Date().getDate() + 1)).toString().split(' ')[2];
+    var todaysday = new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[0];
+    var minus1day = new Date(new Date().setDate(new Date().getDate() - 1)).toString().split(' ')[0];
+    var minus2day = new Date(new Date().setDate(new Date().getDate() - 2)).toString().split(' ')[0];
+    var minus3day = new Date(new Date().setDate(new Date().getDate() - 3)).toString().split(' ')[0];
+    var minus4day = new Date(new Date().setDate(new Date().getDate() - 4)).toString().split(' ')[0];
+    var minus5day = new Date(new Date().setDate(new Date().getDate() - 5)).toString().split(' ')[0];
+    var minus6day = new Date(new Date().setDate(new Date().getDate() - 6)).toString().split(' ')[0];
+    var minus7day = new Date(new Date().setDate(new Date().getDate() - 7)).toString().split(' ')[0];
+    var pluss1day = new Date(new Date().setDate(new Date().getDate() + 1)).toString().split(' ')[0];
     this.state={
+        pluss1: pluss1,
+        todaysnumber: todaysnumber,
+        minus1: minus1,
+        minus2: minus2,
+        minus3: minus3,
+        minus4: minus4,
+        minus5: minus5,
+        minus6: minus6,
+        minus7: minus7,
       currentFocus:"Calories",
       todaysKcal:SyncStorage.get('todaysKcal' + month + year + day ),
       todaysFat:SyncStorage.get('todaysFat' + month + year + day ),
@@ -37,7 +74,10 @@ export default class  Food extends React.Component {
       snacksKcal:SyncStorage.get('snacksKcal' + month + year + day ),
       snacksFat:SyncStorage.get('snacksFat' + month + year + day ),
       snacksCarbs:SyncStorage.get('snacksCarbs' + month + year + day ),
-      snacksProtein: SyncStorage.get('snacksProtein' + month + year + day )
+      snacksProtein: SyncStorage.get('snacksProtein' + month + year + day ),
+      distanceLeft: "0%",
+      dayMinus:0
+
     }
 
 
@@ -77,7 +117,23 @@ export default class  Food extends React.Component {
   }
 
 
-
+  getGraphData = () =>
+  {
+    var month = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus  )).toString().split(' ')[1];
+    var year = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus    )).toString().split(' ')[3];
+    var day = new Date(new Date().setDate(new Date().getDate() - this.state.dayMinus    )).toString().split(' ')[2];
+    var tmparray= [];
+    for(var i =0; i<= 23 ; i+=2)
+    {
+      var tmp=  SyncStorage.get('waterTracker' + month + year + day + i);
+      if(tmp == undefined)
+      {
+        tmp=0;
+      }
+      tmparray.push(tmp);
+    }
+      return tmparray;
+  }
 updateFocus = (id) =>
 {
   console.log(id);
@@ -96,8 +152,42 @@ updateFocus = (id) =>
       this.setState({currentFocus:  "Carbohydrates"    });
     }
 }
+getLeft(i)
+{
+    if (i == 0)
+    {
+        return this.state.distanceLeft;
+    }
+    if (i == 1)
+    {
+        return this.state.distanceLeft;
+    }
+    if (i == 3 && this.state.distanceLeft == "110%")
+    {
+        return "0%";
+    }
+    else if (i == 3 && this.state.distanceLeft == "0%")
+    {
+        return "110%";
+    }
+}
+changetograph = (i) =>
+{
 
 
+
+    this.setState({
+        distanceLeft: "110%",
+        dayMinus:i
+    });
+}
+changetotracker = () =>
+{
+  console.log("a");
+    this.setState({
+        distanceLeft: "0%",  dayMinus:0
+    });
+}
 
 
 
@@ -457,6 +547,7 @@ getUnits = () =>
 
 
 
+              <View  style={{position:"absolute" ,  width: '100%', height: '100%' ,left:this.getLeft(1),top:"0%",overflow:"hidden" }} >
 
 
 
@@ -613,13 +704,142 @@ getUnits = () =>
 
 
 
-{/* bascl nutton*/}
-<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
-  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
-</TouchableOpacity>
+
+</View>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <LineChart
+
+         data={{
+           labels: [
+             '0',
+             '2',
+             '4',
+             '6',
+             '8',
+             '10',
+             '12',
+             '14',
+             '16',
+             '18',
+             '20',
+             '22',
+           ],
+           datasets: [
+             {
+               data: this.getGraphData(),
+               strokeWidth: 2,
+             },
+           ],
+         }}
+         width={Dimensions.get('window').width *0.9}
+         height={Dimensions.get('window').height *0.4}
+         chartConfig={{
+           backgroundColor: '#1cc910',
+           backgroundGradientFrom: '#eff3ff',
+           backgroundGradientTo: '#efefef',
+           decimalPlaces: 0,
+           color: (opacity = 1) => `rgba(255, 140, 0, ${opacity})`,
+           style: {
+             borderRadius: 6,
+           },
+         }}
+         style={{
+           position:"absolute",
+           top:"35%",
+           left:this.getLeft(3),
+           marginVertical: 8,
+           borderRadius: 16,
+            marginLeft:"5%",
+            borderWidth:1,
+            borderColor:"rgba(255, 140, 0)"
+         }}
+         />
+
+
+         <Text style={{color:"darkorange",position:"absolute",top:"25%",      left:this.getLeft(3), fontSize: 30, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"25%",  height: 46}}>Daily Graph</Text>
+
+
+
+        <Text style={{color:"darkorange",position:"absolute",top:"85%",      left:this.getLeft(3), fontSize: 18, fontWeight: "50"  ,  textAlign: 'center', marginTop: 3,   marginLeft:"3%",  height: 96}}>Keeping a steady healthy diet is a vital component of keeping PCOS under control.</Text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"15%"  }}>
+
+           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-6)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-5)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-4)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-3)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-2)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-1)  }} >
+           <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+           </TouchableOpacity>
+
+
+           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetotracker()  }} >
+
+               <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center' , marginTop: 3,width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+
+           </TouchableOpacity>
+         </View>
+
+
+
+         {/* bascl nutton*/}
+         <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+           <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+         </TouchableOpacity>
 
 
 
