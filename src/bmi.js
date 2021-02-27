@@ -79,7 +79,7 @@ export default class  Bmi extends React.Component {
 			thismonth:thismonth,
 			age: 18,
 			weight:80,
-			height:120,
+			height:140,
 			bmi:0,
 			bmitext:"healthy"
 		};
@@ -158,13 +158,12 @@ export default class  Bmi extends React.Component {
 		return (
 
 			<SafeAreaView style={styles.container}>
-			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/NEWIMAGES/BMI/7.png')} />
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/3.jpg')} />
 
 
 {/* title*/}
 			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-2%",left:"0%",width:"100%",height:"15%"}}>
 
-			<Text  style={{ color:"white", fontSize: 25}}>Bmi Tracker</Text>
 
 			</View>
 			{/* bascl nutton*/}
@@ -173,7 +172,7 @@ export default class  Bmi extends React.Component {
 			</TouchableOpacity>
 
 
-			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"20%"  }}>
+			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"17%"  }}>
 			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
 			</TouchableOpacity>

@@ -247,22 +247,22 @@ export default class Water extends React.Component
 
               <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/page-3/waterback.png')} />
 
-              <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/page-3/waterback.png')} />
+              <Image style={{position:"absolute"  ,  width: '100%', height: '100%',resizeMode: 'stretch'  }} source={require('../imgs/waterTrackerBackgroundForGraph.jpg')} />
 
-              {/* title*/}
+              {/* title
               			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-2%",left:"0%",width:"100%",height:"15%"}}>
 
-              			<Text  style={{ color:"white", fontSize: 25}}>Water Tracker</Text>
+
 
               			</View>
-
+*/}
 {/* bascl nutton*/}
 <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
   <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
 </TouchableOpacity>
 
 
-             <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"18%"  }}>
+             <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
 
                 <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
                 <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
@@ -303,7 +303,7 @@ export default class Water extends React.Component
 
 
  {/* right top */}
-           <View style={{ position:"absolute",top: height*0.30 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+           <View style={{ position:"absolute",top: height*0.22 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 
 
            <Image style={{     height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
@@ -314,10 +314,10 @@ export default class Water extends React.Component
 
 
               <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:10   }} onPress={() => {return this.pluss()  }} >
-                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/page-3/plus.png')} />
+                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
               </TouchableOpacity>
               <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:15  }}onPress={() => {return this.minus()  }} >
-                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/page-3/minus.png')} />
+                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
               </TouchableOpacity>
 
  </View>
@@ -330,9 +330,12 @@ export default class Water extends React.Component
 
 
 {/*right middle  */}
-          <View style={{ position:"absolute",top: height*0.50 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
-              <View   style={{   width:  "100%" ,height:"40%"   }}>
-                <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}> Total water drank</Text>{/*to do add cap for large svcrreen  */}
+          <View style={{ position:"absolute",top: height*0.45 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+<View   style={{   width:  "100%" ,height:"25%"  ,backgroundColor:"rgb(237,149,89)", borderTopRightRadius:15 ,  borderTopLeftRadius:15 ,  }}>
+  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Total water drank</Text>{/*to do add cap for large svcrreen  */}
+</View>
+              <View   style={{   width:  "100%" ,height:"15%"   }}>
+
                 <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>  Your toal today is:</Text>
               </View>
 
@@ -351,9 +354,11 @@ export default class Water extends React.Component
 
 {/*bottom right*/}
 <View style={{ position:"absolute",top: height*0.70 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
-<View   style={{   width:  "100%" ,height:"40%"   }}>
-  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3   }}>  Water Goal</Text>{/*to do add cap for large svcrreen  */}
-  <Text  style={{fontSize:height*0.0173 ,color:"black" ,marginLeft:3   }}>  Your water goal today is:</Text>
+<View   style={{   width:  "100%" ,height:"25%"  ,backgroundColor:"rgb(237,149,89)", borderTopRightRadius:15 ,  borderTopLeftRadius:15 ,  }}>
+  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Water Goal</Text>{/*to do add cap for large svcrreen  */}
+</View>
+<View   style={{   width:  "100%" ,height:"15%"   }}>
+   <Text  style={{fontSize:height*0.0173 ,color:"black" ,marginLeft:3   }}>  Your water goal today is:</Text>
 </View>
 
  <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>
@@ -389,7 +394,7 @@ export default class Water extends React.Component
 
 
 
-              <View  style={{position:"absolute" ,  width: '45%', height: '65%',left:"4%",top:"33%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
+              <View  style={{position:"absolute" ,  width: '45%', height: '73%',left:"4%",top:"24%",borderRadius:30 ,backgroundColor:"rgb(25,89,127)",overflow:"hidden"}} >
 
 
               <Animated.Image
