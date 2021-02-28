@@ -223,7 +223,7 @@ dayMinus:0
 
 				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
 					  <Text  style={{fontSize:this.state.textScale,color:"white"  }}>{this.state.steps}</Text>
-			      <Text  style={{fontSize:height*0.009 *1.6,color:"white"  }}>Step equivalent</Text>
+			      <Text  style={{fontSize:height*0.009 *1.6,color:"white"  }}>Step Equivalent</Text>
 			    </View>
 
 
@@ -238,7 +238,7 @@ dayMinus:0
 
 				  <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'flex-end',width: (width*0.35 )- ( height*0.09 *0.8) }} >
 					  <Text  style={{fontSize:this.state.textScale,color:"white"  }}>{this.state.cal}</Text>
-			      <Text  style={{fontSize:height*0.009 *1.6,color:"white"  }}>  caloires</Text>
+			      <Text  style={{fontSize:height*0.009 *1.6,color:"white"  }}>  Calories</Text>
 			    </View>
 
 
@@ -261,26 +261,26 @@ dayMinus:0
 
           <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(11.5)  }>
            <View >
-              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconrun.jpg')} />
+              <Image style={{marginTop:"28%" ,  borderRadius:15, height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconrun.jpg')} />
             </View>
-            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> run</Text>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> Run</Text>
           </TouchableOpacity>
 
 
 
           <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(4.5)  }>
            <View >
-              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconwalk.jpg')} />
+              <Image style={{marginTop:"28%" ,  borderRadius:15, height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconwalk.jpg')} />
             </View>
-            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> walk</Text>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> Walk</Text>
           </TouchableOpacity>
 
 
           <TouchableOpacity style={{marginTop:"5%",justifyContent: 'center',alignItems: 'center',  marginLeft:"5%"  ,backgroundColor:"white"  , height: height*0.09  ,width: width*0.25,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  }}  onPress={() => this.updateMultiplyer(9)  }>
            <View >
-              <Image style={{marginTop:"28%" , height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconbike.jpg')} />
+              <Image style={{marginTop:"28%" ,  borderRadius:15, height: height*0.086  ,width: width*0.23,    resizeMode:"contain"   }} source={require('../imgs/revision3/exiconbike.jpg')} />
             </View>
-            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> cycle</Text>
+            <Text  style={{fontSize:this.state.textScale  ,color:"black" , marginTop:16 }}> Cycle</Text>
           </TouchableOpacity>
 
           </View>

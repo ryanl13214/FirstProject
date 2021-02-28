@@ -336,7 +336,7 @@ export default class Water extends React.Component
 </View>
               <View   style={{   width:  "100%" ,height:"15%"   }}>
 
-                <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>  Your toal today is:</Text>
+                <Text  style={{fontSize:height*0.0193 ,color:"black" ,marginLeft:3   }}>  Your total today is:</Text>
               </View>
 
                <View   style={{   width:  "100%" ,height:"60%" ,alignItems: 'center',flexDirection:"row" }}>

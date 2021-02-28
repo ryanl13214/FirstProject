@@ -119,10 +119,7 @@ export default class  Foodlist extends React.Component {
           SyncStorage.set('todaysProtein' + month + year + day,SyncStorage.get('todaysProtein' + month + year + day ) +10);
         }
 
-
-this.props.navigation.navigate.goBack(null);
-
-
+ 
 
 
   }

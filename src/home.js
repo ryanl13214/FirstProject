@@ -209,26 +209,21 @@ export default class Home extends React.Component
 
 
 {/*row 3*/}
-
-
-          <View style={{flexDirection:"row"}}>
+        <View style={{flexDirection:"row"}}>
            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:28, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/mood.jpg')} />
               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Mood</Text>
-
             </TouchableOpacity>
 
             <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/d.jpg')} />
               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Meditation</Text>
-
             </TouchableOpacity>
 
 
             <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
                  <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/jornalicon.png')} />
-                 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Jornal</Text>
-
+                 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Journal</Text>
             </TouchableOpacity>
 
         </View>

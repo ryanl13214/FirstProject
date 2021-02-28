@@ -213,7 +213,7 @@ if(found){return "red";}else{return "black";}
       </View>
 
 
-      <Text style={{  color:"white",position:"absolute", top:height*0.15, width:"100%",textAlign:"center", fontSize:30}}>Register </Text>
+      <Text style={{  color:"black",position:"absolute", top:height*0.17, width:"100%",textAlign:"center", fontSize:30}}>Register </Text>
 
 
 {/* medication    <Text style={{   width:width,textAlign:"center", fontSize:30}}>medication </Text>  */}
