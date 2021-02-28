@@ -303,7 +303,8 @@ return this.state.rightmsgleft;
         this.getreply(this.state.inputText);
         this.setState(
         {
-            inputText: ""
+            inputText: "",
+            rightmsgleft:90000
         });
     }
     submitSET = (a) =>
@@ -321,7 +322,8 @@ return this.state.rightmsgleft;
         });
         this.setState(
         {
-            inputText: ""
+            inputText: "",
+            rightmsgleft:90000
         });
         this.getreply(a)
     }

@@ -841,7 +841,7 @@ export default class Food extends React.Component
         const widthcirc = (Dimensions.get('window').width * 0.7);
         return (
                <View  style={{  width: '100%', height: '100%' }} >
-                  <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/NEWIMAGES/page-4/foodbackground.png')} />
+                  <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/revision3/nurtients.jpg')} />
 
 
 
@@ -1125,7 +1125,7 @@ export default class Food extends React.Component
 
 
 
-                  <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"15%"  }}>
+                  <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"10%"  }}>
 
                      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
                      <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>

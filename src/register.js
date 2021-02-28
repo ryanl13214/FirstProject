@@ -4,8 +4,12 @@ import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableO
 import { Dimensions } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import DatePicker from 'react-native-datepicker'
- 
-const { height } = Dimensions.get('window');
+
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 //Import basic react native components
 import MultiSelect from 'react-native-multiple-select';
 const wheelPickerData = ["1 day", '2 days', '3 days', '4 days', '5 days', '6 days','7 days','8 days','9 days','10 days','11 days','12 days','13 days','14 days','15 days','16 days','17 days',"18 days","19 days","20 days"];
@@ -69,8 +73,31 @@ export default class  Register extends React.Component {
 
 
 
+    addMedication = med => {
+var tmparray = this.state.medications ;
+tmparray.push(med)
+  this.setState({ medications:tmparray });
 
 
+
+
+
+
+
+}
+getcolorMedication(med){
+var found = false;
+for(var i = 0 ; i < this.state.medications.length ;i++){
+if(this.state.medications[i]== med){
+  found = true;
+}
+}
+
+if(found){return "red";}else{return "black";}
+
+
+
+}
 
 
 
@@ -107,15 +134,17 @@ export default class  Register extends React.Component {
     return (
 
       <View style={{ flex: 1 }}>
-      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/registerbackground.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/revision3/regback.jpg')} />
 
 
 
-
+      <TouchableOpacity style={{position:"absolute",Alignitems:"center",justifyContent:"center",textAlign:"center",width:90,height:50,top:height * 0.03 , right:15,backgroundColor:"rgb(220,220,220)",borderRadius:8}}    onPress={() =>  this.props.navigation.navigate('Home')} >
+         <Text  style={{color:"black",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>Sign up</Text>
+      </TouchableOpacity>
 
       <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
 
-      <View style={{ alignItems: 'center',backgroundColor:"white",height:"80%",borderRadius:50 }}>
+      <View style={{ alignItems: 'center' ,height:height*0.80,borderRadius:50 }}>
 
       <Text style={{  color:"grey",position:"absolute", top:"5%", width:"100%",textAlign:"center", fontSize:20}}>details </Text>
 
@@ -185,14 +214,103 @@ export default class  Register extends React.Component {
 
 
       <Text style={{  color:"white",position:"absolute", top:height*0.15, width:"100%",textAlign:"center", fontSize:30}}>Register </Text>
-      <Button
-      style={{ position:"absolute", top:height*0.85, width:"40%",textAlign:"center" ,height:50}}
-        onPress={{ }}
-        title="Set Alarm"
-        color="#7fff00"
-      />
 
 
+{/* medication    <Text style={{   width:width,textAlign:"center", fontSize:30}}>medication </Text>  */}
+      <View style={{   width:width,position:"absolute", top:height*0.66}}>
+
+
+        <View style={{flexDirection:"row", width:"80%",marginLeft:"10%"}}>
+
+
+              {/* col 1 */}
+          <View style={{ width:"33%" }}>
+          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Metaformin')} >
+
+          <Text style={{  color:this.getcolorMedication("Metaformin") , width:"100%",textAlign:"center", fontSize:14}}>Metaformin</Text>
+            </TouchableOpacity>
+
+
+          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Fortamet')} >
+
+<Text style={{  color:this.getcolorMedication("Fortamet") , width:"100%",textAlign:"center", fontSize:14}}>Fortamet</Text>
+
+          </TouchableOpacity>
+          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Glucophage')} >
+
+<Text style={{  color:this.getcolorMedication("Glucophage") , width:"100%",textAlign:"center", fontSize:14}}>Glucophage</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Ethinyl Estradio')} >
+          <Text style={{  color:this.getcolorMedication("Ethinyl Estradio") , width:"100%",textAlign:"center", fontSize:14}}>Ethinyl Estradio</Text>
+</TouchableOpacity>
+
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levonorgestrel')} >
+          <Text style={{  color:this.getcolorMedication("Levonorgestrel") , width:"100%",textAlign:"center", fontSize:14}}>Levonorgestrel</Text>
+</TouchableOpacity>
+
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Desogestrel')} >
+          <Text style={{  color:this.getcolorMedication("Desogestrel") , width:"100%",textAlign:"center", fontSize:14}}>Desogestrel</Text>
+</TouchableOpacity>
+
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Norethindrone')} >
+          <Text style={{  color:this.getcolorMedication("Norethindrone") , width:"100%",textAlign:"center", fontSize:14}}>Norethindrone</Text>
+</TouchableOpacity>
+          </View>
+          {/* col 2 */}
+          <View style={{width:"38%" }}>
+
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Seasonque')} >
+          <Text style={{  color:this.getcolorMedication("Seasonque") , width:"100%",textAlign:"center", fontSize:14}}>Seasonque</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Aviane')} >
+          <Text style={{  color:this.getcolorMedication("Aviane") , width:"100%",textAlign:"center", fontSize:14}}>Aviane</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levora')} >
+          <Text style={{  color:this.getcolorMedication("Levora") , width:"100%",textAlign:"center", fontSize:14}}>Levora</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levomefolate Calcium')} >
+          <Text style={{  color:this.getcolorMedication("Levomefolate Calcium") , width:"100%",textAlign:"center", fontSize:14}}>Levomefolate Calcium</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Falmina')} >
+          <Text style={{  color:this.getcolorMedication("Falmina") , width:"100%",textAlign:"center", fontSize:14}}>Falmina</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Lutera')} >
+          <Text style={{  color:this.getcolorMedication("Lutera") , width:"100%",textAlign:"center", fontSize:14}}>Lutera</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Myzilra')} >
+          <Text style={{  color:this.getcolorMedication("Myzilra") , width:"100%",textAlign:"center", fontSize:14}}>Myzilra</Text>
+</TouchableOpacity>
+
+          </View>
+          {/* col 3 */}
+          <View style={{ width:"38%"}}>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Vaniga')} >
+          <Text style={{  color:this.getcolorMedication("Vaniga") , width:"100%",textAlign:"center", fontSize:14}}>Vaniga</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Dianette')} >
+          <Text style={{  color:this.getcolorMedication("Dianette") , width:"100%",textAlign:"center", fontSize:14}}>Dianette</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Cyproterone')} >
+          <Text style={{  color:this.getcolorMedication("Cyproterone") , width:"100%",textAlign:"center", fontSize:14}}>Cyproterone</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Finasteride')} >
+          <Text style={{  color:this.getcolorMedication("Finasteride") , width:"100%",textAlign:"center", fontSize:14}}>Finasteride</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Cyproterone Acetate')} >
+          <Text style={{  color:this.getcolorMedication("Cyproterone Acetate") , width:"100%",textAlign:"center", fontSize:14}}>Cyproterone Acetate</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Spironolactone')} >
+          <Text style={{  color:this.getcolorMedication("Spironolactone") , width:"100%",textAlign:"center", fontSize:14}}>Spironolactone</Text>
+</TouchableOpacity>
+<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Flutamide')} >
+          <Text style={{  color:this.getcolorMedication("Flutamide") , width:"100%",textAlign:"center", fontSize:14}}>Flutamide</Text>
+</TouchableOpacity>
+
+          </View>
+
+        </View>
+
+      </View>
 
 
       </View>

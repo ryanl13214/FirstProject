@@ -140,7 +140,9 @@ export default class Home extends React.Component
    <Image style={{  width: "100%", height: height  ,position:"absolute" ,resizeMode:"stretch"}} source={require('../imgs/homeback.jpg')} />
 
 
-
+   <TouchableOpacity style={{position:"absolute",Alignitems:"center",justifyContent:"center",textAlign:"center",width:75,height:45,top:height * 0.03 , right:15,backgroundColor:"rgb(210,210,210)",borderRadius:8}}    onPress={() =>  this.props.navigation.navigate('login')} >
+      <Text  style={{color:"white",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>LOG IN</Text>
+   </TouchableOpacity>
 
 
    <View style={{  width: "100%",  marginTop: "30%",  justifyContent: 'center', justifyItems: 'center',alignItems: 'center'   }}>
@@ -149,18 +151,22 @@ export default class Home extends React.Component
 
         <View style={{  marginTop:"10%",flexDirection:"row" }}>
 
-              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:20,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
+              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/water.jpg')} />
+                   <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
               </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('Excer')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('Excer')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/workout.jpg')} />
+                 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Workout</Text>
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('food')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('food')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/food.jpg')} />
+    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Eat right</Text>
+
             </TouchableOpacity>
 
 
@@ -181,16 +187,22 @@ export default class Home extends React.Component
         <View style={{flexDirection:"row"}}>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:20, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('ovu')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:28, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('ovu')} >
          <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/ovulation.jpg')} />
+         <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Ovulation</Text>
+
             </TouchableOpacity>
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('bmi')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('bmi')} >
                <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/bmi.jpg')} />
+               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Bmi</Text>
+
             </TouchableOpacity>
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('energy')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('energy')} >
            <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/energy.jpg')} />
+           <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Energy</Text>
+
             </TouchableOpacity>
 
         </View>
@@ -200,17 +212,23 @@ export default class Home extends React.Component
 
 
           <View style={{flexDirection:"row"}}>
-           <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:20, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
+           <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:28, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/mood.jpg')} />
+              <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Mood</Text>
+
             </TouchableOpacity>
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/d.jpg')} />
+              <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Meditation</Text>
+
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:20,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('jornal')} >
                  <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/jornalicon.png')} />
+                 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Jornal</Text>
+
             </TouchableOpacity>
 
         </View>
@@ -219,12 +237,24 @@ export default class Home extends React.Component
 
 {/*row 4*/}
   <View style={{flexDirection:"row"}}>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:20,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('sleep')} >
-<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/food.jpg')} />
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/acne.jpg')} />
+<Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Acne</Text>
+
         </TouchableOpacity>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:20,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/skin.jpg')} />
+<Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Hirsutism</Text>
+
         </TouchableOpacity>
+
+
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/alo.jpg')} />
+<Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Alopecia</Text>
+
+        </TouchableOpacity>
+
 
 
     </View>
@@ -234,16 +264,30 @@ export default class Home extends React.Component
 
 
 
+    {/*row 5*/}
+      <View style={{flexDirection:"row"}}>
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('sleep')} >
+    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/sleep.jpg')} />
+    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Sleep</Text>
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/white.png')} />
+    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Empty</Text>
+
+            </TouchableOpacity>
 
 
-        <View style={{  marginTop:"15%"}} >
-          <TouchableOpacity style={{  flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.12  ,minHeight:120}}  onPress={() =>  this.props.navigation.navigate('trophy')} >
-            <Image style={{ marginLeft:"4%",width: height*0.12 *0.8 ,   height:height*0.12 *0.8 ,marginTop:height*0.12 *0.2,    resizeMode:"contain"   }} source={require('../imgs/NEWIMAGES/trophy-cabinet.png')} />
-            <View style={{ marginLeft:"4%",    height:"100%" ,justifyContent: 'center',alignItems: 'center' }} >
-              <Text  style={{fontSize:this.state.textScale,color:"black"  }}>Trophy cabinet</Text>
-            </View>
-          </TouchableOpacity>
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/white.png')} />
+    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Empty</Text>
+
+            </TouchableOpacity>
+
+
+
         </View>
+
 
 
 

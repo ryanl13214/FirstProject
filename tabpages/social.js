@@ -68,40 +68,11 @@ export default class Social extends Component {
 
 		return (
 			<View style={styles.container}>
-
-
-
-			<FlatList
-			data={this.state.chatMessages}
-			keyExtractor={item => item.key }
-			renderItem={({ item }) =>
-
-			<View  style={{ flexDirection:"row",alignSelf: this.getflex(item.col ) }} >
-			<Image style={{ margin:4, width:this.hideimg(item.col,0 ), height:  40,borderRadius:20  }} source={require('../imgs/drdaisychaticon.jpg')}  />
-
-			<Text style={{maxWidth:"60%",alignSelf: this.getflex(item.col ),color:this.gettextcolour(item.col ),fontSize:18  ,textAlign:"center",width:this.getwidth(item.key ),margin:4,  backgroundColor:this.getcolour(item.col),borderRadius:25 , padding:8 }}    >{item.key}</Text>
-			<Image style={{ margin:4, width:this.hideimg(item.col,1 ), height:  40,borderRadius:20  }} source={require('../imgs/avataricon.png')}  />
-			</View>
-		}
-		style={{    }}
-		/>
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/revision3/socialback.jpg')} />
 
 
 
 
-				<View style={{flexDirection:"row"}}>
-
-						<TextInput
-						style={{ height: 40,width:"60%", borderWidth: 1,  position:"absolute" ,bottom:80,left:"10%" }}
-						autoCorrect={false}
-						value={this.state.chatMessage}
-						onSubmitEditing={() => this.submitChatMessage()}
-						onChangeText={chatMessage => {
-							this.setState({ chatMessage });
-						}}
-						/>
-						<Text style={{ position:"absolute" ,bottom:89,right:"10%" ,   fontSize:18  }}    >SEND</Text>
-				</View>
 		</View>
 	);
 }
