@@ -50,7 +50,8 @@ import   Meditation  from './src/meditation';
 import   Ovu  from './src/ovulationTracker';
 import   Sleep  from './src/sleep';
 import   SetAlarm  from './src/setalarm';
-import   Register  from './src/register';
+import   Register  from './src/Register';
+import   Details  from './src/Details';
 import   Scan  from './src/acenescannerselector';
 import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
@@ -176,8 +177,8 @@ export default class  App extends React.Component {
     }
 var a = SyncStorage.getItem("threepagedrdaisyintro");
 console.log("a "+JSON.stringify(a));
-if(1==1){
-  //  if(a != false){
+//if(1==1){
+   if(a != false){
       this.setState({ stage:"threepagedrdaisyintro" })
       SyncStorage.set('threepagedrdaisyintro',false);
 

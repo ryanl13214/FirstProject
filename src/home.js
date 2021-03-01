@@ -140,9 +140,7 @@ export default class Home extends React.Component
    <Image style={{  width: "100%", height: height  ,position:"absolute" ,resizeMode:"stretch"}} source={require('../imgs/homeback.jpg')} />
 
 
-   <TouchableOpacity style={{position:"absolute",Alignitems:"center",justifyContent:"center",textAlign:"center",width:75,height:45,top:height * 0.03 , right:15,backgroundColor:"rgb(210,210,210)",borderRadius:8}}    onPress={() =>  this.props.navigation.navigate('login')} >
-      <Text  style={{color:"white",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>LOG IN</Text>
-   </TouchableOpacity>
+   <Text  style={{position:"absolute",top:height*0.096, width: "100%", fontSize:25, textAlign:"center",color:"white",fontFamily:"AmaticSC-Bold"}}>Homepage</Text>
 
 
    <View style={{  width: "100%",  marginTop: "30%",  justifyContent: 'center', justifyItems: 'center',alignItems: 'center'   }}>
@@ -153,7 +151,7 @@ export default class Home extends React.Component
 
               <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/water.jpg')} />
-                   <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
+                   <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black",fontFamily:"AmaticSC-Regular"}}>Hydrate</Text>
               </TouchableOpacity>
 
 
@@ -195,7 +193,7 @@ export default class Home extends React.Component
 
             <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('bmi')} >
                <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/bmi.jpg')} />
-               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Bmi</Text>
+               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>BMI</Text>
 
             </TouchableOpacity>
 
@@ -217,7 +215,7 @@ export default class Home extends React.Component
 
             <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:28,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/d.jpg')} />
-              <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Meditation</Text>
+              <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Relaxation</Text>
             </TouchableOpacity>
 
 

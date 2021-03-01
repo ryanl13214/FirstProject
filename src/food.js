@@ -852,7 +852,7 @@ export default class Food extends React.Component
 
 
           {/* large*/}
-          <View style={{ position:"absolute",top: height*0.28 , justifyContent: "center",alignItems:"center",left:  width*0.03,    backgroundColor:"white", height: height*0.335  ,width: width*0.65,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+          <View style={{ position:"absolute",top: height*0.28-2 , justifyContent: "center",alignItems:"center",left:  width*0.03,    backgroundColor:"white", height: height*0.335  ,width: width*0.65,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 
                 <Text  style={{fontSize:height*0.03 ,color:"black" ,marginLeft:3   }}>Add {this.state.currentFocus}</Text>
 

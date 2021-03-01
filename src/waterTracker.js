@@ -257,7 +257,7 @@ export default class Water extends React.Component
               			</View>
 */}
 {/* bascl nutton*/}
-<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:10}} onPress={() =>  this.props.navigation.navigate('Home')}>
   <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
 </TouchableOpacity>
 
@@ -303,7 +303,7 @@ export default class Water extends React.Component
 
 
  {/* right top */}
-           <View style={{ position:"absolute",top: height*0.22 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+           <View style={{ position:"absolute",top: height*0.45 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 
 
            <Image style={{     height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
@@ -330,9 +330,9 @@ export default class Water extends React.Component
 
 
 {/*right middle  */}
-          <View style={{ position:"absolute",top: height*0.45 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+          <View style={{ position:"absolute",top: height*0.22 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 <View   style={{   width:  "100%" ,height:"25%"  ,backgroundColor:"rgb(237,149,89)", borderTopRightRadius:15 ,  borderTopLeftRadius:15 ,  }}>
-  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Total water drank</Text>{/*to do add cap for large svcrreen  */}
+  <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Total Water Drank</Text>{/*to do add cap for large svcrreen  */}
 </View>
               <View   style={{   width:  "100%" ,height:"15%"   }}>
 

@@ -210,7 +210,10 @@ dayMinus:0
 
 		return (
 			<View style={{width: '100%', height:height}}>
-			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/exbackground.png')} />
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/revision3/exback.jpg')} />
+      <Text  style={{position:"absolute", width: "100%", fontSize:33, textAlign:"center",color:"white",fontFamily:"AmaticSC-Bold"}}>Exercise</Text>
+
+
       <View  style={{position:"absolute" ,  width: '100%', height: '100%' ,left:this.getLeft(1),top:"0%",overflow:"hidden" }} >
 			<View style={{ flexDirection:"row" , marginTop:"45%"}} >
 
@@ -441,7 +444,7 @@ dayMinus:0
 
 
 
-<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"13%"  }}>
+<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"9%"  }}>
 
    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}onPress={() => {return this.changetograph(-7)  }} >
    <Text style={[styles.textDark, { fontSize: this.state.textScale, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>

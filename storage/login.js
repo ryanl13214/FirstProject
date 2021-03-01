@@ -10,7 +10,7 @@ const
     height
 } = Dimensions.get('window');
 
-export default class  register extends React.Component {
+export default class  Login extends React.Component {
   constructor(props) {
 
 
@@ -57,7 +57,12 @@ export default class  register extends React.Component {
 
         <Image style={{  position:"absolute" , width: 150, height: 180 ,top:30 ,right:20}} source={require('../imgs/hotair.png')} />
 
-
+        <TextInput
+          value={this.state.username}
+          onChangeText={username => this.setState( username)}
+          placeholder={'email'}
+          style={{textAlign: 'center',position:"absolute"  ,top:height*0.43,left:"20%", backgroundColor:"white",   width: '60%', height: 35 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
+        />
         <TextInput
           value={this.state.passwordplaceholder}
           onChangeText={password => updatepassword({ password })}
