@@ -50,14 +50,14 @@ import   Meditation  from './src/meditation';
 import   Ovu  from './src/ovulationTracker';
 import   Sleep  from './src/sleep';
 import   SetAlarm  from './src/setalarm';
-import   Register  from './src/Register';
+import   Register  from './src/register';
 import   Details  from './src/Details';
 import   Scan  from './src/acenescannerselector';
 import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
 
 
-
+import   Symptommapper  from './src/symptom';
 
 
 
@@ -74,6 +74,11 @@ function DefaultApp() {
         }}>
 
         <Stack.Screen name="Home" component={Home} />
+
+        <Stack.Screen name="symptom" component={Symptommapper}/>
+
+
+
         <Stack.Screen name="login" component={Login}/>
         <Stack.Screen name="register" component={Register}/>
         <Stack.Screen name="goals" component={Challenges}/>
@@ -128,6 +133,7 @@ export default class  App extends React.Component {
         SpashScreenTimer: true ,
         loggedin:false,
         registering:false,
+        givingdetails:false,
         stage:""
       };
 
@@ -175,45 +181,78 @@ export default class  App extends React.Component {
     if (data !== null) {
       this.setState({ SpashScreenTimer: false });
     }
-var a = SyncStorage.getItem("threepagedrdaisyintro");
-console.log("a "+JSON.stringify(a));
-//if(1==1){
-   if(a != false){
-      this.setState({ stage:"threepagedrdaisyintro" })
-      SyncStorage.set('threepagedrdaisyintro',false);
+    const result = SyncStorage.get('loggedin');
+if(result != true){
+  this.setState({
+      loggedin: false,
+
+
+  });
+  console.log("logged in false");
+}
+
+
+  }
+
+
+
+
+
+    loginSucesssfull = () => {
+        this.setState({
+            loggedin: true,
+            registering:false,
+
+        });
+        SyncStorage.set('loggedin' ,true);
+        const result = SyncStorage.get('havedetails');
+
+          if(result != true){
+            this.setState({
+                givingdetails: true
+
+            });
+          }else{
+            this.setState({
+                givingdetails: false
+
+            });
+          }
+
 
     }
 
 
-  }
-
-  updateState = () => {
-      this.setState({
-          loggedin: true,
-          registering:false
-      });
-  }
-  updateState2 = () => {
-      this.setState({
-          registering: true,
-
-      });
-  }
-
-  updateState3 = () => {
-      this.setState({
-          registering: false,
-      loggedin: true,
-      });
-  }
+    movetoregister = () => {
+        this.setState({
+            loggedin: false,
+            registering:true
+        });
+        SyncStorage.set('loggedin' ,false);
+        SyncStorage.set('havedetails' ,false);
+    }
 
 
-  confirmThreePage = () => {
-      this.setState({
-          stage: "drdaisyintro",
+        submitdetails = () => {
+            this.setState({
+                loggedin: true,
+                registering:false,
+                givingdetails:false
+            });
+            SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('havedetails' ,true);
+        }
 
-      });
-  }
+        submitregister = () => {
+            this.setState({
+                loggedin: false,
+                registering:false
+            });
+            SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('havedetails' ,false);
+        }
+
+
 
 
   render() {
@@ -223,20 +262,27 @@ console.log("a "+JSON.stringify(a));
       return <Splash />;
     }
 
-    if (this.state.stage == "threepagedrdaisyintro")
-    {
-      return <DrdaisyThreePageIntro
-        confirmThreePage={this.confirmThreePage}
-        />;
-    }
-
-    if (this.state.registering==true)
+    if (this.state.registering == true)
     {
       return <Register
-      updateState3={this.updateState3}
-       />;
+        submitregister={this.submitregister}
+      />;
     }
 
+    if (this.state.loggedin == false)
+    {
+      return <Login
+    loginSucesssfull={this.loginSucesssfull}
+        movetoregister={this.movetoregister}
+      />;
+    }
+
+    if (this.state.givingdetails == true)
+    {
+      return <Details
+    submitdetails={this.submitdetails}
+      />;
+    }
 
     return (
 

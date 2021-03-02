@@ -129,6 +129,10 @@ if(found){return "red";}else{return "black";}
 
   render() {
 
+    var submitdetails = () => {
+      this.props.submitdetails();
+    }
+
 
 
     return (
@@ -136,34 +140,25 @@ if(found){return "red";}else{return "black";}
       <View style={{ flex: 1 }}>
       <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/revision3/regback.jpg')} />
 
+      <View style={ styles.container}>
+        <TouchableOpacity style={{ height:50, width:"100%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}  onPress={() => submitdetails()} >
+        <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white"}}>Submit </Text>
+        </TouchableOpacity>
+      </View>
 
 
-      <TouchableOpacity style={{position:"absolute",Alignitems:"center",justifyContent:"center",textAlign:"center",width:90,height:50,top:height * 0.03 , right:15,backgroundColor:"rgb(220,220,220)",borderRadius:8}}    onPress={() =>  this.props.navigation.navigate('Home')} >
-         <Text  style={{color:"black",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>Sign up</Text>
-      </TouchableOpacity>
 
       <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
 
       <View style={{ alignItems: 'center' ,height:height*0.80,borderRadius:50 }}>
 
-      <Text style={{  color:"grey",position:"absolute", top:"5%", width:"100%",textAlign:"center", fontSize:20}}>details </Text>
+
+      <View style={{height:"10%"}}></View>
 
       <TextInput
-      value={this.state.username}
-      onChangeText={username => this.setState({ username })}
-      placeholder={'email Address'}
-      style={{textAlign: 'center',      width: '60%', height: 40 , borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"19%" }}
-      />
-      <TextInput
       value={this.state.email}
       onChangeText={password => this.setState({ password })}
-      placeholder={'password'}
-      style={{textAlign: 'center' ,   width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
-      />
-      <TextInput
-      value={this.state.email}
-      onChangeText={password => this.setState({ password })}
-      placeholder={'Confirm password'}
+      placeholder={'GP name'}
       style={{textAlign: 'center' ,    width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
       />
       <TextInput
@@ -212,8 +207,8 @@ if(found){return "red";}else{return "black";}
 
       </View>
 
+      <Text  style={{position:"absolute" , width:"100%", top:height*0.58,color:"black",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>Please input the medications you are currently taking.</Text>
 
-      <Text style={{  color:"black",position:"absolute", top:height*0.17, width:"100%",textAlign:"center", fontSize:30}}>Register </Text>
 
 
 {/* medication    <Text style={{   width:width,textAlign:"center", fontSize:30}}>medication </Text>  */}
@@ -323,7 +318,18 @@ if(found){return "red";}else{return "black";}
 const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: 'grey'
-  },
+  },   container: {
+     position:"absolute" ,
+     bottom:8,
+     left:"25%",
+     backgroundColor: "rgb(25,89,127)",
+     width: '50%',
+     height: 50,
+     borderRadius:30,
+     alignItems: 'center',
+     justifyContent: 'center',
+     textAlignVertical: 'top'
+     },
   inactiveDot: {
     backgroundColor: '#ededed'
   },

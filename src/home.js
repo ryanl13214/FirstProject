@@ -264,16 +264,16 @@ export default class Home extends React.Component
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Sleep</Text>
 
             </TouchableOpacity>
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/white.png')} />
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Empty</Text>
 
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
-    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/white.png')} />
-    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Empty</Text>
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:28,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
+    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/Icons/symptoms.jpg')} />
+    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:3,marginBottom:5,textAlign:"center",color:"black"}}>Symptoms</Text>
 
             </TouchableOpacity>
 
