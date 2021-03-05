@@ -122,8 +122,12 @@ var minutes= String(date).split(":")[1] ;
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-
       <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/NEWIMAGES/page-5/5.png')} />
+
+      <Text  style={{position:"absolute",textAlign:"center" ,top:3,  width: '100%',fontSize:height*0.05  ,color:"white" ,fontFamily:"AmaticSC-Bold",height: 50   }}>Sleep Tracker</Text>
+
+
+
 {/* center label*/}
 <View style={{   width: '100%', height:height-100 , justifyContent: "center",textAlign:"center",alignItems:"center"}} >
   <Text  style={{fontSize:height*0.03  ,color:"white"    }}>Alarm time-{this.state.waketime} </Text>

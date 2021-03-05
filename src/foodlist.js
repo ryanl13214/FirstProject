@@ -119,8 +119,8 @@ export default class  Foodlist extends React.Component {
           SyncStorage.set('todaysProtein' + month + year + day,SyncStorage.get('todaysProtein' + month + year + day ) +10);
         }
 
- 
 
+this.props.navigation.navigate( "food");
 
   }
 
@@ -198,7 +198,7 @@ if(a.length==0 ){
 {/* title*/}
 <View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-3%",left:"0%",width:"100%",height:"15%"}}>
 
-<Text  style={{ color:"white", fontSize: 25}}>Meal selector</Text>
+<Text  style={{ color:"white", fontSize: 30,fontFamily:"AmaticSC-Bold"}}>Meal selector</Text>
 
 </View>
 

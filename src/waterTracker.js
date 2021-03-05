@@ -302,22 +302,24 @@ export default class Water extends React.Component
 
 
 
- {/* right top */}
-           <View style={{ position:"absolute",top: height*0.45 , left:  width*0.47,   marginLeft:"5%", flexDirection:"row" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+ {/* right mid  */}
+           <View style={{ position:"absolute",top: height*0.45 , left:  width*0.47,   marginLeft:"5%" ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
+           <View   style={{   width:  "100%" ,height:"25%"  ,backgroundColor:"rgb(237,149,89)", borderTopRightRadius:15 ,  borderTopLeftRadius:15 ,  }}>
+             <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Add Water</Text>{/*to do add cap for large svcrreen  */}
+           </View>
+
+           <Image style={{    position:"absolute",  left:  0 ,top:"10%",    height:   "40%",resizeMode: 'contain' ,marginTop:"18%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
 
 
-           <Image style={{     height:   "50%",resizeMode: 'contain',flexDirection:"row",marginTop:"20%" }} source={require('../imgs/NEWIMAGES/page-3/glass.png')} />
+
+<View   style={{  position:"absolute",  right:   0 ,  width:  "50%"  ,alignItems: 'center'   }}>
 
 
-<View   style={{  position:"absolute",  right:   0 ,  width:  "50%"  ,alignItems: 'center'}}>
-
-
-
-              <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:10   }} onPress={() => {return this.pluss()  }} >
-                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
+              <TouchableOpacity   style={{    width: 40, height: 40, flexDirection: 'column' ,marginTop:"42%"   }} onPress={() => {return this.pluss()  }} >
+                <Image style={{    width:  40, height:  40,resizeMode: 'stretch' }} source={require('../imgs/pluss.png')} />
               </TouchableOpacity>
-              <TouchableOpacity   style={{    width: 50, height: 50, flexDirection: 'column' ,marginTop:15  }}onPress={() => {return this.minus()  }} >
-                <Image style={{    width:  50, height:  50,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
+              <TouchableOpacity   style={{    width: 40, height: 40, flexDirection: 'column' ,marginTop:4  }}onPress={() => {return this.minus()  }} >
+                <Image style={{    width:  40, height:  40,resizeMode: 'stretch' }} source={require('../imgs/minu.png')} />
               </TouchableOpacity>
 
  </View>
@@ -329,7 +331,7 @@ export default class Water extends React.Component
 
 
 
-{/*right middle  */}
+{/*right top  */}
           <View style={{ position:"absolute",top: height*0.22 , left:  width*0.47,   marginLeft:"5%"  ,backgroundColor:"white", height: height*0.175  ,minHeight:100,width: width*0.40,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  >
 <View   style={{   width:  "100%" ,height:"25%"  ,backgroundColor:"rgb(237,149,89)", borderTopRightRadius:15 ,  borderTopLeftRadius:15 ,  }}>
   <Text  style={{fontSize:height*0.023    ,color:"black"  ,marginTop:8   ,marginLeft:3  }}> Total Water Drank</Text>{/*to do add cap for large svcrreen  */}

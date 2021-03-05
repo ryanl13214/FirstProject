@@ -2,9 +2,13 @@
 import React from 'react';
 import {  Animated,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView , Easing} from 'react-native';
 import { Dimensions } from 'react-native';
-
+import Slider from '@react-native-community/slider';
 import LinearGradient from 'react-native-linear-gradient';
-
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 var month = new Date().getMonth() ; //To get the Current Month
 
 var monthnames=[
@@ -94,7 +98,7 @@ export default class  Energy extends React.Component {
 
 
 
-         }, 1000);
+       }, 19);
       }
     }
 
@@ -138,20 +142,12 @@ export default class  Energy extends React.Component {
         minus6: minus6,
         minus7: minus7,      pluss1:pluss1,
         thismonth:thismonth,
+        sliderValue:0
       }
   }
 
   makeblink = () => {
-    Animated.timing(this.state.animationValue,{
-      toValue : 270,
-      duration : 500,
-   // easing: Easing.bounce,
-   // easing : Easing.back(10),
-   // easing : Easing.elastic(5),
-    //easing : Easing.bezier(.17, 1, .33, .89),
-   // easing : Easing.ease(20)
 
-    }).start();
     this.setState({
        blink: true,
        blink1:false,
@@ -176,6 +172,35 @@ export default class  Energy extends React.Component {
   }
 
 
+
+getwidth() {
+
+
+  return this.state.sliderValue * (width*0.7);
+}
+
+sliderChange(a){
+if(this.state.sliderValue  > 0.5){
+  this.setState({
+     blink: true
+  });
+}else{
+  this.setState({
+     blink: false
+  });
+}
+
+
+
+}
+
+
+
+
+
+
+
+
   render() {
 
     const animatedStyle = {
@@ -194,8 +219,7 @@ export default class  Energy extends React.Component {
 
 
 
-        <Text style={[styles.textDark, {position:"absolute",top:"8%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-        <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"17%"  }}>
+         <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"17%"  }}>
             <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
                 <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
             </TouchableOpacity>
@@ -217,37 +241,57 @@ export default class  Energy extends React.Component {
             <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
                 <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
             </TouchableOpacity>
-            <LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+            <TouchableOpacity style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
                 <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-            </LinearGradient>
+            </TouchableOpacity>
             <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
                 <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
             </TouchableOpacity>
         </View>
 
 
-        <View style={{position:"absolute", top:"42%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
+        {/* bascl nutton*/}
+  			<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+  			  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+  			</TouchableOpacity>
+
+
+
+
+{/*
+        <View style={{position:"absolute", top:"43%",left:"15%"  ,  width:this.getwidth(), height:height*0.15,backgroundColor:"red"}}>
+
+        </View>
+*/}
+        <LinearGradient colors={['rgb(211,111,111)', 'rgb(155,119,140)']}  style={{  position:"absolute", top:"43%",left:"15%"  ,  width:this.getwidth(), height:height*0.15}}>
+         </LinearGradient>
+
+
+        <View style={{position:"absolute", top:"43%",left:"15%"  ,  width:"70%", height:"25%" }}>
               <TouchableOpacity  style={this.state.isBlinking   && styles.textGlowing}  onPress={this.makeblink}  >
-                  <Image style={{ height:"99%", width:"97%"   }}   source={require( '../imgs/lowbat.jpg')} />
+                  <Image style={{ height:height*0.15, width:width*0.7    }}   source={require( '../imgs/revision3/VBAT.png')} />
               </TouchableOpacity>
         </View>
 
-        <View style={{position:"absolute", top:"56%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
-        <TouchableOpacity  style={this.state.isBlinking1   && styles.textGlowing}  onPress={this.makeblink1}  >
-            <Image style={{ height:"97%", width:"97%"   }}   source={require( '../imgs/medbat.jpg')} />
-        </TouchableOpacity>
-        </View>
+        <View style={{position:"absolute", top:"65%",left:"15%"  ,  width:"70%",justifyItems:"center" ,justifyContent:"center" , alignItems:"center"  }}>
 
-        <View style={{position:"absolute", top:"71%",left:"12%"  ,  width:"43%", height:"10%",marginTop:5}}>
-        <TouchableOpacity  style={this.state.isBlinking2   && styles.textGlowing}  onPress={this.makeblink2}  >
-            <Image style={{ height:"97%", width:"97%"     }}   source={require( '../imgs/highbat.jpg')} />
-        </TouchableOpacity>
-        </View>
+        <Slider
+          style={{width:  "100%", height: 40 }}
+          minimumValue={0}
+          maximumValue={1}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          onValueChange={value => this.setState({sliderValue: value})}
+        />
+    </View>
 
 
-        <Animated.View style={[styles.animatedBox, animatedStyle]} >
-          <Image style={{ height:5, width:5   }}   source={require( '../imgs/highbat.jpg')} />
-        </Animated.View>
+ 
+
+
+
+
+
 
 
 

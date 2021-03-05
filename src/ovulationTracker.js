@@ -422,14 +422,14 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
       <SafeAreaView style={{width:"100%",height:"100%"}}>
 
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/NEWIMAGES/page-7/7.png')} />
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/7.jpg')} />
 
 
 
- 
 
 
-      <View style={{ position:"absolute",top: height*0.13 , left:  width*0.47,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
+
+      <View style={{ position:"absolute",top: height*0.15 , left:  width*0.47,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
 
       <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
 <View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(165,199,139 )" }}  ></View>
@@ -442,7 +442,7 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
      </View>
 
-     <View style={{ position:"absolute",top: height*0.13 , left:  width*0.04,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
+     <View style={{ position:"absolute",top: height*0.15 , left:  width*0.04,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
 
      <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
 <View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(255, 231 , 106)" }}  ></View>

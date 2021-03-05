@@ -81,7 +81,7 @@ export default class  Bmi extends React.Component {
 			weight:80,
 			height:140,
 			bmi:0,
-			bmitext:"healthy"
+			bmitext:"Healthy"
 		};
 	}
 	onButtonPressagepluss = () => {
@@ -240,19 +240,23 @@ export default class  Bmi extends React.Component {
 			</TouchableOpacity>
 			</View>
 			</View>
-			<View style={{ borderRadius:15,flexDirection:"row",height:"85%" ,width:"28%", margin:"2%",backgroundColor:"white"}}>
-			<View style={{ flexDirection:"column", height:"21%" ,width:"60%", margin:"2%", marginLeft:"5%", textAlign: 'center' }}>
-			<Text  style={{   color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' }}>Weight</Text>
-			<Text  style={{   fontSize: 18  , textAlign: 'center'  }}>{this.state.age}</Text>
+			<View style={{ borderRadius:15,flexDirection:"row",height:"85%" ,width:"30%", margin:"2%",backgroundColor:"white"}}>
+			<View style={{ flexDirection:"column", height:"21%" ,width:"70%", textAlign: 'center' }}>
+				<Text  style={{   color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' , marginTop:1}}> Weight</Text>
+				<Text  style={{   fontSize: 18  , textAlign: 'center'  }}>{this.state.age}</Text>
+
+
+
+
 			</View>
-			<View style={{ flexDirection:"column", height:"21%" ,width:"30%", margin:"2%" }}>
-			<TouchableOpacity style={{width: 30, height: 30  }} onPress={this.onButtonPressweightpluss} >
-			<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
-			</TouchableOpacity>
-			<TouchableOpacity style={{width: 30, height: 30 }} onPress={this.onButtonPressweightmin} >
-			<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
-			</TouchableOpacity>
-			</View>
+				<View style={{ flexDirection:"column", height:"21%" ,width:"30%" }}>
+					<TouchableOpacity style={{width: 30, height: 30  }} onPress={this.onButtonPressweightpluss} >
+					<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
+					</TouchableOpacity>
+					<TouchableOpacity style={{width: 30, height: 30 }} onPress={this.onButtonPressweightmin} >
+					<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
+					</TouchableOpacity>
+				</View>
 			</View>
 
 

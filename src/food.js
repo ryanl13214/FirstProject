@@ -672,6 +672,16 @@ export default class Food extends React.Component
         SyncStorage.set('snacksCarbs' + month + year + day, this.state.snacksCarbs + carbAdder);
         SyncStorage.set('snacksProtein' + month + year + day, this.state.snacksProtein + protineadder);
     }
+
+
+
+
+
+
+
+
+
+
     // get the numerical value of the target thing
     getCurrValue = (id) =>
     {
@@ -808,6 +818,16 @@ export default class Food extends React.Component
             return "rgb(240,126,126)";
         }
     }
+
+  //  componentWillMount(){
+    //     this.setState({data : inputObject});
+  //   }
+    componentWillMount()
+    {
+      console.log("aaaaaa");
+    }
+
+
     getCircleColor()
     {
         if(this.state.currentFocus == "Protein")
