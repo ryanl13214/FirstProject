@@ -36,6 +36,7 @@ export default class  Energy extends React.Component {
         isBlinking: false,
         isBlinking1: false,
         isBlinking2: false,
+        showDidYouKnow:false,
         blink:false,
         blink2:false,
         blink2:false
@@ -139,6 +140,7 @@ export default class  Energy extends React.Component {
         minus3: minus3,
         minus4: minus4,
         minus5: minus5,
+        showDidYouKnow:false,
         minus6: minus6,
         minus7: minus7,      pluss1:pluss1,
         thismonth:thismonth,
@@ -198,6 +200,22 @@ if(this.state.sliderValue  > 0.5){
 
 
 
+getLeftDidYouKnow(){
+  if(this.state.showDidYouKnow)
+  {
+    return 5;
+  }
+  else
+  {
+    return 99999;
+  }
+}
+showDidYouKnow() {
+  this.setState({
+      showDidYouKnow: !this.state.showDidYouKnow,
+  });
+
+}
 
 
 
@@ -268,7 +286,7 @@ if(this.state.sliderValue  > 0.5){
 
 
         <View style={{position:"absolute", top:"43%",left:"15%"  ,  width:"70%", height:"25%" }}>
-              <TouchableOpacity  style={this.state.isBlinking   && styles.textGlowing}  onPress={this.makeblink}  >
+              <TouchableOpacity    >
                   <Image style={{ height:height*0.15, width:width*0.7    }}   source={require( '../imgs/revision3/VBAT.png')} />
               </TouchableOpacity>
         </View>
@@ -286,9 +304,24 @@ if(this.state.sliderValue  > 0.5){
     </View>
 
 
- 
 
 
+    <View style={{     position:"absolute",top:height*0.1 ,     right:this.getLeftDidYouKnow(),     borderColor: 'skyblue',     borderWidth:2 ,     minHeight: 35,     backgroundColor:"white",     height: 151  ,     borderRadius:19,     width:240 }}>
+
+      <View style={{flexDirection: 'row'  ,   height: 50      }}>
+
+        <Image style={{borderColor: '#ffffff',  borderWidth:111*0.04, width:50, height:50 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+        <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
+
+      </View>
+      <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+
+    </View>
+
+    <TouchableOpacity style={{position:"absolute"  ,top:height*-0.02 ,right:-20,     width:width*0.28, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.showDidYouKnow( )} >
+ <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/qbal.png')} />
+
+    </TouchableOpacity>
 
 
 

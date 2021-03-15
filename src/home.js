@@ -288,7 +288,7 @@ getLeftDidYouKnow(){
 
 {/*row 3*/}
         <View style={{flexDirection:"row"}}>
-           <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:32, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('Home')} >
+           <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:32, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/mood.jpg')} />
               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Mood</Text>
             </TouchableOpacity>
@@ -310,19 +310,19 @@ getLeftDidYouKnow(){
 
 {/*row 4*/}
   <View style={{flexDirection:"row"}}>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraacne')} >
 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/acne.jpg')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Acne</Text>
 
         </TouchableOpacity>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('camerahir')} >
 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/skin.jpg')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Hirsutism</Text>
 
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('skin')} >
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraalo')} >
 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/alo.jpg')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Alopecia</Text>
 

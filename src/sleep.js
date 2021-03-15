@@ -176,6 +176,11 @@ var minutes= String(date).split(":")[1] ;
 
 
 
+                         {/* bascl nutton*/}
+                         <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+                           <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+                         </TouchableOpacity>
+
 
 
 

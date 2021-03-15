@@ -34,6 +34,7 @@ export default class  Jornal extends React.Component {
 
 		 this.state = {
        pluss1:pluss1,
+			 name1:"",
        todaysnumber: todaysnumber,
        minus1: minus1,
        minus2: minus2,
@@ -51,7 +52,7 @@ export default class  Jornal extends React.Component {
 
  		return (
 			<View style={{width: '100%', height:height }}>
-						<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/NEWIMAGES/page-6/6.png')} />
+						<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height:height-70,resizeMode: 'stretch' }} source={require('../imgs/revision3/journal.jpg')} />
 
 
 
@@ -63,7 +64,7 @@ export default class  Jornal extends React.Component {
 
 
 
-						<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"14%"  }}>
+						<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"11%"  }}>
 						    <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 						        <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
 						    </TouchableOpacity>
@@ -98,30 +99,48 @@ export default class  Jornal extends React.Component {
 
 
 
-	<View  style={{position:"absolute",  width: "30%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"31%",left:"25%"  }}>
-		<Text style={{ fontSize: 30,  fontWeight: "500"}}>{this.state.todaysnumber}</Text>
-<View  style={{   width: "70%" ,justifyContent: "center",alignItems:"center"  }}>
-		<Text>{this.state.thismonth}</Text>
-		<Text>2020</Text>
-	</View>
+			<View  style={{position:"absolute",  width: "30%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"28%",left:"55%"  }}>
+				<Text style={{ fontSize: 30,  fontWeight: "500"}}>{this.state.todaysnumber}</Text>
+				<View  style={{   width: "70%" ,justifyContent: "center",alignItems:"center"  }}>
+					<Text>{this.state.thismonth}</Text>
+					<Text>2021</Text>
+				</View>
 			</View>
-			<View  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",  width: "70%", top:"40%",left:"15%"  }}>
+
+			<View  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",  width: "40%", top:"37%",left:"45%"  }}>
 
 			</View>
 
-			<ScrollView vertical={true}  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",height:"40%",  width: "70%", top:"40%",left:"15%" ,textAlign:'flex-start' }}>
+			<ScrollView vertical={true}  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",height:"32%",  width: "40%", top:"40%",left:"45%" ,textAlign:'flex-start' }}>
 
 			<TextInput
 			multiline
 				value={this.state.name}
 				onChangeText={name => this.setState({ name })}
-				placeholder={'Enter your text here'}
+				placeholder={'How was your day?'}
 				style={{   alignContent: "flex-start",   width: '100%'  }}
 			/>
 
 
 
 			</ScrollView>
+			<ScrollView vertical={true}  style={{position:"absolute",borderBottomWidth:1,borderBottomColor:"grey",height:"32%",  width: "26%", top:"40%",left:"2%" ,textAlign:'flex-start' }}>
+
+			<TextInput
+			multiline
+				value={this.state.name1}
+				onChangeText={name1 => this.setState({ name1 })}
+				placeholder={'What are you grateful for today?'}
+				style={{   alignContent: "flex-start",   width: '100%'  }}
+			/>
+
+
+
+			</ScrollView>
+
+
+
+
 
 
 

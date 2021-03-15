@@ -27,6 +27,7 @@ export default class  r extends React.Component {
 		alarm:40,
 		text:55,
 		buttonsleft:"-10",
+    showDidYouKnow:false,
 		buttonstop:"-55"
 
 	}
@@ -121,6 +122,22 @@ dayMinus:0
 		});
     SyncStorage.set('caltracker',this.state.cal);
 	}
+  getLeftDidYouKnow(){
+    if(this.state.showDidYouKnow)
+    {
+      return 5;
+    }
+    else
+    {
+      return 99999;
+    }
+  }
+  showDidYouKnow() {
+    this.setState({
+        showDidYouKnow: !this.state.showDidYouKnow,
+    });
+
+  }
 
   getLeft(i)
   {
@@ -481,7 +498,22 @@ dayMinus:0
    <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
  </TouchableOpacity>
 
+ <View style={{     position:"absolute",top:height*0.1 ,     right:this.getLeftDidYouKnow(),     borderColor: 'skyblue',     borderWidth:2 ,     minHeight: 35,     backgroundColor:"white",     height: 151  ,     borderRadius:19,     width:240 }}>
 
+   <View style={{flexDirection: 'row'  ,   height: 50      }}>
+
+     <Image style={{borderColor: '#ffffff',  borderWidth:111*0.04, width:50, height:50 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+     <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
+
+   </View>
+   <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+
+ </View>
+
+ <TouchableOpacity style={{position:"absolute"  ,top:height*-0.02 ,right:-20,     width:width*0.28, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.showDidYouKnow( )} >
+<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/qbal.png')} />
+
+ </TouchableOpacity>
 			</View>
 		);
 	}

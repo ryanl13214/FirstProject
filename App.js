@@ -24,7 +24,11 @@ import   Account   from './tabpages/account';
 import   Graphing   from './tabpages/graph';
 import   Social   from './tabpages/social';
 ///////////////////////
-import   Cam   from './camerasection/camera';
+import   Camacne   from './camerasection/cameraacne';
+import   Camhir   from './camerasection/camerahir';
+import   Camalo   from './camerasection/cameraalo';
+
+
 import   History   from './camerasection/historyPage';
 import   History0   from './camerasection/historyPage0';
 import   History1   from './camerasection/historyPage1';
@@ -85,7 +89,10 @@ function DefaultApp() {
         <Stack.Screen name="ChallengeSelect" component={ChallengeSelect}/>
         <Stack.Screen name="trophy" component={Trophy}/>
 
-        <Stack.Screen name="camera" component={Cam} />
+        <Stack.Screen name="cameraacne" component={Camacne} />
+        <Stack.Screen name="camerahir" component={Camhir} />
+        <Stack.Screen name="cameraalo" component={Camalo} />
+
 
         <Stack.Screen name="history" component={History} />
         <Stack.Screen name="history0" component={History0} />
@@ -98,7 +105,7 @@ function DefaultApp() {
         <Stack.Screen name="Excer" component={Excer} />
         <Stack.Screen name="jornal" component={Jornal} />
         <Stack.Screen name="alarm" component={SetAlarm} />
-        <Stack.Screen name="skin" component={Cam} />
+        <Stack.Screen name="skin" component={Camacne} />
         <Stack.Screen name="sleep" component={Sleep} />
         <Stack.Screen name="ovu" component={Ovu} />
         <Stack.Screen name="meditation" component={Meditation} />

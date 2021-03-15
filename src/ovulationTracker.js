@@ -61,6 +61,28 @@ export default class  Ovu extends React.Component {
   constructor(props ) {
     super(props);
 
+    		var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ');
+
+    		var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
+    		var minus1 = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[2];
+    		var minus2 = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[2];
+    		var minus3 = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[2];
+    		var minus4 = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[2];
+    		var minus5 = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[2];
+    		var minus6 = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[2];
+    		var minus7 = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[2];
+    		var pluss1 = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[2];
+
+
+    		var todaysday= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[0];
+    		var minus1day = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[0];
+    		var minus2day = new Date(new Date().setDate(new Date().getDate()-2)).toString().split(' ')[0];
+    		var minus3day = new Date(new Date().setDate(new Date().getDate()-3)).toString().split(' ')[0];
+    		var minus4day = new Date(new Date().setDate(new Date().getDate()-4)).toString().split(' ')[0];
+    		var minus5day = new Date(new Date().setDate(new Date().getDate()-5)).toString().split(' ')[0];
+    		var minus6day = new Date(new Date().setDate(new Date().getDate()-6)).toString().split(' ')[0];
+    		var minus7day = new Date(new Date().setDate(new Date().getDate()-7)).toString().split(' ')[0];
+    		var pluss1day = new Date(new Date().setDate(new Date().getDate()+1)).toString().split(' ')[0];
     var dateoflast=   SyncStorage.get('dateOfLastPeriodBegining');
     var tempbool=false;
     if(dateoflast != undefined){
@@ -112,48 +134,10 @@ export default class  Ovu extends React.Component {
       }
     }
 
-    //var thismonth= new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1];
-    //   var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
-    var startday =dateoflast;
+   var startday =dateoflast;
       var calenderData=names;
-    /*
-    var calenderData = {
-      '2020-11-02': {selected: true , startingDay: true, color: 'rgb(255, 231 , 106)'},
-      '2020-11-03': { selected: true , color: 'rgb(255, 231 , 106)'},
-      '2020-11-04': {selected: true ,  color: 'rgb(255, 231 , 106)'},
-      '2020-11-05': {selected: true ,   color: 'rgb(255, 231 , 106)'},
-      '2020-11-06': {  selected: true , color: 'rgb(245,125,100)'},
-      '2020-11-07': {  selected: true , color: 'rgb(245,125,100)'},
-      '2020-11-08': {  selected: true , color: 'rgb(245,125,100)'},
-      '2020-11-09': {  selected: true , color: 'rgb(245,125,100)'},
-      '2020-11-10': {selected: true , endingDay: true, color: 'rgb(245,125,100)'},
-      '2020-11-18': {selected: true , startingDay: true, color: 'rgb(165,199,139)'},
-      '2020-11-19': {selected: true , color: 'rgb(165,199,139)' },
-      '2020-11-20': {selected: true, color: 'rgb(165,199,139)'},
-      '2020-11-21': {selected: true , color: 'rgb(165,199,139)' },
-      '2020-11-22': {selected: true, color: 'lightblue'},
-      '2020-11-23': {selected: true , color: 'rgb(165,199,139)' },
-      '2020-11-24': {selected: true, endingDay: true, color: 'rgb(165,199,139)' },
-
-    };
-console.log(calenderData);
-*/
-  //  var calenderData = {'2020-11-23',{ selected: true, selectedColor: "red"} , '2020-11-24',{ selected: true, selectedColor: "red"}};
-
-    //var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate()  ;
-    // building the calender data
 
 
-
-console.log(calenderData);
-
-
-
-
-
-
-
-    //  SyncStorage.set('dateOfLastPeriodBegining' ,date);
 
 
 
@@ -163,6 +147,7 @@ console.log(calenderData);
     this.state = {
       numberofbubbles:numberofbubbles,
       lengthOfBleeding:lengthOfBleeding,
+      showDidYouKnow:false,
       fertileLength:fertileLength,
       gapRedToGreen:gapRedToGreen,
       gapGreenToRed:gapGreenToRed,
@@ -178,7 +163,15 @@ console.log(calenderData);
       label:"none",
       sex:"none",
       startingDay:dateoflast,
-      heightOfGraph:1
+      heightOfGraph:1,
+      todaysnumber: todaysnumber,
+      minus1: minus1,
+      minus2: minus2,
+      minus3: minus3,
+      minus4: minus4,
+      minus5: minus5,
+      minus6: minus6,
+      minus7: minus7
     };
 
 
@@ -189,6 +182,22 @@ console.log(calenderData);
 
   }
 
+  getLeftDidYouKnow(){
+    if(this.state.showDidYouKnow)
+    {
+      return 5;
+    }
+    else
+    {
+      return 99999;
+    }
+  }
+  showDidYouKnow() {
+    this.setState({
+        showDidYouKnow: !this.state.showDidYouKnow,
+    });
+
+  }
 
 
   callFunc(){
@@ -197,7 +206,14 @@ console.log(calenderData);
 
   }
 
+getDate(){
+  var thismonth= new Date(new Date().setDate(new Date().getDate() )).toDateString() ;
 
+  var todaysnumber= new Date(new Date().setDate(new Date().getDate())).toString().split(' ')[2];
+var d = new Date("2015-03-25");
+return  thismonth;
+
+}
   getxsmall(i,offset){
     var r =(width/2)+offset;
     var gap = 360/28;
@@ -282,7 +298,7 @@ console.log(calenderData);
   add = () => {
 
 
-    if( this.state.width=="31%"){
+    if( this.state.width=="34%"){
       this.setState({
         width:"63%",
         label:"med"
@@ -302,7 +318,7 @@ console.log(calenderData);
     }
     if( this.state.width=="0%"){
       this.setState({
-        width:"31%",
+        width:"34%",
         label:"low"
       });
     }
@@ -422,38 +438,14 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
       <SafeAreaView style={{width:"100%",height:"100%"}}>
 
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/7.jpg')} />
+      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/revision3/newovuback.jpg')} />
 
 
 
 
 
 
-      <View style={{ position:"absolute",top: height*0.15 , left:  width*0.47,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
 
-      <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
-<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(165,199,139 )" }}  ></View>
-  <Text style={{width:"60%",textAlign:"center" ,fontSize:15 }}>Fertile</Text>
-   </View>
-   <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
-<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(245,125,100)" }}  ></View>
-<Text style={{width:"60%",textAlign:"center" ,fontSize:15,marginLeft:4   }}>bleeding days</Text>
-</View>
-
-     </View>
-
-     <View style={{ position:"absolute",top: height*0.15 , left:  width*0.04,   marginLeft:"5%", backgroundColor:"white", height: height*0.08   ,width: width*0.40,  borderRadius:15     }}  >
-
-     <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
-<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(255, 231 , 106)" }}  ></View>
- <Text style={{width:"60%",textAlign:"center" ,fontSize:15 }}>PMS</Text>
-  </View>
-  <View style={{ flexDirection:"row",marginTop:4,marginLeft:9   }}  >
-<View style={{  height: 19   ,width: 19 , borderRadius:55 , backgroundColor:"rgb(112,114,283)" }}  ></View>
-<Text style={{width:"60%",textAlign:"center" ,fontSize:15,marginLeft:4   }}>peak Fertility</Text>
-</View>
-
-    </View>
 
 
 
@@ -488,80 +480,44 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
 
-
-
-
-
       </View>
 
 
-      <View style={{  position:"absolute",top: this.controlheights("circ",0) ,width:width,height:height}}>
 
 
 
-      {this.state.info.map(details  => (
-        <View style={{ width:details[3]+1,height:details[3]+1,backgroundColor:details[2],position:"absolute",top:this.gety(details[0]),left:this.getx(details[0]),borderRadius:111111,borderColor:"white",borderWidth:this.getBorder(details[0])}}>
-        <Image style={{ width:details[3],height:details[3] }} source={require('../imgs/smallerButton.png')} />
-        <View style={{position:"absolute",   width: '100%', height:'100%',textAlign:"center",justifyContent: "center",alignItems:"center"}}>
+      <View  style={{ position:"absolute",   width:"100%",height:"23%" ,top:"33%" ,left:"0%" }}>
 
-    <Text style={{ width: '100%', height:'100%',textAlign:"center" ,  fontSize:15, color:"black",justifyContent: "center",alignItems:"center"}}>{this.formatDatevaraibleday(this.state.startingDay,details[0])}</Text>
-  </View>
-        </View>
-      ))}
-
-
-
-
-
-      <TouchableOpacity style={{ width:80,height:80,backgroundColor:"lightgrey",position:"absolute",top:(height-40)/2,left:(width-70)/2,borderRadius:111111}}  onPress={() => this.callFunc()}>
-      <Image style={{ width: '100%', height:'100%' }} source={require('../imgs/buttonoverlay.png')} />
-      <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
-      <Image style={{position:"absolute",top:this.getysmall(this.state.fertileday,-50),left:this.getxsmall(this.state.fertileday, 50) , width: 15, height:15 }} source={require('../imgs/buttonoverlay.png')} />
-      </TouchableOpacity>
-
-
-      <Modal animationType = {"slide"} transparent = {true}
-      visible = {this.state.isVisible}
-      onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
-
-      <View style = {{width:"70%",height:  "40%",backgroundColor:"rgb(245,245,245)" ,marginLeft:"15%",marginTop:"55%",borderRadius:15}}>
-
-      <Text style={{position:"absolute", width: '100%', height:'100%',textAlign:"center",marginTop:20, fontSize:25, color:"grey",justifyContent: "center",alignItems:"center"}}>LOG</Text>
-
-
-      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
-      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"11%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-      <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
-      <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
-      </View>
-      </TouchableWithoutFeedback>
-      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"14%",color:"black" }}> Log how heavy your flow is today. Log a sexual interaction. </Text>
-
-
-      <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
-      <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"23%" ,top:"53%" ,left:"58%",overflow: 'hidden',borderRadius:40,borderWidth:3,borderColor:"white"}}>
-      <View style={{ borderRadius:40, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"green"}}></View>
-      <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
-      <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:40,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
-      </View>
-      </TouchableWithoutFeedback>
-      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"23%" ,left:"63%",color:"black" }}> Log a sexual interaction.</Text>
+       <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>{this.getDate()}</Text>
+       <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>Day 2/28</Text>
+       <View  style={{  marginTop:20,   width:"100%",height:"23%" ,justifyItems:"center",justifyContent:"center"}}>
+        <Image style={{ justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'contain' }} source={require('../imgs/revision3/blooddd.png')} />
+        <Text style={{marginTop:20,   width:"100%",textAlign:"center",color:"white",fontSize:16 }}>You are on a light flow today.</Text>
+       </View>
+    </View>
 
 
 
 
-      <Text  style={{  position:"absolute" ,  width:"32%",height:"13%" ,top:"93%" ,left:"68%",color:"white" }}> {this.state.sex} </Text>
 
 
-      <TouchableOpacity style={{position:"absolute" ,bottom:"2%",left:" 10%", width:50,height:  35}} onPress = {() => {this.setState({ isVisible:!this.state.isVisible})}} >
-      <Text style={{width:"100%",textAlign:"center"}}>Close</Text>
-      </TouchableOpacity>
+      <View  style={{ position:"absolute",   width:"120%",height:"23%" ,top:"73%" ,left:"-10%",overflow: 'hidden',borderRadius:40 }}>
 
-      </View>
-
-
-      </Modal>
+        <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"68%" ,top:"23%" ,left:"11%",overflow: 'hidden'}} onPress={    this.add  } >
+          <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"68%" ,top:"23%" ,left:"11%",overflow: 'hidden',borderRadius:22,borderWidth:3,borderColor:"white"}}>
+            <View style={{  flexDirection: 'row'   ,   width:  this.state.width,height:"100%" ,backgroundColor:"red"}}></View>
+            <View style={{  flexDirection: 'row'   , width:"94%",height:"100%"  ,backgroundColor:"white"}}></View>
+            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:22,borderWidth:0,borderColor:"white"}} source={require('../imgs/tttt.png')} />
+          </View>
+        </TouchableWithoutFeedback>
+     <TouchableWithoutFeedback style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"68%" ,top:"23%" ,left:"58%",overflow: 'hidden'}} onPress={    this.add2  } >
+          <View  style={{ position:"absolute", flexDirection: 'row'   ,  width:"32%",height:"68%" ,top:"23%" ,left:"58%",overflow: 'hidden',borderRadius:22,borderWidth:3,borderColor:"white"}}>
+            <View style={{ borderRadius:22, flexDirection: 'row'   ,   width:  this.state.heart,height:"100%" ,backgroundColor:"red"}}></View>
+            <View style={{  flexDirection: 'row'   , width:"100%",height:"100%"  ,borderRadius:40,backgroundColor:"white"}}></View>
+            <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: "100%",resizeMode: 'stretch',top:0 ,left:0,borderRadius:22,borderWidth:0,borderColor:"white"}} source={require('../imgs/heart.png')} />
+          </View>
+        </TouchableWithoutFeedback>
+     </View>
 
 
 
@@ -570,41 +526,61 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
 
-      <Text style={{position:"absolute",top:this.getysmall(this.state.fertileday,-80),left:this.getxsmall(this.state.fertileday,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"green",justifyContent: "center",alignItems:"center"}}>Peak Fertility</Text>
-      <Text style={{position:"absolute",top:this.getysmall(this.state.lengthOfBleeding-2,-80),left:this.getxsmall(this.state.lengthOfBleeding-2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"red",justifyContent: "center",alignItems:"center"}}>period</Text>
-      <Text style={{position:"absolute",top:this.getysmall(2,-80),left:this.getxsmall(2,-80) ,textAlign:"center",marginTop:20, fontSize:15, color:"yellow",justifyContent: "center",alignItems:"center"}}>PMS</Text>
-      </View>
-
-
-      <TouchableOpacity style={{ width:40,height:45,backgroundColor:"white",position:"absolute",top: height*0.25  ,left: width*0.05,borderRadius:5  }} onPress={() => this.swapScreens()}>
-      <Image style={{ width: '100%', height:'100%' }} source={require('../imgs/cal.png')} />
-      </TouchableOpacity>
-
-      <View style={{  position:"absolute",top:50,width:"100%",height:"100%"}}>
-
-
-      <Calendar
-      style={{
-        position:"absolute",top:this.controlheights("cal", height*0.25) ,left:width*0.1 ,width:width*0.8,height:height*0.55,borderRadius:5
-
-
-      }}
-      markedDates={calenderDatac}
-      markingType={'period'}
-      />
 
 
 
 
-      </View>
+     <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
+     <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+     </TouchableOpacity>
+     <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+     <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+     </TouchableOpacity>
+
+     </View>
+
+     {/* bascl nutton*/}
+     <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+       <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+     </TouchableOpacity>
+
+     <View style={{     position:"absolute",top:height*0.1 ,     right:this.getLeftDidYouKnow(),     borderColor: 'skyblue',     borderWidth:2 ,     minHeight: 35,     backgroundColor:"white",     height: 151  ,     borderRadius:19,     width:240 }}>
+
+       <View style={{flexDirection: 'row'  ,   height: 50      }}>
+
+         <Image style={{borderColor: '#ffffff',  borderWidth:111*0.04, width:50, height:50 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+         <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
+
+       </View>
+       <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+
+     </View>
+
+     <TouchableOpacity style={{position:"absolute"  ,top:height*-0.02 ,right:-20,     width:width*0.28, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.showDidYouKnow( )} >
+  <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/qbal.png')} />
+
+     </TouchableOpacity>
 
 
-{/*
-      <TouchableOpacity style={{position:"absolute", width: width*0.80 , height: height*0.115 * this.state.heightOfGraph,top: height*0.12  ,left:(width)*0.1,overflow:"hidden" ,borderRadius:5}}  onPress={() => this.switchGraphDisplay()}>
-
-<Image style={{ justifyContent: "center",alignItems:"center",  width: "100%", height: "200%"  ,resizeMode: 'stretch',maxHeight:height*0.23  }} source={require('../imgs/expandedgraph.png')} />
-</TouchableOpacity>
-*/}
 
 
 

@@ -2,11 +2,15 @@
 import React from 'react';
 import {AsyncStorage  ,  Animated,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView , Easing} from 'react-native';
 import { Dimensions } from 'react-native';
-
+import Slider from '@react-native-community/slider';
 import LinearGradient from 'react-native-linear-gradient';
 import   Datebar   from './adatebar';
 import SyncStorage from 'sync-storage';
-
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 export default class  Mental extends React.Component {
 
 
@@ -96,7 +100,8 @@ export default class  Mental extends React.Component {
       thismonth:thismonth,
       name:"",
       pmMarker:pm,
-      amMarker:am
+      amMarker:am,
+      sliderValue:0
     };
 
 
@@ -176,6 +181,28 @@ this.handleupdate(a);
 
 
 
+getwidth() {
+
+
+  return this.state.sliderValue * (width*0.7);
+}
+
+sliderChange(a){
+if(this.state.sliderValue  > 0.5){
+  this.setState({
+     blink: true
+  });
+}else{
+  this.setState({
+     blink: false
+  });
+}
+
+
+
+}
+
+
 
 
 
@@ -225,11 +252,6 @@ this.handleupdate(a);
 
       <SafeAreaView style={styles.container}>
       <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: '100%',resizeMode: 'stretch' }} source={require('../imgs/9.jpg')} />
-      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
-<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
-
-			</TouchableOpacity>
-
 
 
       <View  style={{position:"absolute", height: "10%",  width: "80%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"24%",left:"10%"  }}>
@@ -254,97 +276,85 @@ this.handleupdate(a);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"flex-end",top:"85%"  }}>
-
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"10%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+      <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"42%" ,left:"11%",overflow: 'hidden',borderRadius:20,borderColor:"rgb(51,115,153)",borderWidth:1}}  onPress={()=>this.setState({datepickervisibility:true})} >
+          <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>View Mood history</Text>
       </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"3%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"3%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"3%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"2%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-      <Text style={[styles.textDark, { fontSize: 12, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-      </TouchableOpacity>
+
+
+
+
+
+
+
+
+  <View style={{  position:"absolute", top:"58%",left:"15%"  ,  width:this.getwidth(), height:height*0.15,overflow:"hidden"}}>
+     <Image style={{  height:height*0.15, width:width*0.7  , resizeMode:"stretch"}}   source={require( '../imgs/revision3/sHGly.png')} />
+  </View>
+
+      <View style={{position:"absolute", top:"58%",left:"15%"  ,  width:"70%", height:"25%" }}>
+          <Image style={{ height:height*0.15, width:width*0.7    }}   source={require( '../imgs/revision3/VBAT.png')} />
       </View>
 
+      <View style={{position:"absolute", top:"80%",left:"15%"  ,  width:"70%",justifyItems:"center" ,justifyContent:"center" , alignItems:"center"  }}>
+
+      <Slider
+        style={{width:  "100%", height: 40 }}
+        minimumValue={0}
+        maximumValue={1}
+        minimumTrackTintColor="#FFFFFF"
+        maximumTrackTintColor="#000000"
+        onValueChange={value => this.setState({sliderValue: value})}
+      />
+  </View>
+
+
+
+  <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,borderColor:"rgb(237,1,1)",borderWidth:1}}  onPress={()=>this.setState({datepickervisibility:true})} >
+      <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>View Energy history</Text>
+  </TouchableOpacity>
 
 
 
 
 
 
-      <TouchableOpacity   style={{top:settop(-5,"am")  ,position:"absolute",left:"16%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{top:settop(-5,"pm") ,position:"absolute",left:"22%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
+
+           <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"12%"  }}>
+              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus6}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus5}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus4}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus3}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity    style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus2}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus1}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
+                  <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
+              </TouchableOpacity>
+          </View>
 
 
-      <TouchableOpacity    style={{top:settop(-4,"pm")  ,position:"absolute",left:"28%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity   style={{top:settop(-4,"pm") ,position:"absolute",left:"34%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
 
-
-
-      <TouchableOpacity    style={{top:settop(-3,"am")  ,position:"absolute",left:"40%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{top:settop(-3,"pm")  ,position:"absolute",left:"46%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-
-
-      <TouchableOpacity  style={{top:settop(-2,"am") ,position:"absolute",left:"51%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{top:settop(-2,"pm")  ,position:"absolute",left:"58%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-
-
-
-      <TouchableOpacity style={{top:settop(-1,"am")  ,position:"absolute",left:"62%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{top:settop(-1,"pm") ,position:"absolute",left:"68%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-
-      <TouchableOpacity    style={{top:this.state.amMarker  ,position:"absolute",left:"73%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
-      <TouchableOpacity    style={{top:this.state.pmMarker  ,position:"absolute",left:"78%",  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36 }}>
-      <Image source={require('../imgs/DrdaisyThreePage.jpg')}    style={{ borderRadius:10 ,   width:20,  height: 20}}/>
-      </TouchableOpacity>
+                             {/* bascl nutton*/}
+                             <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+                               <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+                             </TouchableOpacity>
 
 
       </SafeAreaView>

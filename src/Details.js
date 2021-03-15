@@ -1,9 +1,75 @@
 /** @format */
-import React from 'react';
+import React, { Component } from 'react';
 import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import { Dimensions } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import DatePicker from 'react-native-datepicker'
+
+const items = [{
+  id: 'Metaformin',
+  name: 'Metaformin'
+}, {
+  id: 'Fortamet',
+  name: 'Fortamet'
+}, {
+  id: 'Glucophage',
+  name: 'Glucophage'
+}, {
+  id: 'EthinylEstradi',
+  name: 'Ethinyl Estradio'
+}, {
+  id: 'Levonorgestrel',
+  name: 'Levonorgestrel'
+}, {
+  id: 'Desogestrel',
+  name: 'Desogestrel'
+}, {
+  id: 'Norethindrone',
+  name: 'Norethindrone'
+}, {
+  id: 'Seasonque',
+  name: 'Seasonque'
+},
+{ id: 'Aviane',
+   name: 'Aviane'
+ }, {
+   id: 'Levora',
+   name: 'Levora'
+ }, {
+   id: 'LevomefolateCalcium',
+   name: 'Levomefolate Calcium'
+ }, {
+   id: 'Falmina',
+   name: 'Falmina'
+ }, {
+   id: 'Lutera',
+   name: 'Lutera'
+ }, {
+   id: 'Myzilra',
+   name: 'Myzilra'
+ }, {
+   id: 'Vaniga',
+   name: 'Vaniga'
+ }, {
+   id: 'Dianette',
+   name: 'Dianette'
+ },
+  { id: 'Cyproterone',
+    name: 'Cyproterone'
+  }, {
+    id: 'Finasteride',
+    name: 'Finasteride'
+  }, {
+    id: 'CyproteroneAcetate',
+    name: 'Cyproterone Acetate'
+  }, {
+    id: 'Spironolactone',
+    name: 'Spironolactone'
+  }, {
+    id: 'Flutamide',
+    name: 'Flutamide'
+  }
+];
 
 const
 {
@@ -21,25 +87,14 @@ import { WheelPicker } from '@delightfulstudio/react-native-wheel-picker-android
 
 type Props = {}
 
-const items = [
-  { id: '1', name: 'America' },
-  { id: '2', name: 'Argentina' },
-  { id: '3', name: 'Armenia' },
-  { id: '4', name: 'Australia' },
-  { id: '5', name: 'Austria' },
-  { id: '6', name: 'Azerbaijan' },
-  { id: '7', name: 'Argentina' },
-  { id: '8', name: 'Belarus' },
-  { id: '9', name: 'Belgium' },
-  { id: '10', name: 'Brazil' },
-];
+
 const buttonTextStyle = {
   color: '#reds'
 };
 
 
 
-export default class  Details extends React.Component {
+export default class  Details extends  Component {
   state = {
     //We will store selected item in this
     selectedItems: [],
@@ -49,8 +104,8 @@ export default class  Details extends React.Component {
     dateofbiirth:"",
     gpPractice:"",
     docrotname:"",
-    medications:[]
-
+    medications:[],
+    selectedItems : []
   };
 
   onSelectedItemsChange = selectedItems => {
@@ -125,9 +180,12 @@ if(found){return "red";}else{return "black";}
 
 
   };
-
+  onSelectedItemsChange = selectedItems => {
+    this.setState({ selectedItems });
+  };
 
   render() {
+    const { selectedItems } = this.state;
 
     var submitdetails = () => {
       this.props.submitdetails();
@@ -138,7 +196,7 @@ if(found){return "red";}else{return "black";}
     return (
 
       <View style={{ flex: 1 }}>
-      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/revision3/regback.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/revision3/2.jpg')} />
 
       <View style={ styles.container}>
         <TouchableOpacity style={{ height:50, width:"100%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}  onPress={() => submitdetails()} >
@@ -148,7 +206,7 @@ if(found){return "red";}else{return "black";}
 
 
 
-      <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
+      <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.35,left:"10%"}}>
 
       <View style={{ alignItems: 'center' ,height:height*0.80,borderRadius:50 }}>
 
@@ -207,106 +265,56 @@ if(found){return "red";}else{return "black";}
 
       </View>
 
-      <Text  style={{position:"absolute" , width:"100%", top:height*0.58,color:"black",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>Please input the medications you are currently taking.</Text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <Text  style={{position:"absolute" ,left:"20%", width:"60%", top:height*0.29,color:"black",Alignitems:"center",justifyContent:"center",textAlign:"center" }}>Please input the medications you are currently taking.</Text>
+
 
 
 
 {/* medication    <Text style={{   width:width,textAlign:"center", fontSize:30}}>medication </Text>  */}
-      <View style={{   width:width,position:"absolute", top:height*0.66}}>
+      <View style={{   position:"absolute", top:height*0.34 , width :"60%",left:"22%"}}>
 
+      <MultiSelect
+        hideTags
 
-        <View style={{flexDirection:"row", width:"80%",marginLeft:"10%"}}>
-
-
-              {/* col 1 */}
-          <View style={{ width:"33%" }}>
-          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Metaformin')} >
-
-          <Text style={{  color:this.getcolorMedication("Metaformin") , width:"100%",textAlign:"center", fontSize:14}}>Metaformin</Text>
-            </TouchableOpacity>
-
-
-          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Fortamet')} >
-
-<Text style={{  color:this.getcolorMedication("Fortamet") , width:"100%",textAlign:"center", fontSize:14}}>Fortamet</Text>
-
-          </TouchableOpacity>
-          <TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Glucophage')} >
-
-<Text style={{  color:this.getcolorMedication("Glucophage") , width:"100%",textAlign:"center", fontSize:14}}>Glucophage</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Ethinyl Estradio')} >
-          <Text style={{  color:this.getcolorMedication("Ethinyl Estradio") , width:"100%",textAlign:"center", fontSize:14}}>Ethinyl Estradio</Text>
-</TouchableOpacity>
-
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levonorgestrel')} >
-          <Text style={{  color:this.getcolorMedication("Levonorgestrel") , width:"100%",textAlign:"center", fontSize:14}}>Levonorgestrel</Text>
-</TouchableOpacity>
-
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Desogestrel')} >
-          <Text style={{  color:this.getcolorMedication("Desogestrel") , width:"100%",textAlign:"center", fontSize:14}}>Desogestrel</Text>
-</TouchableOpacity>
-
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Norethindrone')} >
-          <Text style={{  color:this.getcolorMedication("Norethindrone") , width:"100%",textAlign:"center", fontSize:14}}>Norethindrone</Text>
-</TouchableOpacity>
-          </View>
-          {/* col 2 */}
-          <View style={{width:"38%" }}>
-
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Seasonque')} >
-          <Text style={{  color:this.getcolorMedication("Seasonque") , width:"100%",textAlign:"center", fontSize:14}}>Seasonque</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Aviane')} >
-          <Text style={{  color:this.getcolorMedication("Aviane") , width:"100%",textAlign:"center", fontSize:14}}>Aviane</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levora')} >
-          <Text style={{  color:this.getcolorMedication("Levora") , width:"100%",textAlign:"center", fontSize:14}}>Levora</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Levomefolate Calcium')} >
-          <Text style={{  color:this.getcolorMedication("Levomefolate Calcium") , width:"100%",textAlign:"center", fontSize:14}}>Levomefolate Calcium</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Falmina')} >
-          <Text style={{  color:this.getcolorMedication("Falmina") , width:"100%",textAlign:"center", fontSize:14}}>Falmina</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Lutera')} >
-          <Text style={{  color:this.getcolorMedication("Lutera") , width:"100%",textAlign:"center", fontSize:14}}>Lutera</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Myzilra')} >
-          <Text style={{  color:this.getcolorMedication("Myzilra") , width:"100%",textAlign:"center", fontSize:14}}>Myzilra</Text>
-</TouchableOpacity>
-
-          </View>
-          {/* col 3 */}
-          <View style={{ width:"38%"}}>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Vaniga')} >
-          <Text style={{  color:this.getcolorMedication("Vaniga") , width:"100%",textAlign:"center", fontSize:14}}>Vaniga</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Dianette')} >
-          <Text style={{  color:this.getcolorMedication("Dianette") , width:"100%",textAlign:"center", fontSize:14}}>Dianette</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Cyproterone')} >
-          <Text style={{  color:this.getcolorMedication("Cyproterone") , width:"100%",textAlign:"center", fontSize:14}}>Cyproterone</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Finasteride')} >
-          <Text style={{  color:this.getcolorMedication("Finasteride") , width:"100%",textAlign:"center", fontSize:14}}>Finasteride</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Cyproterone Acetate')} >
-          <Text style={{  color:this.getcolorMedication("Cyproterone Acetate") , width:"100%",textAlign:"center", fontSize:14}}>Cyproterone Acetate</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Spironolactone')} >
-          <Text style={{  color:this.getcolorMedication("Spironolactone") , width:"100%",textAlign:"center", fontSize:14}}>Spironolactone</Text>
-</TouchableOpacity>
-<TouchableOpacity style={{   width:"100%"  }}  onPress={() =>  this.addMedication('Flutamide')} >
-          <Text style={{  color:this.getcolorMedication("Flutamide") , width:"100%",textAlign:"center", fontSize:14}}>Flutamide</Text>
-</TouchableOpacity>
-
-          </View>
-
-        </View>
+        items={items}
+        uniqueKey="id"
+        ref={(component) => { this.multiSelect = component }}
+        onSelectedItemsChange={this.onSelectedItemsChange}
+        selectedItems={selectedItems}
+        selectText="Pick Items"
+        searchInputPlaceholderText="Search Items..."
+        onChangeInput={ (text)=> console.log(text)}
+        altFontFamily="ProximaNova-Light"
+        tagRemoveIconColor="#CCC"
+        tagBorderColor="#CCC"
+        tagTextColor="#CCC"
+        selectedItemTextColor="#CCC"
+        selectedItemIconColor="#CCC"
+        itemTextColor="#000"
+        displayKey="name"
+        searchInputStyle={{ color: '#CCC' }}
+        submitButtonColor="#CCC"
+        submitButtonText="Submit"
+      />
 
       </View>
-
 
       </View>
 
