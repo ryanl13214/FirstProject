@@ -200,10 +200,6 @@ class Camhir extends React.Component {
 
             <Image style={{position:"absolute"  ,  width: '100%', height: '100%'  ,resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/chatback.png')} />
 
-    {/* bascl nutton*/}
-    <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
-      <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
-    </TouchableOpacity>
 
 
 
@@ -240,6 +236,14 @@ class Camhir extends React.Component {
 
 </TouchableOpacity>
 </View>
+
+
+{/* bascl nutton*/}
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+</TouchableOpacity>
+
+
 
 
       </View>

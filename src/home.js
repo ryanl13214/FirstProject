@@ -19,6 +19,8 @@ import
     Dimensions
 }
 from 'react-native';
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 const
 {
     width,
@@ -144,7 +146,9 @@ getLeftDidYouKnow(){
     return 99999;
   }
 }
-
+getRandomInt(max) {
+     return Math.floor(Math.random() * Math.floor(max));
+   }
 
     render()
     {
@@ -212,13 +216,6 @@ getLeftDidYouKnow(){
 
 
 
-   <TouchableOpacity style={{position:"absolute"  ,top:height*-0.02 ,left:-20,     width:width*0.28, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.showDidYouKnow( )} >
-<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/qbal.png')} />
-
-   </TouchableOpacity>
-
-
-
 
 
 
@@ -229,19 +226,19 @@ getLeftDidYouKnow(){
 
         <View style={{  marginTop:"10%",flexDirection:"row" }}>
 
-              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
+              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/water.jpg')} />
                    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
               </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('Excer')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('Excer')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/workout.jpg')} />
                  <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Workout</Text>
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('food')} >
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('food')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/food.jpg')} />
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Nutrition</Text>
 
@@ -277,9 +274,9 @@ getLeftDidYouKnow(){
 
             </TouchableOpacity>
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:32,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('energy')} >
-           <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/energy.jpg')} />
-           <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Energy</Text>
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:32,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
+           <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/mood.jpg')} />
+           <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Mood</Text>
 
             </TouchableOpacity>
 
@@ -288,11 +285,11 @@ getLeftDidYouKnow(){
 
 {/*row 3*/}
         <View style={{flexDirection:"row"}}>
-           <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginTop:32, justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('mental')} >
-              <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/mood.jpg')} />
-              <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Mood</Text>
-            </TouchableOpacity>
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('sleep')} >
+<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/sleep.jpg')} />
+<Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Sleep</Text>
 
+        </TouchableOpacity>
             <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop:32,justifyContent: 'center',alignItems: 'center'  }} onPress={() =>  this.props.navigation.navigate('medselect')} >
               <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/d.jpg')} />
               <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Relaxation</Text>
@@ -310,7 +307,7 @@ getLeftDidYouKnow(){
 
 {/*row 4*/}
   <View style={{flexDirection:"row"}}>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraacne')} >
+        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft: 4, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraacne')} >
 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/acne.jpg')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Acne</Text>
 
@@ -339,19 +336,22 @@ getLeftDidYouKnow(){
 
     {/*row 5*/}
       <View style={{flexDirection:"row"}}>
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('sleep')} >
-    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/sleep.jpg')} />
-    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Sleep</Text>
-
-            </TouchableOpacity>
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
-    <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/white.png')} />
-    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Empty</Text>
-
-            </TouchableOpacity>
 
 
-            <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
+            <View style={{   width:width*0.54, height:  height*0.16 ,marginLeft:10, marginTop:12 ,  borderColor: 'skyblue',     borderWidth:2 ,      backgroundColor:"white",       borderRadius:19  }}>
+
+              <View style={{flexDirection: 'row'  ,   height: 40      }}>
+
+                <Image style={{borderColor: '#ffffff',  borderWidth:111*0.04, width:40, height:40 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+                <Text style={{  marginLeft:15,  fontSize: 18,color:"black" , marginTop: 2     }}>DID YOU KNOW</Text>
+
+              </View>
+              <Text style={{   fontSize: 14,color:"black", width:"95%" ,marginLeft:"3%"    }}>{word[this.getRandomInt(word.length)]}</Text>
+
+            </View>
+
+
+            <TouchableOpacity style={{width:width*0.27, height:  width*0.19,marginLeft:width*0.024, marginTop:36,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/Icons/symptoms.jpg')} />
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Symptoms</Text>
 

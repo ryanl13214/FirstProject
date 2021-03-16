@@ -1,65 +1,24 @@
 
 import React, { Component } from "react";
-import { TextInput, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
+import { TextInput,  TouchableOpacity, StyleSheet, Text, View,ScrollView,FlatList,Image } from "react-native";
+
+import { Dimensions } from 'react-native';
+
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
+
 
 
 export default class Social extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			chatMessage: "",
-			chatMessages: [{key:"rb",col:"r",ico:true},{key:"chatMessagesrb",col:"r",ico:true},{key:"cchatMessageschatMessageschatMessageschatMessage atMessageschatMessageshatMessagesb",col:"b",ico:true}]
-		};
+ 	};
 	}
 
-	componentDidMount() {
-
-		//      this.setState({ chatMessages: [...this.state.chatMessages, {key:"rb"}] });
-		//this.props.navigation.setParams({tabBar:{visible:false}})
-	}
-
-	submitChatMessage() {
-
-		// this.setState({ chatMessage: "aaa" });
-	}
-	getcolour(a) {
-		if(a=="b"){ return "rgb(243,243,243)";}
-		if(a=="r"){ return "rgb(14,168,205)";}
-
-		return "green";
-	}
-	gettextcolour(a) {
-		if(a=="b"){ return "rgb(11,11,11)";}
-		if(a=="r"){ return "rgb(248,248,248)";}
-
-		return "green";
-	}
-	getwidth(a) {
-		console.log(a );
-		console.log(a.length);
-		return  (a.length*9) +30;
-
-
-
-	}
-
-	getflex(a) {
-
-		if(a=="r"){ return 'flex-end';}
-		if(a=="b"){ return 'flex-start';}
-
-
-	}
-	hideimg(a,i) {
-		if(i==1){
-			if(a=="r"){ return 40;}
-			if(a=="b"){ return 0;}
-		}
-		if(i==0){
-			if(a=="r"){ return 0;}
-			if(a=="b"){ return 40;}
-		}
-	}
 
 
 
@@ -69,6 +28,16 @@ export default class Social extends Component {
 		return (
 			<View style={styles.container}>
 			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/revision3/socialback.jpg')} />
+
+
+
+
+			   <TouchableOpacity style={{position:"absolute"  ,top:height*0.5  ,left:width *0.4 ,     width:width*0.20, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('SocialMain')} >
+			<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/chat.jpg')} />
+
+			   </TouchableOpacity>
+
+
 
 
 
