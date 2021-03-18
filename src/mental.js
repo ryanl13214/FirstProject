@@ -288,7 +288,7 @@ if(this.state.sliderValue  > 0.5){
 
 
   <View style={{  position:"absolute", top:"58%",left:"15%"  ,  width:this.getwidth(), height:height*0.15,overflow:"hidden"}}>
-     <Image style={{  height:height*0.15, width:width*0.7  , resizeMode:"stretch"}}   source={require( '../imgs/revision3/sHGly.png')} />
+     <Image style={{  height:height*0.15, width:width*0.7  , resizeMode:"stretch"}}   source={require( '../imgs/revision3/Untitled.png')} />
   </View>
 
       <View style={{position:"absolute", top:"58%",left:"15%"  ,  width:"70%", height:"25%" }}>
