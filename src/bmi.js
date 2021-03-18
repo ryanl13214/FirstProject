@@ -3,7 +3,11 @@ import React from 'react';
 import {  Animated,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView , Easing} from 'react-native';
 import { Dimensions } from 'react-native';
 
-const { height } = Dimensions.get('window');
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 
 
 
@@ -74,14 +78,15 @@ export default class  Bmi extends React.Component {
 			minus3: minus3,
 			minus4: minus4,
 			minus5: minus5,
+			showDidYouKnow:false,
 			minus6: minus6,
 			minus7: minus7,      pluss1:pluss1,
 			thismonth:thismonth,
 			age: 18,
 			weight:80,
-			height:120,
+			height:140,
 			bmi:0,
-			bmitext:"healthy"
+			bmitext:"Healthy"
 		};
 	}
 	onButtonPressagepluss = () => {
@@ -122,6 +127,22 @@ export default class  Bmi extends React.Component {
 		}
 	}
 
+	getLeftDidYouKnow(){
+	  if(this.state.showDidYouKnow)
+	  {
+	    return 5;
+	  }
+	  else
+	  {
+	    return 99999;
+	  }
+	}
+	showDidYouKnow() {
+	  this.setState({
+	      showDidYouKnow: !this.state.showDidYouKnow,
+	  });
+
+	}
 
 	onButtonPressweightpluss = () => {
 		if(this.state.weight<200){
@@ -158,18 +179,21 @@ export default class  Bmi extends React.Component {
 		return (
 
 			<SafeAreaView style={styles.container}>
-			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/empty3.jpg')} />
+			<Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height,resizeMode: 'stretch',top:0 }} source={require('../imgs/3.jpg')} />
 
 
+{/* title*/}
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"-2%",left:"0%",width:"100%",height:"15%"}}>
 
 
+			</View>
+			{/* bascl nutton*/}
+			<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+			  <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+			</TouchableOpacity>
 
 
-
-
-
-			<Text style={[styles.textDark, {position:"absolute",top:"11%",left:"88%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
-			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"18%"  }}>
+			<View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"17%"  }}>
 			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
 			</TouchableOpacity>
@@ -194,9 +218,7 @@ export default class  Bmi extends React.Component {
 			<LinearGradient colors={['rgb(111,111,211)', 'rgb(55,119,140)']}  style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
 			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.todaysnumber}</Text>
 			</LinearGradient>
-			<TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
-			<Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.pluss1}</Text>
-			</TouchableOpacity>
+
 			</View>
 
 
@@ -210,7 +232,7 @@ export default class  Bmi extends React.Component {
 
 
 
-			<View style={{ borderRadius:15,flexDirection:"row",alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"39%",left:"5%",width:"90%",height:"12%",backgroundColor:"rgb(236,106,106)"}}>
+			<View style={{ borderRadius:15,flexDirection:"row",alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"35%",left:"5%",width:"90%",height:"12%",backgroundColor:"rgb(236,106,106)"}}>
 			<View style={{borderRadius:15, flexDirection:"row",height:"85%" ,width:"28%", margin:"2%",backgroundColor:"white"}}>
 			<View style={{ flexDirection:"column", height:"21%" ,width:"60%", margin:"2%", marginLeft:"5%", textAlign: 'center' }}>
 			<Text  style={{  color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' }}>Age</Text>
@@ -239,47 +261,25 @@ export default class  Bmi extends React.Component {
 			</TouchableOpacity>
 			</View>
 			</View>
-			<View style={{ borderRadius:15,flexDirection:"row",height:"85%" ,width:"28%", margin:"2%",backgroundColor:"white"}}>
-			<View style={{ flexDirection:"column", height:"21%" ,width:"60%", margin:"2%", marginLeft:"5%", textAlign: 'center' }}>
-			<Text  style={{   color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' }}>Weight</Text>
-			<Text  style={{   fontSize: 18  , textAlign: 'center'  }}>{this.state.age}</Text>
-			</View>
-			<View style={{ flexDirection:"column", height:"21%" ,width:"30%", margin:"2%" }}>
-			<TouchableOpacity style={{width: 30, height: 30  }} onPress={this.onButtonPressweightpluss} >
-			<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
-			</TouchableOpacity>
-			<TouchableOpacity style={{width: 30, height: 30 }} onPress={this.onButtonPressweightmin} >
-			<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
-			</TouchableOpacity>
-			</View>
-			</View>
+			<View style={{ borderRadius:15,flexDirection:"row",height:"85%" ,width:"30%", margin:"2%",backgroundColor:"white"}}>
+			<View style={{ flexDirection:"column", height:"21%" ,width:"70%", textAlign: 'center' }}>
+				<Text  style={{   color:"rgb(229,148,92)", fontSize: 18   , textAlign: 'center' , marginTop:1}}> Weight</Text>
+				<Text  style={{   fontSize: 18  , textAlign: 'center'  }}>{this.state.age}</Text>
 
 
 
 
 			</View>
+				<View style={{ flexDirection:"column", height:"21%" ,width:"30%" }}>
+					<TouchableOpacity style={{width: 30, height: 30  }} onPress={this.onButtonPressweightpluss} >
+					<Image style={{  width: 30, height: 30 }} source={require('../imgs/up2.png')}  />
+					</TouchableOpacity>
+					<TouchableOpacity style={{width: 30, height: 30 }} onPress={this.onButtonPressweightmin} >
+					<Image style={{  width: 30, height: 30 }} source={require('../imgs/down2.png')}  />
+					</TouchableOpacity>
+				</View>
+			</View>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<Image style={{  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/heartbmi.jpg')} />
-
-			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"69%",left:"0%",width:"100%",height:"25%"}}>
-
-			<Text  style={{ color:"white", fontSize: 20}}>{this.state.bmi}</Text>
-			<Text  style={{   height: 30,color:"white", fontSize: 20}}>{this.state.bmitext}</Text>
 
 
 
@@ -292,6 +292,53 @@ export default class  Bmi extends React.Component {
 
 
 
+
+
+
+
+
+
+
+
+			<Image style={{  position:"absolute",top:"54%",left:"0%",width:"100%",height:"25%"}} source={require('../imgs/NEWIMAGES/BMI/heart.png')} />
+
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"54%",left:"0%",width:"100%",height:"25%"}}>
+
+			<Text  style={{ color:"red", fontSize: 20}}>{this.state.bmi}</Text>
+			<Text  style={{   height: 30,color:"red", fontSize: 20}}>{this.state.bmitext}</Text>
+
+
+
+			</View>
+
+{/* bmi desc */}
+			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"78%",left:"0%",width:"100%" }}>
+
+			<Text  style={{ color:"rgb(138,0,28)", textAlign: 'center', fontSize: 18}}>The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy. While generally useful it is possible to live a healthy active life with a abnormal BMI.</Text>
+
+
+
+
+			</View>
+
+
+
+			<View style={{     position:"absolute",top:height*0.1 ,     right:this.getLeftDidYouKnow(),     borderColor: 'skyblue',     borderWidth:2 ,     minHeight: 35,     backgroundColor:"white",     height: 151  ,     borderRadius:19,     width:240 }}>
+
+        <View style={{flexDirection: 'row'  ,   height: 50      }}>
+
+          <Image style={{borderColor: '#ffffff',  borderWidth:111*0.04, width:50, height:50 , borderRadius:27  }}  source={require('../imgs/drdasyiconRevised.jpg')} />
+          <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
+
+        </View>
+        <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+
+      </View>
+
+      <TouchableOpacity style={{position:"absolute"  ,top:height*-0.02 ,right:-20,     width:width*0.28, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.showDidYouKnow( )} >
+   <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/NEWIMAGES/qbal.png')} />
+
+      </TouchableOpacity>
 
 
 

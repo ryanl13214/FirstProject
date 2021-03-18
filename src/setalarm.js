@@ -1,35 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import { View, Text, Button, TextInput, DeviceEventEmitter } from 'react-native';
-import ReactNativeAN from 'react-native-alarm-notification';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 
-export default class  sleep extends React.Component {
+export default class  SetAlarm extends React.Component {
 	constructor(props, context) {
      super(props, context);
+this.state={
+datepickervisibility:false
 
+
+}
 
   }
 
  	render() {
- 		const { update, fireDate, futureFireDate } = this.state;
+
+
+		  const showDatePicker = () => {
+		    setDatePickerVisibility(true);
+		  };
+
+		  const hideDatePicker = () => {
+		    setDatePickerVisibility(false);
+		  };
+
+		  const handleConfirm = (date) => {
+		    console.log("A date has been picked: ", date);//date is returning 1 hour early
+				this.setState({datepickervisibility:!this.state.datepickervisibility})
+				
+		    //hideDatePicker();
+		  };
  		return (
  			<View style={{flex:1, padding: 20}}>
- 				<Text>Alarm Date (01-01-1976 00:00:00)</Text>
- 				<View>
- 					<TextInput
- 						style={{height: 40, borderColor: 'gray', borderWidth: 1}}
- 						onChangeText={(text) => this.setState({ fireDate: text })}
- 						value={fireDate}
- 					/>
- 				</View>
- 				<View>
- 					<Text>Alarm Time From Now (eg 5):</Text>
- 					<TextInput
- 						style={{height: 40, borderColor: 'gray', borderWidth: 1}}
- 						onChangeText={(text) => this.setState({ futureFireDate: text })}
- 						value={futureFireDate}
- 					/>
- 				</View>
+
+
+			<View>
+	      <Button title="Show Date Picker" onPress={()=>this.setState({datepickervisibility:true})} />
+	      <DateTimePickerModal
+	        isVisible={this.state.datepickervisibility}
+	        mode="time"
+	        onConfirm={handleConfirm}
+	        onCancel={hideDatePicker}
+	      />
+	    </View>
+
  				<View style={{marginVertical: 18}}>
  					<Button
  						onPress={this.setAlarm}
@@ -65,7 +80,7 @@ export default class  sleep extends React.Component {
  						color="#841584"
  					/>
  				</View>
- 				<Text>{update}</Text>
+
  			</View>
  		);
  	}

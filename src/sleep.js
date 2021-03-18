@@ -2,23 +2,16 @@
 import React from 'react';
 import {  Image,  PixelRatio,  StyleSheet  ,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
-
 import { Dimensions } from 'react-native';
-
 const { height } = Dimensions.get('window');
-const alarmNotifData = {
-	alarm_id: "12345",
-	title: "My Notification Title",
-	message: "My Notification Message",
-	channel: "my_channel_id",
-	small_icon: "ic_launcher",
 
-	// You can add any additional data that is important for the notification
-	// It will be added to the PendingIntent along with the rest of the bundle.
-	// e.g.
-  	data: { foo: "bar" },
-};
+import SyncStorage from 'sync-storage';
+import { NativeModules } from 'react-native'
+const {ToastExample} = NativeModules;
+const {AlarmExamples} = NativeModules;
+
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
 export default class  Sleep extends React.Component {
 
   constructor(props ) {
@@ -54,39 +47,102 @@ export default class  Sleep extends React.Component {
       minus4: minus4,
       minus5: minus5,
       minus6: minus6,
-      minus7: minus7,      pluss1:pluss1,
-      thismonth:thismonth}
-  }
+      minus7: minus7,
+    waketime:SyncStorage.get('waketime'  ),
+      datepickervisibility:false,
+alarmtime: SyncStorage.get('alarmtime'  ),
 
+         pluss1:pluss1,
+      thismonth:thismonth
+    }
+    if(SyncStorage.get('waketime'  ) ==  undefined  ){this.state.waketime="not set";   }
+if(SyncStorage.get('alarmtime'  ) ==  undefined  ){this.state.alarmtime="not set";   }
+  }
 
   add2 = () => {
 
 
-          //Stop Alarm
-        //  ReactNativeAN.stopAlarmSound();
 
-        //  //Send Local Notification Now
-    //      ReactNativeAN.sendNotification(alarmNotifData);
-
-          //Get All Scheduled Alarms
-      //    const alarms = await ReactNativeAN.getScheduledAlarms();
-
-          //Clear Notification(s) From Notification Center/Tray
-    //      ReactNativeAN.removeFiredNotification(alarm_id);
-    //      ReactNativeAN.removeAllFiredNotifications();
       }
 
 
 
+          _onPressButton2() {
+            // ToastModule.showText(`This is Android's Toast`,
+            //                       ToastModule.LENGTH_SHORT)
+            //Show constants
+        AlarmExamples.setAlarm('Awesome', AlarmExamples.SHORT);
+
+          }
+
 
   render() {
+
+    const showDatePicker = () => {
+      setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+      console.log("A date has been picked: ", date );//date is returning 1 hour early
+      this.setState({datepickervisibility:!this.state.datepickervisibility})
+
+//2020-10-19T09:10:28.477Z
+var hour=String(String(String(date).split(":")).split(" ")[4]).split(",")[0] ;// i know
+var minutes= String(date).split(":")[1] ;
+
+      //bool repeating or not
+      // days
+      //time
+      //hours
+      //minutes
+    //    this.setState({alarmtime:( Number(hour),Number(minutes))});
+
+          var time = Number(hour)-8;
+          console.log(time);
+          if (time<0){
+            time = 24 + time;
+
+          }
+          time = time.toString()+":00";
+
+          this.setState({waketime: time  });
+          SyncStorage.set(   'waketime', time );
+          this.setState({alarmtime: time  });
+          SyncStorage.set(   'alarmtime',  Number(hour).toString()+":00" );
+          AlarmExamples.setAlarm(Number(hour),Number(minutes));
+      //hideDatePicker();
+    };
+
     return (
 
       <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
 
 
-      <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/14.jpg')} />
-			<Text style={[styles.textDark, {position:"absolute",top:"10%",left:"90%", fontSize: 25, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.thismonth}</Text>
+      <Image style={{position:"absolute" ,  width: '100%', height: height-70 }} source={require('../imgs/NEWIMAGES/page-5/5.png')} />
+
+      <Text  style={{position:"absolute",textAlign:"center" ,top:3,  width: '100%',fontSize:height*0.05  ,color:"white" ,fontFamily:"AmaticSC-Bold",height: 50   }}>Sleep Tracker</Text>
+
+
+
+{/* center label*/}
+<View style={{   width: '100%', height:height-100 , justifyContent: "center",textAlign:"center",alignItems:"center"}} >
+  <Text  style={{fontSize:height*0.03  ,color:"white"    }}>Alarm time-{this.state.waketime} </Text>
+  <Text  style={{fontSize:height*0.03  ,color:"white"    }}>When to sleep-{this.state.waketime} </Text>
+</View  >
+
+{/* top left*/}
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+
+			</TouchableOpacity>
+{/* top right*/}
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+
+</TouchableOpacity>
+
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16%"  }}>
           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>
               <Text style={[styles.textDark, { fontSize: 20, fontWeight: "500"  ,  textAlign: 'center', marginTop: 3, width: 36, height: 36}]}>{this.state.minus7}</Text>
@@ -117,15 +173,19 @@ export default class  Sleep extends React.Component {
           </TouchableOpacity>
       </View>
 
-  <Text  style={{   fontSize: 15,backgroundColor:"rgb(102,183,202)"}}>set alarms</Text>
+
+
+
+                         {/* bascl nutton*/}
+                         <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+                           <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+                         </TouchableOpacity>
 
 
 
 
 
-
-
-    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,backgroundColor:"rgb(237,175,90)"}} onPress={    this.add2  } >
+    <TouchableOpacity style={{justifyContent: "center",alignItems:"center",  position:"absolute", flexDirection: 'row'   ,  width:"80%",height:40 ,top:"88%" ,left:"11%",overflow: 'hidden',borderRadius:20,borderColor:"rgb(237,175,90)",borderWidth:1}}  onPress={()=>this.setState({datepickervisibility:true})} >
 
 
         <Text  style={{justifyContent: "center",alignItems:"center",   fontSize: 20,   height:"80%",color:"white" }}>Edit Alarms</Text>
@@ -134,6 +194,12 @@ export default class  Sleep extends React.Component {
     </TouchableOpacity>
 
 
+    <DateTimePickerModal
+      isVisible={this.state.datepickervisibility}
+      mode="time"
+      onConfirm={handleConfirm}
+      onCancel={hideDatePicker}
+    />
 
 
 

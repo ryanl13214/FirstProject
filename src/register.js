@@ -4,7 +4,12 @@ import {  Image,  TextInput, Picker, PixelRatio,  StyleSheet,  Text,  TouchableO
 import { Dimensions } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import DatePicker from 'react-native-datepicker'
-const { height } = Dimensions.get('window');
+
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 //Import basic react native components
 import MultiSelect from 'react-native-multiple-select';
 const wheelPickerData = ["1 day", '2 days', '3 days', '4 days', '5 days', '6 days','7 days','8 days','9 days','10 days','11 days','12 days','13 days','14 days','15 days','16 days','17 days',"18 days","19 days","20 days"];
@@ -12,12 +17,11 @@ const wheelPickerData2 = ["1 week", '2 weeks', '3 weeks', '4 weeks', '5 weeks', 
 const now = new Date()
 import SyncStorage from 'sync-storage';
 
-import fire from '../config/fire';
 import { WheelPicker } from '@delightfulstudio/react-native-wheel-picker-android';
 
 type Props = {}
 
- const items = [
+const items = [
   { id: '1', name: 'America' },
   { id: '2', name: 'Argentina' },
   { id: '3', name: 'Armenia' },
@@ -30,7 +34,7 @@ type Props = {}
   { id: '10', name: 'Brazil' },
 ];
 const buttonTextStyle = {
-    color: '#reds'
+  color: '#reds'
 };
 
 
@@ -54,13 +58,61 @@ export default class  Register extends React.Component {
     //Set Selected Items
   };
   onItemSelected = event => {
-      // do something
+    // do something
   };
 
   constructor(props ) {
     super(props);
 
- }
+  }
+
+
+
+
+
+
+
+
+    addMedication = med => {
+var tmparray = this.state.medications ;
+tmparray.push(med)
+  this.setState({ medications:tmparray });
+
+
+
+
+
+
+
+}
+getcolorMedication(med){
+var found = false;
+for(var i = 0 ; i < this.state.medications.length ;i++){
+if(this.state.medications[i]== med){
+  found = true;
+}
+}
+
+if(found){return "red";}else{return "black";}
+
+
+
+}
+
+
+
+
+  submitandsave = event => {
+
+
+    SyncStorage.set('medications' ,this.state.selectedItems);
+    SyncStorage.set('name' ,this.state.name);
+    SyncStorage.set('username' ,this.state.username);
+    SyncStorage.set('dateofbiirth' ,this.state.dateofbiirth);
+    SyncStorage.set('docrotname' ,this.state.docrotname);
+    SyncStorage.set('gpPractice' ,this.state.gpPractice);
+
+    console.log(this.state.name);
 
 
 
@@ -72,47 +124,35 @@ export default class  Register extends React.Component {
 
 
 
-
-
-
- submitandsave = event => {
-
-
-SyncStorage.set('medications' ,this.state.selectedItems);
-SyncStorage.set('name' ,this.state.name);
-SyncStorage.set('username' ,this.state.username);
-SyncStorage.set('dateofbiirth' ,this.state.dateofbiirth);
-SyncStorage.set('docrotname' ,this.state.docrotname);
-SyncStorage.set('gpPractice' ,this.state.gpPractice);
-
-console.log(this.state.name);
-
-
-  fire.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then((u)=>{
-  }).then((u)=>{this.props.updateState3()})
-  .catch((error) => {
-      console.log("error :"+error);
-    })
-
-
-
-
-
-
-
-
-
- };
+  };
 
 
   render() {
+    var submitregister = () => {
+
+
+      //check loging then
+      this.props.submitregister()
+
+    }
 
 
 
     return (
 
       <View style={{ flex: 1 }}>
-    <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/det.jpg')} />
+      <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch' }} source={require('../imgs/det.jpg')} />
+
+
+
+
+
+
+             <View style={ styles.container}>
+               <TouchableOpacity style={{ height:50, width:"100%" , flexDirection: 'column'  ,alignItems: 'center'  ,marginTop: "10%"}}  onPress={() => submitregister()} >
+               <Text style={{ textAlign: 'center',fontSize: 25,width:"100%", height:50 ,color:"white"}}>Submit </Text>
+               </TouchableOpacity>
+             </View>
 
 
 
@@ -120,133 +160,56 @@ console.log(this.state.name);
 
 
 
-    <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
-        <ProgressSteps   style={{width:"70%" }}>
-            <ProgressStep label="Basic Information">
-                <View style={{ alignItems: 'center' }}>
+      <View style={{position:"absolute" , flex: 1, height: height*0.70,width:"80%",top: height*0.2,left:"10%"}}>
 
-                <TextInput
-                  value={this.state.username}
-                  onChangeText={username => this.setState({ username })}
-                  placeholder={'email Address'}
-                  style={{textAlign: 'center',   backgroundColor:"white",   width: '60%', height: 50 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
-                />
-                <TextInput
-                  value={this.state.email}
-                  onChangeText={password => this.setState({ password })}
-                  placeholder={'password'}
-                  style={{textAlign: 'center' , backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                />
-
-
-                <TextInput
-                  value={this.state.name}
-                  onChangeText={name => this.setState({ name })}
-                  placeholder={'Whats your name?'}
-                  style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                />
+      <View style={{ alignItems: 'center' ,height:height*0.80,borderRadius:50 }}>
 
 
 
-
-
-
-  <View style={{flexDirection: 'row', paddingTop:10 }}>
-
-<Text style={{  color:"grey", paddingTop:10 }}>Enter DOB: </Text>
-  <DatePicker
-    style={{width:    '60%'}}
-    date={this.state.date}
-    mode="date"
-    placeholder="select date"
-    format="YYYY-MM-DD"
-    minDate="1900-01-01"
-    maxDate="2016-06-01"
-    confirmBtnText="Confirm"
-    cancelBtnText="Cancel"
-    customStyles={{
-      dateIcon: {
-        position: 'absolute',
-        left: 0,
-        top: 4,
-        marginLeft: 0
-      },
-      dateInput: {
-        marginLeft: 36
-      }
-      // ... You can check the source to find the other keys.
-    }}
-    onDateChange={(date) => {this.setState({date: date})}}
-  />
-
-  </View>
-
-                </View>
-            </ProgressStep >
-            <ProgressStep label="Medications">
-            <View style={{ alignItems: 'center' }}>
-
-
-                <View style={{  width:"70%",height:"60%"}}>
-                  <MultiSelect
-                    hideTags
-                    items={items}
-                    uniqueKey="id"
-                    ref={component => {
-                      this.multiSelect = component;
-                    }}
-                    onSelectedItemsChange={this.onSelectedItemsChange}
-                    selectedItems={this.state.selectedItems}
-                    selectText="current medication"
-                    searchInputPlaceholderText="Search Items..."
-
-                    tagRemoveIconColor="#CCC"
-                    tagBorderColor="#CCC"
-                    tagTextColor="#CCC"
-                    selectedItemTextColor="#CCC"
-                    selectedItemIconColor="#CCC"
-                    itemTextColor="#000"
-                    displayKey="name"
-                    searchInputStyle={{ color: '#CCC' }}
-                    submitButtonColor="#48d22b"
-                    submitButtonText="Submit"
-                  />
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                                <TextInput
-                                  value={this.state.gpname}
-                                  onChangeText={gpPractice => this.setState({ gpPractice })}
-                                  placeholder={'GP practice'}
-                                  style={{textAlign: 'center', backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                                />
-
-                            <TextInput
-                              value={this.state.nursename}
-                              onChangeText={docrotname => this.setState({ docrotname })}
-                              placeholder={'GP Name'}
-                              style={{textAlign: 'center',  backgroundColor:"white",  width: '60%', height: 50, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
-                            />
-              </View>
-  </View>
-            </ProgressStep>
-
-
-            <ProgressStep label="Personal Goals"   onSubmit={this.submitandsave}>
-                <View style={{ width: '80%',alignItems: 'center' }}>
-                    <Text>Personal goals section list goals here</Text>
-                </View>
-            </ProgressStep>
-
-        </ProgressSteps>
-
-    </View>
+      <TextInput
+      value={this.state.username}
+      onChangeText={username => this.setState({ username })}
+      placeholder={'email Address'}
+      style={{textAlign: 'center',      width: '60%', height: 40 , borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"19%" }}
+      />
+      <TextInput
+      value={this.state.email}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'password'}
+      style={{textAlign: 'center' ,   width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
+      />
+      <TextInput
+      value={this.state.email}
+      onChangeText={password => this.setState({ password })}
+      placeholder={'Confirm password'}
+      style={{textAlign: 'center' ,    width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center',marginTop:"4%" }}
+      />
+      <TextInput
+      value={this.state.name}
+      onChangeText={name => this.setState({ name })}
+      placeholder={'Whats your name?'}
+      style={{textAlign: 'center',    width: '60%', height: 40, borderBottomWidth:2,borderColor:"lightblue",alignItems: 'center',justifyContent: 'center', marginTop:"4%"}}
+      />
 
 
 
 
 
 
-     </View>
+
+
+      </View>
+
+      </View>
+
+
+      <Text style={{  color:"white",position:"absolute", top:height*0.01, width:"100%",textAlign:"center", fontSize:34 ,fontFamily:"AmaticSC-Bold"}}>Register </Text>
+
+
+
+
+
+      </View>
 
 
     );
@@ -257,6 +220,18 @@ const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: 'grey'
   },
+   container: {
+   position:"absolute" ,
+   bottom:8,
+   left:"25%",
+   backgroundColor: "rgb(25,89,127)",
+   width: '50%',
+   height: 50,
+   borderRadius:30,
+   alignItems: 'center',
+   justifyContent: 'center',
+   textAlignVertical: 'top'
+   },
   inactiveDot: {
     backgroundColor: '#ededed'
   },

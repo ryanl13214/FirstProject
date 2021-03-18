@@ -32,7 +32,7 @@ export default class  Tmp extends React.Component {
 
     let body = JSON.stringify({text: b64 })
 
-    fetch('http://178.128.165.173/acne', {
+    fetch('http://192.168.0.5:80/acne', {
       method: 'POST',
 
         headers: {

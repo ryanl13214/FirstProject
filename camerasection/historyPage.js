@@ -15,14 +15,16 @@ import {
   StackedBarChart
 } from 'react-native-chart-kit'
 
-
-
-
-
-
-
-
-
+import
+{
+    Dimensions
+}
+from 'react-native';
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 
 
 export default class  History extends React.Component {
@@ -32,29 +34,14 @@ export default class  History extends React.Component {
 
 
 
-
-
-     console.log("histoyy",  this.props.route.params.newIMG);
-       var base64Icon = this.props.route.params.newIMG;
-
- 
-
-
-
-
-
-
+  //   console.log("histoyy",  this.props.route.params.newIMG);
+    //   var base64Icon = this.props.route.params.newIMG;
 
 
 
 //   console.log("histoyy",  this.props.route.params.newIMG);
 //var base64Icon = 'data:image/png;base64,{PLACE_YOUR_BASE64_DATA_HERE}';
   }
-
-
-
-
-
 
 
 
@@ -70,75 +57,64 @@ export default class  History extends React.Component {
        };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
 
 
 
       <View style={{  alignItems: 'center', justifyContent: 'flex-start' }}>
-<Image style={{width: "100%",  height: "60%" }} source={ this.props.route.params.newIMG}/>
-        <Text> history page</Text>
+  {
+       <Image style={{width: "100%",  height: "60%", resizeMode:"contain" }} source={ this.props.route.params.newIMG}/>
+// <View style={{width: "100%",  height: "60%",backgroundColor:"blue" }}></View>
+  }
 
+   {/* bascl nutton*/}
+   <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+     <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
+   </TouchableOpacity>
+        <Text> Acne history data</Text>
 
-
-
-
-
-        <Slider
-            style={{width: 200, height: 40}}
-            minimumValue={0}
-            maximumValue={1}
-            minimumTrackTintColor="#FFFFFF"
-            maximumTrackTintColor="#000000"
-          />
 
           <LineChart
-              data={line}
-              width={300} // from react-native
-              height={150}
-              yAxisLabel={'%'}
-              chartConfig={{
-                backgroundColor: '#e26a00',
-                backgroundGradientFrom: '#fb8c00',
-                backgroundGradientTo: '#ffa726',
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(255, 255, 255, 0.5)`,
-                style: {
-                  borderRadius: 16
-                }
-              }}
-              bezier
-              style={{
-                marginVertical: 8,
-                borderRadius: 16
-              }}
-  />
+
+          data={{
+            labels: [
+              '1/11/20',
+              '1/12/20',
+              '1/1/21',
+              '1/2/21',
+              '1/3/21',
+            ],
+            datasets: [
+              {
+                data: [44, 39, 42, 44],
+                strokeWidth: 2,
+              },
+            ],
+          }}
+          width={Dimensions.get('window').width *1}
+          height={220}
+          chartConfig={{
+            backgroundColor: '#1cc910',
+            backgroundGradientFrom: '#eff3ff',
+            backgroundGradientTo: '#efefef',
+            decimalPlaces: 0,
+            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+            style: {
+              borderRadius: 16,
+            },
+          }}
+          style={{
 
 
-        <Button
-          title="home"
+          }}
+          />
 
-      onPress={() => this.props.navigation.navigate('Home' )}
-        />
+    <Text>percentage of skin covered in acne.</Text>
+
+
+
+
       </View>
-
-
-
-
     );
   }
 }

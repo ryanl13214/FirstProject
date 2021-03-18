@@ -164,10 +164,13 @@ export default class  Meditation extends React.Component {
 <View >
 
 <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",  width: '100%', height: height-70,resizeMode: 'stretch',top:0 }} source={require('../imgs/12.jpg')} />
+<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
+<Image style={{  width: '100%', height: '100%'  }} source={require('../imgs/helpIcon.png')} />
 
+</TouchableOpacity>
 <View style={{ alignItems: "center" }}>
     <View style={{ alignItems: "center", marginTop: 24 }}>
-       
+
     </View>
 
     <View style={styles.coverContainer}>

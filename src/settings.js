@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginLeft:9,
     borderRadius:15,
     textAlign: 'center',
-    backgroundColor:"skyblue",
+    backgroundColor:" blue",
 },
 container: {
 flex: 1,
