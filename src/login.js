@@ -75,6 +75,7 @@ export default class  Login extends React.Component {
          value={this.state.passwordplaceholder}
          onChangeText={password => updatepassword({ password })}
          placeholder={'password'}
+         secureTextEntry={true}
          style={{textAlign: 'center',position:"absolute" ,top:height*0.5,left:"20%", backgroundColor:"white",  width: '60%', height: 35, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}
        />
 
