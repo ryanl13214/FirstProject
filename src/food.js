@@ -14,6 +14,8 @@ import
     SafeAreaView
 }
 from 'react-native';
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 import
 {
     Dimensions
@@ -194,6 +196,9 @@ export default class Food extends React.Component
         return 99999;
       }
     }
+    getRandomInt(max) {
+         return Math.floor(Math.random() * Math.floor(max));
+       }
     showDidYouKnow() {
       this.setState({
           showDidYouKnow: !this.state.showDidYouKnow,
@@ -1210,7 +1215,7 @@ export default class Food extends React.Component
                        <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
 
                      </View>
-                     <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+                     <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
                    </View>
 

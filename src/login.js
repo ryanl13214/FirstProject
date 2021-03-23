@@ -18,11 +18,8 @@ export default class  Login extends React.Component {
    super(props);
 
    this.state = {
-     email: '',
      password: '',
-     uname:'',
-     passworddupe:'',
-     passwordplaceholder:""
+     username:''
    };
  }
 
@@ -36,29 +33,18 @@ export default class  Login extends React.Component {
 
 
    var submitLogin = () => {
-
-
      //check loging then
-     this.props.loginSucesssfull()
-
+     this.props.loginSucesssfull(this.state.username, this.state.password);
    }
 
       var movetoregister = () => {
-
-
         //check loging then
-        this.props.movetoregister()
-
+        this.props.movetoregister();
       }
 
-   var updatepassword = (pass) => {
 
-     this.setState({ password:pass });
-
-     this.setState({ passwordplaceholder:this.state.passwordplaceholder+"*" });
-   }
    return (
-     <View  style={{flex: 1,      alignItems: "flex-start",      justifyContent: "flex-start"}} >
+     <View  style={{ height:height, width:width }} >
 
 
        <Image style={{position:"absolute" ,  width: '100%', height: height,resizeMode: 'stretch'  }} source={require('../imgs/1.jpg')} />
@@ -67,13 +53,13 @@ export default class  Login extends React.Component {
 
        <TextInput
          value={this.state.username}
-         onChangeText={username => this.setState( username)}
+         onChangeText={username => this.setState({username:username})}
          placeholder={'email'}
          style={{textAlign: 'center',position:"absolute"  ,top:height*0.43,left:"20%", backgroundColor:"white",   width: '60%', height: 35 , borderRadius:30 ,alignItems: 'center',justifyContent: 'center', }}
        />
        <TextInput
-         value={this.state.passwordplaceholder}
-         onChangeText={password => updatepassword({ password })}
+         value={this.state.password}
+         onChangeText={password => this.setState({password:password})}
          placeholder={'password'}
          secureTextEntry={true}
          style={{textAlign: 'center',position:"absolute" ,top:height*0.5,left:"20%", backgroundColor:"white",  width: '60%', height: 35, borderRadius:30,alignItems: 'center',justifyContent: 'center', }}

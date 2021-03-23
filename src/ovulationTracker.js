@@ -178,7 +178,7 @@ export default class  Ovu extends React.Component {
 
 
 
-
+this.getCurrrentDayOfCycle();
 
   }
 
@@ -192,6 +192,43 @@ export default class  Ovu extends React.Component {
       return 99999;
     }
   }
+
+
+
+getCurrrentDayOfCycle(){
+
+
+
+
+
+  var day  = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[2];
+  var month  = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[1] ;
+
+  var year  = new Date(new Date().setDate(new Date().getDate()-1)).toString().split(' ')[3] ;
+
+
+var d = new Date(this.state.startingDay);
+
+
+
+for(var i = 0 ; i < 35 ; i++){
+  var day  = new Date(new Date().setDate(new Date().getDate()-i)).toString().split(' ')[2];
+  var month  = new Date(new Date().setDate(new Date().getDate()-i)).toString().split(' ')[1] ;
+  var year  = new Date(new Date().setDate(new Date().getDate()-i)).toString().split(' ')[3] ;
+
+
+  var dayalt  = new Date(d).toString().split(' ')[2];
+  var monthalt   = new Date(d).toString().split(' ')[1] ;
+  var yearalt   = new Date(d).toString().split(' ')[3] ;
+if(day ==dayalt     &&   month ==monthalt    &&  year ==yearalt ){
+  console.log(i);
+}
+
+}
+
+
+}
+
   showDidYouKnow() {
     this.setState({
         showDidYouKnow: !this.state.showDidYouKnow,
@@ -449,7 +486,7 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
 
-      <View style={{  position:"absolute",top: this.controlheights("data",height * 0.4),left:width*0.25 ,width:width*0.8,height:height}}>
+      <View style={{  position:"absolute",top: this.controlheights("circ",height * 0.4),left:width*0.25 ,width:width*0.8,height:height}}>
       <Text style={{width:"60%",textAlign:"center",color:"white",fontSize:30 }}>NO DATA</Text>
       <Text style={{width:"80%",textAlign:"center",marginLeft:"-10%",color:"white",fontSize:17 }}>Please enter the date of your last period.</Text>
       <DatePicker
@@ -486,7 +523,8 @@ for(var i=1 ; i <=  this.state.numberofbubbles ; i++)
 
 
 
-      <View  style={{ position:"absolute",   width:"100%",height:"23%" ,top:"33%" ,left:"0%" }}>
+      <View  style={{ position:"absolute",   width:"100%",height:"23%"  ,top: this.controlheights("datas",height * 0.33) ,left:"0%" }}>
+      <Image style={{ position:"absolute",   width: width*0.90, height: width*0.90,resizeMode: 'stretch',marginLeft:"5%", marginTop:-width*0.25}} source={require('../imgs/revision3/ovuback.png')} />
 
        <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>{this.getDate()}</Text>
        <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>Day 2/28</Text>

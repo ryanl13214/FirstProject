@@ -25,7 +25,7 @@ import   Graphing   from './tabpages/graph';
 
 
 
-// soclail section
+// social section
 import   Social   from './tabpages/social';
 import   SocialMain   from './social/socialMain';
 //import   FriendManager   from './tabpages/social';
@@ -66,6 +66,7 @@ import   Sleep  from './src/sleep';
 import   SetAlarm  from './src/setalarm';
 import   Register  from './src/register';
 import   Details  from './src/Details';
+import   Buddy  from './src/Buddy';
 import   Scan  from './src/acenescannerselector';
 import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
@@ -91,7 +92,7 @@ function DefaultApp() {
 
         <Stack.Screen name="symptom" component={Symptommapper}/>
 
-
+        <Stack.Screen name="Buddy" component={Buddy}/>
 
         <Stack.Screen name="login" component={Login}/>
         <Stack.Screen name="register" component={Register}/>
@@ -224,26 +225,87 @@ if(result != true){
 
 
 
-    loginSucesssfull = () => {
-        this.setState({
-            loggedin: true,
-            registering:false,
+    loginSucesssfull = (user,pwd) => {
 
-        });
-        SyncStorage.set('loggedin' ,true);
-        const result = SyncStorage.get('havedetails');
+                   let body = JSON.stringify({ username: user , password:pwd  })
 
-          if(result != true){
-            this.setState({
-                givingdetails: true
+                   fetch('http://192.168.0.5:80/login', {
+                     method: 'POST',
 
-            });
-          }else{
-            this.setState({
-                givingdetails: false
+                       headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Content-Length': body.length
 
-            });
-          }
+                       },
+                       body: body,
+
+
+
+                   }     ).then((response) =>  response.json())
+                     .then((responseData) => {
+
+ 
+if(responseData.rows[0].length != 0){
+  //////////////////////
+  this.setState({
+      loggedin: true,
+      registering:false,
+
+  });
+  SyncStorage.set('loggedin' ,true);
+  const result = SyncStorage.get('havedetails');
+
+    if(result != true){
+      this.setState({
+          givingdetails: true
+
+      });
+    }else{
+      this.setState({
+          givingdetails: false
+
+      });
+    }
+//////////////////////
+}else{
+  return "error";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                           })
+                     .catch((err) => { console.log(err); });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -263,13 +325,65 @@ if(result != true){
             this.setState({
                 loggedin: true,
                 registering:false,
-                givingdetails:false
+                givingdetails:false,
+                buddy: true
             });
             SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('buddy' ,false);
+            SyncStorage.set('havedetails' ,true);
+        }
+        submitbuddy = () => {
+            this.setState({
+                loggedin: true,
+                registering:false,
+                givingdetails:false,
+                buddy: false
+            });
+            SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('buddy' ,true);
             SyncStorage.set('havedetails' ,true);
         }
 
-        submitregister = () => {
+        submitregister = ( name , pass, dob,email) => {
+
+
+
+             let body = JSON.stringify({userEmail: email ,username: name , password:pass , dob:dob })
+
+             fetch('http://192.168.0.5:80/addUser', {
+               method: 'POST',
+
+                 headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Content-Length': body.length
+
+                 },
+                 body: body,
+
+
+
+             }     ).then((response) =>  response.text())
+               .then((responseData) => {
+
+            console.log(   responseData.length);
+
+
+                     })
+               .catch((err) => { console.log(err); });
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.setState({
                 loggedin: false,
                 registering:false
@@ -307,6 +421,12 @@ if(result != true){
     {
       return <Details
     submitdetails={this.submitdetails}
+      />;
+    }
+    if (this.state.buddy == true)
+    {
+      return <Buddy
+     submitbuddy={this.submitbuddy}
       />;
     }
 

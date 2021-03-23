@@ -16,6 +16,8 @@ import
 }
 from 'react-native';
 import SyncStorage from 'sync-storage';
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 import
 {
     Dimensions
@@ -109,7 +111,9 @@ export default class Water extends React.Component
         {
             this.StartImageRotateFunction();
         }
-
+        getRandomInt(max) {
+             return Math.floor(Math.random() * Math.floor(max));
+           }
         StartImageRotateFunction()
         {
             this.RotateValueHolder.setValue(0);
@@ -514,7 +518,7 @@ export default class Water extends React.Component
                                <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
 
                              </View>
-                             <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+                             <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
                            </View>
 
