@@ -10,8 +10,6 @@ import SyncStorage from 'sync-storage';
 
 
 
-
-
 /////////////////////////////////////
 import   Drdaisy   from './src/Drdaisy';
 import   DrdaisyThreePageIntro   from './src/DrdaisyThreePageIntro';
@@ -164,6 +162,14 @@ export default class  App extends React.Component {
         stage:""
       };
 
+if(  SyncStorage.get('loggedin'))
+{
+
+  this.state.loggedin=true;
+}
+
+
+
 
 
   }
@@ -227,6 +233,15 @@ if(result != true){
 
     loginSucesssfull = (user,pwd) => {
 
+
+         var userId=   SyncStorage.get('currentUID');
+
+if(userId != undefined ){
+
+
+
+
+
                    let body = JSON.stringify({ username: user , password:pwd  })
 
                    fetch('http://192.168.0.5:80/login', {
@@ -244,9 +259,7 @@ if(result != true){
 
                    }     ).then((response) =>  response.json())
                      .then((responseData) => {
-
- 
-if(responseData.rows[0].length != 0){
+if(responseData.rows[0].length != 0  ){
   //////////////////////
   this.setState({
       loggedin: true,
@@ -254,6 +267,8 @@ if(responseData.rows[0].length != 0){
 
   });
   SyncStorage.set('loggedin' ,true);
+    SyncStorage.set('currentUID' ,responseData.rows[0][0]);
+    console.log(responseData.rows[0][0]);
   const result = SyncStorage.get('havedetails');
 
     if(result != true){
@@ -271,29 +286,33 @@ if(responseData.rows[0].length != 0){
 }else{
   return "error";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                            })
                      .catch((err) => { console.log(err); });
 
 
 
+}else{
+  this.setState({
+      loggedin: true,
+      registering:false,
+  });
+  SyncStorage.set('loggedin' ,true);
+//    SyncStorage.set('currentUID' ,responseData.rows[0][0]);
 
+  const result = SyncStorage.get('havedetails');
 
+    if(result != true){
+      this.setState({
+          givingdetails: true
 
+      });
+    }else{
+      this.setState({
+          givingdetails: false
 
+      });
+    }
+}
 
 
 
@@ -388,6 +407,7 @@ if(responseData.rows[0].length != 0){
                 loggedin: false,
                 registering:false
             });
+
             SyncStorage.set('loggedin' ,true);
             SyncStorage.set('havedetails' ,false);
         }
@@ -404,30 +424,21 @@ if(responseData.rows[0].length != 0){
 
     if (this.state.registering == true)
     {
-      return <Register
-        submitregister={this.submitregister}
-      />;
+      return <Register  submitregister={this.submitregister} />;
     }
 
     if (this.state.loggedin == false)
     {
-      return <Login
-    loginSucesssfull={this.loginSucesssfull}
-        movetoregister={this.movetoregister}
-      />;
+      return <Login loginSucesssfull={this.loginSucesssfull}   movetoregister={this.movetoregister} />;
     }
 
     if (this.state.givingdetails == true)
     {
-      return <Details
-    submitdetails={this.submitdetails}
-      />;
+      return <Details submitdetails={this.submitdetails}/>;
     }
     if (this.state.buddy == true)
     {
-      return <Buddy
-     submitbuddy={this.submitbuddy}
-      />;
+      return <Buddy submitbuddy={this.submitbuddy}/>;
     }
 
     return (

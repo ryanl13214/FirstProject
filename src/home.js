@@ -10,6 +10,7 @@ import
     View,
     ScrollView,
     Button,
+    Animated,
     SafeAreaView
 }
 from 'react-native';
@@ -45,7 +46,7 @@ export default class Home extends React.Component
         }
     var userimage=   SyncStorage.get('userimage');
 
-
+  this.springValue = new Animated.Value(0)
 
 
         //  console.log(height);
@@ -86,6 +87,37 @@ export default class Home extends React.Component
         }
         this.selectPhotoid = this.selectPhotoid.bind(this);
     }///. end of contructor
+
+    onSpringCompletion = () => {
+      if (1==1) {
+        this.spring();
+      }
+    }
+
+
+
+    spring = () => {
+           this.springValue.setValue(0)
+          Animated.timing(
+              this.springValue,
+              {
+                toValue: 300,
+         duration: 99999,
+useNativeDriver:false
+
+              }
+          ).start(this.onSpringCompletion);
+      }
+
+
+
+
+            componentDidMount() {
+                this.spring();
+            }
+
+
+
 
 
 
@@ -193,6 +225,12 @@ getRandomInt(max) {
 
 
    <Image style={{  width: "100%", height: height  ,position:"absolute" ,resizeMode:"stretch"}} source={require('../imgs/homeback.jpg')} />
+
+
+   <Animated.Image
+                               source={require('../imgs/cloud.png')}
+                               style={{ position:"absolute",top:height*0.01,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain"}}
+                           />
 
 
    <Text  style={{position:"absolute",top:height*0.096, width: "100%", fontSize:25, textAlign:"center",color:"white",fontFamily:"AmaticSC-Bold"}}>Homepage</Text>

@@ -3,6 +3,7 @@ import React from 'react';
 import { TextInput, Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView} from 'react-native';
 import { Dimensions } from 'react-native';
 
+import SyncStorage from 'sync-storage';
 
 const
 {
@@ -21,6 +22,16 @@ export default class  Login extends React.Component {
      password: '',
      username:''
    };
+
+
+
+   var userId=   SyncStorage.get('currentUID');
+if(userId != undefined ){
+  this.props.loginSucesssfull(this.state.username, this.state.password);
+}
+
+
+
  }
 
 

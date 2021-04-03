@@ -583,7 +583,7 @@ const styles = StyleSheet.create({
 
 },modal2: {
 
-   backgroundColor : "cornsilk",
+   backgroundColor : "white",
    height: height*0.8 ,
    width: '80%',
    borderRadius:10,
