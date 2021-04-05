@@ -102,7 +102,7 @@ export default class Home extends React.Component
               this.springValue,
               {
                 toValue: 300,
-         duration: 99999,
+         duration: 21999,
 useNativeDriver:false
 
               }
@@ -228,11 +228,23 @@ getRandomInt(max) {
 
 
    <Animated.Image
-                               source={require('../imgs/cloud.png')}
-                               style={{ position:"absolute",top:height*0.01,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain"}}
-                           />
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:-20,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-100}}
+   />
 
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.00,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-400}}
+   />
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.01,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-120}}
+   />
 
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.001,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-300}}
+   />
    <Text  style={{position:"absolute",top:height*0.096, width: "100%", fontSize:25, textAlign:"center",color:"white",fontFamily:"AmaticSC-Bold"}}>Homepage</Text>
 
 

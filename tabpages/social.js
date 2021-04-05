@@ -31,12 +31,12 @@ export default class Social extends Component {
 
 
 
-
+{/*
 			   <TouchableOpacity style={{position:"absolute"  ,top:height*0.5  ,left:width *0.4 ,     width:width*0.20, height:  height*0.14 ,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('SocialMain')} >
 			<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/chat.jpg')} />
 
 			   </TouchableOpacity>
-
+*/}
 
 
 
