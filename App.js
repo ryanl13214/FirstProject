@@ -244,7 +244,7 @@ if(userId != undefined ){
 
                    let body = JSON.stringify({ username: user , password:pwd  })
 
-                   fetch('http://192.168.0.5:80/login', {
+                   fetch('http://138.68.152.2:80/login', {
                      method: 'POST',
 
                        headers: {
@@ -369,7 +369,7 @@ if(responseData.rows[0].length != 0  ){
 
              let body = JSON.stringify({userEmail: email ,username: name , password:pass , dob:dob })
 
-             fetch('http://192.168.0.5:80/addUser', {
+             fetch('http://138.68.152.2:80/addUser', {
                method: 'POST',
 
                  headers: {

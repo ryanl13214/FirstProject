@@ -1,59 +1,70 @@
 /** @format */
 import React from 'react';
 import {FlatList,TextInput,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,    View, ScrollView,  Button,SafeAreaView} from 'react-native';
-import { Dimensions } from 'react-native';
+
 
 import SyncStorage from 'sync-storage';
 
-
+import
+{
+    Dimensions
+}
+from 'react-native';
+const
+{
+    width,
+    height
+} = Dimensions.get('window');
 
 
 const data = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abbthth28ba',
-    title: 'Avacado Toast',height: 200,url:"https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    title: 'Avacado Toast' ,url:"https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aaththth97f63',
-    title: 'Pizza',height: 200,url:"https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    title: 'Pizza' ,url:"https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571ththththe29d72',
-    title: 'Salad',height: 200,url:"https://images.pexels.com/photos/406152/pexels-photo-406152.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    title: 'Salad' ,url:"https://images.pexels.com/photos/406152/pexels-photo-406152.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
   },
   {
     id: 'bd7acbthththtea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Soup',height: 200,url:"https://images.pexels.com/photos/3662103/pexels-photo-3662103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    title: 'Soup' ,url:"https://images.pexels.com/photos/3662103/pexels-photo-3662103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
   },
   {
     id: '3ac68afc-c605-48trhrthtrhd3-a4f8-fbd91aa97f63',
-    title: 'Chicken Dinner',height: 200,url:"https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    title: 'Chicken Dinner' ,url:"https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
     id: '58694a0f-3da1-471f-bdthrthth96-145571e29d72',
-    title: 'Cupcake',height: 200,url:"https://images.pexels.com/photos/853006/pexels-photo-853006.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    title: 'Cupcake' ,url:"https://images.pexels.com/photos/853006/pexels-photo-853006.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },  {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abthrthrb28ba',
-      title: 'Apple',height: 200,url:"https://images.pexels.com/photos/2949140/pexels-photo-2949140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      title: 'Apple' ,url:"https://images.pexels.com/photos/2949140/pexels-photo-2949140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91rthrthaa97f63',
-      title: 'Milk',height: 200,url:"https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      title: 'Milk' ,url:"https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     },
     {
       id: '58694a0f-3da1-4trhrthtrh71f-bd96-145571e29d72',
-      title: 'Fish',height: 200,url:"https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      title: 'Fish' ,url:"https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     },  {
         id: 'bd7acbea-c1b1trhrth-46c2-aed5-3ad53abb28ba',
-        title: 'Healthy Breackfast',height: 200,url:"https://images.pexels.com/photos/949067/pexels-photo-949067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        title: 'Healthy Breackfast' ,url:"https://images.pexels.com/photos/949067/pexels-photo-949067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       },
       {
         id: '3ac68argthfc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Burger',height: 200,url:"https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        title: 'Burger',
+
+        url:"https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       },
       {
         id: '58694aafef0f-3da1-471f-bd96-145571e29d72',
-        title: 'Hot dog',height: 200,url:"https://images.pexels.com/photos/4518657/pexels-photo-4518657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        title: 'Hot dog' ,url:"https://images.pexels.com/photos/4518657/pexels-photo-4518657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       },
 
 
@@ -63,18 +74,63 @@ const data = [
 
 
 
-const Item = ({ title,url,height,addmeal}) => (
+const Item = ({ title,url ,addmeal}) => (
 
-  <TouchableOpacity style={{    backgroundColor: '#f9c2ff',
+  <View style={{ alignItems: "center",flexDirection:"row", justifyContent: "flex-start", textAlign: 'center',  width:width,height:200 ,  backgroundColor: 'rgb(246,249,255)' ,borderWidth:1,borderColor: 'rgb(231,238,251)'}}>
 
-      marginVertical: 8,
-      marginHorizontal: 1,
-      height:height,
-    width:"44%"}} onPress={()=> addmeal( title )}>
-    <Image style={{position:"absolute",width: "100%", height:height,width: "100%"  }}  source={{uri: url}}/>
-    <Text style={{position:"absolute",bottom:0,    fontSize: 32,color:"white"     }}>{title}</Text>
+
+
+  <View style={{   marginLeft:20,  height:150, width:"34%"}}  >
+    <Image style={{ width: "100%", height:150,borderRadius:6   }}  source={{uri: url}}/>
+
+  </View>
+
+
+<View style={{   marginLeft:20,  height:150, width:"66%"}}  >
+  <Text style={{    fontSize: 22,color:'rgb(86,99,122)',height:30 }}>{title}</Text>
+  <Text style={{    fontSize: 14,color:'rgb(86,99,122)',height:100 , width:width*0.56}}>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the</Text>
+
+  <View style={{   flexDirection:"row",    height:20 , width:"78%"}}  >
+
+
+
+
+<Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1}}>Protein:</Text>
+<View style={{   backgroundColor: 'red',  height:18 ,marginTop:1, width:18,borderRadius:1111 }}></View>
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+
+
+<Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1,marginLeft:3}}>Carbohydrates:</Text>
+<View style={{   backgroundColor: 'green',  height:18 ,marginTop:1, width:18,borderRadius:1111 }}></View>
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+
+
+<Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1,marginLeft:3}}>Fat:</Text>
+<View style={{   backgroundColor: 'yellow',  height:18,marginTop:1 , width:18,borderRadius:1111 }}></View>
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+<Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
+
+
+
+
+
+{/*
+  <TouchableOpacity style={{ alignItems: "center" , justifyContent: "center", textAlign: 'center',width:45,height:20,borderRadius:1111 ,  backgroundColor: 'rgb(1,1,255)'  }} onPress={() =>  this.props.navigation.navigate('Home')}>
+   <Text style={{    fontSize: 18,color:'white',height:30,margin:4}}>ADD</Text>
   </TouchableOpacity>
+*/}
+  </View>
 
+</View>
+
+
+
+
+
+
+</View >
 );
 
 
@@ -132,8 +188,8 @@ this.props.navigation.navigate( "food");
     });
   }
   render() {
-    const renderItem = ({ item,url,height }) => (
-  <Item title={item.title} url={item.url} height={item.height} addmeal={this.addmeal} />
+    const renderItem = ({ item,url }) => (
+  <Item title={item.title} url={item.url} addmeal={this.addmeal} />
 );
 
 
@@ -185,11 +241,25 @@ if(a.length==0 ){
 
 
 }
+var movebacktoMainPageFromList = () => {
+  this.props.movebacktoMainPageFromList();
+}
+
+
+var submit = () => {
+
+
+
+    this.props.movebacktoMainPageFromList();  // updater
+
+  this.props.movebacktoMainPageFromList();
+}
+
 
 
     return (
 <View >
-<Image style={{position:"absolute"  ,  width: '100%', height: '100%'  ,resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/chatback.png')} />
+<Image style={{position:"absolute"  ,  width: '100%', height: '100%'  ,resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/foodlistback.png')} />
 
 
 
@@ -223,22 +293,14 @@ if(a.length==0 ){
         marginTop:"20%",
           flexDirection: 'row',
           width:"100%",
-        marginLeft:"4%",
+
         height:"80%"
          }}>
 
-         <FlatList
-         numColumns={2}
-         horizontal={false}
-           data={this.state.listofrecipiesA}
-           renderItem={renderItem}
-           keyExtractor={item => item.id}
-
-         />
 
 
       <FlatList
-      numColumns={2}
+      numColumns={1}
       horizontal={false}
         data={this.state.listofrecipies}
         renderItem={renderItem}
@@ -247,7 +309,7 @@ if(a.length==0 ){
       />
       </View>
       {/* bascl nutton*/}
-      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
+      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.movebacktoMainPageFromList()}>
         <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
       </TouchableOpacity>
 
@@ -300,9 +362,9 @@ label:{
     width: "60%",
     height: 45,
 marginTop: "12%",
-borderRadius:9,
+borderRadius:12,
     backgroundColor: 'white',
     borderWidth:2,
-    borderColor:"darkblue"
+    borderColor: 'rgb(231,238,251)'
   },
 });
