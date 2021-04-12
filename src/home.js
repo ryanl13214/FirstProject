@@ -276,7 +276,7 @@ getRandomInt(max) {
 
         <View style={{  marginTop:"10%",flexDirection:"row" }}>
 
-              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
+              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('transitionwater')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/water.jpg')} />
                    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
               </TouchableOpacity>

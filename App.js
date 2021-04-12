@@ -72,8 +72,8 @@ import   Excer  from './src/excercise';
 
 import   Symptommapper  from './src/symptom';
 
-
-
+//
+import   WaterTransition   from './transitionpages/waterTransition';
 
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -126,7 +126,13 @@ function DefaultApp() {
         <Stack.Screen name="food" component={Food} />
         <Stack.Screen name="foodlist" component={Foodlist} />
         <Stack.Screen name="storage" component={Storage} />
+        <Stack.Screen name="transitionwater" component={WaterTransition} />
+
+
         <Stack.Screen name="chat" component={ChatV2}  options={{ help: '' }} />
+
+
+
 
 
 <Stack.Screen name="GroupFinder" component={GroupFinder} />
@@ -189,7 +195,7 @@ if(  SyncStorage.get('loggedin'))
     return new Promise((resolve) =>
       setTimeout(
         () => { resolve('result') },
-        2000
+        2500                       //////////////////////////////////////////////////////////////////////////////////
       )
     );
   }
