@@ -140,7 +140,7 @@ export default class Water extends React.Component
             var hour = this.getHour();
             if(hour+1 %2 ==0){hour-=1;}
 
-
+            SyncStorage.set('waterTrackerDaily' + month + year + day  , this.state.label);
             SyncStorage.set('waterTracker' + month + year + day + hour, this.state.label);
             SyncStorage.set('waterTrackerToday', this.state.label);
             SyncStorage.set('waterTrackerTodayDistanceFromTop', this.state.distfromtop);

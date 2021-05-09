@@ -119,7 +119,7 @@ dayMinus:0
 	}
 	submit = () => {
 		this.setState({
-      steps: (this.state.cal +(this.state.mins*this.state.multiplyer)) *0.04 *10,
+      steps: ((this.state.cal +(this.state.mins*this.state.multiplyer)) *0.04 *10).toFixed(1),
 			cal: this.state.cal +(this.state.mins*this.state.multiplyer)
 		});
     SyncStorage.set('caltracker',this.state.cal);

@@ -192,7 +192,7 @@ getRandomInt(max) {
       {
           var textSpacing = (((width - 30) * 0.7) / 20) * 2;
 
-              return ((a.conents.length / textSpacing) * 27) + 40;
+              return ((a.conents.length / textSpacing) * 29) + 40;
 
       }
       var getwidth = (a) =>
@@ -396,17 +396,17 @@ getRandomInt(max) {
                 <Text style={{  marginLeft:15,  fontSize: 18,color:"black" , marginTop: 2     }}>DID YOU KNOW</Text>
 
               </View>
-              <Text style={{   fontSize: 14,color:"black", width:"95%" ,marginLeft:"3%"    }}>{word[this.getRandomInt(word.length)]}</Text>
+              <Text style={{   fontSize: 13,color:"black", width:"95%" ,marginLeft:"3%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
             </View>
 
-
+{/*
             <TouchableOpacity style={{width:width*0.27, height:  width*0.19,marginLeft:width*0.024, marginTop:36,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/Icons/symptoms.jpg')} />
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Symptoms</Text>
 
             </TouchableOpacity>
-
+*/}
 
 
         </View>
