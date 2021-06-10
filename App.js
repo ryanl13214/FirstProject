@@ -38,8 +38,7 @@ import   Camalo   from './camerasection/cameraalo';
 
 
 import   History   from './camerasection/historyPage';
-import   History0   from './camerasection/historyPage0';
-import   History1   from './camerasection/historyPage1';
+
 import   Tmp   from './camerasection/tempPage';
 import   Tmp0  from './camerasection/tempPage0';
 import   Tmp1  from './camerasection/tempPage1';
@@ -104,8 +103,10 @@ function DefaultApp() {
 
 
         <Stack.Screen name="history" component={History} />
-        <Stack.Screen name="history0" component={History0} />
-        <Stack.Screen name="history1" component={History1} />
+        <Stack.Screen name="historya" component={History} />
+        <Stack.Screen name="historyb" component={History} /> 
+
+
         <Stack.Screen name="temp"  component={Tmp} />
         <Stack.Screen name="temp0" component={Tmp0} />
         <Stack.Screen name="temp1" component={Tmp1} />
