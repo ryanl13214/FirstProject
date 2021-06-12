@@ -132,7 +132,7 @@ if(found){return "red";}else{return "black";}
 
 
       //check loging then
-      this.props.submitregister()
+      this.props.submitregister(this.state.name,this.state.password,this.state.dateofbiirth,this.state.username )
 
     }
 

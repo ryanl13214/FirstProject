@@ -7,6 +7,8 @@ const
     width,
     height
 } = Dimensions.get('window');
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 import LinearGradient from 'react-native-linear-gradient';
 import
 {
@@ -117,11 +119,14 @@ dayMinus:0
 	}
 	submit = () => {
 		this.setState({
-      steps: (this.state.cal +(this.state.mins*this.state.multiplyer)) *0.04 *10,
+      steps: ((this.state.cal +(this.state.mins*this.state.multiplyer)) *0.04 *10).toFixed(1),
 			cal: this.state.cal +(this.state.mins*this.state.multiplyer)
 		});
     SyncStorage.set('caltracker',this.state.cal);
 	}
+  getRandomInt(max) {
+       return Math.floor(Math.random() * Math.floor(max));
+     }
   getLeftDidYouKnow(){
     if(this.state.showDidYouKnow)
     {
@@ -506,7 +511,7 @@ dayMinus:0
      <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
 
    </View>
-   <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+   <Text style={{   fontSize: 16,color:"black", width:"95%" ,marginLeft:"5%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
  </View>
 

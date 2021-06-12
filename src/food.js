@@ -14,6 +14,8 @@ import
     SafeAreaView
 }
 from 'react-native';
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 import
 {
     Dimensions
@@ -40,6 +42,12 @@ import
     StackedBarChart
 }
 from 'react-native-chart-kit';
+
+import   Foodlist   from './foodlist';
+
+
+
+
 export default class Food extends React.Component
 {
     constructor(props)
@@ -78,6 +86,7 @@ export default class Food extends React.Component
             minus5: minus5,
             minus6: minus6,
             minus7: minus7,
+            foodlistvisible:false,
             currentFocus: "Calories",
             todaysKcal: SyncStorage.get('todaysKcal' + month + year + day),
             todaysFat: SyncStorage.get('todaysFat' + month + year + day),
@@ -194,6 +203,9 @@ export default class Food extends React.Component
         return 99999;
       }
     }
+    getRandomInt(max) {
+         return Math.floor(Math.random() * Math.floor(max));
+       }
     showDidYouKnow() {
       this.setState({
           showDidYouKnow: !this.state.showDidYouKnow,
@@ -873,9 +885,44 @@ export default class Food extends React.Component
             return "g";
         }
     }
+
+
+        updateInfoFromFoodList = () => {
+            this.setState({
+                loggedin: false,
+                registering:true
+            });
+
+
+        }
+          movebacktoMainPageFromList = () => {
+                    this.setState({
+                        foodlistvisible: false
+
+                    });
+
+
+                }
+
+
+
+
+
+
+
+
+
     render()
     {
         const widthcirc = (Dimensions.get('window').width * 0.7);
+
+        if (this.state.foodlistvisible == true)
+        {
+          return <Foodlist movebacktoMainPageFromList={this.movebacktoMainPageFromList} />;
+        }
+        else{
+
+
         return (
                <View  style={{  width: '100%', height: '100%' }} >
                   <Image style={{position:"absolute",justifyContent: "center",alignItems:"center",top:0,left:0,  width: '100%', resizeMode: 'stretch', height: '100%' }} source={require('../imgs/revision3/nurtients.jpg')} />
@@ -985,7 +1032,7 @@ export default class Food extends React.Component
 
 
           {/* meal button */}
-          <TouchableOpacity style={{ position:"absolute",top: height*0.63  , left:  width*0.7 ,justifyContent: "center",alignItems:"center",    backgroundColor:"white", height: height*0.25   ,width: width*0.27,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}   onPress={() =>  this.props.navigation.navigate('foodlist')} >
+          <TouchableOpacity style={{ position:"absolute",top: height*0.63  , left:  width*0.7 ,justifyContent: "center",alignItems:"center",    backgroundColor:"white", height: height*0.25   ,width: width*0.27,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9   }}  onPress={() =>   this.setState({foodlistvisible:!this.state.foodlistvisible})} >
 
 
 
@@ -1210,7 +1257,7 @@ export default class Food extends React.Component
                        <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
 
                      </View>
-                     <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+                     <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
                    </View>
 
@@ -1222,6 +1269,9 @@ export default class Food extends React.Component
 
                </View>
         );
+      }// end else of main return
+
+
     }
 }
 const styles = StyleSheet.create(

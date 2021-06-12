@@ -57,7 +57,7 @@ export default class  Tmp2 extends React.Component {
 
         let source = { "uri":  newstr };
 
- this.props.navigation.navigate('history0',{ newIMG: source });
+ this.props.navigation.navigate('history',{ newIMG: source });
 
             })
       .catch((err) => { console.log(err); });

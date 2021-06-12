@@ -2,7 +2,8 @@
 import React from 'react';
 import {  Animated,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,  View, ScrollView,  Button,SafeAreaView , Easing} from 'react-native';
 import { Dimensions } from 'react-native';
-
+import * as didYouKnow from '../didYouKnow.json';
+const word = didYouKnow.dyn;
 const
 {
     width,
@@ -89,6 +90,9 @@ export default class  Bmi extends React.Component {
 			bmitext:"Healthy"
 		};
 	}
+  getRandomInt(max) {
+       return Math.floor(Math.random() * Math.floor(max));
+     }
 	onButtonPressagepluss = () => {
 		if(this.state.age<100){
 
@@ -314,10 +318,7 @@ export default class  Bmi extends React.Component {
 {/* bmi desc */}
 			<View style={{ alignItems: "center", justifyContent: "center", textAlign: 'center',  position:"absolute",top:"78%",left:"0%",width:"100%" }}>
 
-			<Text  style={{ color:"rgb(138,0,28)", textAlign: 'center', fontSize: 18}}>The body mass index (BMI) is a measure that uses your height and weight to work out if your weight is healthy. While generally useful it is possible to live a healthy active life with a abnormal BMI.</Text>
-
-
-
+ 
 
 			</View>
 
@@ -331,7 +332,7 @@ export default class  Bmi extends React.Component {
           <Text style={{  marginLeft:15,  fontSize: 20,color:"black"     }}>DID YOU KNOW</Text>
 
         </View>
-        <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>Did you know that meditation helps to reduce blood pressure?</Text>
+        <Text style={{   fontSize: 20,color:"black", width:"95%" ,marginLeft:"5%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
       </View>
 

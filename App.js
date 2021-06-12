@@ -10,8 +10,6 @@ import SyncStorage from 'sync-storage';
 
 
 
-
-
 /////////////////////////////////////
 import   Drdaisy   from './src/Drdaisy';
 import   DrdaisyThreePageIntro   from './src/DrdaisyThreePageIntro';
@@ -25,7 +23,7 @@ import   Graphing   from './tabpages/graph';
 
 
 
-// soclail section
+// social section
 import   Social   from './tabpages/social';
 import   SocialMain   from './social/socialMain';
 //import   FriendManager   from './tabpages/social';
@@ -40,8 +38,7 @@ import   Camalo   from './camerasection/cameraalo';
 
 
 import   History   from './camerasection/historyPage';
-import   History0   from './camerasection/historyPage0';
-import   History1   from './camerasection/historyPage1';
+
 import   Tmp   from './camerasection/tempPage';
 import   Tmp0  from './camerasection/tempPage0';
 import   Tmp1  from './camerasection/tempPage1';
@@ -66,6 +63,7 @@ import   Sleep  from './src/sleep';
 import   SetAlarm  from './src/setalarm';
 import   Register  from './src/register';
 import   Details  from './src/Details';
+import   Buddy  from './src/Buddy';
 import   Scan  from './src/acenescannerselector';
 import   Jornal  from './src/journal';
 import   Excer  from './src/excercise';
@@ -73,8 +71,8 @@ import   Excer  from './src/excercise';
 
 import   Symptommapper  from './src/symptom';
 
-
-
+//
+import   WaterTransition   from './transitionpages/waterTransition';
 
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -91,7 +89,7 @@ function DefaultApp() {
 
         <Stack.Screen name="symptom" component={Symptommapper}/>
 
-
+        <Stack.Screen name="Buddy" component={Buddy}/>
 
         <Stack.Screen name="login" component={Login}/>
         <Stack.Screen name="register" component={Register}/>
@@ -105,8 +103,10 @@ function DefaultApp() {
 
 
         <Stack.Screen name="history" component={History} />
-        <Stack.Screen name="history0" component={History0} />
-        <Stack.Screen name="history1" component={History1} />
+        <Stack.Screen name="historya" component={History} />
+        <Stack.Screen name="historyb" component={History} /> 
+
+
         <Stack.Screen name="temp"  component={Tmp} />
         <Stack.Screen name="temp0" component={Tmp0} />
         <Stack.Screen name="temp1" component={Tmp1} />
@@ -127,7 +127,13 @@ function DefaultApp() {
         <Stack.Screen name="food" component={Food} />
         <Stack.Screen name="foodlist" component={Foodlist} />
         <Stack.Screen name="storage" component={Storage} />
+        <Stack.Screen name="transitionwater" component={WaterTransition} />
+
+
         <Stack.Screen name="chat" component={ChatV2}  options={{ help: '' }} />
+
+
+
 
 
 <Stack.Screen name="GroupFinder" component={GroupFinder} />
@@ -163,6 +169,14 @@ export default class  App extends React.Component {
         stage:""
       };
 
+if(  SyncStorage.get('loggedin'))
+{
+
+  this.state.loggedin=true;
+}
+
+
+
 
 
   }
@@ -182,7 +196,7 @@ export default class  App extends React.Component {
     return new Promise((resolve) =>
       setTimeout(
         () => { resolve('result') },
-        2000
+        2500                       //////////////////////////////////////////////////////////////////////////////////
       )
     );
   }
@@ -224,26 +238,100 @@ if(result != true){
 
 
 
-    loginSucesssfull = () => {
-        this.setState({
-            loggedin: true,
-            registering:false,
+    loginSucesssfull = (user,pwd) => {
 
-        });
-        SyncStorage.set('loggedin' ,true);
-        const result = SyncStorage.get('havedetails');
 
-          if(result != true){
-            this.setState({
-                givingdetails: true
+         var userId=   SyncStorage.get('currentUID');
 
-            });
-          }else{
-            this.setState({
-                givingdetails: false
+if(userId != undefined ){
 
-            });
-          }
+
+
+
+
+                   let body = JSON.stringify({ username: user , password:pwd  })
+
+                   fetch('http://138.68.152.2:80/login', {
+                     method: 'POST',
+
+                       headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Content-Length': body.length
+
+                       },
+                       body: body,
+
+
+
+                   }     ).then((response) =>  response.json())
+                     .then((responseData) => {
+if(responseData.rows[0].length != 0  ){
+  //////////////////////
+  this.setState({
+      loggedin: true,
+      registering:false,
+
+  });
+  SyncStorage.set('loggedin' ,true);
+    SyncStorage.set('currentUID' ,responseData.rows[0][0]);
+    console.log(responseData.rows[0][0]);
+  const result = SyncStorage.get('havedetails');
+
+    if(result != true){
+      this.setState({
+          givingdetails: true
+
+      });
+    }else{
+      this.setState({
+          givingdetails: false
+
+      });
+    }
+//////////////////////
+}else{
+  return "error";
+}
+                           })
+                     .catch((err) => { console.log(err); });
+
+
+
+}else{
+  this.setState({
+      loggedin: true,
+      registering:false,
+  });
+  SyncStorage.set('loggedin' ,true);
+//    SyncStorage.set('currentUID' ,responseData.rows[0][0]);
+
+  const result = SyncStorage.get('havedetails');
+
+    if(result != true){
+      this.setState({
+          givingdetails: true
+
+      });
+    }else{
+      this.setState({
+          givingdetails: false
+
+      });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -263,17 +351,70 @@ if(result != true){
             this.setState({
                 loggedin: true,
                 registering:false,
-                givingdetails:false
+                givingdetails:false,
+                buddy: true
             });
             SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('buddy' ,false);
+            SyncStorage.set('havedetails' ,true);
+        }
+        submitbuddy = () => {
+            this.setState({
+                loggedin: true,
+                registering:false,
+                givingdetails:false,
+                buddy: false
+            });
+            SyncStorage.set('loggedin' ,true);
+            SyncStorage.set('buddy' ,true);
             SyncStorage.set('havedetails' ,true);
         }
 
-        submitregister = () => {
+        submitregister = ( name , pass, dob,email) => {
+
+
+
+             let body = JSON.stringify({userEmail: email ,username: name , password:pass , dob:dob })
+
+             fetch('http://138.68.152.2:80/addUser', {
+               method: 'POST',
+
+                 headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Content-Length': body.length
+
+                 },
+                 body: body,
+
+
+
+             }     ).then((response) =>  response.text())
+               .then((responseData) => {
+
+            console.log(   responseData.length);
+
+
+                     })
+               .catch((err) => { console.log(err); });
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.setState({
                 loggedin: false,
                 registering:false
             });
+
             SyncStorage.set('loggedin' ,true);
             SyncStorage.set('havedetails' ,false);
         }
@@ -290,24 +431,21 @@ if(result != true){
 
     if (this.state.registering == true)
     {
-      return <Register
-        submitregister={this.submitregister}
-      />;
+      return <Register  submitregister={this.submitregister} />;
     }
 
     if (this.state.loggedin == false)
     {
-      return <Login
-    loginSucesssfull={this.loginSucesssfull}
-        movetoregister={this.movetoregister}
-      />;
+      return <Login loginSucesssfull={this.loginSucesssfull}   movetoregister={this.movetoregister} />;
     }
 
     if (this.state.givingdetails == true)
     {
-      return <Details
-    submitdetails={this.submitdetails}
-      />;
+      return <Details submitdetails={this.submitdetails}/>;
+    }
+    if (this.state.buddy == true)
+    {
+      return <Buddy submitbuddy={this.submitbuddy}/>;
     }
 
     return (

@@ -235,7 +235,7 @@ export default class ChatV2 extends Component
         {
             text: msg
         })
-        fetch('http://192.168.0.5:80/chat',
+        fetch('http://138.68.152.2:80/chat',
             {
                 method: 'POST',
                 headers:

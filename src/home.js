@@ -10,6 +10,7 @@ import
     View,
     ScrollView,
     Button,
+    Animated,
     SafeAreaView
 }
 from 'react-native';
@@ -45,7 +46,7 @@ export default class Home extends React.Component
         }
     var userimage=   SyncStorage.get('userimage');
 
-
+  this.springValue = new Animated.Value(0)
 
 
         //  console.log(height);
@@ -86,6 +87,37 @@ export default class Home extends React.Component
         }
         this.selectPhotoid = this.selectPhotoid.bind(this);
     }///. end of contructor
+
+    onSpringCompletion = () => {
+      if (1==1) {
+        this.spring();
+      }
+    }
+
+
+
+    spring = () => {
+           this.springValue.setValue(0)
+          Animated.timing(
+              this.springValue,
+              {
+                toValue: 300,
+         duration: 21999,
+useNativeDriver:false
+
+              }
+          ).start(this.onSpringCompletion);
+      }
+
+
+
+
+            componentDidMount() {
+                this.spring();
+            }
+
+
+
 
 
 
@@ -160,7 +192,7 @@ getRandomInt(max) {
       {
           var textSpacing = (((width - 30) * 0.7) / 20) * 2;
 
-              return ((a.conents.length / textSpacing) * 27) + 40;
+              return ((a.conents.length / textSpacing) * 29) + 40;
 
       }
       var getwidth = (a) =>
@@ -195,6 +227,24 @@ getRandomInt(max) {
    <Image style={{  width: "100%", height: height  ,position:"absolute" ,resizeMode:"stretch"}} source={require('../imgs/homeback.jpg')} />
 
 
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:-20,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-100}}
+   />
+
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.00,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-400}}
+   />
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.01,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-120}}
+   />
+
+   <Animated.Image
+   source={require('../imgs/cloud.png')}
+   style={{ position:"absolute",top:height*0.001,left: this.springValue, height:height*0.15, width:width*0.15,   resizeMode:"contain",marginLeft:-300}}
+   />
    <Text  style={{position:"absolute",top:height*0.096, width: "100%", fontSize:25, textAlign:"center",color:"white",fontFamily:"AmaticSC-Bold"}}>Homepage</Text>
 
 
@@ -203,7 +253,11 @@ getRandomInt(max) {
 
 
 
+   <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15,marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('history')} >
+<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/food.jpg')} />
+<Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Nutrition</Text>
 
+   </TouchableOpacity>
 
 
 
@@ -226,7 +280,7 @@ getRandomInt(max) {
 
         <View style={{  marginTop:"10%",flexDirection:"row" }}>
 
-              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('water')} >
+              <TouchableOpacity style={{width:width*0.27, height:  width*0.17, marginTop: 5,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('transitionwater')} >
                 <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/water.jpg')} />
                    <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Hydrate</Text>
               </TouchableOpacity>
@@ -346,17 +400,17 @@ getRandomInt(max) {
                 <Text style={{  marginLeft:15,  fontSize: 18,color:"black" , marginTop: 2     }}>DID YOU KNOW</Text>
 
               </View>
-              <Text style={{   fontSize: 14,color:"black", width:"95%" ,marginLeft:"3%"    }}>{word[this.getRandomInt(word.length)]}</Text>
+              <Text style={{   fontSize: 13,color:"black", width:"95%" ,marginLeft:"3%"    }}>{word[this.getRandomInt(word.length)]}</Text>
 
             </View>
 
-
+{/*
             <TouchableOpacity style={{width:width*0.27, height:  width*0.19,marginLeft:width*0.024, marginTop:36,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('symptom')} >
     <Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/Icons/symptoms.jpg')} />
     <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Symptoms</Text>
 
             </TouchableOpacity>
-
+*/}
 
 
         </View>
