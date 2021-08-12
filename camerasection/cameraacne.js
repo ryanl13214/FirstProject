@@ -200,7 +200,7 @@ class Camacne extends React.Component {
 
             <Image style={{position:"absolute"  ,  width: '100%', height: '100%'  ,resizeMode: 'stretch'  }} source={require('../imgs/NEWIMAGES/chatback.png')} />
 
- 
+
 
 
     {/* title*/}
@@ -227,11 +227,17 @@ class Camacne extends React.Component {
 
 
                 {/* hiruritism tracker tracker*/}
-            <View style={{  marginTop:"4%"}} >
-            <TouchableOpacity style={{   flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.52  ,minHeight:120}} onPress={this.selectPhotoalopicia.bind(this)}>
+                <View style={{  marginTop:"4%"}} >
+                <View style={{   flexDirection:"row" ,backgroundColor:"white",width: width*0.9,  borderRadius:15 ,shadowColor: "#000",shadowOffset: {	width: 0,	height: 4,},shadowOpacity: 0.32,shadowRadius: 5.46,elevation: 9  , height: height*0.52  ,minHeight:120}} >
+                <View style={{ marginLeft:"4%",width:"70%" ,   height:"100%" ,justifyContent: 'center',alignItems: 'center' }} >
 
-            </TouchableOpacity>
-            </View>
+                  <Text  style={{fontSize:height*0.027,color:"black"  }}>• Ensure skin is clean and uncovered by makeup.</Text>
+                <Text  style={{fontSize:height*0.027,color:"black"  }}>• Ensure the area you are in is well lit and there are now shadows covering the area being scanned</Text>
+                      <Text  style={{fontSize:height*0.027,color:"black"  }}>• place the phone 15cm away from target area and take the phone. confirm it is fitting</Text>
+                          <Text  style={{fontSize:height*0.027,color:"black"  }}>• Allow up to 2 minutes for the scanning to take place.</Text>
+                </View>
+                </View>
+                </View>
             {/* bascl nutton*/}
             <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.navigation.navigate('Home')}>
               <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />

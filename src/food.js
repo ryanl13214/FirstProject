@@ -896,9 +896,33 @@ export default class Food extends React.Component
 
         }
           movebacktoMainPageFromList = () => {
-                    this.setState({
-                        foodlistvisible: false
+            var month = new Date(new Date().setDate(new Date().getDate()    )).toString().split(' ')[1];
+            var year = new Date(new Date().setDate(new Date().getDate()     )).toString().split(' ')[3];
+            var day = new Date(new Date().setDate(new Date().getDate()    )).toString().split(' ')[2];
 
+            // this is return from the list page. updasting the valuses in state to make sure it displays correctly. 
+                    this.setState({
+                        foodlistvisible: false,
+                        todaysKcal: SyncStorage.get('todaysKcal' + month + year + day),
+                        todaysFat: SyncStorage.get('todaysFat' + month + year + day),
+                        todaysCarbs: SyncStorage.get('todaysCarbs' + month + year + day),
+                        todaysProtein: SyncStorage.get('todaysProtein' + month + year + day),
+                        breakfastKcal: SyncStorage.get('breakfastKcal' + month + year + day),
+                        breakfastFat: SyncStorage.get('breakfastFat' + month + year + day),
+                        breakfastCarbs: SyncStorage.get('breakfastCarbs' + month + year + day),
+                        breakfastProtein: SyncStorage.get('breakfastProtein' + month + year + day),
+                        lunchKcal: SyncStorage.get('lunchKcal' + month + year + day),
+                        lunchFat: SyncStorage.get('lunchFat' + month + year + day),
+                        lunchCarbs: SyncStorage.get('lunchCarbs' + month + year + day),
+                        lunchProtein: SyncStorage.get('lunchProtein' + month + year + day),
+                        dinnerKcal: SyncStorage.get('dinnerKcal' + month + year + day),
+                        dinnerFat: SyncStorage.get('dinnerFat' + month + year + day),
+                        dinnerCarbs: SyncStorage.get('dinnerCarbs' + month + year + day),
+                        dinnerProtein: SyncStorage.get('dinnerProtein' + month + year + day),
+                        snacksKcal: SyncStorage.get('snacksKcal' + month + year + day),
+                        snacksFat: SyncStorage.get('snacksFat' + month + year + day),
+                        snacksCarbs: SyncStorage.get('snacksCarbs' + month + year + day),
+                        snacksProtein: SyncStorage.get('snacksProtein' + month + year + day),
                     });
 
 
