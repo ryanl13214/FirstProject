@@ -62,7 +62,7 @@ export default class  Jornal extends React.Component {
        minus6: minus6,
        minus7: minus7,
        thismonth:thismonth,
-               isVisible: false,
+       isVisible: false,
      };
 
   }
@@ -144,9 +144,7 @@ export default class  Jornal extends React.Component {
 						    </TouchableOpacity>
 						</View>
 
-{
-	//start of main box
-}
+
 <View  style={{position:"absolute",height:"82%",   width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16.5%",left:"0%" ,borderWidth:1 ,borderColor:"red" }}>
 
 
@@ -175,7 +173,7 @@ export default class  Jornal extends React.Component {
 
 
 
-					<Text style={{position:"absolute",height:width*0.15,  width: width*0.2 ,justifyContent: "center",alignItems:"center",top:"17.5%",left:"3%"  }}>What are you grateful for today?</Text>
+					<Text style={{position:"absolute",height:width*0.278,  width: width*0.2 ,justifyContent: "center",alignItems:"center",top:"12.5%",left:"3%", color:"white" , fontSize:22  ,fontFamily:"AmaticSC-Bold"}}>What are you grateful for today?</Text>
 
 
 
@@ -197,6 +195,8 @@ export default class  Jornal extends React.Component {
 
 					<View  style={{ height:height*0.15,  width: height*0.1 ,justifyContent: "center",alignItems:"center"   , flexDirection: 'column'  }}>
 						<TouchableOpacity  style={{  borderBottomColor:"grey",height:width*0.15,  width: width*0.15,  borderRadius:5555,backgroundColor:"grey"}}>
+            <Image style={{  width: "100%", height:"100%",resizeMode: 'stretch' }} source={require('../imgs/Icons/goodweather.png')} />
+
 					 	</TouchableOpacity>
 							<Text style={{  fontSize: height*0.019  ,justifyContent: "center",textAlign:"center"    }}>Great weather</Text>
 					</View>
@@ -211,7 +211,8 @@ export default class  Jornal extends React.Component {
 
 					<View  style={{ height:height*0.15,  width: height*0.1 ,justifyContent: "center",alignItems:"center"   , flexDirection: 'column'  }}>
 						<TouchableOpacity  style={{  borderBottomColor:"grey",height:width*0.15,  width: width*0.15,  borderRadius:5555,backgroundColor:"grey"}}>
-					 	</TouchableOpacity>
+            <Image style={{  width: "100%", height:"100%",resizeMode: 'stretch' }} source={require('../imgs/Icons/work.png')} />
+        	 	</TouchableOpacity>
 							<Text style={{  fontSize: height*0.019  ,justifyContent: "center",textAlign:"center"  }}>Good job</Text>
 					</View>
 
@@ -226,18 +227,23 @@ export default class  Jornal extends React.Component {
 
 					<View  style={{ height:height*0.15,  width: height*0.1 ,justifyContent: "center",alignItems:"center"   , flexDirection: 'column'  }}>
 						<TouchableOpacity  style={{  borderBottomColor:"grey",height:width*0.15,  width: width*0.15,  borderRadius:5555,backgroundColor:"grey"}}>
+              <Image style={{  width: "100%", height:"100%",resizeMode: 'stretch' }} source={require('../imgs/Icons/trophy.png')} />
 					 	</TouchableOpacity>
 							<Text style={{   fontSize: height*0.018  ,justifyContent: "center",textAlign:"center"      }}>Personal achievment</Text>
 					</View>
 
+          <View  style={{ height:height*0.15,  width: height*0.1 ,justifyContent: "center",alignItems:"center"   , flexDirection: 'column'  }}>
+						<TouchableOpacity  style={{  borderBottomColor:"grey",height:width*0.15,  width: width*0.15,  borderRadius:5555,backgroundColor:"grey"}}>
+              <Image style={{  width: "100%", height:"100%",resizeMode: 'stretch' }} source={require('../imgs/Icons/party.png')} />
+					 	</TouchableOpacity>
+							<Text style={{   fontSize: height*0.018  ,justifyContent: "center",textAlign:"center"      }}>Celebration</Text>
+					</View>
 
 
 
   		</ScrollView>
 
-			{
-				//end of main box
-			}
+
 		</View>
 
 

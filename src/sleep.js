@@ -134,14 +134,8 @@ var minutes= String(date).split(":")[1] ;
   <Text  style={{fontSize:height*0.03  ,color:"white"    }}>When to sleep-{this.state.waketime} </Text>
 </View  >
 
-{/* top left*/}
-      <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
 
-			</TouchableOpacity>
-{/* top right*/}
-<TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:3,top:3 }} onPress={() =>  this.props.navigation.navigate('chat', {help:'water'})}>
 
-</TouchableOpacity>
 
       <View  style={{position:"absolute",  width: "100%",  flexDirection: 'row',justifyContent: "center",alignItems:"center",top:"16%"  }}>
           <TouchableOpacity   style={{  flexDirection: 'column',borderRadius:18 ,  width: 36, height: 36,marginLeft:"1%" }}>

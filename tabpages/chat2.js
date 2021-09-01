@@ -219,7 +219,7 @@ export default class ChatV2 extends Component
             data = [
             {
                 id: 'systeminitmessagge',
-                conents: 'Hi I am Dr Daisy',
+                conents: 'Hi I am Dr Daisy a machine inteligence tha is designed to help you manage PCOS',
                 user: "system",
                 floats: "flex-start",
                 systemImage: 50,
@@ -235,7 +235,7 @@ export default class ChatV2 extends Component
         {
             text: msg
         })
-        fetch('http://138.68.152.2:80/chat',
+        fetch('http://192.168.0.5:80/chat',
             {
                 method: 'POST',
                 headers:
@@ -433,7 +433,7 @@ return this.state.rightmsgleft;
 
 
           <TouchableOpacity style={{width:"100%"   ,  position:"absolute"  , justifyContent: "center", textAlign: 'center', alignItems: 'center', top:"2%" }}   onPress={() =>  this.submit( )}>
-              <Text style={{  fontSize: 22,color:"white"     }}>Chat</Text>
+              <Text style={{  fontSize: 22,color:"white"     }}>Chat with Daisy </Text>
           </TouchableOpacity>
 
 

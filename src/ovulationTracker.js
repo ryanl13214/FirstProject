@@ -555,7 +555,6 @@ export default class Ovu extends React.Component
 
                <View  style={{ position:"absolute",   width:"100%",height:"23%"  ,top: this.controlheights("circ",height * 0.33) ,left:"0%" }}>
                 <Image style={{ position:"absolute",   width: width*0.84, height: width*0.84,resizeMode: 'stretch',marginLeft:"8%", marginTop:-width*0.28}} source={require('../imgs/revision3/ovuback.png')} />
-
                  <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>{this.getDate()}</Text>
                  <Text style={{width:"100%",textAlign:"center",color:"white",fontSize:30 }}>Day {this.state.CurrrentDayOfCycle}/28</Text>
                  <View  style={{  marginTop:20,   width:"100%",height:"23%" ,justifyItems:"center",justifyContent:"center"}}>
@@ -623,13 +622,13 @@ export default class Ovu extends React.Component
                                     <View style = {{
 
                                        backgroundColor : "white",
-                                       height: height*0.5 ,
+                                       height: height*0.4 ,
                                        width: '90%',
                                        borderRadius:10,
                                        borderWidth: 2,
 
                                        borderColor: "lightblue",
-                                       marginTop: '35%',
+                                       marginTop: '45%',
                                        marginLeft: '5%',
 
                                         }}>
@@ -704,30 +703,7 @@ export default class Ovu extends React.Component
 
 
 
-
-
-
-
-
-
-    <Image style={{ marginLeft:"1%",  width: '98%', height: "50%",resizeMode: 'contain',position:"absolute",bottom:0 }} source={require('../imgs/revision3/chart.jpg')} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            < View  style={{   position: 'absolute',left: width*0.1 ,top: height*0.4 ,height:90, width: width  , alignItems: "center", justifyContent: "center"}}  >
+                            < View  style={{   position: 'absolute',left: width*0.1 ,top: height*0.30 ,height:90, width: width  , alignItems: "center", justifyContent: "center"}}  >
                                    < View  style={{   width: width/2  }}  >
                                         <Button    title="Submit" onPress = {() => {this.setState({ isVisible :!this.state.isVisible })}}/>
                             </View>

@@ -390,20 +390,20 @@ getRandomInt(max) {
 
 {/*row 4*/}
   <View style={{flexDirection:"row"}}>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft: 4, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraacne')} >
-<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/acne.jpg')} />
+        <TouchableOpacity style={{width:width*0.28, height:  width*0.17,marginLeft:0, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraacne')} >
+<Image style={{ height: '100%', width:width*0.26,   resizeMode:"stretch" }} source={require('../imgs/Newfolder/acne.png')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Acne</Text>
 
         </TouchableOpacity>
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('camerahir')} >
-<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/skin.jpg')} />
+        <TouchableOpacity style={{width:width*0.28, height:  width*0.17,marginLeft:10, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('camerahir')} >
+<Image style={{ height: '100%', width:width*0.26,   resizeMode:"stretch" }} source={require('../imgs/Newfolder/HIR.png')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Hirsutism</Text>
 
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{width:width*0.27, height:  width*0.17,marginLeft:15, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraalo')} >
-<Image style={{ height: '100%',    resizeMode:"contain" }} source={require('../imgs/revision3/alo.jpg')} />
+        <TouchableOpacity style={{width:width*0.28, height:  width*0.17,marginLeft:10, marginTop:32,justifyContent: 'center',alignItems: 'center'  }}  onPress={() =>  this.props.navigation.navigate('cameraalo')} >
+<Image style={{ height: '100%', width:width*0.26,   resizeMode:"stretch" }} source={require('../imgs/Newfolder/dfghdj.png')} />
 <Text  style={{width: "100%",borderRadius:15,  height:26,fontSize:18,marginTop:1,marginBottom:5,textAlign:"center",color:"black"}}>Alopecia</Text>
 
         </TouchableOpacity>

@@ -1,6 +1,6 @@
 /** @format */
 import React from 'react';
-import {FlatList,TextInput,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,    View, ScrollView,  Button,SafeAreaView} from 'react-native';
+import {FlatList,TextInput, Modal,  Image,  PixelRatio,  StyleSheet,  Text,  TouchableOpacity,    View, ScrollView,  Button,SafeAreaView} from 'react-native';
 
 
 import SyncStorage from 'sync-storage';
@@ -19,125 +19,53 @@ const
 
 const data = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abbthth28ba',
-    title: 'Avacado Toast' ,
-    url:"https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    id: 'Green Smoothie',
+    title: 'Green Smoothie' ,
+    url:"https://feastingnotfasting.com/wp-content/uploads/2014/07/Green-Smoothie-with-Lime-and-Cucumber-17-2.jpg",
+    description: "A smoothie is a great on the go breakfast that is packed with vitamins and minerals. It’s a great detoxing and nutritious start to your day and perfect if you’ve had an overindulgent weekend. Green apple is a great source of fibre and contains vitamin A, B6, C and antioxidants. Perfect for detoxing and helping to give you great looking skin.",
+    ingedients:"1. One green apple|2. Half a ripe medium avocado|3. Handful of spinach|4. Quarter of a lemon (without peel)|5. 1 cup (250ml) coconut water",
+    steps:"Step 1: Core the apple, chop everything up and put it into your processor|Step 2: Add in the coconut water|Step 3: Whizz up and you’re ready to go"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aaththth97f63',
-    title: 'Pizza' ,
-    url:"https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571ththththe29d72',
-    title: 'Salad' ,
-    url:"https://images.pexels.com/photos/406152/pexels-photo-406152.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-  },
-  {
-    id: 'bd7acbthththtea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Soup' ,
-    url:"https://images.pexels.com/photos/3662103/pexels-photo-3662103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-  },
-  {
-    id: '3ac68afc-c605-48trhrthtrhd3-a4f8-fbd91aa97f63',
-    title: 'Chicken Dinner' ,
-    url:"https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-  },
-  {
-    id: '58694a0f-3da1-471f-bdthrthth96-145571e29d72',
-    title: 'Cupcake' ,
-    url:"https://images.pexels.com/photos/853006/pexels-photo-853006.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-  },  {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abthrthrb28ba',
-      title: 'Apple' ,
-      url:"https://images.pexels.com/photos/2949140/pexels-photo-2949140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91rthrthaa97f63',
-      title: 'Milk' ,
-      url:"https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    },
-    {
-      id: '58694a0f-3da1-4trhrthtrh71f-bd96-145571e29d72',
-      title: 'Fish' ,
-      url:"https://images.pexels.com/photos/3296394/pexels-photo-3296394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    },
-    {
-        id: 'bd7acbea-c1b1trhrth-46c2-aed5-3ad53abb28ba',
-        title: 'Healthy Breackfast' ,
-        url:"https://images.pexels.com/photos/949067/pexels-photo-949067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-      },
-      {
-        id: '3ac68argthfc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Burger',
-        url:"https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-      },
-      {
-        id: '58694aafef0f-3da1-471f-bd96-145571e29d72',
-        title: 'Hot dog' ,
-        url:"https://images.pexels.com/photos/4518657/pexels-photo-4518657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-      },
-
-
+    id: 'Granola',
+    title: 'Granola' ,
+    url:"https://www.layersofhappiness.com/wp-content/uploads/2016/01/blueberry-almond-granola-3.jpg",
+    description: "Who doesn’t love a bit of granola in the morning. The crunchy texture combined with the touch of sweetness makes it the perfect start to the day. Granola has always been viewed as a healthy breakfast but a lot of granola you buy from the shops are loaded with preservatives and refined sugar that will bring on the sugar spikes and crashes but it is so simple to make your own. My version is packed full of seeds which contain good levels of Omega 3 (good fats that help to combat inflammation in the body). I also use maple syrup which is a natural sweetener, has nutritional elements and contains a third less sugar than refined table sugar",
+    ingedients:"1. 1 cup (100g) oats|2. 3/4 cup (75g) mixed seeds and flaked almonds (refer to kitchen hacks for seed mix)|3. 1/4 cup (60ml) almond butter (or any nut butter of your choice)|4. 1/4 cup (60ml) melted coconut oil|5. 1/4 cup (60ml) maple syrup",
+    steps:"Step 1: Preheat oven to 180 degrees (fan assisted)|Step 2: Put all the ingredients into a bowl and mix together until combined|Step 3: Line a baking tray with greaseproof paper and spread the mixture thinly|Step 4: After 8 mins, take tray out of the oven and give the granola a good mix, making sure you spread it thinly back out again|Step 5: Bake for another 8 mins then remove, leave to cool, then store in an airtight jar"
+  }
 
 
 ];
 
 
 
-const Item = ({ title,url ,addmeal}) => (
+const Item = ({ title,url ,addmeal,description,ingedients,steps,showRecipie}) => (
 
   <View style={{ alignItems: "center",flexDirection:"row", justifyContent: "flex-start", textAlign: 'center',  width:width,height:200 ,  backgroundColor: 'rgb(246,249,255)' ,borderWidth:1,borderColor: 'rgb(231,238,251)'}}>
 
 
 
-  <View style={{   marginLeft:20,  height:150, width:"34%"}}>
-    <Image style={{ width: "100%", height:150,borderRadius:6   }}  source={{uri: url}}/>
+  <View style={{marginLeft:20,  height:150, width:"34%"}}>
+    <Image style={{width: "100%", height:150,borderRadius:6   }}  source={{uri: url}}/>
   </View>
 
 
-<View style={{   marginLeft:20,  height:150, width:"66%"}}  >
-  <Text style={{    fontSize: 22,color:'rgb(86,99,122)',height:30 }}>{title}</Text>
-  <Text style={{    fontSize: 14,color:'rgb(86,99,122)',height:100 , width:width*0.56}}>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the</Text>
-  <View style={{   flexDirection:"row",    height:20 , width:"78%"}}  >
-
-
-
-
-  <Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1}}>Protein:</Text>
-  <View style={{   backgroundColor: 'red',  height:18 ,marginTop:1, width:18,borderRadius:1111 }}>
-  </View>
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-
-
-  <Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1,marginLeft:3}}>Carbohydrates:</Text>
-  <View style={{   backgroundColor: 'green',  height:18 ,marginTop:1, width:18,borderRadius:1111 }}>
-  </View>
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-
-
-  <Text style={{    fontSize: 12,color:'rgb(86,99,122)',height:30,marginTop:1,marginLeft:3}}>Fat:</Text>
-  <View style={{   backgroundColor: 'yellow',  height:18,marginTop:1 , width:18,borderRadius:1111 }}>
-  </View>
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-  <Image style={{   height:18 ,marginTop:1, width:18,marginLeft:-18 }} source={require('../imgs/smallerButton.png')} />
-
-
-
-  <TouchableOpacity style={{ alignItems: "center" , justifyContent: "center", textAlign: 'center',width:45,height:20,borderRadius:1111 ,  backgroundColor: 'rgb(1,1,255)'  }} onPress={() => addmeal() }>
-   <Text style={{    fontSize: 18,color:'white',height:30,margin:4}}>ADD</Text>
-  </TouchableOpacity>
-
-    {/*
-      <TouchableOpacity style={{ alignItems: "center" , justifyContent: "center", textAlign: 'center',width:45,height:20,borderRadius:1111 ,  backgroundColor: 'rgb(1,1,255)'  }} onPress={() =>  this.props.navigation.navigate('Home')}>
-       <Text style={{    fontSize: 18,color:'white',height:30,margin:4}}>ADD</Text>
+  <View style={{marginLeft:20,  height:150, width:"66%"}}  >
+    <Text style={{fontSize: 22,color:'rgb(86,99,122)',height:30 }}>{title}</Text>
+    <Text style={{fontSize: 14,color:'rgb(86,99,122)',height:100 , width:width*0.56}}>{description}</Text>
+    <View style={{flexDirection:"row",    height:20 , width:"78%"}}  >
+      <TouchableOpacity style={{ alignItems: "center" ,marginTop:4, marginLeft:2, justifyContent: "center", textAlign: 'center',width:45,height:20,borderRadius:1111 ,  backgroundColor: 'grey'  }} onPress={() => showRecipie(title)   }>
+        <Text style={{fontSize: 18,color:'white',height:10,margin:4}}>﹀</Text>
       </TouchableOpacity>
-    */}
-  </View>
 
-</View>
+
+      <TouchableOpacity style={{ alignItems: "center" ,marginTop:4, marginLeft:40, justifyContent: "center", textAlign: 'center',width:45,height:20,borderRadius:1111 ,  backgroundColor: 'grey'  }} onPress={() => addmeal() }>
+        <Text style={{fontSize: 18,color:'white',height:23,margin:5}}>Add meal</Text>
+      </TouchableOpacity>
+      </View>
+
+    </View>
 
 
 
@@ -161,44 +89,75 @@ export default class  Foodlist extends React.Component {
 
 
 
-    fetch("https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi", {
-    	"method": "POST",
-    	"headers": {
-    		"content-type": "text/plain",
-    		"x-rapidapi-host": "mycookbook-io1.p.rapidapi.com"
-    	},
-    	"body": "https://www.jamieoliver.com/search/?s=pasta"
-    })
-    .then(response => {
-  	console.error(response);
-    })
-    .catch(err => {
-    	console.error(err);
-    });
-
-
-
-
-
-
-
 
 
     this.state = {
       searchinput: '',
       listofrecipies:data,
-      refreshing:false
+      refreshing:false,
+      isVisible: false,
+      url:"",
+      title:"",
+      description:"",
+      ingedients:["aa"],
+      steps:[""]
     };
       this.addmeal = this.addmeal.bind(this);
-
-
+      this.showRecipie = this.showRecipie.bind(this);
 
   }
 
+  showRecipie(a)
+  {
+    //get recipie details
+    //set states
+
+ var temp=999;
+
+
+      console.log("dfsg",a);
+  console.log("sdgffsfd",temp);
+  for (var i = 0; i < this.state.listofrecipies.length; i++)
+  {
+      var str = this.state.listofrecipies[i].title;
+      if(str == a){
+        temp = i;
+      }
+
+  }
+var ingredients =  this.state.listofrecipies[temp].ingedients.split('|');
+var steps =  this.state.listofrecipies[temp].steps.split('|');
+
+console.log("",ingredients);
 
 
 
 
+
+  this.setState(
+  {
+    url:  this.state.listofrecipies[temp].url,
+    title: this.state.listofrecipies[temp].title,
+    description: this.state.listofrecipies[temp].description,
+    ingedients:  ingredients,
+    steps:steps
+  });
+
+
+
+
+
+
+
+
+
+
+    this.setState(
+    {
+        isVisible: !this.state.isVisible
+    });
+
+  }
 
 
 
@@ -259,10 +218,9 @@ this.props.movebacktoMainPageFromList();
     });
   }
   render() {
-    const renderItem = ({ item,url }) => (
-  <Item title={item.title} url={item.url} addmeal={this.addmeal} />
+    const renderItem = ({ item,url,description,ingedients, steps}) => (
+  <Item title={item.title} url={item.url} addmeal={this.addmeal} description={item.description}   ingedients={item.ingedients}  steps={item.steps}   showRecipie={this.showRecipie}/>
 );
-
 
 
 
@@ -322,6 +280,9 @@ var submit = () => {
     this.props.movebacktoMainPageFromList();
 }
 
+  var SampleNameArray = this.state.ingedients;
+  var SampleNameArray2 = this.state.steps;
+
 
 
     return (
@@ -379,6 +340,62 @@ var submit = () => {
       <TouchableOpacity style={{width:30,height:30   ,  position:"absolute" ,left:10,top:20}} onPress={() =>  this.props.movebacktoMainPageFromList()}>
         <Image style={{     height: '100%',resizeMode: 'contain'  }} source={require('../imgs/NEWIMAGES/back.png')} />
       </TouchableOpacity>
+
+
+      <Modal
+      animationType = {"fade"}
+      transparent = {true}
+      visible = {this.state.isVisible }
+      onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
+           <ScrollView  vertical={true}  style={{position:"absolute",height:height-(height*0.165)-80 ,   width: "100%"  ,top:"12%",left:"0%" ,borderWidth:0 ,borderColor:"red" ,backgroundColor:"white"}}>
+
+             <View style={{justifyContent: "center",alignItems:"center",marginTop:20,  width:"100%"}}>
+                       <View style={{marginLeft:20,  height:250, width:"45%"}}>
+                         <Image style={{width: "100%", height:250,borderRadius:6   }}  source={{uri: this.state.url}}/>
+                       </View>
+             </View>
+ <View  style={{ height:12 }}  ></View>
+             <View style={{marginLeft:20,                width:"66%"}}  >
+               <Text style={{fontSize: 30,color:'rgb(86,99,122)',height:40 }}>{this.state.title}</Text>
+               <Text style={{fontSize: 18,color:'rgb(86,99,122)',  width:width*0.86}}>{this.state.description}</Text>
+             </View>
+ <View  style={{ height:12 }}  ></View>
+             <Text style={{fontSize: 25,marginLeft:25,color:'rgb(86,99,122)',height:35 ,marginBottom:5}}>Ingredients</Text>
+
+              <View  style={{ height:5 }}  ></View>
+             { SampleNameArray.map((itsems, key)=>(
+                     <Text key={key} style={{fontSize: 18,marginLeft:20,marginBottom:5,textAlign: 'left'}}  > { itsems } </Text>)
+                     )}
+
+ <View  style={{ height:12 }}  ></View>
+
+            <Text style={{fontSize: 25,marginLeft:25,color:'rgb(86,99,122)',height:35,marginBottom:5 }}>Recipe</Text>
+
+             <View  style={{ height:5 }}  ></View>
+            { SampleNameArray2.map((itsems, key)=>(
+                 <Text key={key} style={{fontSize: 18,marginLeft:20,marginBottom:5,textAlign: 'left'}}  > { itsems } </Text>)
+            )}
+
+
+ <View  style={{ height:50 }}  ></View>
+
+             <View  style={{   position: 'absolute',left: width*0.55,bottom: 10,height:35, width: width*0.4 ,borderRadius:20,overflow:"hidden" }}  >
+                   <Button  title="return"  onPress = {() => {this.setState({ isVisible: false})}} />
+             </View>
+             <View  style={{   position: 'absolute',left: width*0.05 , bottom: 10,height:35, width: width*0.4 ,borderRadius:20,overflow:"hidden" }}  >
+                   <Button  title="Add meal"  onPress={() => addmeal() } />
+             </View>
+
+
+ <View  style={{ height:50 }}  ></View>
+
+
+           </ScrollView>
+      </Modal>
+
+
+
+
 
 </View>
 
